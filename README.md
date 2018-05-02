@@ -8,4 +8,4 @@ intsmaze项目不仅仅是一个开发架构，致力于提供大中型系统的
 flume技术手机日志信息，还原分布式会话调用链。
 交流QQ群：
 
-![Alt text](https://github.com/intsmaze/intsmaze/tree/master/image/intsmaze1.png)
+!(https://github.com/intsmaze/intsmaze/tree/master/image/intsmaze1.png)
