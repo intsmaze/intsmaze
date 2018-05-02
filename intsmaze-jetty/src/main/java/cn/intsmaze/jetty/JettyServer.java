@@ -1,4 +1,4 @@
-package cn.intsmaze.jetty;
+package org.intsmaze.jetty;
 
 import java.util.Map;
 import java.util.Map.Entry;

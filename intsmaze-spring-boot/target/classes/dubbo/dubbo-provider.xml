@@ -14,7 +14,7 @@
 	<dubbo:protocol name="dubbo" port="20880" />
 
 
-	<dubbo:service interface="cn.intsmaze.project.service.DubboService"
+	<dubbo:service interface="org.intsmaze.project.service.DubboService"
 		ref="dubboServiceImpl" retries="0" timeout="6000" />
 
 </beans>  

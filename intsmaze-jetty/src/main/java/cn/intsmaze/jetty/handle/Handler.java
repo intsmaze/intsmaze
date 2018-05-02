@@ -1,4 +1,4 @@
-package cn.intsmaze.jetty.handle;
+package org.intsmaze.jetty.handle;
 
 import java.io.IOException;
 import java.io.PrintWriter;

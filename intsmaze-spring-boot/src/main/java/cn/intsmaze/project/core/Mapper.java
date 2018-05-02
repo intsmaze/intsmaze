@@ -1,4 +1,4 @@
-package cn.intsmaze.project.core;
+package org.intsmaze.project.core;
 
 import tk.mybatis.mapper.common.BaseMapper;
 import tk.mybatis.mapper.common.ConditionMapper;

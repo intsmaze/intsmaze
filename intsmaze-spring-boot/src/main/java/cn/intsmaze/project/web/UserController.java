@@ -1,8 +1,8 @@
-package cn.intsmaze.project.web;
-import cn.intsmaze.project.core.Result;
-import cn.intsmaze.project.core.ResultGenerator;
-import cn.intsmaze.project.model.User;
-import cn.intsmaze.project.service.UserService;
+package org.intsmaze.project.web;
+import org.intsmaze.project.core.Result;
+import org.intsmaze.project.core.ResultGenerator;
+import org.intsmaze.project.model.User;
+import org.intsmaze.project.service.UserService;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;

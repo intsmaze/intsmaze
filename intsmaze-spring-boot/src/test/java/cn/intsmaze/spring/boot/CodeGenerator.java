@@ -1,4 +1,4 @@
-package cn.intsmaze.spring.boot;
+package org.intsmaze.spring.boot;
 import com.google.common.base.CaseFormat;
 import freemarker.template.TemplateExceptionHandler;
 import org.apache.commons.lang3.StringUtils;
@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-import static cn.intsmaze.project.core.ProjectConstant.*;
+import static org.intsmaze.project.core.ProjectConstant.*;
 
 /**
  * 代码生成器，根据数据表名称生成对应的Model、Mapper、Service、Controller简化开发。

@@ -1,4 +1,4 @@
-package cn.intsmaze.project.configurer;
+package org.intsmaze.project.configurer;
 
 import com.github.pagehelper.PageHelper;
 
@@ -20,7 +20,7 @@ import javax.sql.DataSource;
 
 import java.util.Properties;
 
-import static cn.intsmaze.project.core.ProjectConstant.*;
+import static org.intsmaze.project.core.ProjectConstant.*;
 
 /**
  * Mybatis & Mapper & PageHelper 配置

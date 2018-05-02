@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>cn.intsmaze</groupId>
+  <groupId>org.intsmaze</groupId>
   <artifactId>intsmaze</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
@@ -28,5 +28,9 @@
     <module>intsmaze-rpc</module>
     <module>intsmaze-jetty</module>
     <module>intsmaze-spring-boot</module>
+    <module>intsmaze-web</module>
+    <module>intsmaze-core</module>
+    <module>intsmaze-business</module>
+    <module>intsmaze-persistence</module>
   </modules>
 </project>

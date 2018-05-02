@@ -1,4 +1,4 @@
-package cn.intsmaze.rpc;
+package org.intsmaze.rpc;
 
 import java.util.Map;
 

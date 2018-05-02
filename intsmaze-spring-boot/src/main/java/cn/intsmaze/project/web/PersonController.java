@@ -1,11 +1,11 @@
-package cn.intsmaze.project.web;
+package org.intsmaze.project.web;
 
-import cn.intsmaze.project.core.Result;
-import cn.intsmaze.project.core.ResultGenerator;
-import cn.intsmaze.project.model.Dubbo;
-import cn.intsmaze.project.model.Person;
-import cn.intsmaze.project.service.DubboService;
-import cn.intsmaze.project.service.PersonService;
+import org.intsmaze.project.core.Result;
+import org.intsmaze.project.core.ResultGenerator;
+import org.intsmaze.project.model.Dubbo;
+import org.intsmaze.project.model.Person;
+import org.intsmaze.project.service.DubboService;
+import org.intsmaze.project.service.PersonService;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;

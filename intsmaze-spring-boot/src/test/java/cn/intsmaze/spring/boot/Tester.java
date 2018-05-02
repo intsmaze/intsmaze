@@ -1,4 +1,4 @@
-package cn.intsmaze.spring.boot;
+package org.intsmaze.spring.boot;
 
 
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import cn.intsmaze.project.Application;
+import org.intsmaze.project.Application;
 
 /**
  * 单元测试继承该类即可

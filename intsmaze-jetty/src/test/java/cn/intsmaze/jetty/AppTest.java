@@ -1,4 +1,4 @@
-package cn.intsmaze.jetty;
+package org.intsmaze.jetty;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

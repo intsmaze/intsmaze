@@ -1,4 +1,4 @@
-package cn.intsmaze.project.core;
+package org.intsmaze.project.core;
 
 import org.apache.ibatis.exceptions.TooManyResultsException;
 import tk.mybatis.mapper.entity.Condition;

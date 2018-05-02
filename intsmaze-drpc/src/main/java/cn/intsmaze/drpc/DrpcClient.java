@@ -1,4 +1,4 @@
-package cn.intsmaze.drpc;
+package org.intsmaze.drpc;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -7,7 +7,7 @@ import org.apache.thrift7.TException;
 
 import com.google.gson.Gson;
 
-import cn.intsmaze.rpc.RpcClient;
+import org.intsmaze.rpc.RpcClient;
 import backtype.storm.generated.DRPCExecutionException;
 import backtype.storm.utils.DRPCClient;
 

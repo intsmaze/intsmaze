@@ -1,4 +1,4 @@
-package cn.intsmaze.project.core;
+package org.intsmaze.project.core;
 
 /**
  * 响应结果生成工具

@@ -3,11 +3,11 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>cn.intsmaze</groupId>
+    <groupId>org.intsmaze</groupId>
     <artifactId>intsmaze</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <groupId>cn.intsmaze</groupId>
+  <groupId>org.intsmaze</groupId>
   <artifactId>intsmaze-storm</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>intsmaze-storm</name>

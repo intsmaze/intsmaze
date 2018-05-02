@@ -1,4 +1,4 @@
-package cn.intsmaze.project.configurer;
+package org.intsmaze.project.configurer;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -10,9 +10,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import cn.intsmaze.project.core.Result;
-import cn.intsmaze.project.core.ResultCode;
-import cn.intsmaze.project.core.ServiceException;
+import org.intsmaze.project.core.Result;
+import org.intsmaze.project.core.ResultCode;
+import org.intsmaze.project.core.ServiceException;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;

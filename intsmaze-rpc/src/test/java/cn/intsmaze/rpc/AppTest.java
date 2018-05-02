@@ -1,4 +1,4 @@
-package cn.intsmaze.rpc;
+package org.intsmaze.rpc;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

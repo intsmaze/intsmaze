@@ -4,11 +4,11 @@
 	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>cn.intsmaze</groupId>
+		<groupId>org.intsmaze</groupId>
 		<artifactId>intsmaze</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<groupId>cn.intsmaze</groupId>
+	<groupId>org.intsmaze</groupId>
 	<artifactId>intsmaze-drpc</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>intsmaze-drpc</name>
@@ -25,7 +25,7 @@
 		</dependency>
 
 		<dependency>
-			<groupId>cn.intsmaze</groupId>
+			<groupId>org.intsmaze</groupId>
 			<artifactId>intsmaze-rpc</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 			<scope>provide</scope>

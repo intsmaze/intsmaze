@@ -1,8 +1,8 @@
-package cn.intsmaze.project.dao;
+package org.intsmaze.project.dao;
 
-import cn.intsmaze.project.core.Mapper;
-import cn.intsmaze.project.model.Dubbo;
-import cn.intsmaze.project.model.Person;
+import org.intsmaze.project.core.Mapper;
+import org.intsmaze.project.model.Dubbo;
+import org.intsmaze.project.model.Person;
 
 public interface DubboMapper extends Mapper<Dubbo> {
 }

@@ -1,4 +1,4 @@
-package cn.intsmaze.project.core;
+package org.intsmaze.project.core;
 
 import com.alibaba.fastjson.JSON;
 

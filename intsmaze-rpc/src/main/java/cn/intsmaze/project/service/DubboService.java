@@ -1,7 +1,7 @@
-package cn.intsmaze.project.service;
+package org.intsmaze.project.service;
 
-import cn.intsmaze.project.core.Service;
-import cn.intsmaze.project.model.Person;
+import org.intsmaze.project.core.Service;
+import org.intsmaze.project.model.Person;
 
 /**
  * Created by CodeGenerator on 2018/03/30.

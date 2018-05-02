@@ -1,4 +1,4 @@
-package cn.intsmaze.spring.boot;
+package org.intsmaze.spring.boot;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

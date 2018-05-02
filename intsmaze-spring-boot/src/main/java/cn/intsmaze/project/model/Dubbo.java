@@ -1,4 +1,4 @@
-package cn.intsmaze.project.model;
+package org.intsmaze.project.model;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

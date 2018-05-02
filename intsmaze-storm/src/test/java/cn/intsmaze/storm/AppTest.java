@@ -1,4 +1,4 @@
-package cn.intsmaze.storm;
+package org.intsmaze.storm;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

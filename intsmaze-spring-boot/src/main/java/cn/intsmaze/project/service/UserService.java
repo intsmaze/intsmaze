@@ -1,6 +1,6 @@
-package cn.intsmaze.project.service;
-import cn.intsmaze.project.core.Service;
-import cn.intsmaze.project.model.User;
+package org.intsmaze.project.service;
+import org.intsmaze.project.core.Service;
+import org.intsmaze.project.model.User;
 
 
 /**

@@ -8,7 +8,7 @@
 	   http://www.springframework.org/schema/beans/spring-beans-4.0.xsd"	   
 	   default-init-method="init" default-destroy-method="destroy">
 
-	<bean id="jettyServer" class="cn.intsmaze.jetty.handle.HttpServer" init-method="init">
+	<bean id="jettyServer" class="org.intsmaze.jetty.handle.HttpServer" init-method="init">
 		<property name="port" value="8088"></property>
 		<property name="servlets">
 			<map>
@@ -17,6 +17,6 @@
 		</property>
 	</bean>
 	
-	<bean id="handler" class="cn.intsmaze.jetty.handle.Handler"> </bean>
+	<bean id="handler" class="org.intsmaze.jetty.handle.Handler"> </bean>
 
 </beans>

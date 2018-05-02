@@ -1,7 +1,7 @@
-package cn.intsmaze.project.dao;
+package org.intsmaze.project.dao;
 
-import cn.intsmaze.project.core.Mapper;
-import cn.intsmaze.project.model.User;
+import org.intsmaze.project.core.Mapper;
+import org.intsmaze.project.model.User;
 
 public interface UserMapper extends Mapper<User> {
 }

@@ -12,6 +12,6 @@
 	<!-- 注册中心暴露服务地址 -->
 	<dubbo:registry protocol="zookeeper" address="127.0.0.1:2181 " />
 
-	<dubbo:reference id="dubboService" interface="cn.intsmaze.project.service.DubboService" />
+	<dubbo:reference id="dubboService" interface="org.intsmaze.project.service.DubboService" />
 
 </beans>  

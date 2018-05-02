@@ -1,9 +1,9 @@
-package cn.intsmaze.project;
+package org.intsmaze.project;
 
-import cn.intsmaze.project.core.Result;
-import cn.intsmaze.project.core.ResultGenerator;
-import cn.intsmaze.project.model.Person;
-import cn.intsmaze.project.service.DubboService;
+import org.intsmaze.project.core.Result;
+import org.intsmaze.project.core.ResultGenerator;
+import org.intsmaze.project.model.Person;
+import org.intsmaze.project.service.DubboService;
 
 import org.springframework.web.bind.annotation.*;
 

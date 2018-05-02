@@ -1,4 +1,4 @@
-package cn.intsmaze.jetty.handle;
+package org.intsmaze.jetty.handle;
 
 public interface ApplicationServerMBean {
 

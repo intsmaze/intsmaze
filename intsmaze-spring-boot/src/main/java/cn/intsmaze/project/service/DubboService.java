@@ -1,7 +1,7 @@
-package cn.intsmaze.project.service;
-import cn.intsmaze.project.core.Service;
-import cn.intsmaze.project.model.Dubbo;
-import cn.intsmaze.project.model.Person;
+package org.intsmaze.project.service;
+import org.intsmaze.project.core.Service;
+import org.intsmaze.project.model.Dubbo;
+import org.intsmaze.project.model.Person;
 
 
 /**

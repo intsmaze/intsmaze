@@ -1,15 +1,15 @@
-package cn.intsmaze.project.service.impl;
+package org.intsmaze.project.service.impl;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import cn.intsmaze.project.core.AbstractService;
-import cn.intsmaze.project.dao.DubboMapper;
-import cn.intsmaze.project.dao.PersonMapper;
-import cn.intsmaze.project.model.Dubbo;
-import cn.intsmaze.project.model.Person;
-import cn.intsmaze.project.service.DubboService;
-import cn.intsmaze.project.service.PersonService;
+import org.intsmaze.project.core.AbstractService;
+import org.intsmaze.project.dao.DubboMapper;
+import org.intsmaze.project.dao.PersonMapper;
+import org.intsmaze.project.model.Dubbo;
+import org.intsmaze.project.model.Person;
+import org.intsmaze.project.service.DubboService;
+import org.intsmaze.project.service.PersonService;
 
 import javax.annotation.Resource;
 
