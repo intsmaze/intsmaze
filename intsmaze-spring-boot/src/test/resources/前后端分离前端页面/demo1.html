@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>自定义对象</title>
+		<meta http-equiv="Access-Control-Allow-Origin" content="127.0.0.1:8080">
+		<script src="jquery-3.3.1/jquery-3.3.1.js"></script>
+		<script>
+		
+
+			//直接量
+			function f1(){
+
+		
+			
+			$.ajax({
+		url: "http://127.0.0.1:8080/person/get/1?callback=?" , 
+		type: 'get',
+		data: {},
+		processData: false, 
+		timeout: 60,
+		error: function(data){
+			alert("服务器请求时间过长，请稍后再试！");
+			
+		},
+		success: function(xx){
+			alert(xx.code);
+		}
+	});
+			
+			
+			
+			
+			
+			}
+			//重置构造器
+			
+			
+		</script>
+	</head>
+	<body>
+		<input type="button" value="直接量" onclick="f1();" />
+		
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
