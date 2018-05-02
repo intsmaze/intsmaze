@@ -11,4 +11,4 @@ intsmaze项目不仅仅是一个开发架构，致力于提供大中型系统的
 # 项目背景
 intsmaze的项目虽然没有被用于各大生产环境，但是项目的各个技术的设计原型均来源于参与生产的多个系统。
 ### 交流QQ群：
-!(https://github.com/intsmaze/intsmaze/raw/master/image/intsmaze1.png)
+![image](https://github.com/intsmaze/intsmaze/raw/master/image/intsmaze1.png)
