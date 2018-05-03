@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.FDFBpersistence.mapper.FDFBReceiptManageMapper" >
+  <resultMap id="BaseResultMap" type="org.FDFBpersistence.pojos.FDFBReceiptManage" >
+    <result column="seqno" property="seqno" jdbcType="VARCHAR" />
+    <result column="zipname" property="zipName" jdbcType="VARCHAR" />
+    <result column="filename" property="fileName" jdbcType="VARCHAR" />
+    <result column="sfid" property="sfid" jdbcType="VARCHAR" />
+    <result column="ertn" property="ertn" jdbcType="VARCHAR" />
+    <result column="fcer" property="fcer" jdbcType="VARCHAR" />
+    <result column="erlc" property="erlc" jdbcType="VARCHAR" />
+    <result column="errs" property="errs" jdbcType="VARCHAR" />
+    <result column="rctn" property="rctn" jdbcType="VARCHAR" />
+    <result column="fcrc" property="fcrc" jdbcType="VARCHAR" />
+    <result column="ocnm" property="ocnm" jdbcType="VARCHAR" />
+    <result column="otdt" property="otdt" jdbcType="VARCHAR" />
+    <result column="otcd" property="otcd" jdbcType="VARCHAR" />
+    <result column="otic" property="otic" jdbcType="VARCHAR" />
+    <result column="rclc" property="rclc" jdbcType="VARCHAR" />
+    <result column="rcsg" property="rcsg" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  
+  <sql id="Base_Column_List">
+		seqno, zipname, filename, sfid, ertn, fcer, erlc,errs,rctn,fcrc,ocnm,otdt,otcd,otic,rclc,rcsg,create_date
+  </sql>
+  
+  <select id="getAllFDFBReceipt" resultMap="BaseResultMap">
+  	select
+  		distinct zipname,filename,sfid,ertn
+  	from t_receipt_manage
+  </select>
+  
+  <select id="selectAllByPage" resultMap="BaseResultMap" parameterType="org.FDFBpersistence.pojos.FDFBReceiptManage">
+  	SELECT
+		seqno,zipname,filename,
+		CASE
+		when sfid='CTFL' then'文件内容错误'
+		when sfid='RQCR' then '文件内容待补正' 
+		else'文件发送正确' end sfid,
+		ertn
+	FROM
+		t_receipt_manage
+	WHERE
+		seqno IN (
+			SELECT
+				max(seqno)
+			FROM
+				t_receipt_manage t
+			GROUP BY
+				t.filename
+		)
+  	<if test="zipName != null and zipName != '' ">
+		and zipname = #{zipName,jdbcType=VARCHAR}
+	</if>
+	<if test="fileName != null and fileName != '' ">
+		and filename = #{fileName,jdbcType=VARCHAR}
+	</if>
+	<if test="sfid != '-1' ">
+		and sfid = #{sfid,jdbcType=VARCHAR}
+	</if>
+  </select>
+  
+  <select id="getAllFDFBReceiptCount" resultType="java.lang.Integer"
+		parameterType="org.FDFBpersistence.pojos.FDFBReceiptManage">
+		select count(1)
+		from t_receipt_manage
+		where seqno IN (
+			SELECT
+				max(seqno)
+			FROM
+				t_receipt_manage t
+			GROUP BY
+				t.filename
+		)
+		<if test="zipName != null and zipName != '' ">
+			and zipname = #{zipName,jdbcType=VARCHAR}
+		</if>
+		<if test="fileName != null and fileName != '' ">
+			and filename = #{fileName,jdbcType=VARCHAR}
+		</if>
+		<if test="sfid != '-1' ">
+			and sfid = #{sfid,jdbcType=VARCHAR}
+		</if>
+  </select>
+  
+  <select id="oneReceipt" parameterType="java.lang.String" resultType="org.FDFBpersistence.pojos.FDFBReceiptManage">
+  	<!--  
+  	select
+  		<include refid="Base_Column_List" />
+  	from
+  		t_receipt_manage t
+  	where
+  		t.filename=${value}
+  	-->	
+  	select
+  		a.filename,a.sfid,a.erlc,b.chn,a.errs,a.otic,a.ocnm,a.otdt,a.otcd
+  	from
+  		t_receipt_manage a,
+		  t_mark_chn b
+  	where <!-- substring_index(a.erlc,'/',-1) -->a.mark=b.mark
+  	  and a.filename=(
+  	  	select
+  	  		filename
+  	  	from
+  	  		t_receipt_manage t
+  	  	where
+  	  		t.seqno=${value}
+  	  )	
+  </select>
+  
+  <select id="getXmlName" parameterType="java.lang.String" resultType="java.lang.String">
+  	select filename from t_receipt_manage t where t.seqno=${value}
+  </select>
+  
+  <select id="delReceipt" parameterType="java.lang.String" resultType="org.FDFBpersistence.pojos.FDFBReceiptManage">
+  	select
+  		a.seqno,a.filename,a.sfid,a.otic,a.ocnm,a.otdt,a.otcd
+  	from
+  		t_receipt_manage a
+  	where
+  		a.filename='${value}'
+  </select>
+  <!-- 根据业务标识号查询每条交易的信息 -->
+  <select id="receiptDetail" parameterType="java.lang.String" resultType="org.FDFBpersistence.pojos.FDFBReceiptManage">
+  	select
+  		distinct a.otic,a.ocnm,a.otdt,a.otcd ,a.mark,a.text
+  	from
+  		t_receipt_manage a
+  	where
+  		a.otic='${value}'
+  </select>
+  
+  <!-- 根据xml文件名查询每条大额交易的业务主键 -->
+  <select id="bigTransKey" parameterType="java.lang.String" resultType="org.FDFBpersistence.pojos.FDFBReceiptManage">
+  	select
+  		distinct a.otic,a.ocnm,a.otdt,a.otcd
+  	from
+  		t_receipt_manage a
+  	where
+  		a.filename='${value}'
+  </select>
+  <!-- 更新标签的内容 -->
+  <update id="updateReceipt" parameterType="org.FDFBpersistence.pojos.FDFBReceiptManage">
+  	update t_receipt_manage set text=#{text,jdbcType=VARCHAR} where otic=#{otic,jdbcType=VARCHAR} and erlc=#{erlc,jdbcType=VARCHAR}
+  </update>
+  
+  <!-- 根据xml的名字查出有多少个业务标识号 -->
+  <select id="businessNumbers" parameterType="java.lang.String" resultType="org.FDFBpersistence.pojos.FDFBReceiptManage">
+  	select
+  		distinct a.otic
+  	from
+  		t_receipt_manage a
+  	where
+  		a.otic is not null
+  	and	a.filename='${value}'
+  </select>
+  
+  <!-- 更新大额业务主键 -->
+  <update id="updateReceiptBySeqno" parameterType="org.FDFBpersistence.pojos.FDFBReceiptManage">
+  	update 
+  		t_receipt_manage 
+  	set 
+  		ocnm=#{ocnm,jdbcType=VARCHAR},
+  		otic=#{otic,jdbcType=VARCHAR},
+  		otdt=#{otdt,jdbcType=VARCHAR},
+  		otcd=#{otcd,jdbcType=VARCHAR}
+  	where
+  		seqno=#{seqno,jdbcType=VARCHAR}						
+  </update>
+  
+  <insert id="insertReceipt" parameterType="java.util.HashMap">
+    insert into t_receipt_manage (seqno, zipname, filename, 
+      sfid, ertn, fcer, erlc, 
+      errs, rctn, fcrc, ocnm, 
+      otdt, otcd, otic, rclc, 
+      rcsg, create_date,mark)
+    values (#{seqno,jdbcType=VARCHAR}, #{zipname,jdbcType=VARCHAR}, #{filename,jdbcType=VARCHAR}, 
+      #{sfid,jdbcType=VARCHAR}, #{ertn,jdbcType=VARCHAR}, #{fcer,jdbcType=VARCHAR}, #{erlc,jdbcType=VARCHAR}, 
+      #{errs,jdbcType=VARCHAR}, #{rctn,jdbcType=VARCHAR}, #{fcrc,jdbcType=VARCHAR}, #{ocnm,jdbcType=VARCHAR}, 
+      #{otdt,jdbcType=VARCHAR}, #{otcd,jdbcType=VARCHAR}, #{otic,jdbcType=VARCHAR}, #{rclc,jdbcType=VARCHAR}, 
+      #{rcsg,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP},#{mark,jdbcType=VARCHAR})
+  </insert>
+  
+  <insert id="insertMark" parameterType="java.util.HashMap">
+  	insert into t_mark_chn(mark,chn)
+  	values(#{mark,jdbcType=VARCHAR},#{chn,jdbcType=VARCHAR})
+  </insert>
+  
+  <select id="oneMark" parameterType="java.lang.String" resultType="java.lang.String">
+  	select
+  		chn
+  	from
+  		t_mark_chn t
+  	where
+  		t.mark='${value}'
+  </select>
+  
+  <!-- 更新回执记录的要下载的报文路径 -->
+  <update id="updateReceiptPath" parameterType="org.FDFBpersistence.pojos.FDFBReceiptManage">
+  	UPDATE
+  		t_receipt_manage
+	SET path = #{path,jdbcType=VARCHAR},
+		unit = #{unit,jdbcType=VARCHAR},
+		update_time = #{update_time,jdbcType=TIMESTAMP}
+	WHERE
+		filename = #{fileName,jdbcType=VARCHAR}
+  </update>
+  
+  <!-- 获取回执记录的报文路径 -->
+  <select id="getReceiptPath" parameterType="java.lang.String" resultType="java.lang.String">
+  	select path from t_receipt_manage t where t.seqno=${value}
+  </select>
+  
+  <insert id="insertSelective" parameterType="org.FDFBpersistence.pojos.FDFBReceiptManage" >
+    insert into t_receipt_manage
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="seqno != null" >
+        seqno,
+      </if>
+      <if test="zipName != null" >
+        zipname,
+      </if>
+      <if test="fileName != null" >
+        filename,
+      </if>
+      <if test="sfid != null" >
+        sfid,
+      </if>
+      <if test="ertn != null" >
+        ertn,
+      </if>
+      <if test="fcer != null" >
+        fcer,
+      </if>
+      <if test="erlc != null" >
+        erlc,
+      </if>
+      <if test="errs != null" >
+        errs,
+      </if>
+      <if test="rctn != null" >
+        rctn,
+      </if>
+      <if test="fcrc != null" >
+        fcrc,
+      </if>
+      <if test="ocnm != null" >
+        ocnm,
+      </if>
+      <if test="otdt != null" >
+        otdt,
+      </if>
+      <if test="otcd != null" >
+        otcd,
+      </if>
+      <if test="otic != null" >
+        otic,
+      </if>
+      <if test="rclc != null" >
+        rclc,
+      </if>
+      <if test="rcsg != null" >
+        rcsg,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="seqno != null" >
+        #{seqno,jdbcType=VARCHAR},
+      </if>
+      <if test="zipName != null" >
+        #{zipName,jdbcType=VARCHAR},
+      </if>
+      <if test="fileName != null" >
+        #{fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="sfid != null" >
+        #{sfid,jdbcType=VARCHAR},
+      </if>
+      <if test="ertn != null" >
+        #{ertn,jdbcType=VARCHAR},
+      </if>
+      <if test="fcer != null" >
+        #{fcer,jdbcType=VARCHAR},
+      </if>
+      <if test="erlc != null" >
+        #{erlc,jdbcType=VARCHAR},
+      </if>
+      <if test="errs != null" >
+        #{errs,jdbcType=VARCHAR},
+      </if>
+      <if test="rctn != null" >
+        #{rctn,jdbcType=VARCHAR},
+      </if>
+      <if test="fcrc != null" >
+        #{fcrc,jdbcType=VARCHAR},
+      </if>
+      <if test="ocnm != null" >
+        #{ocnm,jdbcType=VARCHAR},
+      </if>
+      <if test="otdt != null" >
+        #{otdt,jdbcType=VARCHAR},
+      </if>
+      <if test="otcd != null" >
+        #{otcd,jdbcType=VARCHAR},
+      </if>
+      <if test="otic != null" >
+        #{otic,jdbcType=VARCHAR},
+      </if>
+      <if test="rclc != null" >
+        #{rclc,jdbcType=VARCHAR},
+      </if>
+      <if test="rcsg != null" >
+        #{rcsg,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+</mapper>

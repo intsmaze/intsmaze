@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.FDFBpersistence.mapper.FDFBRuleMapper" >
+  <resultMap id="BaseResultMap" type="org.FDFBpersistence.pojos.FDFBRule" >
+    <id column="ruleid" property="ruleid" jdbcType="INTEGER" />
+    <result column="rule_desc" property="ruleDesc" jdbcType="VARCHAR" />
+    <result column="trade_feature" property="tradeFeature" jdbcType="VARCHAR" />
+    <result column="isTotal" property="istotal" jdbcType="INTEGER" />
+    <result column="trade_type" property="tradeType" jdbcType="VARCHAR" />
+    <result column="express" property="express" jdbcType="VARCHAR" />
+    <result column="rule_type" property="ruleType" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <resultMap id="ColumnResultMap" type="org.FDFBpersistence.pojos.FDFBRuleTable" >
+    <id column="ruleid" property="ruleid" jdbcType="INTEGER" />
+    <result column="field_code" property="fileCode" jdbcType="VARCHAR" />
+    <result column="field_name" property="fileName" jdbcType="VARCHAR" />
+    <result column="field_type" property="fileType" jdbcType="INTEGER" />
+    <result column="desc" property="fileDesc" jdbcType="VARCHAR" />
+    <result column="tableid" property="tableid" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <resultMap id="RuleParamMap" type="org.FDFBpersistence.pojos.FDFBRuleParam" >
+    <id column="seqno" property="ruleid" jdbcType="VARCHAR" />
+    <result column="paramId" property="paramid" jdbcType="VARCHAR" />
+    <result column="param" property="param" jdbcType="VARCHAR" />
+    <result column="Param_source" property="paramSource" jdbcType="VARCHAR" />
+    <result column="Param_desc" property="paramDesc" jdbcType="VARCHAR" />
+    <result column="Param_type" property="paramType" jdbcType="VARCHAR" />
+  </resultMap>
+  
+    <resultMap id="RuleOperateMap" type="org.FDFBpersistence.pojos.FDFBRuleOperate" >
+    <id column="seqno" property="ruleid" jdbcType="VARCHAR" />
+    <result column="judgeId" property="judgeId" jdbcType="VARCHAR" />
+    <result column="operate" property="operate" jdbcType="VARCHAR" />
+    <result column="isDate" property="isDate" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    seqno, rule_desc, trade_feature, isTotal, trade_type, express, rule_type
+  </sql>
+  
+  <!-- 获取单个规则信息 -->
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from rule_express
+    where seqno = #{ruleid,jdbcType=VARCHAR}
+  </select>
+  
+  <!-- 获取操作信息 -->
+  <select id="selectRuleOperate" parameterType="java.lang.String" resultMap="RuleOperateMap">
+  	select * from rule_operate t
+  	where t.seqno=#{ruleid,jdbcType=VARCHAR}
+  	and t.type='0'
+  </select>
+  
+   <!-- 获取自定义操作信息 -->
+  <select id="selectRuleCustomerOperate" parameterType="java.lang.String" resultMap="RuleOperateMap">
+  	select * from rule_operate t
+  	where t.seqno=#{ruleid,jdbcType=VARCHAR}
+  	and t.type='1'
+  </select>
+  
+  <!-- 获取参数信息 -->
+  <select id="selectRuleParam" parameterType="java.lang.String" resultMap="RuleParamMap">
+  	select * from rule_param t
+  	where t.seqno=#{ruleid,jdbcType=VARCHAR}
+  </select>
+  
+  <!-- 获取规则列表 -->
+  <select id="selectAllRules">
+  	select 
+    <include refid="Base_Column_List" />
+    from rule_express
+  </select>
+  
+  <!-- 获取某个规则字段的来源信息 -->
+  <select id="selectColumnSource" parameterType="java.util.List" resultMap="ColumnResultMap">
+  	select * from rule_table_field t where t.id in
+  	<foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+  		#{item}
+  	</foreach>
+  </select>
+  <!-- 获取所有字段的来源信息 -->
+  <select id="selectAllColumns" resultMap="ColumnResultMap">
+  	select t.id,t.field_name,t.field_type from rule_table_field t
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from rule_express
+    where ruleid = #{ruleid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.FDFBpersistence.pojos.FDFBRule">
+    insert into rule_express (seqno,rule_desc, trade_feature, 
+      isTotal, trade_type, express, 
+      rule_type)
+    values (#{seqno,jdbcType=VARCHAR},#{ruleDesc,jdbcType=VARCHAR}, #{tradeFeature,jdbcType=VARCHAR}, 
+      #{istotal,jdbcType=INTEGER}, #{tradeType,jdbcType=VARCHAR}, #{express,jdbcType=VARCHAR}, 
+      #{ruleType,jdbcType=VARCHAR})
+  </insert>
+  
+  <insert id="insertOperate" parameterType="org.FDFBpersistence.pojos.FDFBRuleOperate" >
+    insert into rule_operate (seqno, judgeId, operate, isDate,type)
+    values (#{ruleid,jdbcType=VARCHAR}, #{judgeId,jdbcType=VARCHAR}, #{operate,jdbcType=VARCHAR}, 
+      #{isDate,jdbcType=INTEGER},#{type,jdbcType=VARCHAR})
+  </insert>
+  
+  <insert id="insertParam" parameterType="org.FDFBpersistence.pojos.FDFBRuleParam" >
+    insert into rule_param (seqno, paramid, param, 
+      param_source, param_desc, 
+      param_type)
+    values (#{ruleid,jdbcType=VARCHAR}, #{paramid,jdbcType=VARCHAR}, #{param,jdbcType=VARCHAR}, 
+      #{paramSource,jdbcType=INTEGER}, #{paramDesc,jdbcType=VARCHAR},
+      #{paramType,jdbcType=VARCHAR})
+  </insert>
+  
+  <insert id="insertSelective" parameterType="org.FDFBpersistence.pojos.FDFBRule" >
+    insert into rule_express
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ruleid != null" >
+        ruleid,
+      </if>
+      <if test="ruleDesc != null" >
+        rule_desc,
+      </if>
+      <if test="tradeFeature != null" >
+        trade_feature,
+      </if>
+      <if test="istotal != null" >
+        isTotal,
+      </if>
+      <if test="tradeType != null" >
+        trade_type,
+      </if>
+      <if test="express != null" >
+        express,
+      </if>
+      <if test="ruleType != null" >
+        rule_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ruleid != null" >
+        #{ruleid,jdbcType=INTEGER},
+      </if>
+      <if test="ruleDesc != null" >
+        #{ruleDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeFeature != null" >
+        #{tradeFeature,jdbcType=VARCHAR},
+      </if>
+      <if test="istotal != null" >
+        #{istotal,jdbcType=INTEGER},
+      </if>
+      <if test="tradeType != null" >
+        #{tradeType,jdbcType=VARCHAR},
+      </if>
+      <if test="express != null" >
+        #{express,jdbcType=VARCHAR},
+      </if>
+      <if test="ruleType != null" >
+        #{ruleType,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.FDFBpersistence.pojos.FDFBRule" >
+    update rule_express
+    <set >
+      <if test="ruleDesc != null" >
+        rule_desc = #{ruleDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeFeature != null" >
+        trade_feature = #{tradeFeature,jdbcType=VARCHAR},
+      </if>
+      <if test="istotal != null" >
+        isTotal = #{istotal,jdbcType=INTEGER},
+      </if>
+      <if test="tradeType != null" >
+        trade_type = #{tradeType,jdbcType=VARCHAR},
+      </if>
+      <if test="express != null" >
+        express = #{express,jdbcType=VARCHAR},
+      </if>
+      <if test="ruleType != null" >
+        rule_type = #{ruleType,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ruleid = #{ruleid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.FDFBpersistence.pojos.FDFBRule" >
+    update rule_express
+    set rule_desc = #{ruleDesc,jdbcType=VARCHAR},
+      trade_feature = #{tradeFeature,jdbcType=VARCHAR},
+      isTotal = #{istotal,jdbcType=INTEGER},
+      trade_type = #{tradeType,jdbcType=VARCHAR},
+      express = #{express,jdbcType=VARCHAR},
+      rule_type = #{ruleType,jdbcType=VARCHAR}
+    where ruleid = #{ruleid,jdbcType=INTEGER}
+  </update>
+</mapper>

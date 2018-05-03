@@ -1,0 +1,822 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.FDFBpersistence.mapper.RiskScoreMapper" >
+  <resultMap id="BaseResultMap" type="org.FDFBpersistence.pojos.RiskScore" >
+    <id column="SEQNO" property="seqno" jdbcType="VARCHAR" />
+    <result column="CUSTOMER_ID" property="customerId" jdbcType="VARCHAR" />
+    <result column="CUSTOMER_NAME" property="customerName" jdbcType="VARCHAR" />
+    <result column="IDENTIFY_TYPE" property="identifyType" jdbcType="VARCHAR" />
+    <result column="IDENTIFY_NUMBER" property="identifyNumber" jdbcType="VARCHAR" />
+    <result column="ORG_CODE" property="orgCode" jdbcType="VARCHAR" />
+    <result column="PREVIOUS_GRADETYPE" property="previousGradetype" jdbcType="VARCHAR" />
+    <result column="GRADE_TYPE" property="gradeType" jdbcType="VARCHAR" />
+    <result column="PREVIOUS_SCORE" property="previousScore" jdbcType="VARCHAR" />
+    <result column="SCORE_TIME" property="scoreTime" jdbcType="TIMESTAMP" />
+    <result column="PREVIOUS_GRADE" property="previousGrade" jdbcType="VARCHAR" />
+    <result column="PRESENT_GRADE" property="presentGrade" jdbcType="VARCHAR" />
+    <result column="GRADE_TIME" property="gradeTime" jdbcType="TIMESTAMP" />
+    <result column="SUGGESTION" property="suggestion" jdbcType="VARCHAR" />
+    <result column="STATUS" property="status" jdbcType="VARCHAR" />
+    <result column="RETURN_SUGGESTION" property="returnSuggestion" jdbcType="VARCHAR" />
+    <result column="CANCLE_SUGGESTION" property="cancleSuggestion" jdbcType="VARCHAR" />
+    <result column="NEXT_REVIEWTIME" property="nextReviewtime" jdbcType="TIMESTAMP" />
+    <result column="PREVIOUS_GRADETIME" property="previousGradetime" jdbcType="TIMESTAMP" />
+    <result column="MOD_GRADE" property="modGrade" jdbcType="VARCHAR" />
+    <result column="FIRST_TIME" property="firstTime" jdbcType="TIMESTAMP" />
+    <result column="REVIEW" property="review" jdbcType="VARCHAR" />
+    <result column="FROMUSER" property="fromuser" jdbcType="VARCHAR" />
+    <result column="CREATEBY" property="createby" jdbcType="VARCHAR" />
+    <result column="CREATEON" property="createon" jdbcType="TIMESTAMP" />
+    <result column="MODIFYBY" property="modifyby" jdbcType="VARCHAR" />
+    <result column="MODIFYON" property="modifyon" jdbcType="TIMESTAMP" />
+    <result column="CUSTOMER_TYPE" property="customerType" jdbcType="VARCHAR" />
+    <result column="IS_ANT_CUSTOMER" property="isAntCustomer" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    SEQNO, CUSTOMER_ID, CUSTOMER_NAME, IDENTIFY_TYPE, IDENTIFY_NUMBER, ORG_CODE, PREVIOUS_GRADETYPE, 
+    GRADE_TYPE, PREVIOUS_SCORE, SCORE_TIME, PREVIOUS_GRADE, PRESENT_GRADE, GRADE_TIME, 
+    SUGGESTION, STATUS, RETURN_SUGGESTION, CANCLE_SUGGESTION, NEXT_REVIEWTIME, PREVIOUS_GRADETIME, 
+    MOD_GRADE, FIRST_TIME, REVIEW, FROMUSER, CREATEBY, CREATEON, MODIFYBY, MODIFYON,CUSTOMER_TYPE,IS_ANT_CUSTOMER
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_sco
+    where SEQNO = #{seqno,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_sco
+    where SEQNO = #{seqno,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="org.FDFBpersistence.pojos.RiskScore" >
+    insert into t_sco (SEQNO, CUSTOMER_ID, CUSTOMER_NAME, 
+      IDENTIFY_TYPE, IDENTIFY_NUMBER, ORG_CODE, 
+      PREVIOUS_GRADETYPE, GRADE_TYPE, PREVIOUS_SCORE, 
+      SCORE_TIME, PREVIOUS_GRADE, PRESENT_GRADE, 
+      GRADE_TIME, SUGGESTION, STATUS, 
+      RETURN_SUGGESTION, CANCLE_SUGGESTION, NEXT_REVIEWTIME, 
+      PREVIOUS_GRADETIME, MOD_GRADE, FIRST_TIME, 
+      REVIEW, FROMUSER, CREATEBY, 
+      CREATEON, MODIFYBY, MODIFYON ,CUSTOMER_TYPE, IS_ANT_CUSTOMER
+      )
+    values (#{seqno,jdbcType=VARCHAR}, #{customerId,jdbcType=VARCHAR}, #{customerName,jdbcType=VARCHAR}, 
+      #{identifyType,jdbcType=VARCHAR}, #{identifyNumber,jdbcType=VARCHAR}, #{orgCode,jdbcType=VARCHAR}, 
+      #{previousGradetype,jdbcType=VARCHAR}, #{gradeType,jdbcType=VARCHAR}, #{previousScore,jdbcType=VARCHAR}, 
+      #{scoreTime,jdbcType=TIMESTAMP}, #{previousGrade,jdbcType=VARCHAR}, #{presentGrade,jdbcType=VARCHAR}, 
+      #{gradeTime,jdbcType=TIMESTAMP}, #{suggestion,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
+      #{returnSuggestion,jdbcType=VARCHAR}, #{cancleSuggestion,jdbcType=VARCHAR}, #{nextReviewtime,jdbcType=TIMESTAMP}, 
+      #{previousGradetime,jdbcType=TIMESTAMP}, #{modGrade,jdbcType=VARCHAR}, #{firstTime,jdbcType=TIMESTAMP}, 
+      #{review,jdbcType=VARCHAR}, #{fromuser,jdbcType=VARCHAR}, #{createby,jdbcType=VARCHAR}, 
+      #{createon,jdbcType=TIMESTAMP}, #{modifyby,jdbcType=VARCHAR}, #{modifyon,jdbcType=TIMESTAMP},
+      #{customerType,jdbcType=VARCHAR}, #{isAntCustomer,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.FDFBpersistence.pojos.RiskScore" >
+    insert into t_sco
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="seqno != null" >
+        SEQNO,
+      </if>
+      <if test="customerId != null" >
+        CUSTOMER_ID,
+      </if>
+      <if test="customerName != null" >
+        CUSTOMER_NAME,
+      </if>
+      <if test="identifyType != null" >
+        IDENTIFY_TYPE,
+      </if>
+      <if test="identifyNumber != null" >
+        IDENTIFY_NUMBER,
+      </if>
+      <if test="orgCode != null" >
+        ORG_CODE,
+      </if>
+      <if test="previousGradetype != null" >
+        PREVIOUS_GRADETYPE,
+      </if>
+      <if test="gradeType != null" >
+        GRADE_TYPE,
+      </if>
+      <if test="previousScore != null" >
+        PREVIOUS_SCORE,
+      </if>
+      <if test="scoreTime != null" >
+        SCORE_TIME,
+      </if>
+      <if test="previousGrade != null" >
+        PREVIOUS_GRADE,
+      </if>
+      <if test="presentGrade != null" >
+        PRESENT_GRADE,
+      </if>
+      <if test="gradeTime != null" >
+        GRADE_TIME,
+      </if>
+      <if test="suggestion != null" >
+        SUGGESTION,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="returnSuggestion != null" >
+        RETURN_SUGGESTION,
+      </if>
+      <if test="cancleSuggestion != null" >
+        CANCLE_SUGGESTION,
+      </if>
+      <if test="nextReviewtime != null" >
+        NEXT_REVIEWTIME,
+      </if>
+      <if test="previousGradetime != null" >
+        PREVIOUS_GRADETIME,
+      </if>
+      <if test="modGrade != null" >
+        MOD_GRADE,
+      </if>
+      <if test="firstTime != null" >
+        FIRST_TIME,
+      </if>
+      <if test="review != null" >
+        REVIEW,
+      </if>
+      <if test="fromuser != null" >
+        FROMUSER,
+      </if>
+      <if test="createby != null" >
+        CREATEBY,
+      </if>
+      <if test="createon != null" >
+        CREATEON,
+      </if>
+      <if test="modifyby != null" >
+        MODIFYBY,
+      </if>
+      <if test="modifyon != null" >
+        MODIFYON,
+      </if>
+      <if test="customerType != null" >
+        CUSTOMER_TYPE,
+      </if>
+      <if test="isAntCustomer != null" >
+        IS_ANT_CUSTOMER,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="seqno != null" >
+        #{seqno,jdbcType=VARCHAR},
+      </if>
+      <if test="customerId != null" >
+        #{customerId,jdbcType=VARCHAR},
+      </if>
+      <if test="customerName != null" >
+        #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="identifyType != null" >
+        #{identifyType,jdbcType=VARCHAR},
+      </if>
+      <if test="identifyNumber != null" >
+        #{identifyNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="orgCode != null" >
+        #{orgCode,jdbcType=VARCHAR},
+      </if>
+      <if test="previousGradetype != null" >
+        #{previousGradetype,jdbcType=VARCHAR},
+      </if>
+      <if test="gradeType != null" >
+        #{gradeType,jdbcType=VARCHAR},
+      </if>
+      <if test="previousScore != null" >
+        #{previousScore,jdbcType=VARCHAR},
+      </if>
+      <if test="scoreTime != null" >
+        #{scoreTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="previousGrade != null" >
+        #{previousGrade,jdbcType=VARCHAR},
+      </if>
+      <if test="presentGrade != null" >
+        #{presentGrade,jdbcType=VARCHAR},
+      </if>
+      <if test="gradeTime != null" >
+        #{gradeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="suggestion != null" >
+        #{suggestion,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="returnSuggestion != null" >
+        #{returnSuggestion,jdbcType=VARCHAR},
+      </if>
+      <if test="cancleSuggestion != null" >
+        #{cancleSuggestion,jdbcType=VARCHAR},
+      </if>
+      <if test="nextReviewtime != null" >
+        #{nextReviewtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="previousGradetime != null" >
+        #{previousGradetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modGrade != null" >
+        #{modGrade,jdbcType=VARCHAR},
+      </if>
+      <if test="firstTime != null" >
+        #{firstTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="review != null" >
+        #{review,jdbcType=VARCHAR},
+      </if>
+      <if test="fromuser != null" >
+        #{fromuser,jdbcType=VARCHAR},
+      </if>
+      <if test="createby != null" >
+        #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="createon != null" >
+        #{createon,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyby != null" > 
+        #{modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyon != null" >
+        #{modifyon,jdbcType=TIMESTAMP},
+      </if>
+      <if test="customerType != null" > 
+        #{customerType,jdbcType=VARCHAR},
+      </if>
+      <if test="isAntCustomer != null" >
+        #{isAntCustomer,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <insert id="insertFromOdps" parameterType="org.FDFBpersistence.pojos.RiskScore" >
+    insert into t_sco
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="seqno != null" >
+        SEQNO,
+      </if>
+      <if test="customerId != null" >
+        CUSTOMER_ID,
+      </if>
+      <if test="customerName != null" >
+        CUSTOMER_NAME,
+      </if>
+      <if test="identifyType != null" >
+        IDENTIFY_TYPE,
+      </if>
+      <if test="identifyNumber != null" >
+        IDENTIFY_NUMBER,
+      </if>
+      <if test="orgCode != null" >
+        ORG_CODE,
+      </if>
+      <if test="previousGradetype != null" >
+        PREVIOUS_GRADETYPE,
+      </if>
+      <if test="gradeType != null" >
+        GRADE_TYPE,
+      </if>
+      <if test="previousScore != null" >
+        PREVIOUS_SCORE,
+      </if>
+      <if test="scoreTime != null" >
+        SCORE_TIME,
+      </if>
+      <if test="previousGrade != null" >
+        PREVIOUS_GRADE,
+      </if>
+      <if test="presentGrade != null" >
+        PRESENT_GRADE,
+      </if>
+      <if test="gradeTime != null" >
+        GRADE_TIME,
+      </if>
+      <if test="suggestion != null" >
+        SUGGESTION,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="returnSuggestion != null" >
+        RETURN_SUGGESTION,
+      </if>
+      <if test="cancleSuggestion != null" >
+        CANCLE_SUGGESTION,
+      </if>
+      <if test="nextReviewtime != null" >
+        NEXT_REVIEWTIME,
+      </if>
+      <if test="previousGradetime != null" >
+        PREVIOUS_GRADETIME,
+      </if>
+      <if test="modGrade != null" >
+        MOD_GRADE,
+      </if>
+      <if test="firstTime != null" >
+        FIRST_TIME,
+      </if>
+      <if test="review != null" >
+        REVIEW,
+      </if>
+      <if test="fromuser != null" >
+        FROMUSER,
+      </if>
+      <if test="createby != null" >
+        CREATEBY,
+      </if>
+      <if test="createon != null" >
+        CREATEON,
+      </if>
+      <if test="modifyby != null" >
+        MODIFYBY,
+      </if>
+      <if test="modifyon != null" >
+        MODIFYON,
+      </if>
+      <if test="customerType != null" >
+        CUSTOMER_TYPE,
+      </if>
+      <if test="isAntCustomer != null" >
+        IS_ANT_CUSTOMER,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="seqno != null" >
+        #{seqno,jdbcType=VARCHAR},
+      </if>
+      <if test="customerId != null" >
+        #{customerId,jdbcType=VARCHAR},
+      </if>
+      <if test="customerName != null" >
+        #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="identifyType != null" >
+        #{identifyType,jdbcType=VARCHAR},
+      </if>
+      <if test="identifyNumber != null" >
+        #{identifyNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="orgCode != null" >
+        #{orgCode,jdbcType=VARCHAR},
+      </if>
+      <if test="previousGradetype != null" >
+        #{previousGradetype,jdbcType=VARCHAR},
+      </if>
+      <if test="gradeType != null" >
+        #{gradeType,jdbcType=VARCHAR},
+      </if>
+      <if test="previousScore != null" >
+        #{previousScore,jdbcType=VARCHAR},
+      </if>
+      <if test="scoreTime != null" >
+        #{scoreTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="previousGrade != null" >
+        #{previousGrade,jdbcType=VARCHAR},
+      </if>
+      <if test="presentGrade != null" >
+        #{presentGrade,jdbcType=VARCHAR},
+      </if>
+      <if test="gradeTime != null" >
+        #{gradeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="suggestion != null" >
+        #{suggestion,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="returnSuggestion != null" >
+        #{returnSuggestion,jdbcType=VARCHAR},
+      </if>
+      <if test="cancleSuggestion != null" >
+        #{cancleSuggestion,jdbcType=VARCHAR},
+      </if>
+      <if test="nextReviewtime != null" >
+        #{nextReviewtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="previousGradetime != null" >
+        #{previousGradetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modGrade != null" >
+        #{modGrade,jdbcType=VARCHAR},
+      </if>
+      <if test="firstTime != null" >
+        #{firstTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="review != null" >
+        #{review,jdbcType=VARCHAR},
+      </if>
+      <if test="fromuser != null" >
+        #{fromuser,jdbcType=VARCHAR},
+      </if>
+      <if test="createby != null" >
+        #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="createon != null" >
+        #{createon,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyby != null" > 
+        #{modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyon != null" >
+        #{modifyon,jdbcType=TIMESTAMP},
+      </if>
+      <if test="customerType != null" > 
+        #{customerType,jdbcType=VARCHAR},
+      </if>
+      <if test="isAntCustomer != null" >
+        #{isAntCustomer,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.FDFBpersistence.pojos.RiskScore" >
+    update t_sco
+    <set >
+      <if test="customerId != null" >
+        CUSTOMER_ID = #{customerId,jdbcType=VARCHAR},
+      </if>
+      <if test="customerName != null" >
+        CUSTOMER_NAME = #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="identifyType != null" >
+        IDENTIFY_TYPE = #{identifyType,jdbcType=VARCHAR},
+      </if>
+      <if test="identifyNumber != null" >
+        IDENTIFY_NUMBER = #{identifyNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="orgCode != null" >
+        ORG_CODE = #{orgCode,jdbcType=VARCHAR},
+      </if>
+      <if test="previousGradetype != null" >
+        PREVIOUS_GRADETYPE = #{previousGradetype,jdbcType=VARCHAR},
+      </if>
+      <if test="gradeType != null" >
+        GRADE_TYPE = #{gradeType,jdbcType=VARCHAR},
+      </if>
+      <if test="previousScore != null" >
+        PREVIOUS_SCORE = #{previousScore,jdbcType=VARCHAR},
+      </if>
+      <if test="scoreTime != null" >
+        SCORE_TIME = #{scoreTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="previousGrade != null" >
+        PREVIOUS_GRADE = #{previousGrade,jdbcType=VARCHAR},
+      </if>
+      <if test="presentGrade != null" >
+        PRESENT_GRADE = #{presentGrade,jdbcType=VARCHAR},
+      </if>
+      <if test="gradeTime != null" >
+        GRADE_TIME = #{gradeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="suggestion != null" >
+        SUGGESTION = #{suggestion,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="returnSuggestion != null" >
+        RETURN_SUGGESTION = #{returnSuggestion,jdbcType=VARCHAR},
+      </if>
+      <if test="cancleSuggestion != null" >
+        CANCLE_SUGGESTION = #{cancleSuggestion,jdbcType=VARCHAR},
+      </if>
+      <if test="nextReviewtime != null" >
+        NEXT_REVIEWTIME = #{nextReviewtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="previousGradetime != null" >
+        PREVIOUS_GRADETIME = #{previousGradetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modGrade != null" >
+        MOD_GRADE = #{modGrade,jdbcType=VARCHAR},
+      </if>
+      <if test="firstTime != null" >
+        FIRST_TIME = #{firstTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="review != null" >
+        REVIEW = #{review,jdbcType=VARCHAR},
+      </if>
+      <if test="fromuser != null" >
+        FROMUSER = #{fromuser,jdbcType=VARCHAR},
+      </if>
+      <if test="createby != null" >
+        CREATEBY = #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="createon != null" >
+        CREATEON = #{createon,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyby != null" >
+        MODIFYBY = #{modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyon != null" >
+        MODIFYON = #{modifyon,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where SEQNO = #{seqno,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.FDFBpersistence.pojos.RiskScore" >
+    update t_sco
+    set CUSTOMER_ID = #{customerId,jdbcType=VARCHAR},
+      CUSTOMER_NAME = #{customerName,jdbcType=VARCHAR},
+      IDENTIFY_TYPE = #{identifyType,jdbcType=VARCHAR},
+      IDENTIFY_NUMBER = #{identifyNumber,jdbcType=VARCHAR},
+      ORG_CODE = #{orgCode,jdbcType=VARCHAR},
+      PREVIOUS_GRADETYPE = #{previousGradetype,jdbcType=VARCHAR},
+      GRADE_TYPE = #{gradeType,jdbcType=VARCHAR},
+      PREVIOUS_SCORE = #{previousScore,jdbcType=VARCHAR},
+      SCORE_TIME = #{scoreTime,jdbcType=TIMESTAMP},
+      PREVIOUS_GRADE = #{previousGrade,jdbcType=VARCHAR},
+      PRESENT_GRADE = #{presentGrade,jdbcType=VARCHAR},
+      GRADE_TIME = #{gradeTime,jdbcType=TIMESTAMP},
+      SUGGESTION = #{suggestion,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=VARCHAR},
+      RETURN_SUGGESTION = #{returnSuggestion,jdbcType=VARCHAR},
+      CANCLE_SUGGESTION = #{cancleSuggestion,jdbcType=VARCHAR},
+      NEXT_REVIEWTIME = #{nextReviewtime,jdbcType=TIMESTAMP},
+      PREVIOUS_GRADETIME = #{previousGradetime,jdbcType=TIMESTAMP},
+      MOD_GRADE = #{modGrade,jdbcType=VARCHAR},
+      FIRST_TIME = #{firstTime,jdbcType=TIMESTAMP},
+      REVIEW = #{review,jdbcType=VARCHAR},
+      FROMUSER = #{fromuser,jdbcType=VARCHAR},
+      CREATEBY = #{createby,jdbcType=VARCHAR},
+      CREATEON = #{createon,jdbcType=TIMESTAMP},
+      MODIFYBY = #{modifyby,jdbcType=VARCHAR},
+      MODIFYON = #{modifyon,jdbcType=TIMESTAMP}
+    where SEQNO = #{seqno,jdbcType=VARCHAR}
+  </update>
+  
+  <select id="selectAll" resultMap="BaseResultMap"
+		parameterType="org.FDFBpersistence.pojos.RiskScore">
+		select
+		<include refid="Base_Column_List" />
+		from t_sco
+		where 1=1
+		<if test="customerId != null" >
+        	and	CUSTOMER_ID = #{customerId,jdbcType=VARCHAR}
+      	</if>
+      	<if test="customerName != null" >
+        	and	CUSTOMER_NAME = #{customerName,jdbcType=VARCHAR}
+      	</if>
+      	<if test="status != null" >
+        	and	STATUS != #{status,jdbcType=VARCHAR}
+      </if>
+	</select>
+	
+  	<select id="selectAllByPage" resultMap="BaseResultMap"
+		parameterType="org.FDFBpersistence.pojos.RiskScore">
+		select
+		<include refid="Base_Column_List" />
+		from t_sco
+		where 1=1
+		<if test="customerId != null" >
+      		and CUSTOMER_ID like '${customerId}%'
+      	</if>
+      	<if test="customerName != null" >
+        	and CUSTOMER_NAME like '%${customerName}%'
+      	</if>
+      	<if test="identifyType != null" >
+        	and IDENTIFY_TYPE = #{identifyType,jdbcType=VARCHAR}
+      	</if>
+      	<if test="identifyNumber != null" >
+        	and IDENTIFY_NUMBER = #{identifyNumber,jdbcType=VARCHAR}
+      	</if>
+      	<if test="orgCode != null" >
+        	and ORG_CODE like '${orgCode}%'
+      	</if>
+      	<if test="previousGradetype != null" >
+        	and PREVIOUS_GRADETYPE = #{previousGradetype,jdbcType=VARCHAR}
+      	</if>
+      	<if test="gradeType != null" >
+        	and GRADE_TYPE = #{gradeType,jdbcType=VARCHAR}
+      	</if>
+      	<if test="previousScore != null" >
+      		<if test='previousScore == "0" ' >
+        	and PREVIOUS_SCORE &lt;= 29
+        	</if>
+        	<if test='previousScore == "1" ' >
+        	and PREVIOUS_SCORE >= 30
+        	and PREVIOUS_SCORE &lt;= 49
+        	</if>
+        	<if test='previousScore == "2" ' >
+        	and PREVIOUS_SCORE >= 50
+        	and PREVIOUS_SCORE &lt;= 69
+        	</if>
+        	<if test='previousScore == "3" ' >
+        	and PREVIOUS_SCORE >= 70
+        	</if>
+      	</if>
+      	<if test="startScoreTime != null" >
+      		and SCORE_TIME >= #{startScoreTime,jdbcType=TIMESTAMP}
+      	</if>
+      	<if test="endScoreTime != null" >
+      		and SCORE_TIME &lt;= date_add(#{endScoreTime,jdbcType=TIMESTAMP}, interval 1 day)
+      	</if>
+      	<if test="previousGrade != null" >
+        	and PREVIOUS_GRADE = #{previousGrade,jdbcType=VARCHAR}
+      	</if>
+      	<if test="presentGrade != null" >
+        	and PRESENT_GRADE = #{presentGrade,jdbcType=VARCHAR}
+      	</if>
+      	<if test="startGradeTime != null" >
+      		and GRADE_TIME >= #{startGradeTime,jdbcType=TIMESTAMP}
+      	</if>
+      	<if test="endGradeTime != null" >
+        	and GRADE_TIME &lt;= date_add(#{endGradeTime,jdbcType=TIMESTAMP}, interval 1 day)
+      	</if>
+      	<if test="suggestion != null" >
+        	and SUGGESTION = #{suggestion,jdbcType=VARCHAR}
+      	</if>
+        <if test="status != null" >
+        <choose>
+      		<when test="isList != null">
+      		<choose>
+      			<when test='status == "0" '>
+      				and (status = 0 or status = 6)
+      			</when>
+      			<when test='status == "4" ' >
+      				and (status = 4 or status = 8)
+      			</when>
+      			<otherwise>
+        		and status = #{status,jdbcType=VARCHAR}
+        		</otherwise>
+      		</choose>
+      		</when>
+        	<otherwise>
+        	and status = #{status,jdbcType=VARCHAR}
+        	</otherwise>
+       	</choose>
+      	</if>
+        <if test="returnSuggestion != null" >
+        	and RETURN_SUGGESTION = #{returnSuggestion,jdbcType=VARCHAR}
+       	</if>
+      	<if test="cancleSuggestion != null" >
+        	and CANCLE_SUGGESTION = #{cancleSuggestion,jdbcType=VARCHAR}
+      	</if>
+      	<if test="startNextReviewtime != null" >
+        	and NEXT_REVIEWTIME >= #{startNextReviewtime,jdbcType=TIMESTAMP}
+       	</if>
+      	<if test="endNextReviewtime != null" >
+        	and NEXT_REVIEWTIME &lt;= date_add(#{endNextReviewtime,jdbcType=TIMESTAMP}, interval 1 day)
+      	</if>
+      	<if test="startPreviousGradetime != null" >
+      		and PREVIOUS_GRADETIME >= #{startPreviousGradetime,jdbcType=TIMESTAMP}
+      	</if>
+      	<if test="endPreviousGradetime != null" >
+        	and PREVIOUS_GRADETIME &lt;= date_add(#{endPreviousGradetime,jdbcType=TIMESTAMP}, interval 1 day)
+      	</if>
+      	<if test="modGrade != null" >
+        	and MOD_GRADE = #{modGrade,jdbcType=VARCHAR}
+      	</if>
+      	<if test="startFirstTime != null" >
+        	and FIRST_TIME >= #{startFirstTime,jdbcType=TIMESTAMP}
+      	</if>
+      	<if test="endFirstTime != null" >
+        	and FIRST_TIME &lt;= date_add(#{endFirstTime,jdbcType=TIMESTAMP}, interval 1 day)
+      	</if>
+      	
+      	<if test="review != null" >
+        	and REVIEW like '%${review}%'
+      	</if>
+      	<if test="fromuser != null" >
+        	and FROMUSER = #{fromuser,jdbcType=VARCHAR}
+      	</if>
+      	<if test="customerType != null" > 
+        	and #{customerType,jdbcType=VARCHAR}
+      	</if>
+      	<if test="isAntCustomer != null" >
+        	and #{isAntCustomer,jdbcType=VARCHAR}
+        </if>
+		<if test="orderByStr != null and orderByStr != ''">
+			order by ${orderByStr}
+		</if>
+	</select>
+	
+	<select id="selectAllCount" resultType="java.lang.Integer"
+		parameterType="org.FDFBpersistence.pojos.RiskScore">
+		select count(1)
+		from t_sco
+		where 1=1
+		<if test="customerId != null" >
+      		and CUSTOMER_ID like '${customerId}%'
+      	</if>
+      	<if test="customerName != null" >
+        	and CUSTOMER_NAME like '%${customerName}%'
+      	</if>
+      	<if test="identifyType != null" >
+        	and IDENTIFY_TYPE = #{identifyType,jdbcType=VARCHAR}
+      	</if>
+      	<if test="identifyNumber != null" >
+        	and IDENTIFY_NUMBER = #{identifyNumber,jdbcType=VARCHAR}
+      	</if>
+      	<if test="orgCode != null" >
+        	and ORG_CODE like '${orgCode}%'
+      	</if>
+      	<if test="previousGradetype != null" >
+        	and PREVIOUS_GRADETYPE = #{previousGradetype,jdbcType=VARCHAR}
+      	</if>
+      	<if test="gradeType != null" >
+        	and GRADE_TYPE = #{gradeType,jdbcType=VARCHAR}
+      	</if>
+      	<if test="previousScore != null" >
+      		<if test='previousScore == "0" ' >
+        	and PREVIOUS_SCORE &lt;= 29
+        	</if>
+        	<if test='previousScore == "1" ' >
+        	and PREVIOUS_SCORE >= 30
+        	and PREVIOUS_SCORE &lt;= 49
+        	</if>
+        	<if test='previousScore == "2" ' >
+        	and PREVIOUS_SCORE >= 50
+        	and PREVIOUS_SCORE &lt;= 69
+        	</if>
+        	<if test='previousScore == "3" ' >
+        	and PREVIOUS_SCORE >= 70
+        	</if>
+      	</if>
+      	<if test="startScoreTime != null" >
+      		and SCORE_TIME >= #{startScoreTime,jdbcType=TIMESTAMP}
+      	</if>
+      	<if test="endScoreTime != null" >
+     		and SCORE_TIME &lt;= date_add(#{endScoreTime,jdbcType=TIMESTAMP}, interval 1 day)
+      	</if>
+      	<if test="previousGrade != null" >
+        	and PREVIOUS_GRADE = #{previousGrade,jdbcType=VARCHAR}
+      	</if>
+      	<if test="presentGrade != null" >
+        	and PRESENT_GRADE = #{presentGrade,jdbcType=VARCHAR}
+      	</if>
+      	<if test="gradeTime != null" >
+        	and GRADE_TIME = #{gradeTime,jdbcType=TIMESTAMP}
+      	</if>
+      	<if test="suggestion != null" >
+        	and SUGGESTION = #{suggestion,jdbcType=VARCHAR}
+      	</if>
+        <if test="status != null" >
+        <choose>
+      		<when test="isList != null">
+      		<choose>
+      			<when test='status == "0" '>
+      				and (status = 0 or status = 6)
+      			</when>
+      			<when test='status == "2" ' >
+      				and (status = 2 or status = 7)
+      			</when>
+      			<when test='status == "3" ' >
+      				and (status = 3 or status = 8)
+      			</when>
+      			<otherwise>
+        		and status = #{status,jdbcType=VARCHAR}
+        		</otherwise>
+      		</choose>
+      		</when>
+        	<otherwise>
+        	and status = #{status,jdbcType=VARCHAR}
+        	</otherwise>
+       	</choose>
+      	</if>
+        <if test="returnSuggestion != null" >
+        	and RETURN_SUGGESTION = #{returnSuggestion,jdbcType=VARCHAR}
+       	</if>
+      	<if test="cancleSuggestion != null" >
+        	and CANCLE_SUGGESTION = #{cancleSuggestion,jdbcType=VARCHAR}
+      	</if>
+      	<if test="nextReviewtime != null" >
+        	and NEXT_REVIEWTIME = #{nextReviewtime,jdbcType=TIMESTAMP}
+      	</if>
+      	<if test="startPreviousGradetime != null" >
+      		and PREVIOUS_GRADETIME >= #{startPreviousGradetime,jdbcType=TIMESTAMP}
+      	</if>
+      	<if test="endPreviousGradetime != null" >
+        	and PREVIOUS_GRADETIME &lt;= date_add(#{endPreviousGradetime,jdbcType=TIMESTAMP}, interval 1 day)
+      	</if>
+      	<if test="modGrade != null" >
+        	and MOD_GRADE = #{modGrade,jdbcType=VARCHAR}
+      	</if>
+      	<if test="firstTime != null" >
+        	and FIRST_TIME = #{firstTime,jdbcType=TIMESTAMP}
+      	</if>
+      	<if test="customerName != null" >
+        	and CUSTOMER_NAME like '%${customerName}%'
+      	</if>
+      	<if test="fromuser != null" >
+        	and FROMUSER = #{fromuser,jdbcType=VARCHAR}
+      	</if>
+      	<if test="customerType != null" > 
+        	and #{customerType,jdbcType=VARCHAR}
+      	</if>
+      	<if test="isAntCustomer != null" >
+        	and #{isAntCustomer,jdbcType=VARCHAR}
+        </if>
+		<if test="orderByStr != null and orderByStr != ''">
+			order by ${orderByStr}
+		</if>
+	</select>
+	
+	<delete id="deleteRiskScoreByCustomerId" parameterType="java.lang.String">
+		delete from t_sco where customer_id = #{id,jdbcType=VARCHAR}
+	</delete>
+  
+</mapper>

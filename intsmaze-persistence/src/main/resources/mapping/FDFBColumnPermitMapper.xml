@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.FDFBpersistence.mapper.FDFBColumnPermitMapper">
+
+	<cache type="org.mybatis.caches.ehcache.LoggingEhcache">
+		<property name="timeToIdleSeconds" value="360000" />
+		<property name="timeToLiveSeconds" value="360000" />
+		<property name="maxEntriesLocalHeap" value="1000" />
+		<property name="maxEntriesLocalDisk" value="10000" />
+		<property name="memoryStoreEvictionPolicy" value="LRU" />
+	</cache>
+
+	<resultMap id="BaseResultMap" type="org.FDFBpersistence.pojos.FDFBColumnPermit">
+		<id column="seqno" jdbcType="VARCHAR" property="seqno" />
+		<result column="pageName" jdbcType="VARCHAR" property="pageName" />
+		<result column="pageUrl" jdbcType="VARCHAR" property="pageUrl" />
+		<result column="roleid" jdbcType="VARCHAR" property="roleid" />
+		<result column="depid" jdbcType="VARCHAR" property="depid" />
+		<result column="columnName" jdbcType="VARCHAR" property="columnName" />
+		<result column="columnDesc" jdbcType="VARCHAR" property="columnDesc" />
+		<result column="canModify" jdbcType="VARCHAR" property="canModify" />
+		<result column="columnType" jdbcType="VARCHAR" property="columnType" />
+		<result column="processstatus" jdbcType="VARCHAR" property="processstatus" />
+		<result column="columnOrder" jdbcType="INTEGER" property="columnOrder" />
+		<result column="columnShowValue" jdbcType="VARCHAR" property="columnShowValue" />
+		<result column="columnHighLight" jdbcType="VARCHAR" property="columnHighLight" />
+		<result column="columnCodeKey" jdbcType="VARCHAR" property="columnCodeKey" />
+		<result column="createon" jdbcType="TIMESTAMP" property="createon" />
+		<result column="createby" jdbcType="VARCHAR" property="createby" />
+		<result column="modifyon" jdbcType="TIMESTAMP" property="modifyon" />
+		<result column="modifyby" jdbcType="VARCHAR" property="modifyby" />
+		<result column="sortable" jdbcType="VARCHAR" property="sortable" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		seqno, pageName, pageUrl, roleid, depid, columnName,
+		columnDesc, canModify,
+		columnType,
+		processstatus, columnOrder,
+		columnShowValue, columnHighLight, columnCodeKey,
+		createon,
+		createby, modifyon, modifyby,sortable
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.String"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from fdfb_column_permit
+		where seqno = #{seqno,jdbcType=VARCHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from
+		fdfb_column_permit
+		where seqno = #{seqno,jdbcType=VARCHAR}
+	</delete>
+	<insert id="insert" parameterType="org.FDFBpersistence.pojos.FDFBColumnPermit">
+		insert into fdfb_column_permit
+		(seqno, pageName, pageUrl,
+		roleid, depid, columnName, columnDesc,
+		canModify, columnType, processstatus,
+		columnOrder,
+		columnShowValue, columnHighLight,
+		columnCodeKey, createon,
+		createby,
+		modifyon, modifyby)
+		values (#{seqno,jdbcType=VARCHAR},
+		#{pageName,jdbcType=VARCHAR},
+		#{pageUrl,jdbcType=VARCHAR},
+		#{roleid,jdbcType=VARCHAR},
+		#{depid,jdbcType=VARCHAR},#{columnName,jdbcType=VARCHAR},
+		#{columnDesc,jdbcType=VARCHAR},
+		#{canModify,jdbcType=VARCHAR},
+		#{columnType,jdbcType=VARCHAR},
+		#{processstatus,jdbcType=VARCHAR},
+		#{columnOrder,jdbcType=INTEGER}, #{columnShowValue,jdbcType=VARCHAR},
+		#{columnHighLight,jdbcType=VARCHAR},
+		#{columnCodeKey,jdbcType=VARCHAR}, #{createon,jdbcType=TIMESTAMP},
+		#{createby,jdbcType=VARCHAR},
+		#{modifyon,jdbcType=TIMESTAMP},
+		#{modifyby,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="org.FDFBpersistence.pojos.FDFBColumnPermit">
+		insert into fdfb_column_permit
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="seqno != null">
+				seqno,
+			</if>
+			<if test="pageName != null">
+				pageName,
+			</if>
+			<if test="pageUrl != null">
+				pageUrl,
+			</if>
+			<if test="roleid != null">
+				roleid,
+			</if>
+			<if test="depid != null">
+				depid,
+			</if>
+			<if test="columnName != null">
+				columnName,
+			</if>
+			<if test="columnDesc != null">
+				columnDesc,
+			</if>
+			<if test="canModify != null">
+				canModify,
+			</if>
+			<if test="columnType != null">
+				columnType,
+			</if>
+			<if test="processstatus != null">
+				processstatus,
+			</if>
+			<if test="columnOrder != null">
+				columnOrder,
+			</if>
+			<if test="columnShowValue != null">
+				columnShowValue,
+			</if>
+			<if test="columnHighLight != null">
+				columnHighLight,
+			</if>
+			<if test="columnCodeKey != null">
+				columnCodeKey,
+			</if>
+			<if test="createon != null">
+				createon,
+			</if>
+			<if test="createby != null">
+				createby,
+			</if>
+			<if test="modifyon != null">
+				modifyon,
+			</if>
+			<if test="modifyby != null">
+				modifyby,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="seqno != null">
+				#{seqno,jdbcType=VARCHAR},
+			</if>
+			<if test="pageName != null">
+				#{pageName,jdbcType=VARCHAR},
+			</if>
+			<if test="pageUrl != null">
+				#{pageUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="roleid != null">
+				#{roleid,jdbcType=VARCHAR},
+			</if>
+			<if test="depid != null">
+				#{depid,jdbcType=VARCHAR},
+			</if>
+			<if test="columnName != null">
+				#{columnName,jdbcType=VARCHAR},
+			</if>
+			<if test="columnDesc != null">
+				#{columnDesc,jdbcType=VARCHAR},
+			</if>
+			<if test="canModify != null">
+				#{canModify,jdbcType=VARCHAR},
+			</if>
+			<if test="columnType != null">
+				#{columnType,jdbcType=VARCHAR},
+			</if>
+			<if test="processstatus != null">
+				#{processstatus,jdbcType=VARCHAR},
+			</if>
+			<if test="columnOrder != null">
+				#{columnOrder,jdbcType=INTEGER},
+			</if>
+			<if test="columnShowValue != null">
+				#{columnShowValue,jdbcType=VARCHAR},
+			</if>
+			<if test="columnHighLight != null">
+				#{columnHighLight,jdbcType=VARCHAR},
+			</if>
+			<if test="columnCodeKey != null">
+				#{columnCodeKey,jdbcType=VARCHAR},
+			</if>
+			<if test="createon != null">
+				#{createon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createby != null">
+				#{createby,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyon != null">
+				#{modifyon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modifyby != null">
+				#{modifyby,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="org.FDFBpersistence.pojos.FDFBColumnPermit">
+		update fdfb_column_permit
+		<set>
+			<if test="pageName != null">
+				pageName = #{pageName,jdbcType=VARCHAR},
+			</if>
+			<if test="pageUrl != null">
+				pageUrl = #{pageUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="roleid != null">
+				roleid = #{roleid,jdbcType=VARCHAR},
+			</if>
+			<if test="depid != null">
+				depid = #{depid,jdbcType=VARCHAR},
+			</if>
+			<if test="columnName != null">
+				columnName = #{columnName,jdbcType=VARCHAR},
+			</if>
+			<if test="columnDesc != null">
+				columnDesc = #{columnDesc,jdbcType=VARCHAR},
+			</if>
+			<if test="canModify != null">
+				canModify = #{canModify,jdbcType=VARCHAR},
+			</if>
+			<if test="columnType != null">
+				columnType = #{columnType,jdbcType=VARCHAR},
+			</if>
+			<if test="processstatus != null">
+				processstatus = #{processstatus,jdbcType=VARCHAR},
+			</if>
+			<if test="columnOrder != null">
+				columnOrder = #{columnOrder,jdbcType=INTEGER},
+			</if>
+			<if test="columnShowValue != null">
+				columnShowValue = #{columnShowValue,jdbcType=VARCHAR},
+			</if>
+			<if test="columnHighLight != null">
+				columnHighLight = #{columnHighLight,jdbcType=VARCHAR},
+			</if>
+			<if test="columnCodeKey != null">
+				columnCodeKey = #{columnCodeKey,jdbcType=VARCHAR},
+			</if>
+			<if test="createon != null">
+				createon = #{createon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createby != null">
+				createby = #{createby,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyon != null">
+				modifyon = #{modifyon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modifyby != null">
+				modifyby = #{modifyby,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where seqno = #{seqno,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="org.FDFBpersistence.pojos.FDFBColumnPermit">
+		update
+		fdfb_column_permit
+		set pageName = #{pageName,jdbcType=VARCHAR},
+		pageUrl = #{pageUrl,jdbcType=VARCHAR},
+		roleid =
+		#{roleid,jdbcType=VARCHAR},
+		depid = #{depid,jdbcType=VARCHAR},
+		columnName = #{columnName,jdbcType=VARCHAR},
+		columnDesc =
+		#{columnDesc,jdbcType=VARCHAR},
+		canModify =
+		#{canModify,jdbcType=VARCHAR},
+		columnType =
+		#{columnType,jdbcType=VARCHAR},
+		processstatus =
+		#{processstatus,jdbcType=VARCHAR},
+		columnOrder =
+		#{columnOrder,jdbcType=INTEGER},
+		columnShowValue =
+		#{columnShowValue,jdbcType=VARCHAR},
+		columnHighLight =
+		#{columnHighLight,jdbcType=VARCHAR},
+		columnCodeKey =
+		#{columnCodeKey,jdbcType=VARCHAR},
+		createon =
+		#{createon,jdbcType=TIMESTAMP},
+		createby =
+		#{createby,jdbcType=VARCHAR},
+		modifyon =
+		#{modifyon,jdbcType=TIMESTAMP},
+		modifyby = #{modifyby,jdbcType=VARCHAR}
+		where seqno = #{seqno,jdbcType=VARCHAR}
+	</update>
+
+	<select id="getColumnPermitByRoleidAndDepidAndPageUrl"
+		resultMap="BaseResultMap" parameterType="org.FDFBpersistence.pojos.FDFBColumnPermit">
+		select
+		<include refid="Base_Column_List" />
+		from fdfb_column_permit
+		where roleid in (${roleid}) and
+		pageUrl = #{pageUrl,jdbcType=VARCHAR}
+		<if test="depid != null and depid != ''">
+			and depid = #{depid,jdbcType=VARCHAR}
+		</if>
+		order by columnOrder
+	</select>
+</mapper>

@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.FDFBpersistence.mapper.FDFBAuditLogMapper">
+	<resultMap id="BaseResultMap" type="org.FDFBpersistence.pojos.FDFBAuditLog">
+		<id column="seqno" property="seqno" jdbcType="VARCHAR" />
+		<result column="logType" property="logType" jdbcType="VARCHAR" />
+		<result column="refrenceSeqno" property="refrenceSeqno"
+			jdbcType="VARCHAR" />
+		<result column="operEntity" property="operEntity" jdbcType="VARCHAR" />
+		<result column="operUser" property="operUser" jdbcType="VARCHAR" />
+		<result column="createon" property="createon" jdbcType="TIMESTAMP" />
+		<result column="createby" property="createby" jdbcType="VARCHAR" />
+		<result column="modifyon" property="modifyon" jdbcType="TIMESTAMP" />
+		<result column="modifyby" property="modifyby" jdbcType="VARCHAR" />
+	</resultMap>
+	<resultMap id="ResultMapWithBLOBs" type="org.FDFBpersistence.pojos.FDFBAuditLog"
+		extends="BaseResultMap">
+		<result column="logInfo" property="logInfo" jdbcType="LONGVARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		seqno, logType, refrenceSeqno, operEntity, operUser, createon, createby,
+		modifyon,
+		modifyby
+	</sql>
+	<sql id="Blob_Column_List">
+		logInfo
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		,
+		<include refid="Blob_Column_List" />
+		from fdfb_audit_log
+		where seqno = #{seqno,jdbcType=VARCHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from fdfb_audit_log
+		where seqno = #{seqno,jdbcType=VARCHAR}
+	</delete>
+	<insert id="insert" parameterType="org.FDFBpersistence.pojos.FDFBAuditLog">
+		insert into fdfb_audit_log (seqno, logType, refrenceSeqno,
+		operEntity, operUser, createon,
+		createby, modifyon, modifyby,
+		logInfo)
+		values (#{seqno,jdbcType=VARCHAR}, #{logType,jdbcType=VARCHAR},
+		#{refrenceSeqno,jdbcType=VARCHAR},
+		#{operEntity,jdbcType=VARCHAR}, #{operUser,jdbcType=VARCHAR}, #{createon,jdbcType=TIMESTAMP},
+		#{createby,jdbcType=VARCHAR}, #{modifyon,jdbcType=TIMESTAMP},
+		#{modifyby,jdbcType=VARCHAR},
+		#{logInfo,jdbcType=LONGVARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="org.FDFBpersistence.pojos.FDFBAuditLog">
+		insert into fdfb_audit_log
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="seqno != null">
+				seqno,
+			</if>
+			<if test="logType != null">
+				logType,
+			</if>
+			<if test="refrenceSeqno != null">
+				refrenceSeqno,
+			</if>
+			<if test="operEntity != null">
+				operEntity,
+			</if>
+			<if test="operUser != null">
+				operUser,
+			</if>
+			<if test="createon != null">
+				createon,
+			</if>
+			<if test="createby != null">
+				createby,
+			</if>
+			<if test="modifyon != null">
+				modifyon,
+			</if>
+			<if test="modifyby != null">
+				modifyby,
+			</if>
+			<if test="logInfo != null">
+				logInfo,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="seqno != null">
+				#{seqno,jdbcType=VARCHAR},
+			</if>
+			<if test="logType != null">
+				#{logType,jdbcType=VARCHAR},
+			</if>
+			<if test="refrenceSeqno != null">
+				#{refrenceSeqno,jdbcType=VARCHAR},
+			</if>
+			<if test="operEntity != null">
+				#{operEntity,jdbcType=VARCHAR},
+			</if>
+			<if test="operUser != null">
+				#{operUser,jdbcType=VARCHAR},
+			</if>
+			<if test="createon != null">
+				#{createon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createby != null">
+				#{createby,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyon != null">
+				#{modifyon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modifyby != null">
+				#{modifyby,jdbcType=VARCHAR},
+			</if>
+			<if test="logInfo != null">
+				#{logInfo,jdbcType=LONGVARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="org.FDFBpersistence.pojos.FDFBAuditLog">
+		update fdfb_audit_log
+		<set>
+			<if test="logType != null">
+				logType = #{logType,jdbcType=VARCHAR},
+			</if>
+			<if test="refrenceSeqno != null">
+				refrenceSeqno = #{refrenceSeqno,jdbcType=VARCHAR},
+			</if>
+			<if test="operEntity != null">
+				operEntity = #{operEntity,jdbcType=VARCHAR},
+			</if>
+			<if test="operUser != null">
+				operUser = #{operUser,jdbcType=VARCHAR},
+			</if>
+			<if test="createon != null">
+				createon = #{createon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createby != null">
+				createby = #{createby,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyon != null">
+				modifyon = #{modifyon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modifyby != null">
+				modifyby = #{modifyby,jdbcType=VARCHAR},
+			</if>
+			<if test="logInfo != null">
+				logInfo = #{logInfo,jdbcType=LONGVARCHAR},
+			</if>
+		</set>
+		where seqno = #{seqno,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKeyWithBLOBs" parameterType="org.FDFBpersistence.pojos.FDFBAuditLog">
+		update fdfb_audit_log
+		set logType = #{logType,jdbcType=VARCHAR},
+		refrenceSeqno = #{refrenceSeqno,jdbcType=VARCHAR},
+		operEntity = #{operEntity,jdbcType=VARCHAR},
+		operUser = #{operUser,jdbcType=VARCHAR},
+		createon = #{createon,jdbcType=TIMESTAMP},
+		createby = #{createby,jdbcType=VARCHAR},
+		modifyon = #{modifyon,jdbcType=TIMESTAMP},
+		modifyby = #{modifyby,jdbcType=VARCHAR},
+		logInfo = #{logInfo,jdbcType=LONGVARCHAR}
+		where seqno = #{seqno,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="org.FDFBpersistence.pojos.FDFBAuditLog">
+		update fdfb_audit_log
+		set logType = #{logType,jdbcType=VARCHAR},
+		refrenceSeqno = #{refrenceSeqno,jdbcType=VARCHAR},
+		operEntity = #{operEntity,jdbcType=VARCHAR},
+		operUser = #{operUser,jdbcType=VARCHAR},
+		createon = #{createon,jdbcType=TIMESTAMP},
+		createby = #{createby,jdbcType=VARCHAR},
+		modifyon = #{modifyon,jdbcType=TIMESTAMP},
+		modifyby = #{modifyby,jdbcType=VARCHAR}
+		where seqno = #{seqno,jdbcType=VARCHAR}
+	</update>
+	
+	<select id="getAuditLogListByRefSeqno" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />,
+		<include refid="Blob_Column_List" />
+		from fdfb_audit_log
+		where refrenceSeqno = #{0} order by createon desc
+	</select>
+</mapper>

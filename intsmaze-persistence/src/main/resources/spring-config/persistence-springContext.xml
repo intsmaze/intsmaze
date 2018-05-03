@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans    
+                        http://www.springframework.org/schema/beans/spring-beans-3.1.xsd    
+                        http://www.springframework.org/schema/context    
+                        http://www.springframework.org/schema/context/spring-context-3.1.xsd    
+                        http://www.springframework.org/schema/mvc    
+                        http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
+
+
+	<!-- spring和MyBatis完美整合，不需要mybatis的配置映射文件 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dynamicDataSource" />
+		<!-- 自动扫描mapping.xml文件 -->
+		<property name="mapperLocations">
+			<list>
+				<value>classpath:mapping/*.xml</value>
+				<value>classpath:1/*.xml</value>
+			</list>
+		</property>
+		<!-- <property name="plugins"> <ref bean="paginationInterceptor" /> </property> -->
+		<!-- 配置分页插件 -->
+		<property name="plugins">
+			<list>
+				<bean id="paginationInterceptor" class="org.FDFBpersistence.common.PaginationInterceptor"></bean>
+ 				<bean class="com.github.pagehelper.PageHelper">
+					<property name="properties">
+						<value>
+							dialect=mysql
+							reasonable=true
+						</value>
+					</property>
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	
+
+	<!-- DAO接口所在包名，Spring会自动查找其下的类 -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="org.FDFBpersistence.mapper" />
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
+	</bean>
+	<!-- <bean class="tk.mybatis.spring.mapper.MapperScannerConfigurer"> <property 
+		name="basePackage" value="org.FDFBpersistence.mapper" /> <property name="sqlSessionFactoryBeanName" 
+		value="sqlSessionFactory"></property> <property name="properties"> <value> 
+		mappers=org.FDFBbusiness.learn.Mapper </value> </property> </bean> -->
+
+	<bean id="roleDao" class="org.FDFBpersistence.dao.FDFBRoleDao" />
+
+	<bean id="codeValueDao" class="org.FDFBpersistence.dao.FDFBCodeValueDao" />
+
+	<bean id="columnPermitDao" class="org.FDFBpersistence.dao.FDFBColumnPermitDao" />
+
+	<bean id="departmentDao" class="org.FDFBpersistence.dao.FDFBDepartmentDao" />
+
+	<bean id="loginfoDao" class="org.FDFBpersistence.dao.FDFBLoginfoDao" />
+
+	<bean id="permitDao" class="org.FDFBpersistence.dao.FDFBPermitDao" />
+
+	<bean id="rolePermitDao" class="org.FDFBpersistence.dao.FDFBRolePermitDao" />
+
+	<bean id="userDao" class="org.FDFBpersistence.dao.FDFBUserDao" />
+
+	<bean id="userProfileDao" class="org.FDFBpersistence.dao.FDFBUserProfileDao" />
+
+	<bean id="buttonPermitDao" class="org.FDFBpersistence.dao.FDFBButtonPermitDao" />
+
+	<bean id="templateDao" class="org.FDFBpersistence.dao.FDFBTemplateDao" />
+
+	<bean id="auditLogDao" class="org.FDFBpersistence.dao.FDFBAuditLogDao" />
+
+	<bean id="userRoleDao" class="org.FDFBpersistence.dao.FDFBUserRoleDao" />
+
+	<bean id="sysConfigDao" class="org.FDFBpersistence.dao.FDFBSysConfigDao" />
+
+	<bean id="bimsSysMessageDao" class="org.FDFBpersistence.dao.FDFBBimsSysMessageDao" />
+
+	<bean id="sysMessageConfigDao" class="org.FDFBpersistence.dao.FDFBSysMessageConfigDao" />
+
+	<bean id="bimsAreaDao" class="org.FDFBpersistence.dao.FDFBBimsAreaDao" />
+
+	<bean id="buttonCustomConfigDao" class="org.FDFBpersistence.dao.FDFBButtonCustomConfigDao" />
+
+	<bean id="baseScoreDao" class="org.FDFBpersistence.dao.BaseScoreDao" />
+
+	<bean id="riskScoreDao" class="org.FDFBpersistence.dao.RiskScoreDao" />
+
+	<bean id="riskScoreDetailDao" class="org.FDFBpersistence.dao.RiskScoreDetailDao" />
+
+	<bean id="riskScoreLogDao" class="org.FDFBpersistence.dao.RiskScoreLogDao" />
+
+	<bean id="amlVersionDao" class="org.FDFBpersistence.dao.AmlVersionDao" />
+
+	<bean id="empPostDao" class="org.FDFBpersistence.dao.EmpPostDao" />
+
+	<bean id="postUnitDao" class="org.FDFBpersistence.dao.PostUnitDao" />
+
+	<bean id="unitDao" class="org.FDFBpersistence.dao.UnitDao" />
+
+	<bean id="organizationDao" class="org.FDFBpersistence.dao.OrganizationDao" />
+
+	<bean id="susDataDao" class="org.FDFBpersistence.dao.SusDataDao" />
+
+	<bean id="SusRuleDao" class="org.FDFBpersistence.dao.SusRuleDao" />
+
+	<bean id="susCustomerDao" class="org.FDFBpersistence.dao.SusCustomerDao" />
+
+	<bean id="susTransInfoDao" class="org.FDFBpersistence.dao.SusTransInfoDao" />
+
+	<bean id="SusReportLogDao" class="org.FDFBpersistence.dao.SusReportLogDao" />
+
+	<bean id="ruleDao" class="org.FDFBpersistence.dao.FDFBRuleDao" />
+
+	<bean id="receiptDao" class="org.FDFBpersistence.dao.FDFBReceiptManageDao" />
+
+	<!-- 杰哥的Dao开始 -->
+	<bean id="cordonedDao" class="org.FDFBpersistence.dao.CordonedDao" />
+
+	<bean id="inspectDao" class="org.FDFBpersistence.dao.InspectDao" />
+
+	<bean id="punishDao" class="org.FDFBpersistence.dao.PunishDao" />
+
+	<bean id="honorDao" class="org.FDFBpersistence.dao.HonorDao" />
+
+	<bean id="riskGradeDao" class="org.FDFBpersistence.dao.RiskGradeDao" />
+
+	<bean id="trainDao" class="org.FDFBpersistence.dao.TrainDao" />
+
+	<bean id="systemFileDao" class="org.FDFBpersistence.dao.SystemFileDao" />
+
+	<bean id="SusTradeDao" class="org.FDFBpersistence.dao.SusTradeDao" />
+
+	<bean id="BigAmountDao" class="org.FDFBpersistence.dao.BigAmountDao" />
+
+	<bean id="IdentityRiskDao" class="org.FDFBpersistence.dao.IdentityRiskDao" />
+
+	<bean id="BigAmtSusTradeDao" class="org.FDFBpersistence.dao.BigAmtSusTradeDao" />
+
+	<bean id="BlackListDao" class="org.FDFBpersistence.dao.BlackListDao" />
+
+	<bean id="AmlInsuranceDao" class="org.FDFBpersistence.dao.AmlInsuranceDao" />
+	<!-- 杰哥的Dao截止 -->
+
+	<bean id="natureInfoDao" class="org.FDFBpersistence.dao.NatureInfoDao" />
+
+	<bean id="legalInfoDao" class="org.FDFBpersistence.dao.LegalInfoDao" />
+
+</beans> 

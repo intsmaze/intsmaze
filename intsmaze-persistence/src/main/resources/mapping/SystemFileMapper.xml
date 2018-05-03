@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.FDFBpersistence.mapper.SystemFileMapper" >
+  <resultMap id="BaseResultMap" type="org.FDFBpersistence.pojos.SystemFile" >
+    <id column="seqno" property="seqno" jdbcType="VARCHAR" />
+    <result column="organ_id" property="organId" jdbcType="VARCHAR" />
+    <result column="organ_name" property="organName" jdbcType="VARCHAR" />
+    <result column="branch" property="branch" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="file_no" property="fileNo" jdbcType="VARCHAR" />
+    <result column="file_name" property="fileName" jdbcType="VARCHAR" />
+    <result column="publish_time" property="publishTime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="path" property="path" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    seqno, organ_id, organ_name, branch, type, file_no, file_name, publish_time, status, 
+    path, remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_system_file
+    where seqno = #{seqno,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="selectAllByPage" resultMap="BaseResultMap"
+		parameterType="org.FDFBpersistence.pojos.SystemFile">
+		select
+		<include refid="Base_Column_List" />
+		from t_system_file
+		where 1=1 and organ_Id=#{organId,jdbcType=VARCHAR} 
+      <if test="organName != null" >
+      and organ_name like '%${organName}%'
+      </if>
+      <if test="beginDate != null" >
+      and publish_time >= #{beginDate,jdbcType=VARCHAR}
+      </if>
+      <if test="endDate != null" >
+      and #{endDate,jdbcType=VARCHAR} >= publish_time
+      </if>
+	</select>
+	
+  <select id="getAllTrainsCount" resultType="java.lang.Integer"
+		parameterType="org.FDFBpersistence.pojos.SystemFile">
+		select count(1)
+		from t_system_file
+		where 1=1 and organ_Id=#{organId,jdbcType=VARCHAR} 
+      <if test="organName != null" >
+      and organ_name like '%${organName}%'
+      </if>
+      <if test="beginDate != null" >
+      and publish_time >= #{beginDate,jdbcType=VARCHAR}
+      </if>
+      <if test="endDate != null" >
+      and #{endDate,jdbcType=VARCHAR} >= publish_time
+      </if>
+	</select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_system_file
+    where seqno = #{seqno,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="org.FDFBpersistence.pojos.SystemFile" >
+    insert into t_system_file (seqno, organ_id, organ_name, 
+      branch, type, file_no, 
+      file_name, publish_time, status, 
+      path, remark)
+    values (#{seqno,jdbcType=VARCHAR}, #{organId,jdbcType=VARCHAR}, #{organName,jdbcType=VARCHAR}, 
+      #{branch,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{fileNo,jdbcType=VARCHAR}, 
+      #{fileName,jdbcType=VARCHAR}, #{publishTime,jdbcType=TIMESTAMP}, #{status,jdbcType=VARCHAR}, 
+      #{path,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.FDFBpersistence.pojos.SystemFile" >
+    insert into t_system_file
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="seqno != null" >
+        seqno,
+      </if>
+      <if test="organId != null" >
+        organ_id,
+      </if>
+      <if test="organName != null" >
+        organ_name,
+      </if>
+      <if test="branch != null" >
+        branch,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="fileNo != null" >
+        file_no,
+      </if>
+      <if test="fileName != null" >
+        file_name,
+      </if>
+      <if test="publishTime != null" >
+        publish_time,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="path != null" >
+        path,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="seqno != null" >
+        #{seqno,jdbcType=VARCHAR},
+      </if>
+      <if test="organId != null" >
+        #{organId,jdbcType=VARCHAR},
+      </if>
+      <if test="organName != null" >
+        #{organName,jdbcType=VARCHAR},
+      </if>
+      <if test="branch != null" >
+        #{branch,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="fileNo != null" >
+        #{fileNo,jdbcType=VARCHAR},
+      </if>
+      <if test="fileName != null" >
+        #{fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="publishTime != null" >
+        #{publishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="path != null" >
+        #{path,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.FDFBpersistence.pojos.SystemFile" >
+    update t_system_file
+    <set >
+      <if test="organId != null" >
+        organ_id = #{organId,jdbcType=VARCHAR},
+      </if>
+      <if test="organName != null" >
+        organ_name = #{organName,jdbcType=VARCHAR},
+      </if>
+      <if test="branch != null" >
+        branch = #{branch,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="fileNo != null" >
+        file_no = #{fileNo,jdbcType=VARCHAR},
+      </if>
+      <if test="fileName != null" >
+        file_name = #{fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="publishTime != null" >
+        publish_time = #{publishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="path != null" >
+        path = #{path,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where seqno = #{seqno,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.FDFBpersistence.pojos.SystemFile" >
+    update t_system_file
+    set organ_id = #{organId,jdbcType=VARCHAR},
+      organ_name = #{organName,jdbcType=VARCHAR},
+      branch = #{branch,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      file_no = #{fileNo,jdbcType=VARCHAR},
+      file_name = #{fileName,jdbcType=VARCHAR},
+      publish_time = #{publishTime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=VARCHAR},
+      path = #{path,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where seqno = #{seqno,jdbcType=VARCHAR}
+  </update>
+</mapper>

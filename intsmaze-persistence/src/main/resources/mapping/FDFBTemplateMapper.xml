@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.FDFBpersistence.mapper.FDFBTemplateMapper">
+	<resultMap id="BaseResultMap" type="org.FDFBpersistence.pojos.FDFBTemplate">
+		<id column="seqno" property="seqno" jdbcType="VARCHAR" />
+		<result column="templateName" property="templateName" jdbcType="VARCHAR" />
+		<result column="templateType" property="templateType" jdbcType="VARCHAR" />
+		<result column="receiver" property="receiver" jdbcType="VARCHAR" />
+		<result column="templateAttachment" property="templateAttachment"
+			jdbcType="VARCHAR" />
+		<result column="templateParams" property="templateParams"
+			jdbcType="VARCHAR" />
+		<result column="createon" property="createon" jdbcType="TIMESTAMP" />
+		<result column="createby" property="createby" jdbcType="VARCHAR" />
+		<result column="modifyon" property="modifyon" jdbcType="TIMESTAMP" />
+		<result column="modifyby" property="modifyby" jdbcType="VARCHAR" />
+		<result column="subject" property="subject" jdbcType="VARCHAR" />
+	</resultMap>
+	<resultMap id="ResultMapWithBLOBs" type="org.FDFBpersistence.pojos.FDFBTemplate"
+		extends="BaseResultMap">
+		<result column="templateContent" property="templateContent"
+			jdbcType="LONGVARBINARY" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		seqno, templateName, templateType, receiver,
+		templateAttachment,
+		templateParams,
+		createon, createby, modifyon,
+		modifyby, subject
+	</sql>
+	<sql id="Blob_Column_List">
+		templateContent
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		,
+		<include refid="Blob_Column_List" />
+		from fdfb_template
+		where seqno = #{seqno,jdbcType=VARCHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from
+		fdfb_template
+		where seqno = #{seqno,jdbcType=VARCHAR}
+	</delete>
+	<insert id="insert" parameterType="org.FDFBpersistence.pojos.FDFBTemplate">
+		insert into fdfb_template
+		(seqno, templateName, templateType,
+		receiver, templateAttachment,
+		templateParams,
+		createon, createby, modifyon,
+		modifyby,
+		templateContent,subject)
+		values (#{seqno,jdbcType=VARCHAR},
+		#{templateName,jdbcType=VARCHAR},
+		#{templateType,jdbcType=VARCHAR},
+		#{receiver,jdbcType=VARCHAR}, #{templateAttachment,jdbcType=VARCHAR},
+		#{templateParams,jdbcType=VARCHAR},
+		#{createon,jdbcType=TIMESTAMP},
+		#{createby,jdbcType=VARCHAR}, #{modifyon,jdbcType=TIMESTAMP},
+		#{modifyby,jdbcType=VARCHAR},
+		#{templateContent,jdbcType=LONGVARBINARY},#{subject,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="org.FDFBpersistence.pojos.FDFBTemplate">
+		insert into fdfb_template
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="seqno != null">
+				seqno,
+			</if>
+			<if test="templateName != null">
+				templateName,
+			</if>
+			<if test="templateType != null">
+				templateType,
+			</if>
+			<if test="receiver != null">
+				receiver,
+			</if>
+			<if test="templateAttachment != null">
+				templateAttachment,
+			</if>
+			<if test="templateParams != null">
+				templateParams,
+			</if>
+			<if test="createon != null">
+				createon,
+			</if>
+			<if test="createby != null">
+				createby,
+			</if>
+			<if test="modifyon != null">
+				modifyon,
+			</if>
+			<if test="modifyby != null">
+				modifyby,
+			</if>
+			<if test="templateContent != null">
+				templateContent,
+			</if>
+			<if test="subject != null">
+				subject,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="seqno != null">
+				#{seqno,jdbcType=VARCHAR},
+			</if>
+			<if test="templateName != null">
+				#{templateName,jdbcType=VARCHAR},
+			</if>
+			<if test="templateType != null">
+				#{templateType,jdbcType=VARCHAR},
+			</if>
+			<if test="receiver != null">
+				#{receiver,jdbcType=VARCHAR},
+			</if>
+			<if test="templateAttachment != null">
+				#{templateAttachment,jdbcType=VARCHAR},
+			</if>
+			<if test="templateParams != null">
+				#{templateParams,jdbcType=VARCHAR},
+			</if>
+			<if test="createon != null">
+				#{createon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createby != null">
+				#{createby,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyon != null">
+				#{modifyon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modifyby != null">
+				#{modifyby,jdbcType=VARCHAR},
+			</if>
+			<if test="templateContent != null">
+				#{templateContent,jdbcType=LONGVARBINARY},
+			</if>
+			<if test="subject != null">
+				#{subject,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="org.FDFBpersistence.pojos.FDFBTemplate">
+		update fdfb_template
+		<set>
+			<if test="templateName != null">
+				templateName = #{templateName,jdbcType=VARCHAR},
+			</if>
+			<if test="templateType != null">
+				templateType = #{templateType,jdbcType=VARCHAR},
+			</if>
+			<if test="receiver != null">
+				receiver = #{receiver,jdbcType=VARCHAR},
+			</if>
+			<if test="templateAttachment != null">
+				templateAttachment =
+				#{templateAttachment,jdbcType=VARCHAR},
+			</if>
+			<if test="templateParams != null">
+				templateParams = #{templateParams,jdbcType=VARCHAR},
+			</if>
+			<if test="createon != null">
+				createon = #{createon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createby != null">
+				createby = #{createby,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyon != null">
+				modifyon = #{modifyon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modifyby != null">
+				modifyby = #{modifyby,jdbcType=VARCHAR},
+			</if>
+			<if test="templateContent != null">
+				templateContent =
+				#{templateContent,jdbcType=LONGVARBINARY},
+			</if>
+			<if test="subject != null">
+				subject = #{subject,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where seqno = #{seqno,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKeyWithBLOBs" parameterType="org.FDFBpersistence.pojos.FDFBTemplate">
+		update
+		fdfb_template
+		set templateName = #{templateName,jdbcType=VARCHAR},
+		templateType = #{templateType,jdbcType=VARCHAR},
+		receiver =
+		#{receiver,jdbcType=VARCHAR},
+		templateAttachment =
+		#{templateAttachment,jdbcType=VARCHAR},
+		templateParams =
+		#{templateParams,jdbcType=VARCHAR},
+		createon =
+		#{createon,jdbcType=TIMESTAMP},
+		createby =
+		#{createby,jdbcType=VARCHAR},
+		modifyon =
+		#{modifyon,jdbcType=TIMESTAMP},
+		modifyby =
+		#{modifyby,jdbcType=VARCHAR},
+		templateContent =
+		#{templateContent,jdbcType=LONGVARBINARY},
+		subject =
+		#{subject,jdbcType=VARCHAR}
+		where seqno =
+		#{seqno,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="org.FDFBpersistence.pojos.FDFBTemplate">
+		update
+		fdfb_template
+		set templateName = #{templateName,jdbcType=VARCHAR},
+		templateType = #{templateType,jdbcType=VARCHAR},
+		receiver =
+		#{receiver,jdbcType=VARCHAR},
+		templateAttachment =
+		#{templateAttachment,jdbcType=VARCHAR},
+		templateParams =
+		#{templateParams,jdbcType=VARCHAR},
+		createon =
+		#{createon,jdbcType=TIMESTAMP},
+		createby =
+		#{createby,jdbcType=VARCHAR},
+		modifyon =
+		#{modifyon,jdbcType=TIMESTAMP},
+		modifyby = #{modifyby,jdbcType=VARCHAR},
+		subject =
+		#{subject,jdbcType=VARCHAR}
+		where seqno = #{seqno,jdbcType=VARCHAR}
+	</update>
+
+	<select id="selectAllByPage" resultMap="BaseResultMap"
+		parameterType="org.FDFBpersistence.pojos.FDFBTemplate">
+		select
+		<include refid="Base_Column_List" />
+		from fdfb_template
+		where 1=1
+		<if test="templateName != null and templateName != '' ">
+			and templateName = #{templateName,jdbcType=VARCHAR}
+		</if>
+		<if test="templateType != null and templateType != '' ">
+			and templateType = #{templateType,jdbcType=VARCHAR}
+		</if>
+		<if test="receiver != null and receiver != '' ">
+			and receiver = #{receiver,jdbcType=VARCHAR}
+		</if>
+		<if test="orderByStr != null and orderByStr != ''">
+			order by ${orderByStr}
+		</if>
+	</select>
+
+	<select id="getAllTemplatesCount" resultType="java.lang.Integer"
+		parameterType="org.FDFBpersistence.pojos.FDFBTemplate">
+		select count(1)
+		from fdfb_template
+		where 1=1
+		<if test="templateName != null and templateName != '' ">
+			and templateName = #{templateName,jdbcType=VARCHAR}
+		</if>
+		<if test="templateType != null and templateType != '' ">
+			and templateType = #{templateType,jdbcType=VARCHAR}
+		</if>
+		<if test="receiver != null and receiver != '' ">
+			and receiver = #{receiver,jdbcType=VARCHAR}
+		</if>
+	</select>
+	
+	<select id="getTemplateStrByType" resultMap="ResultMapWithBLOBs"
+		parameterType="org.FDFBpersistence.pojos.FDFBTemplate">
+		select
+		<include refid="Base_Column_List" />
+		,
+		<include refid="Blob_Column_List" />
+		from fdfb_template
+		where templateType = #{0}
+	</select>
+</mapper>

@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.FDFBpersistence.mapper.FDFBButtonPermitMapper">
+
+
+	<cache type="org.mybatis.caches.ehcache.LoggingEhcache">
+		<property name="timeToIdleSeconds" value="360000" />
+		<property name="timeToLiveSeconds" value="360000" />
+		<property name="maxEntriesLocalHeap" value="1000" />
+		<property name="maxEntriesLocalDisk" value="10000" />
+		<property name="memoryStoreEvictionPolicy" value="LRU" />
+	</cache>
+
+	<resultMap id="BaseResultMap" type="org.FDFBpersistence.pojos.FDFBButtonPermit">
+		<id column="seqno" property="seqno" jdbcType="VARCHAR" />
+		<result column="pageName" property="pageName" jdbcType="VARCHAR" />
+		<result column="pageUrl" property="pageUrl" jdbcType="VARCHAR" />
+		<result column="roleid" property="roleid" jdbcType="VARCHAR" />
+		<result column="depid" property="depid" jdbcType="VARCHAR" />
+		<result column="buttonDesc" property="buttonDesc" jdbcType="VARCHAR" />
+		<result column="buttonStyle" property="buttonStyle" jdbcType="VARCHAR" />
+		<result column="processstatus" property="processstatus"
+			jdbcType="VARCHAR" />
+		<result column="createon" property="createon" jdbcType="TIMESTAMP" />
+		<result column="createby" property="createby" jdbcType="VARCHAR" />
+		<result column="modifyon" property="modifyon" jdbcType="TIMESTAMP" />
+		<result column="modifyby" property="modifyby" jdbcType="VARCHAR" />
+		<result column="buttonType" property="buttonType" jdbcType="VARCHAR" />
+		<result column="buttonOrder" property="buttonOrder" jdbcType="VARCHAR" />
+		<result column="buttonUrl" property="buttonUrl" jdbcType="INTEGER" />
+		<result column="buttonIcon" property="buttonIcon" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		seqno, pageName, pageUrl, roleid, depid, buttonDesc, buttonType,
+		buttonStyle,
+		buttonOrder, buttonUrl, processstatus, createon, createby, modifyon, modifyby,buttonIcon
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.String"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from fdfb_button_permit
+		where seqno = #{seqno,jdbcType=VARCHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from fdfb_button_permit
+		where seqno = #{seqno,jdbcType=VARCHAR}
+	</delete>
+	<insert id="insert" parameterType="org.FDFBpersistence.pojos.FDFBButtonPermit">
+		insert into fdfb_button_permit (seqno, pageName, pageUrl,
+		roleid, depid, buttonDesc,
+		buttonType, buttonStyle, buttonOrder,
+		buttonUrl, processstatus, createon,
+		createby, modifyon, modifyby,buttonIcon
+		)
+		values (#{seqno,jdbcType=VARCHAR}, #{pageName,jdbcType=VARCHAR},
+		#{pageUrl,jdbcType=VARCHAR},
+		#{roleid,jdbcType=VARCHAR}, #{depid,jdbcType=VARCHAR}, #{buttonDesc,jdbcType=VARCHAR},
+		#{buttonType,jdbcType=VARCHAR}, #{buttonStyle,jdbcType=VARCHAR},
+		#{buttonOrder,jdbcType=INTEGER},
+		#{buttonUrl,jdbcType=VARCHAR}, #{processstatus,jdbcType=VARCHAR}, #{createon,jdbcType=TIMESTAMP},
+		#{createby,jdbcType=VARCHAR}, #{modifyon,jdbcType=TIMESTAMP},
+		#{modifyby,jdbcType=VARCHAR},#{buttonIcon,jdbcType=VARCHAR}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="org.FDFBpersistence.pojos.FDFBButtonPermit">
+		insert into fdfb_button_permit
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="seqno != null">
+				seqno,
+			</if>
+			<if test="pageName != null">
+				pageName,
+			</if>
+			<if test="pageUrl != null">
+				pageUrl,
+			</if>
+			<if test="roleid != null">
+				roleid,
+			</if>
+			<if test="depid != null">
+				depid,
+			</if>
+			<if test="buttonDesc != null">
+				buttonDesc,
+			</if>
+			<if test="buttonType != null">
+				buttonType,
+			</if>
+			<if test="buttonStyle != null">
+				buttonStyle,
+			</if>
+			<if test="buttonOrder != null">
+				buttonOrder,
+			</if>
+			<if test="buttonUrl != null">
+				buttonUrl,
+			</if>
+			<if test="processstatus != null">
+				processstatus,
+			</if>
+			<if test="createon != null">
+				createon,
+			</if>
+			<if test="createby != null">
+				createby,
+			</if>
+			<if test="modifyon != null">
+				modifyon,
+			</if>
+			<if test="modifyby != null">
+				modifyby,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="seqno != null">
+				#{seqno,jdbcType=VARCHAR},
+			</if>
+			<if test="pageName != null">
+				#{pageName,jdbcType=VARCHAR},
+			</if>
+			<if test="pageUrl != null">
+				#{pageUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="roleid != null">
+				#{roleid,jdbcType=VARCHAR},
+			</if>
+			<if test="depid != null">
+				#{depid,jdbcType=VARCHAR},
+			</if>
+			<if test="buttonDesc != null">
+				#{buttonDesc,jdbcType=VARCHAR},
+			</if>
+			<if test="buttonType != null">
+				#{buttonType,jdbcType=VARCHAR},
+			</if>
+			<if test="buttonStyle != null">
+				#{buttonStyle,jdbcType=VARCHAR},
+			</if>
+			<if test="buttonOrder != null">
+				#{buttonOrder,jdbcType=INTEGER},
+			</if>
+			<if test="buttonUrl != null">
+				#{buttonUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="processstatus != null">
+				#{processstatus,jdbcType=VARCHAR},
+			</if>
+			<if test="createon != null">
+				#{createon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createby != null">
+				#{createby,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyon != null">
+				#{modifyon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modifyby != null">
+				#{modifyby,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="org.FDFBpersistence.pojos.FDFBButtonPermit">
+		update fdfb_button_permit
+		<set>
+			<if test="pageName != null">
+				pageName = #{pageName,jdbcType=VARCHAR},
+			</if>
+			<if test="pageUrl != null">
+				pageUrl = #{pageUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="roleid != null">
+				roleid = #{roleid,jdbcType=VARCHAR},
+			</if>
+			<if test="depid != null">
+				depid = #{depid,jdbcType=VARCHAR},
+			</if>
+			<if test="buttonDesc != null">
+				buttonDesc = #{buttonDesc,jdbcType=VARCHAR},
+			</if>
+			<if test="buttonType != null">
+				buttonType = #{buttonType,jdbcType=VARCHAR},
+			</if>
+			<if test="buttonStyle != null">
+				buttonStyle = #{buttonStyle,jdbcType=VARCHAR},
+			</if>
+			<if test="buttonOrder != null">
+				buttonOrder = #{buttonOrder,jdbcType=INTEGER},
+			</if>
+			<if test="buttonUrl != null">
+				buttonUrl = #{buttonUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="processstatus != null">
+				processstatus = #{processstatus,jdbcType=VARCHAR},
+			</if>
+			<if test="createon != null">
+				createon = #{createon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createby != null">
+				createby = #{createby,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyon != null">
+				modifyon = #{modifyon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modifyby != null">
+				modifyby = #{modifyby,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where seqno = #{seqno,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="org.FDFBpersistence.pojos.FDFBButtonPermit">
+		update fdfb_button_permit
+		set pageName = #{pageName,jdbcType=VARCHAR},
+		pageUrl = #{pageUrl,jdbcType=VARCHAR},
+		roleid = #{roleid,jdbcType=VARCHAR},
+		depid = #{depid,jdbcType=VARCHAR},
+		buttonDesc = #{buttonDesc,jdbcType=VARCHAR},
+		buttonType = #{buttonType,jdbcType=VARCHAR},
+		buttonStyle = #{buttonStyle,jdbcType=VARCHAR},
+		buttonOrder = #{buttonOrder,jdbcType=INTEGER},
+		buttonUrl = #{buttonUrl,jdbcType=VARCHAR},
+		processstatus = #{processstatus,jdbcType=VARCHAR},
+		createon = #{createon,jdbcType=TIMESTAMP},
+		createby = #{createby,jdbcType=VARCHAR},
+		modifyon = #{modifyon,jdbcType=TIMESTAMP},
+		modifyby = #{modifyby,jdbcType=VARCHAR},buttonIcon = #{buttonIcon,jdbcType=VARCHAR}
+		where seqno = #{seqno,jdbcType=VARCHAR}
+	</update>
+
+	<select id="getButtonPermitByRoleidAndDepidAndPageUrl"
+		resultMap="BaseResultMap" parameterType="org.FDFBpersistence.pojos.FDFBButtonPermit">
+		select
+		<include refid="Base_Column_List" />
+		from fdfb_button_permit
+		where roleid in (${roleid}) and
+		pageUrl = #{pageUrl,jdbcType=VARCHAR}
+		<if test="depid != null and depid != ''">
+			and depid = #{depid,jdbcType=VARCHAR}
+		</if>
+		order by buttonOrder
+	</select>
+</mapper>

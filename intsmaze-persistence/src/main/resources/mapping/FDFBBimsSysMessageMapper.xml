@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.FDFBpersistence.mapper.FDFBBimsSysMessageMapper">
+	<resultMap id="BaseResultMap" type="org.FDFBpersistence.pojos.FDFBBimsSysMessage">
+		<id column="SEQNO" property="seqno" jdbcType="VARCHAR" />
+		<result column="USERID" property="userid" jdbcType="VARCHAR" />
+		<result column="MESSAGECONTENT" property="messagecontent"
+			jdbcType="VARCHAR" />
+		<result column="PAGEURL" property="pageurl" jdbcType="VARCHAR" />
+		<result column="STATUS" property="status" jdbcType="VARCHAR" />
+		<result column="REFSHEETID" property="refsheetid" jdbcType="VARCHAR" />
+		<result column="SHEETTYPE" property="sheettype" jdbcType="VARCHAR" />
+		<result column="MESSAGETYPE" property="messagetype" jdbcType="VARCHAR" />
+		<result column="CREATEON" property="createon" jdbcType="TIMESTAMP" />
+		<result column="CREATEBY" property="createby" jdbcType="VARCHAR" />
+		<result column="MODIFYON" property="modifyon" jdbcType="TIMESTAMP" />
+		<result column="MODIFYBY" property="modifyby" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		SEQNO, USERID, MESSAGECONTENT, PAGEURL, STATUS, REFSHEETID, SHEETTYPE,
+		MESSAGETYPE,
+		CREATEON, CREATEBY, MODIFYON, MODIFYBY
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from fdfb_bims_sys_message
+		where SEQNO = #{seqno,jdbcType=VARCHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from fdfb_bims_sys_message
+		where SEQNO = #{seqno,jdbcType=VARCHAR}
+	</delete>
+	<insert id="insert" parameterType="org.FDFBpersistence.pojos.FDFBBimsSysMessage">
+		insert into fdfb_bims_sys_message (SEQNO, USERID, MESSAGECONTENT,
+		PAGEURL, STATUS, REFSHEETID,
+		SHEETTYPE, MESSAGETYPE, CREATEON,
+		CREATEBY, MODIFYON, MODIFYBY
+		)
+		values (#{seqno,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR},
+		#{messagecontent,jdbcType=VARCHAR},
+		#{pageurl,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{refsheetid,jdbcType=VARCHAR},
+		#{sheettype,jdbcType=VARCHAR}, #{messagetype,jdbcType=VARCHAR},
+		#{createon,jdbcType=TIMESTAMP},
+		#{createby,jdbcType=VARCHAR}, #{modifyon,jdbcType=TIMESTAMP}, #{modifyby,jdbcType=VARCHAR}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="org.FDFBpersistence.pojos.FDFBBimsSysMessage">
+		insert into fdfb_bims_sys_message
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="seqno != null">
+				SEQNO,
+			</if>
+			<if test="userid != null">
+				USERID,
+			</if>
+			<if test="messagecontent != null">
+				MESSAGECONTENT,
+			</if>
+			<if test="pageurl != null">
+				PAGEURL,
+			</if>
+			<if test="status != null">
+				STATUS,
+			</if>
+			<if test="refsheetid != null">
+				REFSHEETID,
+			</if>
+			<if test="sheettype != null">
+				SHEETTYPE,
+			</if>
+			<if test="messagetype != null">
+				MESSAGETYPE,
+			</if>
+			<if test="createon != null">
+				CREATEON,
+			</if>
+			<if test="createby != null">
+				CREATEBY,
+			</if>
+			<if test="modifyon != null">
+				MODIFYON,
+			</if>
+			<if test="modifyby != null">
+				MODIFYBY,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="seqno != null">
+				#{seqno,jdbcType=VARCHAR},
+			</if>
+			<if test="userid != null">
+				#{userid,jdbcType=VARCHAR},
+			</if>
+			<if test="messagecontent != null">
+				#{messagecontent,jdbcType=VARCHAR},
+			</if>
+			<if test="pageurl != null">
+				#{pageurl,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				#{status,jdbcType=VARCHAR},
+			</if>
+			<if test="refsheetid != null">
+				#{refsheetid,jdbcType=VARCHAR},
+			</if>
+			<if test="sheettype != null">
+				#{sheettype,jdbcType=VARCHAR},
+			</if>
+			<if test="messagetype != null">
+				#{messagetype,jdbcType=VARCHAR},
+			</if>
+			<if test="createon != null">
+				#{createon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createby != null">
+				#{createby,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyon != null">
+				#{modifyon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modifyby != null">
+				#{modifyby,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="org.FDFBpersistence.pojos.FDFBBimsSysMessage">
+		update fdfb_bims_sys_message
+		<set>
+			<if test="userid != null">
+				USERID = #{userid,jdbcType=VARCHAR},
+			</if>
+			<if test="messagecontent != null">
+				MESSAGECONTENT = #{messagecontent,jdbcType=VARCHAR},
+			</if>
+			<if test="pageurl != null">
+				PAGEURL = #{pageurl,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				STATUS = #{status,jdbcType=VARCHAR},
+			</if>
+			<if test="refsheetid != null">
+				REFSHEETID = #{refsheetid,jdbcType=VARCHAR},
+			</if>
+			<if test="sheettype != null">
+				SHEETTYPE = #{sheettype,jdbcType=VARCHAR},
+			</if>
+			<if test="messagetype != null">
+				MESSAGETYPE = #{messagetype,jdbcType=VARCHAR},
+			</if>
+			<if test="createon != null">
+				CREATEON = #{createon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createby != null">
+				CREATEBY = #{createby,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyon != null">
+				MODIFYON = #{modifyon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modifyby != null">
+				MODIFYBY = #{modifyby,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where SEQNO = #{seqno,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="org.FDFBpersistence.pojos.FDFBBimsSysMessage">
+		update fdfb_bims_sys_message
+		set USERID = #{userid,jdbcType=VARCHAR},
+		MESSAGECONTENT = #{messagecontent,jdbcType=VARCHAR},
+		PAGEURL = #{pageurl,jdbcType=VARCHAR},
+		STATUS = #{status,jdbcType=VARCHAR},
+		REFSHEETID = #{refsheetid,jdbcType=VARCHAR},
+		SHEETTYPE = #{sheettype,jdbcType=VARCHAR},
+		MESSAGETYPE = #{messagetype,jdbcType=VARCHAR},
+		CREATEON = #{createon,jdbcType=TIMESTAMP},
+		CREATEBY = #{createby,jdbcType=VARCHAR},
+		MODIFYON = #{modifyon,jdbcType=TIMESTAMP},
+		MODIFYBY = #{modifyby,jdbcType=VARCHAR}
+		where SEQNO = #{seqno,jdbcType=VARCHAR}
+	</update>
+	
+	<select id="selectMessagesByUseridAndStatus" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from fdfb_bims_sys_message
+		where USERID = #{0}
+		and status = #{1}
+		and MESSAGETYPE = #{2}
+		order by createon desc
+	</select>
+	
+</mapper>

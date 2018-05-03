@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.FDFBpersistence.mapper.FDFBSysConfigMapper">
+
+<!-- 
+	<cache type="org.mybatis.caches.ehcache.LoggingEhcache">
+		<property name="timeToIdleSeconds" value="7200" />
+		<property name="timeToLiveSeconds" value="7200" />
+		<property name="maxEntriesLocalHeap" value="200" />
+		<property name="maxEntriesLocalDisk" value="1000" />
+		<property name="memoryStoreEvictionPolicy" value="LRU" />
+	</cache>
+	 -->
+	<resultMap id="BaseResultMap" type="org.FDFBpersistence.pojos.FDFBSysConfig">
+		<id column="SEQNO" property="seqno" jdbcType="VARCHAR" />
+		<result column="SYSKEY" property="syskey" jdbcType="VARCHAR" />
+		<result column="SYSVALUE" property="sysvalue" jdbcType="VARCHAR" />
+		<result column="SYSCODE" property="syscode" jdbcType="VARCHAR" />
+		<result column="STATUS" property="status" jdbcType="VARCHAR" />
+		<result column="SYSDESC" property="sysdesc" jdbcType="VARCHAR" />
+		<result column="CREATEON" property="createon" jdbcType="TIMESTAMP" />
+		<result column="CREATEBY" property="createby" jdbcType="VARCHAR" />
+		<result column="MODIFYON" property="modifyon" jdbcType="TIMESTAMP" />
+		<result column="MODIFYBY" property="modifyby" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		SEQNO, SYSKEY, SYSVALUE, SYSCODE, STATUS, SYSDESC,
+		CREATEON, CREATEBY,
+		MODIFYON,
+		MODIFYBY
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from fdfb_sys_config
+		where SEQNO = #{seqno,jdbcType=VARCHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from
+		fdfb_sys_config
+		where SEQNO = #{seqno,jdbcType=VARCHAR}
+	</delete>
+	<insert id="insert" parameterType="org.FDFBpersistence.pojos.FDFBSysConfig">
+		insert into fdfb_sys_config
+		(SEQNO, SYSKEY, SYSVALUE,
+		SYSCODE, STATUS, SYSDESC,
+		CREATEON, CREATEBY,
+		MODIFYON,
+		MODIFYBY)
+		values (#{seqno,jdbcType=VARCHAR},
+		#{syskey,jdbcType=VARCHAR},
+		#{sysvalue,jdbcType=VARCHAR},
+		#{syscode,jdbcType=VARCHAR},
+		#{status,jdbcType=VARCHAR},
+		#{sysdesc,jdbcType=VARCHAR},
+		#{createon,jdbcType=TIMESTAMP},
+		#{createby,jdbcType=VARCHAR},
+		#{modifyon,jdbcType=TIMESTAMP},
+		#{modifyby,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="org.FDFBpersistence.pojos.FDFBSysConfig">
+		insert into fdfb_sys_config
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="seqno != null">
+				SEQNO,
+			</if>
+			<if test="syskey != null">
+				SYSKEY,
+			</if>
+			<if test="sysvalue != null">
+				SYSVALUE,
+			</if>
+			<if test="syscode != null">
+				SYSCODE,
+			</if>
+			<if test="status != null">
+				STATUS,
+			</if>
+			<if test="sysdesc != null">
+				SYSDESC,
+			</if>
+			<if test="createon != null">
+				CREATEON,
+			</if>
+			<if test="createby != null">
+				CREATEBY,
+			</if>
+			<if test="modifyon != null">
+				MODIFYON,
+			</if>
+			<if test="modifyby != null">
+				MODIFYBY,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="seqno != null">
+				#{seqno,jdbcType=VARCHAR},
+			</if>
+			<if test="syskey != null">
+				#{syskey,jdbcType=VARCHAR},
+			</if>
+			<if test="sysvalue != null">
+				#{sysvalue,jdbcType=VARCHAR},
+			</if>
+			<if test="syscode != null">
+				#{syscode,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				#{status,jdbcType=VARCHAR},
+			</if>
+			<if test="sysdesc != null">
+				#{sysdesc,jdbcType=VARCHAR},
+			</if>
+			<if test="createon != null">
+				#{createon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createby != null">
+				#{createby,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyon != null">
+				#{modifyon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modifyby != null">
+				#{modifyby,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="org.FDFBpersistence.pojos.FDFBSysConfig">
+		update fdfb_sys_config
+		<set>
+			<if test="syskey != null">
+				SYSKEY = #{syskey,jdbcType=VARCHAR},
+			</if>
+			<if test="sysvalue != null">
+				SYSVALUE = #{sysvalue,jdbcType=VARCHAR},
+			</if>
+			<if test="syscode != null">
+				SYSCODE = #{syscode,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				STATUS = #{status,jdbcType=VARCHAR},
+			</if>
+			<if test="sysdesc != null">
+				SYSDESC = #{sysdesc,jdbcType=VARCHAR},
+			</if>
+			<if test="createon != null">
+				CREATEON = #{createon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createby != null">
+				CREATEBY = #{createby,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyon != null">
+				MODIFYON = #{modifyon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modifyby != null">
+				MODIFYBY = #{modifyby,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where SEQNO = #{seqno,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="org.FDFBpersistence.pojos.FDFBSysConfig">
+		update
+		fdfb_sys_config
+		set SYSKEY = #{syskey,jdbcType=VARCHAR},
+		SYSVALUE =
+		#{sysvalue,jdbcType=VARCHAR},
+		SYSCODE = #{syscode,jdbcType=VARCHAR},
+		STATUS =
+		#{status,jdbcType=VARCHAR},
+		SYSDESC =
+		#{sysdesc,jdbcType=VARCHAR},
+		CREATEON =
+		#{createon,jdbcType=TIMESTAMP},
+		CREATEBY =
+		#{createby,jdbcType=VARCHAR},
+		MODIFYON =
+		#{modifyon,jdbcType=TIMESTAMP},
+		MODIFYBY = #{modifyby,jdbcType=VARCHAR}
+		where SEQNO = #{seqno,jdbcType=VARCHAR}
+	</update>
+
+	<select id="getValueByKeyAndCode" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from fdfb_sys_config
+		where syskey = #{0} and syscode = #{1}
+	</select>
+
+	<select id="getAllSysconfigByKey" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from fdfb_sys_config
+		where syskey = #{0}
+	</select>
+</mapper>

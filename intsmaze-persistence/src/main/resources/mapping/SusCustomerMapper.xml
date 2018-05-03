@@ -1,0 +1,964 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.FDFBpersistence.mapper.SusCustomerMapper" >
+  <resultMap id="BaseResultMap" type="org.FDFBpersistence.pojos.SusCustomer" >
+    <id column="seqno" property="seqno" jdbcType="VARCHAR" />
+    <result column="TRADE_FEATURE" property="tradeFeature" jdbcType="VARCHAR" />
+    <result column="APPLICANT_TYPE" property="applicantType" jdbcType="VARCHAR" />
+    <result column="ADDRESS" property="address" jdbcType="VARCHAR" />
+    <result column="VOCATION" property="vocation" jdbcType="VARCHAR" />
+    <result column="CUSTOMER_ID" property="customerId" jdbcType="VARCHAR" />
+    <result column="CUSTOMER_NAME" property="customerName" jdbcType="VARCHAR" />
+    <result column="CUSTOMER_CERTI_TYPE" property="customerCertiType" jdbcType="VARCHAR" />
+    <result column="CUSTOMER_CERTI_CODE" property="customerCertiCode" jdbcType="VARCHAR" />
+    <result column="CUSTOMER_OTHER_CERTI_TYPE" property="customerOtherCertiType" jdbcType="VARCHAR" />
+    <result column="COUNTRY_ID" property="countryId" jdbcType="VARCHAR" />
+    <result column="CUSTOMER_TEL_NUM" property="customerTelNum" jdbcType="VARCHAR" />
+    <result column="CONTACT_INFO" property="contactInfo" jdbcType="VARCHAR" />
+    <result column="CRMN" property="crmn" jdbcType="VARCHAR" />
+    <result column="CRIT" property="crit" jdbcType="VARCHAR" />
+    <result column="CROT" property="crot" jdbcType="VARCHAR" />
+    <result column="CRID" property="crid" jdbcType="VARCHAR" />
+    <result column="SHAREHOLDER_NAME" property="shareholderName" jdbcType="VARCHAR" />
+    <result column="SHAREHOLDER_CERTI_TYPE" property="shareholderCertiType" jdbcType="VARCHAR" />
+    <result column="SHAREHOLDER_CERTI_CODE" property="shareholderCertiCode" jdbcType="VARCHAR" />
+    <result column="SHAREHOLDER_OTHER_CERTI_TYPE" property="shareholderOtherCertiType" jdbcType="VARCHAR" />
+    <result column="CAOI" property="caoi" jdbcType="VARCHAR" />
+    <result column="TCAN" property="tcan" jdbcType="VARCHAR" />
+    <result column="CUSTOMER_TYPE" property="customerType" jdbcType="VARCHAR" />
+    <result column="INSERT_TIME" property="insertTime" jdbcType="VARCHAR" />
+    <result column="SUS_HISTORY" property="susHistory" jdbcType="VARCHAR" />
+    <result column="WORKPLACE" property="workplace" jdbcType="VARCHAR" />
+    <result column="REVIEW_STATUS" property="reviewStatus" jdbcType="VARCHAR" />
+    <result column="CUSTOMER_SSDS" property="customerSsds" jdbcType="VARCHAR" />
+    <result column="CRIME_TYPE" property="crimeType" jdbcType="VARCHAR" />
+    <result column="SDGR" property="sdgr" jdbcType="VARCHAR" />
+    <result column="URGENCY_DEGREE" property="urgencyDegree" jdbcType="VARCHAR" />
+    <result column="TRIGGER_POINT" property="triggerPoint" jdbcType="VARCHAR" />
+    <result column="OTHER_TRIGGER_POINT" property="otherTriggerPoint" jdbcType="VARCHAR" />
+    <result column="REPORT_TIMES" property="reportTimes" jdbcType="INTEGER" />
+    <result column="SUBMISSION_DIRECTION" property="submissionDirection" jdbcType="VARCHAR" />
+    <result column="DOUBT_ANALYSIS" property="doubtAnalysis" jdbcType="VARCHAR" />
+    <result column="FIREST_REPORTED_NAME" property="firestReportedName" jdbcType="VARCHAR" />
+    <result column="TKMS" property="tkms" jdbcType="VARCHAR" />
+    <result column="MOD_IDENTIFYING" property="modIdentifying" jdbcType="VARCHAR" />
+    <result column="FIRST_NAME" property="firstName" jdbcType="VARCHAR" />
+    <result column="FIRST_INSPECT_OPERATE" property="firstInspectOperate" jdbcType="VARCHAR" />
+    <result column="FIRST_END_TIME" property="firstEndTime" jdbcType="VARCHAR" />
+    <result column="SECOND_NAME" property="secondName" jdbcType="VARCHAR" />
+    <result column="SECOND_INSPECT_OPERATE" property="secondInspectOperate" jdbcType="VARCHAR" />
+    <result column="SECOND_END_TIME" property="secondEndTime" jdbcType="VARCHAR" />
+    <result column="FINAL_NAME" property="finalName" jdbcType="VARCHAR" />
+    <result column="FINAL_END_TIME" property="finalEndTime" jdbcType="VARCHAR" />
+	<result column="REPORT_TIME" property="reportTime" jdbcType="VARCHAR" />
+	<result column="jobNameDetails" property="jobNameDetails" jdbcType="VARCHAR" />
+    
+  </resultMap>
+  <sql id="Base_Column_List" >
+    seqno, TRADE_FEATURE, APPLICANT_TYPE, ADDRESS, VOCATION, CUSTOMER_ID, CUSTOMER_NAME, 
+    CUSTOMER_CERTI_TYPE, CUSTOMER_CERTI_CODE, CUSTOMER_OTHER_CERTI_TYPE, COUNTRY_ID, 
+    CUSTOMER_TEL_NUM, CONTACT_INFO, CRMN, CRIT, CROT, CRID, SHAREHOLDER_NAME, SHAREHOLDER_CERTI_TYPE, 
+    SHAREHOLDER_CERTI_CODE, SHAREHOLDER_OTHER_CERTI_TYPE, CAOI, TCAN, CUSTOMER_TYPE, 
+    INSERT_TIME, SUS_HISTORY, WORKPLACE, REVIEW_STATUS, CUSTOMER_SSDS, CRIME_TYPE, SDGR, 
+    URGENCY_DEGREE, TRIGGER_POINT, OTHER_TRIGGER_POINT, REPORT_TIMES, SUBMISSION_DIRECTION, 
+    DOUBT_ANALYSIS, FIREST_REPORTED_NAME, TKMS, MOD_IDENTIFYING, FIRST_NAME, FIRST_INSPECT_OPERATE, 
+    FIRST_END_TIME, SECOND_NAME, SECOND_INSPECT_OPERATE, SECOND_END_TIME, FINAL_NAME, 
+    FINAL_END_TIME, REPORT_TIME ,jobNameDetails
+  </sql>
+
+  <select id="selectAllByPage" resultMap="BaseResultMap" parameterType="org.FDFBpersistence.pojos.SusCustomer">
+    SELECT 
+    <include refid="Base_Column_List" />
+    FROM sus_customer scm
+    WHERE 1=1
+     <if test="tradeFeature != null" >
+       AND TRADE_FEATURE = #{tradeFeature,jdbcType=VARCHAR}
+      </if>
+      <if test="address != null" >
+       AND ADDRESS = #{address,jdbcType=VARCHAR}
+      </if>
+      <if test="vocation != null" >
+       AND VOCATION = #{vocation,jdbcType=VARCHAR}
+      </if>
+      <if test="customerId != null" >
+       AND CUSTOMER_ID = #{customerId,jdbcType=VARCHAR}
+      </if>
+      <if test="customerName != null" >
+       AND CUSTOMER_NAME = #{customerName,jdbcType=VARCHAR}
+      </if>
+      <if test="customerCertiType != null" >
+       AND  CUSTOMER_CERTI_TYPE = #{customerCertiType,jdbcType=VARCHAR}
+      </if>
+      <if test="customerCertiCode != null" >
+       AND  CUSTOMER_CERTI_CODE = #{customerCertiCode,jdbcType=VARCHAR}
+      </if>
+      <if test="customerOtherCertiType != null" >
+       AND  CUSTOMER_OTHER_CERTI_TYPE = #{customerOtherCertiType,jdbcType=VARCHAR}
+      </if>
+      <if test="countryId != null" >
+       AND COUNTRY_ID = #{countryId,jdbcType=VARCHAR}
+      </if>
+      <if test="contactInfo != null" >
+       AND CONTACT_INFO = #{contactInfo,jdbcType=VARCHAR}
+      </if>
+      <if test="crmn != null" >
+       AND CRMN = #{crmn,jdbcType=VARCHAR}
+      </if>
+      <if test="crit != null" >
+       AND CRIT = #{crit,jdbcType=VARCHAR}
+      </if>
+      <if test="crot != null" >
+       AND CROT = #{crot,jdbcType=VARCHAR}
+      </if>
+      <if test="crid != null" >
+       AND CRID = #{crid,jdbcType=VARCHAR}
+      </if>
+      <if test="urgencyDegree != null" >
+       AND URGENCY_DEGREE = #{urgencyDegree,jdbcType=VARCHAR}
+      </if>
+      <if test="submissionDirection != null" >
+       AND SUBMISSION_DIRECTION = #{submissionDirection,jdbcType=VARCHAR}
+      </if>
+      <if test="shareholderName != null" >
+       AND SHAREHOLDER_NAME = #{shareholderName,jdbcType=VARCHAR}
+      </if>
+      <if test="shareholderCertiType != null" >
+       AND SHAREHOLDER_CERTI_TYPE = #{shareholderCertiType,jdbcType=VARCHAR}
+      </if>
+      <if test="shareholderCertiCode != null" >
+       AND SHAREHOLDER_CERTI_CODE = #{shareholderCertiCode,jdbcType=VARCHAR}
+      </if>
+      <if test="shareholderOtherCertiType != null" >
+       AND SHAREHOLDER_OTHER_CERTI_TYPE = #{shareholderOtherCertiType,jdbcType=VARCHAR}
+      </if>
+      <if test="applicantType != null" >
+       AND APPLICANT_TYPE = #{applicantType,jdbcType=VARCHAR}
+      </if>
+      <if test="caoi != null" >
+       AND CAOI = #{caoi,jdbcType=VARCHAR}
+      </if>
+      <if test="tcan != null" >
+       AND TCAN = #{tcan,jdbcType=VARCHAR}
+      </if>
+      <if test="customerType != null" >
+       AND CUSTOMER_TYPE = #{customerType,jdbcType=VARCHAR}
+      </if>
+      <if test="insertTime != null" >
+       AND INSERT_TIME = #{insertTime,jdbcType=VARCHAR}
+      </if>
+      <if test="susHistory != null" >
+       AND SUS_HISTORY = #{susHistory,jdbcType=VARCHAR}
+      </if>
+      <if test="workplace != null" >
+       AND WORKPLACE = #{workplace,jdbcType=VARCHAR}
+      </if>
+      
+         <if test="reviewStatus != null" >
+        <choose>
+      			<when test='reviewStatus == "1" '> <!-- 初审 -->
+      				AND (REVIEW_STATUS = "10" or REVIEW_STATUS = "21" )  
+      			</when>
+      			<when test='reviewStatus == "2" ' > <!-- 复审 -->
+      				AND (REVIEW_STATUS = "20" or REVIEW_STATUS = "31" )  
+      			</when>
+      			<when test='reviewStatus == "3" ' > <!-- 终审 -->
+      				AND (REVIEW_STATUS = "30" ) 
+      			</when>
+      			<when test='reviewStatus == "4" ' > <!-- 报送 -->
+      				AND (REVIEW_STATUS = "40" ) 
+      			</when>  			
+      			<when test='reviewStatus == "5" ' > <!-- 查询 -->
+					AND 2 = 2
+      			</when>
+      		
+        	<otherwise>  
+                  AND REVIEW_STATUS = #{reviewStatus,jdbcType=VARCHAR}
+        	</otherwise>
+       	</choose>
+      </if>
+      <if test="customerSsds != null" >
+       AND CUSTOMER_SSDS = #{customerSsds,jdbcType=VARCHAR}
+      </if>
+      <if test="crimeType != null" >
+       AND CRIME_TYPE = #{crimeType,jdbcType=VARCHAR}
+      </if>
+      <if test="sdgr != null" >
+       AND SDGR = #{sdgr,jdbcType=VARCHAR}
+      </if>
+      
+      <if test="triggerPoint != null" >
+       AND TRIGGER_POINT = #{triggerPoint,jdbcType=VARCHAR}
+      </if>
+      <if test="otherTriggerPoint != null" >
+       AND OTHER_TRIGGER_POINT = #{otherTriggerPoint,jdbcType=VARCHAR}
+      </if>
+      <if test="reportTimes != null" >
+       AND REPORT_TIMES = #{reportTimes,jdbcType=VARCHAR}
+      </if>
+      <if test="submissionDirection != null" >
+       AND SUBMISSION_DIRECTION = #{submissionDirection,jdbcType=VARCHAR}
+      </if>
+      <if test="doubtAnalysis != null" >
+       AND DOUBT_ANALYSIS = #{doubtAnalysis,jdbcType=VARCHAR}
+      </if>
+      <if test="firestReportedName != null" >
+       AND FIREST_REPORTED_NAME = #{firestReportedName,jdbcType=VARCHAR}
+      </if>
+      <if test="tkms != null" >
+       AND TKMS = #{tkms,jdbcType=VARCHAR}
+      </if>
+      <if test="modIdentifying != null" >
+       AND MOD_IDENTIFYING = #{modIdentifying,jdbcType=VARCHAR}
+      </if>
+      <if test="firstName != null" >
+       AND FIRST_NAME = #{firstName,jdbcType=VARCHAR}
+      </if>
+      <if test="firstInspectOperate != null" >
+       AND FIRST_INSPECT_OPERATE = #{firstInspectOperate,jdbcType=VARCHAR}
+      </if>
+      <if test="firstEndTime != null" >
+       AND FIRST_END_TIME = #{firstEndTime,jdbcType=VARCHAR}
+      </if>
+      <if test="secondName != null" >
+       AND SECOND_NAME = #{secondName,jdbcType=VARCHAR}
+      </if>
+      <if test="secondInspectOperate != null" >
+       AND SECOND_INSPECT_OPERATE = #{secondInspectOperate,jdbcType=VARCHAR}
+      </if>
+      <if test="secondEndTime != null" >
+       AND SECOND_END_TIME = #{secondEndTime,jdbcType=VARCHAR}
+      </if>
+      <if test="finalName != null" >
+       AND FINAL_NAME = #{finalName,jdbcType=VARCHAR}
+      </if>
+      <if test="finalEndTime != null" >
+       AND FINAL_END_TIME = #{finalEndTime,jdbcType=VARCHAR}
+      </if>
+	  <if test="reportTime != null" >
+       AND REPORT_TIME = #{reportTime,jdbcType=VARCHAR}
+      </if>
+      <if test="jobNameDetails != null" >
+       AND jobNameDetails = #{jobNameDetails,jdbcType=VARCHAR}
+      </if>
+      
+  </select>
+  <select id="getAllCount" resultType="java.lang.Integer" parameterType="org.FDFBpersistence.pojos.SusCustomer">
+    SELECT 
+     count(1)
+    FROM sus_customer scm
+    WHERE 1=1
+     <if test="tradeFeature != null" >
+       AND TRADE_FEATURE = #{tradeFeature,jdbcType=VARCHAR}
+      </if>
+      <if test="address != null" >
+       AND ADDRESS = #{address,jdbcType=VARCHAR}
+      </if>
+      <if test="vocation != null" >
+       AND VOCATION = #{vocation,jdbcType=VARCHAR}
+      </if>
+      <if test="customerId != null" >
+       AND CUSTOMER_ID = #{customerId,jdbcType=VARCHAR}
+      </if>
+      <if test="customerName != null" >
+       AND CUSTOMER_NAME = #{customerName,jdbcType=VARCHAR}
+      </if>
+      <if test="customerCertiType != null" >
+       AND CUSTOMER_CERTI_TYPE = #{customerCertiType,jdbcType=VARCHAR}
+      </if>
+      <if test="customerCertiCode != null" >
+       AND CUSTOMER_CERTI_CODE = #{customerCertiCode,jdbcType=VARCHAR}
+      </if>
+      <if test="customerOtherCertiType != null" >
+       AND CUSTOMER_OTHER_CERTI_TYPE = #{customerOtherCertiType,jdbcType=VARCHAR}
+      </if>
+      <if test="countryId != null" >
+       AND COUNTRY_ID = #{countryId,jdbcType=VARCHAR}
+      </if>
+      <if test="contactInfo != null" >
+       AND CONTACT_INFO = #{contactInfo,jdbcType=VARCHAR}
+      </if>
+      <if test="crmn != null" >
+       AND CRMN = #{crmn,jdbcType=VARCHAR}
+      </if>
+      <if test="crit != null" >
+       AND CRIT = #{crit,jdbcType=VARCHAR}
+      </if>
+      <if test="crot != null" >
+       AND CROT = #{crot,jdbcType=VARCHAR}
+      </if>
+      <if test="crid != null" >
+       AND CRID = #{crid,jdbcType=VARCHAR}
+      </if>
+      <if test="urgencyDegree != null" >
+       AND URGENCY_DEGREE = #{urgencyDegree,jdbcType=VARCHAR}
+      </if>
+      <if test="submissionDirection != null" >
+       AND SUBMISSION_DIRECTION = #{submissionDirection,jdbcType=VARCHAR}
+      </if>
+      <if test="shareholderName != null" >
+       AND SHAREHOLDER_NAME = #{shareholderName,jdbcType=VARCHAR}
+      </if>
+      <if test="shareholderCertiType != null" >
+       AND SHAREHOLDER_CERTI_TYPE = #{shareholderCertiType,jdbcType=VARCHAR}
+      </if>
+      <if test="shareholderCertiCode != null" >
+       AND SHAREHOLDER_CERTI_CODE = #{shareholderCertiCode,jdbcType=VARCHAR}
+      </if>
+      <if test="shareholderOtherCertiType != null" >
+       AND SHAREHOLDER_OTHER_CERTI_TYPE = #{shareholderOtherCertiType,jdbcType=VARCHAR}
+      </if>
+      <if test="applicantType != null" >
+       AND APPLICANT_TYPE = #{applicantType,jdbcType=VARCHAR}
+      </if>
+      <if test="caoi != null" >
+       AND CAOI = #{caoi,jdbcType=VARCHAR}
+      </if>
+      <if test="tcan != null" >
+       AND TCAN = #{tcan,jdbcType=VARCHAR}
+      </if>
+      <if test="customerType != null" >
+       AND CUSTOMER_TYPE = #{customerType,jdbcType=VARCHAR}
+      </if>
+      <if test="insertTime != null" >
+       AND INSERT_TIME = #{insertTime,jdbcType=VARCHAR}
+      </if>
+      <if test="susHistory != null" >
+       AND SUS_HISTORY = #{susHistory,jdbcType=VARCHAR}
+      </if>
+      <if test="workplace != null" >
+       AND WORKPLACE = #{workplace,jdbcType=VARCHAR}
+      </if>
+      <if test="reviewStatus != null" >
+        <choose>
+      			<when test='reviewStatus == "1" '> <!-- 初审 -->
+      				AND (REVIEW_STATUS = "10" or REVIEW_STATUS = "21" )  
+      			</when>
+      			<when test='reviewStatus == "2" ' > <!-- 复审 -->
+      				AND (REVIEW_STATUS = "20" or REVIEW_STATUS = "31" )  
+      			</when>
+      			<when test='reviewStatus == "3" ' > <!-- 终审 -->
+      				AND (REVIEW_STATUS = "30" ) 
+      			</when>
+      			<when test='reviewStatus == "4" ' > <!-- 报送 -->
+      				AND (REVIEW_STATUS = "40" ) 
+      			</when>  			
+      			<when test='reviewStatus == "5" ' > <!-- 查询 -->
+					AND 2 = 2
+      			</when>
+      		
+        	<otherwise>  
+                  AND REVIEW_STATUS = #{reviewStatus,jdbcType=VARCHAR}
+        	</otherwise>
+       	</choose>
+      </if>  	
+      <if test="customerSsds != null" >
+       AND CUSTOMER_SSDS = #{customerSsds,jdbcType=VARCHAR}
+      </if>
+      <if test="crimeType != null" >
+       AND CRIME_TYPE = #{crimeType,jdbcType=VARCHAR}
+      </if>
+      <if test="sdgr != null" >
+       AND SDGR = #{sdgr,jdbcType=VARCHAR}
+      </if>
+      <if test="triggerPoint != null" >
+       AND TRIGGER_POINT = #{triggerPoint,jdbcType=VARCHAR}
+      </if>
+      <if test="otherTriggerPoint != null" >
+       AND OTHER_TRIGGER_POINT = #{otherTriggerPoint,jdbcType=VARCHAR}
+      </if>
+      <if test="reportTimes != null" >
+       AND REPORT_TIMES = #{reportTimes,jdbcType=VARCHAR}
+      </if>
+      <if test="submissionDirection != null" >
+       AND SUBMISSION_DIRECTION = #{submissionDirection,jdbcType=VARCHAR}
+      </if>
+      <if test="doubtAnalysis != null" >
+       AND DOUBT_ANALYSIS = #{doubtAnalysis,jdbcType=VARCHAR}
+      </if>
+      <if test="firestReportedName != null" >
+       AND FIREST_REPORTED_NAME = #{firestReportedName,jdbcType=VARCHAR}
+      </if>
+      <if test="tkms != null" >
+       AND TKMS = #{tkms,jdbcType=VARCHAR}
+      </if>
+      <if test="modIdentifying != null" >
+       AND MOD_IDENTIFYING = #{modIdentifying,jdbcType=VARCHAR}
+      </if>
+      <if test="firstName != null" >
+       AND FIRST_NAME = #{firstName,jdbcType=VARCHAR}
+      </if>
+      <if test="firstInspectOperate != null" >
+       AND FIRST_INSPECT_OPERATE = #{firstInspectOperate,jdbcType=VARCHAR}
+      </if>
+      <if test="firstEndTime != null" >
+       AND FIRST_END_TIME = #{firstEndTime,jdbcType=VARCHAR}
+      </if>
+      <if test="secondName != null" >
+       AND SECOND_NAME = #{secondName,jdbcType=VARCHAR}
+      </if>
+      <if test="secondInspectOperate != null" >
+       AND SECOND_INSPECT_OPERATE = #{secondInspectOperate,jdbcType=VARCHAR}
+      </if>
+      <if test="secondEndTime != null" >
+       AND SECOND_END_TIME = #{secondEndTime,jdbcType=VARCHAR}
+      </if>
+      <if test="finalName != null" >
+       AND FINAL_NAME = #{finalName,jdbcType=VARCHAR}
+      </if>
+      <if test="finalEndTime != null" >
+       AND FINAL_END_TIME = #{finalEndTime,jdbcType=VARCHAR}
+      </if>
+      <if test="reportTime != null" >
+       AND REPORT_TIME = #{reportTime,jdbcType=VARCHAR}
+      </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from sus_customer scm
+    where scm.seqno = #{seqno,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByCustomerId" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from sus_customer scm
+    where scm.customerId = #{customerId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from sus_customer
+    where seqno = #{seqno,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="org.FDFBpersistence.pojos.SusCustomer" >
+    insert into sus_customer (seqno, TRADE_FEATURE, APPLICANT_TYPE, 
+      ADDRESS, VOCATION, CUSTOMER_ID, 
+      CUSTOMER_NAME, CUSTOMER_CERTI_TYPE, CUSTOMER_CERTI_CODE, 
+      CUSTOMER_OTHER_CERTI_TYPE, COUNTRY_ID, CUSTOMER_TEL_NUM, 
+      CONTACT_INFO, CRMN, CRIT, 
+      CROT, CRID, SHAREHOLDER_NAME, 
+      SHAREHOLDER_CERTI_TYPE, SHAREHOLDER_CERTI_CODE, 
+      SHAREHOLDER_OTHER_CERTI_TYPE, CAOI, TCAN, 
+      CUSTOMER_TYPE, INSERT_TIME, SUS_HISTORY, 
+      WORKPLACE, REVIEW_STATUS, CUSTOMER_SSDS, 
+      CRIME_TYPE, SDGR, URGENCY_DEGREE, 
+      TRIGGER_POINT, OTHER_TRIGGER_POINT, REPORT_TIMES, 
+      SUBMISSION_DIRECTION, DOUBT_ANALYSIS, FIREST_REPORTED_NAME, 
+      TKMS, MOD_IDENTIFYING, FIRST_NAME, 
+      FIRST_INSPECT_OPERATE, FIRST_END_TIME, SECOND_NAME, 
+      SECOND_INSPECT_OPERATE, SECOND_END_TIME, FINAL_NAME, 
+      FINAL_END_TIME)
+    values (#{seqno,jdbcType=VARCHAR}, #{tradeFeature,jdbcType=VARCHAR}, #{applicantType,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{vocation,jdbcType=VARCHAR}, #{customerId,jdbcType=VARCHAR}, 
+      #{customerName,jdbcType=VARCHAR}, #{customerCertiType,jdbcType=VARCHAR}, #{customerCertiCode,jdbcType=VARCHAR}, 
+      #{customerOtherCertiType,jdbcType=VARCHAR}, #{countryId,jdbcType=VARCHAR}, #{customerTelNum,jdbcType=VARCHAR}, 
+      #{contactInfo,jdbcType=VARCHAR}, #{crmn,jdbcType=VARCHAR}, #{crit,jdbcType=VARCHAR}, 
+      #{crot,jdbcType=VARCHAR}, #{crid,jdbcType=VARCHAR}, #{shareholderName,jdbcType=VARCHAR}, 
+      #{shareholderCertiType,jdbcType=VARCHAR}, #{shareholderCertiCode,jdbcType=VARCHAR}, 
+      #{shareholderOtherCertiType,jdbcType=VARCHAR}, #{caoi,jdbcType=VARCHAR}, #{tcan,jdbcType=VARCHAR}, 
+      #{customerType,jdbcType=VARCHAR}, #{insertTime,jdbcType=VARCHAR}, #{susHistory,jdbcType=VARCHAR}, 
+      #{workplace,jdbcType=VARCHAR}, #{reviewStatus,jdbcType=VARCHAR}, #{customerSsds,jdbcType=VARCHAR}, 
+      #{crimeType,jdbcType=VARCHAR}, #{sdgr,jdbcType=VARCHAR}, #{urgencyDegree,jdbcType=VARCHAR}, 
+      #{triggerPoint,jdbcType=VARCHAR}, #{otherTriggerPoint,jdbcType=VARCHAR}, #{reportTimes,jdbcType=INTEGER}, 
+      #{submissionDirection,jdbcType=VARCHAR}, #{doubtAnalysis,jdbcType=VARCHAR}, #{firestReportedName,jdbcType=VARCHAR}, 
+      #{tkms,jdbcType=VARCHAR}, #{modIdentifying,jdbcType=VARCHAR}, #{firstName,jdbcType=VARCHAR}, 
+      #{firstInspectOperate,jdbcType=VARCHAR}, #{firstEndTime,jdbcType=VARCHAR}, #{secondName,jdbcType=VARCHAR}, 
+      #{secondInspectOperate,jdbcType=VARCHAR}, #{secondEndTime,jdbcType=VARCHAR}, #{finalName,jdbcType=VARCHAR}, 
+      #{finalEndTime,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.FDFBpersistence.pojos.SusCustomer" >
+    insert into sus_customer
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="seqno != null" >
+        seqno,
+      </if>
+      <if test="tradeFeature != null" >
+        TRADE_FEATURE,
+      </if>
+      <if test="applicantType != null" >
+        APPLICANT_TYPE,
+      </if>
+      <if test="address != null" >
+        ADDRESS,
+      </if>
+      <if test="vocation != null" >
+        VOCATION,
+      </if>
+      <if test="customerId != null" >
+        CUSTOMER_ID,
+      </if>
+      <if test="customerName != null" >
+        CUSTOMER_NAME,
+      </if>
+      <if test="customerCertiType != null" >
+        CUSTOMER_CERTI_TYPE,
+      </if>
+      <if test="customerCertiCode != null" >
+        CUSTOMER_CERTI_CODE,
+      </if>
+      <if test="customerOtherCertiType != null" >
+        CUSTOMER_OTHER_CERTI_TYPE,
+      </if>
+      <if test="countryId != null" >
+        COUNTRY_ID,
+      </if>
+      <if test="customerTelNum != null" >
+        CUSTOMER_TEL_NUM,
+      </if>
+      <if test="contactInfo != null" >
+        CONTACT_INFO,
+      </if>
+      <if test="crmn != null" >
+        CRMN,
+      </if>
+      <if test="crit != null" >
+        CRIT,
+      </if>
+      <if test="crot != null" >
+        CROT,
+      </if>
+      <if test="crid != null" >
+        CRID,
+      </if>
+      <if test="shareholderName != null" >
+        SHAREHOLDER_NAME,
+      </if>
+      <if test="shareholderCertiType != null" >
+        SHAREHOLDER_CERTI_TYPE,
+      </if>
+      <if test="shareholderCertiCode != null" >
+        SHAREHOLDER_CERTI_CODE,
+      </if>
+      <if test="shareholderOtherCertiType != null" >
+        SHAREHOLDER_OTHER_CERTI_TYPE,
+      </if>
+      <if test="caoi != null" >
+        CAOI,
+      </if>
+      <if test="tcan != null" >
+        TCAN,
+      </if>
+      <if test="customerType != null" >
+        CUSTOMER_TYPE,
+      </if>
+      <if test="insertTime != null" >
+        INSERT_TIME,
+      </if>
+      <if test="susHistory != null" >
+        SUS_HISTORY,
+      </if>
+      <if test="workplace != null" >
+        WORKPLACE,
+      </if>
+      <if test="reviewStatus != null" >
+        REVIEW_STATUS,
+      </if>
+      <if test="customerSsds != null" >
+        CUSTOMER_SSDS,
+      </if>
+      <if test="crimeType != null" >
+        CRIME_TYPE,
+      </if>
+      <if test="sdgr != null" >
+        SDGR,
+      </if>
+      <if test="urgencyDegree != null" >
+        URGENCY_DEGREE,
+      </if>
+      <if test="triggerPoint != null" >
+        TRIGGER_POINT,
+      </if>
+      <if test="otherTriggerPoint != null" >
+        OTHER_TRIGGER_POINT,
+      </if>
+      <if test="reportTimes != null" >
+        REPORT_TIMES,
+      </if>
+      <if test="submissionDirection != null" >
+        SUBMISSION_DIRECTION,
+      </if>
+      <if test="doubtAnalysis != null" >
+        DOUBT_ANALYSIS,
+      </if>
+      <if test="firestReportedName != null" >
+        FIREST_REPORTED_NAME,
+      </if>
+      <if test="tkms != null" >
+        TKMS,
+      </if>
+      <if test="modIdentifying != null" >
+        MOD_IDENTIFYING,
+      </if>
+      <if test="firstName != null" >
+        FIRST_NAME,
+      </if>
+      <if test="firstInspectOperate != null" >
+        FIRST_INSPECT_OPERATE,
+      </if>
+      <if test="firstEndTime != null" >
+        FIRST_END_TIME,
+      </if>
+      <if test="secondName != null" >
+        SECOND_NAME,
+      </if>
+      <if test="secondInspectOperate != null" >
+        SECOND_INSPECT_OPERATE,
+      </if>
+      <if test="secondEndTime != null" >
+        SECOND_END_TIME,
+      </if>
+      <if test="finalName != null" >
+        FINAL_NAME,
+      </if>
+      <if test="finalEndTime != null" >
+        FINAL_END_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="seqno != null" >
+        #{seqno,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeFeature != null" >
+        #{tradeFeature,jdbcType=VARCHAR},
+      </if>
+      <if test="applicantType != null" >
+        #{applicantType,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="vocation != null" >
+        #{vocation,jdbcType=VARCHAR},
+      </if>
+      <if test="customerId != null" >
+        #{customerId,jdbcType=VARCHAR},
+      </if>
+      <if test="customerName != null" >
+        #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="customerCertiType != null" >
+        #{customerCertiType,jdbcType=VARCHAR},
+      </if>
+      <if test="customerCertiCode != null" >
+        #{customerCertiCode,jdbcType=VARCHAR},
+      </if>
+      <if test="customerOtherCertiType != null" >
+        #{customerOtherCertiType,jdbcType=VARCHAR},
+      </if>
+      <if test="countryId != null" >
+        #{countryId,jdbcType=VARCHAR},
+      </if>
+      <if test="customerTelNum != null" >
+        #{customerTelNum,jdbcType=VARCHAR},
+      </if>
+      <if test="contactInfo != null" >
+        #{contactInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="crmn != null" >
+        #{crmn,jdbcType=VARCHAR},
+      </if>
+      <if test="crit != null" >
+        #{crit,jdbcType=VARCHAR},
+      </if>
+      <if test="crot != null" >
+        #{crot,jdbcType=VARCHAR},
+      </if>
+      <if test="crid != null" >
+        #{crid,jdbcType=VARCHAR},
+      </if>
+      <if test="shareholderName != null" >
+        #{shareholderName,jdbcType=VARCHAR},
+      </if>
+      <if test="shareholderCertiType != null" >
+        #{shareholderCertiType,jdbcType=VARCHAR},
+      </if>
+      <if test="shareholderCertiCode != null" >
+        #{shareholderCertiCode,jdbcType=VARCHAR},
+      </if>
+      <if test="shareholderOtherCertiType != null" >
+        #{shareholderOtherCertiType,jdbcType=VARCHAR},
+      </if>
+      <if test="caoi != null" >
+        #{caoi,jdbcType=VARCHAR},
+      </if>
+      <if test="tcan != null" >
+        #{tcan,jdbcType=VARCHAR},
+      </if>
+      <if test="customerType != null" >
+        #{customerType,jdbcType=VARCHAR},
+      </if>
+      <if test="insertTime != null" >
+        #{insertTime,jdbcType=VARCHAR},
+      </if>
+      <if test="susHistory != null" >
+        #{susHistory,jdbcType=VARCHAR},
+      </if>
+      <if test="workplace != null" >
+        #{workplace,jdbcType=VARCHAR},
+      </if>
+      <if test="reviewStatus != null" >
+        #{reviewStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="customerSsds != null" >
+        #{customerSsds,jdbcType=VARCHAR},
+      </if>
+      <if test="crimeType != null" >
+        #{crimeType,jdbcType=VARCHAR},
+      </if>
+      <if test="sdgr != null" >
+        #{sdgr,jdbcType=VARCHAR},
+      </if>
+      <if test="urgencyDegree != null" >
+        #{urgencyDegree,jdbcType=VARCHAR},
+      </if>
+      <if test="triggerPoint != null" >
+        #{triggerPoint,jdbcType=VARCHAR},
+      </if>
+      <if test="otherTriggerPoint != null" >
+        #{otherTriggerPoint,jdbcType=VARCHAR},
+      </if>
+      <if test="reportTimes != null" >
+        #{reportTimes,jdbcType=INTEGER},
+      </if>
+      <if test="submissionDirection != null" >
+        #{submissionDirection,jdbcType=VARCHAR},
+      </if>
+      <if test="doubtAnalysis != null" >
+        #{doubtAnalysis,jdbcType=VARCHAR},
+      </if>
+      <if test="firestReportedName != null" >
+        #{firestReportedName,jdbcType=VARCHAR},
+      </if>
+      <if test="tkms != null" >
+        #{tkms,jdbcType=VARCHAR},
+      </if>
+      <if test="modIdentifying != null" >
+        #{modIdentifying,jdbcType=VARCHAR},
+      </if>
+      <if test="firstName != null" >
+        #{firstName,jdbcType=VARCHAR},
+      </if>
+      <if test="firstInspectOperate != null" >
+        #{firstInspectOperate,jdbcType=VARCHAR},
+      </if>
+      <if test="firstEndTime != null" >
+        #{firstEndTime,jdbcType=VARCHAR},
+      </if>
+      <if test="secondName != null" >
+        #{secondName,jdbcType=VARCHAR},
+      </if>
+      <if test="secondInspectOperate != null" >
+        #{secondInspectOperate,jdbcType=VARCHAR},
+      </if>
+      <if test="secondEndTime != null" >
+        #{secondEndTime,jdbcType=VARCHAR},
+      </if>
+      <if test="finalName != null" >
+        #{finalName,jdbcType=VARCHAR},
+      </if>
+      <if test="finalEndTime != null" >
+        #{finalEndTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.FDFBpersistence.pojos.SusCustomer" >
+    update sus_customer
+    <set >
+      <if test="tradeFeature != null" >
+        TRADE_FEATURE = #{tradeFeature,jdbcType=VARCHAR},
+      </if>
+      <if test="applicantType != null" >
+        APPLICANT_TYPE = #{applicantType,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        ADDRESS = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="vocation != null" >
+        VOCATION = #{vocation,jdbcType=VARCHAR},
+      </if>
+      <if test="customerId != null" >
+        CUSTOMER_ID = #{customerId,jdbcType=VARCHAR},
+      </if>
+      <if test="customerName != null" >
+        CUSTOMER_NAME = #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="customerCertiType != null" >
+        CUSTOMER_CERTI_TYPE = #{customerCertiType,jdbcType=VARCHAR},
+      </if>
+      <if test="customerCertiCode != null" >
+        CUSTOMER_CERTI_CODE = #{customerCertiCode,jdbcType=VARCHAR},
+      </if>
+      <if test="customerOtherCertiType != null" >
+        CUSTOMER_OTHER_CERTI_TYPE = #{customerOtherCertiType,jdbcType=VARCHAR},
+      </if>
+      <if test="countryId != null" >
+        COUNTRY_ID = #{countryId,jdbcType=VARCHAR},
+      </if>
+      <if test="customerTelNum != null" >
+        CUSTOMER_TEL_NUM = #{customerTelNum,jdbcType=VARCHAR},
+      </if>
+      <if test="contactInfo != null" >
+        CONTACT_INFO = #{contactInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="crmn != null" >
+        CRMN = #{crmn,jdbcType=VARCHAR},
+      </if>
+      <if test="crit != null" >
+        CRIT = #{crit,jdbcType=VARCHAR},
+      </if>
+      <if test="crot != null" >
+        CROT = #{crot,jdbcType=VARCHAR},
+      </if>
+      <if test="crid != null" >
+        CRID = #{crid,jdbcType=VARCHAR},
+      </if>
+      <if test="shareholderName != null" >
+        SHAREHOLDER_NAME = #{shareholderName,jdbcType=VARCHAR},
+      </if>
+      <if test="shareholderCertiType != null" >
+        SHAREHOLDER_CERTI_TYPE = #{shareholderCertiType,jdbcType=VARCHAR},
+      </if>
+      <if test="shareholderCertiCode != null" >
+        SHAREHOLDER_CERTI_CODE = #{shareholderCertiCode,jdbcType=VARCHAR},
+      </if>
+      <if test="shareholderOtherCertiType != null" >
+        SHAREHOLDER_OTHER_CERTI_TYPE = #{shareholderOtherCertiType,jdbcType=VARCHAR},
+      </if>
+      <if test="caoi != null" >
+        CAOI = #{caoi,jdbcType=VARCHAR},
+      </if>
+      <if test="tcan != null" >
+        TCAN = #{tcan,jdbcType=VARCHAR},
+      </if>
+      <if test="customerType != null" >
+        CUSTOMER_TYPE = #{customerType,jdbcType=VARCHAR},
+      </if>
+      <if test="insertTime != null" >
+        INSERT_TIME = #{insertTime,jdbcType=VARCHAR},
+      </if>
+      <if test="susHistory != null" >
+        SUS_HISTORY = #{susHistory,jdbcType=VARCHAR},
+      </if>
+      <if test="workplace != null" >
+        WORKPLACE = #{workplace,jdbcType=VARCHAR},
+      </if>
+      <if test="reviewStatus != null" >
+        REVIEW_STATUS = #{reviewStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="customerSsds != null" >
+        CUSTOMER_SSDS = #{customerSsds,jdbcType=VARCHAR},
+      </if>
+      <if test="crimeType != null" >
+        CRIME_TYPE = #{crimeType,jdbcType=VARCHAR},
+      </if>
+      <if test="sdgr != null" >
+        SDGR = #{sdgr,jdbcType=VARCHAR},
+      </if>
+      <if test="urgencyDegree != null" >
+        URGENCY_DEGREE = #{urgencyDegree,jdbcType=VARCHAR},
+      </if>
+      <if test="triggerPoint != null" >
+        TRIGGER_POINT = #{triggerPoint,jdbcType=VARCHAR},
+      </if>
+      <if test="otherTriggerPoint != null" >
+        OTHER_TRIGGER_POINT = #{otherTriggerPoint,jdbcType=VARCHAR},
+      </if>
+      <if test="reportTimes != null" >
+        REPORT_TIMES = #{reportTimes,jdbcType=INTEGER},
+      </if>
+      <if test="submissionDirection != null" >
+        SUBMISSION_DIRECTION = #{submissionDirection,jdbcType=VARCHAR},
+      </if>
+      <if test="doubtAnalysis != null" >
+        DOUBT_ANALYSIS = #{doubtAnalysis,jdbcType=VARCHAR},
+      </if>
+      <if test="firestReportedName != null" >
+        FIREST_REPORTED_NAME = #{firestReportedName,jdbcType=VARCHAR},
+      </if>
+      <if test="tkms != null" >
+        TKMS = #{tkms,jdbcType=VARCHAR},
+      </if>
+      <if test="modIdentifying != null" >
+        MOD_IDENTIFYING = #{modIdentifying,jdbcType=VARCHAR},
+      </if>
+      <if test="firstName != null" >
+        FIRST_NAME = #{firstName,jdbcType=VARCHAR},
+      </if>
+      <if test="firstInspectOperate != null" >
+        FIRST_INSPECT_OPERATE = #{firstInspectOperate,jdbcType=VARCHAR},
+      </if>
+      <if test="firstEndTime != null" >
+        FIRST_END_TIME = #{firstEndTime,jdbcType=VARCHAR},
+      </if>
+      <if test="secondName != null" >
+        SECOND_NAME = #{secondName,jdbcType=VARCHAR},
+      </if>
+      <if test="secondInspectOperate != null" >
+        SECOND_INSPECT_OPERATE = #{secondInspectOperate,jdbcType=VARCHAR},
+      </if>
+      <if test="secondEndTime != null" >
+        SECOND_END_TIME = #{secondEndTime,jdbcType=VARCHAR},
+      </if>
+      <if test="finalName != null" >
+        FINAL_NAME = #{finalName,jdbcType=VARCHAR},
+      </if>
+      <if test="finalEndTime != null" >
+        FINAL_END_TIME = #{finalEndTime,jdbcType=VARCHAR},
+      </if>
+      <if test="reportTime != null" >
+        REPORT_TIME = #{reportTime,jdbcType=VARCHAR}
+      </if>
+    </set>
+    where seqno = #{seqno,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.FDFBpersistence.pojos.SusCustomer" >
+    update sus_customer
+    set TRADE_FEATURE = #{tradeFeature,jdbcType=VARCHAR},
+      APPLICANT_TYPE = #{applicantType,jdbcType=VARCHAR},
+      ADDRESS = #{address,jdbcType=VARCHAR},
+      VOCATION = #{vocation,jdbcType=VARCHAR},
+      CUSTOMER_ID = #{customerId,jdbcType=VARCHAR},
+      CUSTOMER_NAME = #{customerName,jdbcType=VARCHAR},
+      CUSTOMER_CERTI_TYPE = #{customerCertiType,jdbcType=VARCHAR},
+      CUSTOMER_CERTI_CODE = #{customerCertiCode,jdbcType=VARCHAR},
+      CUSTOMER_OTHER_CERTI_TYPE = #{customerOtherCertiType,jdbcType=VARCHAR},
+      COUNTRY_ID = #{countryId,jdbcType=VARCHAR},
+      CUSTOMER_TEL_NUM = #{customerTelNum,jdbcType=VARCHAR},
+      CONTACT_INFO = #{contactInfo,jdbcType=VARCHAR},
+      CRMN = #{crmn,jdbcType=VARCHAR},
+      CRIT = #{crit,jdbcType=VARCHAR},
+      CROT = #{crot,jdbcType=VARCHAR},
+      CRID = #{crid,jdbcType=VARCHAR},
+      SHAREHOLDER_NAME = #{shareholderName,jdbcType=VARCHAR},
+      SHAREHOLDER_CERTI_TYPE = #{shareholderCertiType,jdbcType=VARCHAR},
+      SHAREHOLDER_CERTI_CODE = #{shareholderCertiCode,jdbcType=VARCHAR},
+      SHAREHOLDER_OTHER_CERTI_TYPE = #{shareholderOtherCertiType,jdbcType=VARCHAR},
+      CAOI = #{caoi,jdbcType=VARCHAR},
+      TCAN = #{tcan,jdbcType=VARCHAR},
+      CUSTOMER_TYPE = #{customerType,jdbcType=VARCHAR},
+      INSERT_TIME = #{insertTime,jdbcType=VARCHAR},
+      SUS_HISTORY = #{susHistory,jdbcType=VARCHAR},
+      WORKPLACE = #{workplace,jdbcType=VARCHAR},
+      REVIEW_STATUS = #{reviewStatus,jdbcType=VARCHAR},
+      CUSTOMER_SSDS = #{customerSsds,jdbcType=VARCHAR},
+      CRIME_TYPE = #{crimeType,jdbcType=VARCHAR},
+      SDGR = #{sdgr,jdbcType=VARCHAR},
+      URGENCY_DEGREE = #{urgencyDegree,jdbcType=VARCHAR},
+      TRIGGER_POINT = #{triggerPoint,jdbcType=VARCHAR},
+      OTHER_TRIGGER_POINT = #{otherTriggerPoint,jdbcType=VARCHAR},
+      REPORT_TIMES = #{reportTimes,jdbcType=INTEGER},
+      SUBMISSION_DIRECTION = #{submissionDirection,jdbcType=VARCHAR},
+      DOUBT_ANALYSIS = #{doubtAnalysis,jdbcType=VARCHAR},
+      FIREST_REPORTED_NAME = #{firestReportedName,jdbcType=VARCHAR},
+      TKMS = #{tkms,jdbcType=VARCHAR},
+      MOD_IDENTIFYING = #{modIdentifying,jdbcType=VARCHAR},
+      FIRST_NAME = #{firstName,jdbcType=VARCHAR},
+      FIRST_INSPECT_OPERATE = #{firstInspectOperate,jdbcType=VARCHAR},
+      FIRST_END_TIME = #{firstEndTime,jdbcType=VARCHAR},
+      SECOND_NAME = #{secondName,jdbcType=VARCHAR},
+      SECOND_INSPECT_OPERATE = #{secondInspectOperate,jdbcType=VARCHAR},
+      SECOND_END_TIME = #{secondEndTime,jdbcType=VARCHAR},
+      FINAL_NAME = #{finalName,jdbcType=VARCHAR},
+      FINAL_END_TIME = #{finalEndTime,jdbcType=VARCHAR},
+      REPORT_TIME = #{reportTime,jdbcType=VARCHAR}
+    where seqno = #{seqno,jdbcType=VARCHAR}
+  </update>
+</mapper>

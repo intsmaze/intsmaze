@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.FDFBpersistence.mapper.FDFBDepartmentMapper">
+	<resultMap id="BaseResultMap" type="org.FDFBpersistence.pojos.FDFBDepartment">
+		<id column="seqno" property="seqno" jdbcType="VARCHAR" />
+		<result column="depname" property="depname" jdbcType="VARCHAR" />
+		<result column="depdesc" property="depdesc" jdbcType="VARCHAR" />
+		<result column="createon" property="createon" jdbcType="TIMESTAMP" />
+		<result column="createby" property="createby" jdbcType="VARCHAR" />
+		<result column="modifyon" property="modifyon" jdbcType="TIMESTAMP" />
+		<result column="modifyby" property="modifyby" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		seqno, depname, depdesc, createon, createby, modifyon, modifyby
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from fdfb_department
+		where seqno = #{seqno,jdbcType=VARCHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from fdfb_department
+		where seqno = #{seqno,jdbcType=VARCHAR}
+	</delete>
+	<insert id="insert" parameterType="org.FDFBpersistence.pojos.FDFBDepartment">
+		insert into fdfb_department (seqno, depname,
+		depdesc, createon, createby,
+		modifyon, modifyby)
+		values (#{seqno,jdbcType=VARCHAR},
+		#{depname,jdbcType=VARCHAR},
+		#{depdesc,jdbcType=VARCHAR}, #{createon,jdbcType=TIMESTAMP}, #{createby,jdbcType=VARCHAR},
+		#{modifyon,jdbcType=TIMESTAMP}, #{modifyby,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="org.FDFBpersistence.pojos.FDFBDepartment">
+		insert into fdfb_department
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="seqno != null">
+				seqno,
+			</if>
+			<if test="depname != null">
+				depname,
+			</if>
+			<if test="depdesc != null">
+				depdesc,
+			</if>
+			<if test="createon != null">
+				createon,
+			</if>
+			<if test="createby != null">
+				createby,
+			</if>
+			<if test="modifyon != null">
+				modifyon,
+			</if>
+			<if test="modifyby != null">
+				modifyby,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="seqno != null">
+				#{seqno,jdbcType=VARCHAR},
+			</if>
+			<if test="depname != null">
+				#{depname,jdbcType=VARCHAR},
+			</if>
+			<if test="depdesc != null">
+				#{depdesc,jdbcType=VARCHAR},
+			</if>
+			<if test="createon != null">
+				#{createon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createby != null">
+				#{createby,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyon != null">
+				#{modifyon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modifyby != null">
+				#{modifyby,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="org.FDFBpersistence.pojos.FDFBDepartment">
+		update fdfb_department
+		<set>
+			<if test="depname != null">
+				depname = #{depname,jdbcType=VARCHAR},
+			</if>
+			<if test="depdesc != null">
+				depdesc = #{depdesc,jdbcType=VARCHAR},
+			</if>
+			<if test="createon != null">
+				createon = #{createon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createby != null">
+				createby = #{createby,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyon != null">
+				modifyon = #{newMofifyon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modifyby != null">
+				modifyby = #{modifyby,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where seqno = #{seqno,jdbcType=VARCHAR}
+		and modifyon = #{modifyon,jdbcType=TIMESTAMP}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="org.FDFBpersistence.pojos.FDFBDepartment">
+		update fdfb_department
+		set depname = #{depname,jdbcType=VARCHAR},
+		depdesc = #{depdesc,jdbcType=VARCHAR},
+		createon = #{createon,jdbcType=TIMESTAMP},
+		createby = #{createby,jdbcType=VARCHAR},
+		modifyon = #{newModifyon,jdbcType=TIMESTAMP},
+		modifyby = #{modifyby,jdbcType=VARCHAR}
+		where seqno = #{seqno,jdbcType=VARCHAR}
+		and modifyon = #{modifyon,jdbcType=TIMESTAMP}
+	</update>
+	
+	
+	<select id="selectAllByPage" resultMap="BaseResultMap"
+		parameterType="org.FDFBpersistence.pojos.FDFBDepartment">
+		select
+		<include refid="Base_Column_List" />
+		from fdfb_department
+		where 1=1
+		<if test="depname != null and depname != '' ">
+			and depname = #{depname,jdbcType=VARCHAR}
+		</if>
+		<if test="depdesc != null and depdesc != '' ">
+			and depdesc = #{depdesc,jdbcType=VARCHAR}
+		</if>
+
+		<if test="orderByStr != null and orderByStr != ''">
+			order by ${orderByStr}
+		</if>
+	</select>
+
+	<select id="selectAll" resultMap="BaseResultMap"
+		parameterType="org.FDFBpersistence.pojos.FDFBDepartment">
+		select
+		<include refid="Base_Column_List" />
+		from fdfb_department
+
+	</select>
+
+	<select id="getAllFDFBDepsCount" resultType="java.lang.Integer"
+		parameterType="org.FDFBpersistence.pojos.FDFBDepartment">
+		select count(1)
+		from fdfb_department
+		where 1=1
+		<if test="depname != null and depname != '' ">
+			and depname = #{depname,jdbcType=VARCHAR}
+		</if>
+		<if test="depdesc != null and depdesc != '' ">
+			and depdesc = #{depdesc,jdbcType=VARCHAR}
+		</if>
+	</select>
+</mapper>

@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.FDFBpersistence.mapper.InspectMapper" >
+  <resultMap id="BaseResultMap" type="org.FDFBpersistence.pojos.Inspect" >
+    <id column="seqno" property="seqno" jdbcType="VARCHAR" />
+    <result column="insert_time" property="insertTime" jdbcType="TIMESTAMP" />
+    <result column="inspect_time" property="inspectTime" jdbcType="TIMESTAMP" />
+    <result column="inspect_organ" property="inspectOrgan" jdbcType="VARCHAR" />
+    <result column="organ_id" property="organId" jdbcType="VARCHAR" />
+    <result column="inspect_content" property="inspectContent" jdbcType="VARCHAR" />
+    <result column="result_type" property="resultType" jdbcType="VARCHAR" />
+    <result column="question_type" property="questionType" jdbcType="VARCHAR" />
+    <result column="inspect_resut" property="inspectResut" jdbcType="VARCHAR" />
+    <result column="upload" property="upload" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="inspect_time1" property="inspectTime1" jdbcType="TIMESTAMP" />
+    <result column="organ_fine" property="organFine" jdbcType="DOUBLE" />
+    <result column="punish_num" property="punishNum" jdbcType="DOUBLE" />
+    <result column="person_fine" property="personFine" jdbcType="DOUBLE" />
+    <result column="improve_condition" property="improveCondition" jdbcType="VARCHAR" />
+    <result column="notice_id" property="noticeId" jdbcType="VARCHAR" />
+    <result column="inspect_unit" property="inspectUnit" jdbcType="VARCHAR" />
+    <result column="check_period" property="checkPeriod" jdbcType="VARCHAR" />
+    <result column="path" property="path" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    seqno, insert_time, inspect_time, inspect_organ, organ_id, inspect_content, result_type, 
+    question_type, inspect_resut, upload, remark, inspect_time1, organ_fine, punish_num, 
+    person_fine, improve_condition, notice_id, inspect_unit, check_period, path
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_inspect
+    where seqno = #{seqno,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="selectAllByPage" resultMap="BaseResultMap"
+		parameterType="org.FDFBpersistence.pojos.Inspect">
+		select
+		<include refid="Base_Column_List" />
+		from t_inspect
+		where 1=1
+		<if test="organId != null" >
+        and organ_id like '%${organId}%'
+      </if>
+      <if test="startInsertTime != null" >
+      		and insert_time >= #{startInsertTime,jdbcType=TIMESTAMP}
+      	</if>
+      	<if test="endInsertTime != null" >
+      		and insert_time &lt;= #{endInsertTime,jdbcType=TIMESTAMP}
+      	</if>
+      <if test="startInspectTime != null" >
+      		and inspect_time >= #{startInspectTime,jdbcType=TIMESTAMP}
+      	</if>
+      	<if test="endInspectTime != null" >
+      		and inspect_time &lt;= #{endInspectTime,jdbcType=TIMESTAMP}
+      	</if>
+      <if test="inspectOrgan != null" >
+            and inspect_organ like '%${inspectOrgan}%'
+      </if>	
+	</select>
+  <select id="getAllUsersCount" resultType="java.lang.Integer"
+		parameterType="org.FDFBpersistence.pojos.Inspect">
+		select count(1)
+		from t_inspect
+		where 1=1
+		<if test="organId != null" >
+        and organ_id like '%${organId}%'
+      </if>
+      <if test="startInsertTime != null" >
+      		and insert_time >= #{startInsertTime,jdbcType=TIMESTAMP}
+      	</if>
+      	<if test="endInsertTime != null" >
+      		and insert_time &lt;= #{endInsertTime,jdbcType=TIMESTAMP}
+      	</if>
+      <if test="startInspectTime != null" >
+      		and inspect_time >= #{startInspectTime,jdbcType=TIMESTAMP}
+      	</if>
+      	<if test="endInspectTime != null" >
+      		and inspect_time &lt;= #{endInspectTime,jdbcType=TIMESTAMP}
+      	</if>
+      <if test="inspectOrgan != null" >
+            and inspect_organ like '%${inspectOrgan}%'
+       </if>
+	</select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_inspect
+    where seqno = #{seqno,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="org.FDFBpersistence.pojos.Inspect" >
+    insert into t_inspect (seqno, insert_time, inspect_time, 
+      inspect_organ, organ_id, inspect_content, 
+      result_type, question_type, inspect_resut, 
+      upload, remark, inspect_time1, 
+      organ_fine, punish_num, person_fine, 
+      improve_condition, notice_id, inspect_unit, 
+      check_period, path)
+    values (#{seqno,jdbcType=VARCHAR}, #{insertTime,jdbcType=TIMESTAMP}, #{inspectTime,jdbcType=TIMESTAMP}, 
+      #{inspectOrgan,jdbcType=VARCHAR}, #{organId,jdbcType=VARCHAR}, #{inspectContent,jdbcType=VARCHAR}, 
+      #{resultType,jdbcType=VARCHAR}, #{questionType,jdbcType=VARCHAR}, #{inspectResut,jdbcType=VARCHAR}, 
+      #{upload,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{inspectTime1,jdbcType=TIMESTAMP}, 
+      #{organFine,jdbcType=DOUBLE}, #{punishNum,jdbcType=DOUBLE}, #{personFine,jdbcType=DOUBLE}, 
+      #{improveCondition,jdbcType=VARCHAR}, #{noticeId,jdbcType=VARCHAR}, #{inspectUnit,jdbcType=VARCHAR}, 
+      #{checkPeriod,jdbcType=VARCHAR}, #{path,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.FDFBpersistence.pojos.Inspect" >
+    insert into t_inspect
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="seqno != null" >
+        seqno,
+      </if>
+      <if test="insertTime != null" >
+        insert_time,
+      </if>
+      <if test="inspectTime != null" >
+        inspect_time,
+      </if>
+      <if test="inspectOrgan != null" >
+        inspect_organ,
+      </if>
+      <if test="organId != null" >
+        organ_id,
+      </if>
+      <if test="inspectContent != null" >
+        inspect_content,
+      </if>
+      <if test="resultType != null" >
+        result_type,
+      </if>
+      <if test="questionType != null" >
+        question_type,
+      </if>
+      <if test="inspectResut != null" >
+        inspect_resut,
+      </if>
+      <if test="upload != null" >
+        upload,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="inspectTime1 != null" >
+        inspect_time1,
+      </if>
+      <if test="organFine != null" >
+        organ_fine,
+      </if>
+      <if test="punishNum != null" >
+        punish_num,
+      </if>
+      <if test="personFine != null" >
+        person_fine,
+      </if>
+      <if test="improveCondition != null" >
+        improve_condition,
+      </if>
+      <if test="noticeId != null" >
+        notice_id,
+      </if>
+      <if test="inspectUnit != null" >
+        inspect_unit,
+      </if>
+      <if test="checkPeriod != null" >
+        check_period,
+      </if>
+      <if test="path != null" >
+        path,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="seqno != null" >
+        #{seqno,jdbcType=VARCHAR},
+      </if>
+      <if test="insertTime != null" >
+        #{insertTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="inspectTime != null" >
+        #{inspectTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="inspectOrgan != null" >
+        #{inspectOrgan,jdbcType=VARCHAR},
+      </if>
+      <if test="organId != null" >
+        #{organId,jdbcType=VARCHAR},
+      </if>
+      <if test="inspectContent != null" >
+        #{inspectContent,jdbcType=VARCHAR},
+      </if>
+      <if test="resultType != null" >
+        #{resultType,jdbcType=VARCHAR},
+      </if>
+      <if test="questionType != null" >
+        #{questionType,jdbcType=VARCHAR},
+      </if>
+      <if test="inspectResut != null" >
+        #{inspectResut,jdbcType=VARCHAR},
+      </if>
+      <if test="upload != null" >
+        #{upload,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="inspectTime1 != null" >
+        #{inspectTime1,jdbcType=TIMESTAMP},
+      </if>
+      <if test="organFine != null" >
+        #{organFine,jdbcType=DOUBLE},
+      </if>
+      <if test="punishNum != null" >
+        #{punishNum,jdbcType=DOUBLE},
+      </if>
+      <if test="personFine != null" >
+        #{personFine,jdbcType=DOUBLE},
+      </if>
+      <if test="improveCondition != null" >
+        #{improveCondition,jdbcType=VARCHAR},
+      </if>
+      <if test="noticeId != null" >
+        #{noticeId,jdbcType=VARCHAR},
+      </if>
+      <if test="inspectUnit != null" >
+        #{inspectUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="checkPeriod != null" >
+        #{checkPeriod,jdbcType=VARCHAR},
+      </if>
+      <if test="path != null" >
+        #{path,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.FDFBpersistence.pojos.Inspect" >
+    update t_inspect
+    <set >
+      <if test="insertTime != null" >
+        insert_time = #{insertTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="inspectTime != null" >
+        inspect_time = #{inspectTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="inspectOrgan != null" >
+        inspect_organ = #{inspectOrgan,jdbcType=VARCHAR},
+      </if>
+      <if test="organId != null" >
+        organ_id = #{organId,jdbcType=VARCHAR},
+      </if>
+      <if test="inspectContent != null" >
+        inspect_content = #{inspectContent,jdbcType=VARCHAR},
+      </if>
+      <if test="resultType != null" >
+        result_type = #{resultType,jdbcType=VARCHAR},
+      </if>
+      <if test="questionType != null" >
+        question_type = #{questionType,jdbcType=VARCHAR},
+      </if>
+      <if test="inspectResut != null" >
+        inspect_resut = #{inspectResut,jdbcType=VARCHAR},
+      </if>
+      <if test="upload != null" >
+        upload = #{upload,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="inspectTime1 != null" >
+        inspect_time1 = #{inspectTime1,jdbcType=TIMESTAMP},
+      </if>
+      <if test="organFine != null" >
+        organ_fine = #{organFine,jdbcType=DOUBLE},
+      </if>
+      <if test="punishNum != null" >
+        punish_num = #{punishNum,jdbcType=DOUBLE},
+      </if>
+      <if test="personFine != null" >
+        person_fine = #{personFine,jdbcType=DOUBLE},
+      </if>
+      <if test="improveCondition != null" >
+        improve_condition = #{improveCondition,jdbcType=VARCHAR},
+      </if>
+      <if test="noticeId != null" >
+        notice_id = #{noticeId,jdbcType=VARCHAR},
+      </if>
+      <if test="inspectUnit != null" >
+        inspect_unit = #{inspectUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="checkPeriod != null" >
+        check_period = #{checkPeriod,jdbcType=VARCHAR},
+      </if>
+      <if test="path != null" >
+        path = #{path,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where seqno = #{seqno,jdbcType=VARCHAR}
+  </update>
+  
+  <update id="updateByPrimaryKey" parameterType="org.FDFBpersistence.pojos.Inspect" >
+    update t_inspect
+    set insert_time = #{insertTime,jdbcType=TIMESTAMP},
+      inspect_time = #{inspectTime,jdbcType=TIMESTAMP},
+      inspect_organ = #{inspectOrgan,jdbcType=VARCHAR},
+      organ_id = #{organId,jdbcType=VARCHAR},
+      inspect_content = #{inspectContent,jdbcType=VARCHAR},
+      result_type = #{resultType,jdbcType=VARCHAR},
+      question_type = #{questionType,jdbcType=VARCHAR},
+      inspect_resut = #{inspectResut,jdbcType=VARCHAR},
+      upload = #{upload,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      inspect_time1 = #{inspectTime1,jdbcType=TIMESTAMP},
+      organ_fine = #{organFine,jdbcType=DOUBLE},
+      punish_num = #{punishNum,jdbcType=DOUBLE},
+      person_fine = #{personFine,jdbcType=DOUBLE},
+      improve_condition = #{improveCondition,jdbcType=VARCHAR},
+      notice_id = #{noticeId,jdbcType=VARCHAR},
+      inspect_unit = #{inspectUnit,jdbcType=VARCHAR},
+      check_period = #{checkPeriod,jdbcType=VARCHAR},
+      path = #{path,jdbcType=VARCHAR}
+    where seqno = #{seqno,jdbcType=VARCHAR}
+  </update>
+</mapper>

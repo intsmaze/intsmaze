@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.FDFBpersistence.mapper.FDFBUserMapper">
+	<resultMap id="BaseResultMap" type="org.FDFBpersistence.pojos.FDFBUser">
+		<id column="seqno" property="seqno" jdbcType="VARCHAR" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="password" property="password" jdbcType="VARCHAR" />
+		<result column="username" property="username" jdbcType="VARCHAR" />
+		<result column="email" property="email" jdbcType="VARCHAR" />
+		<result column="xb" property="xb" jdbcType="VARCHAR" />
+<!-- 		<result column="roleid" property="roleid" jdbcType="VARCHAR" /> -->
+		<result column="departmentid" property="departmentid" jdbcType="VARCHAR" />
+		<result column="createon" jdbcType="TIMESTAMP" property="createon" />
+		<result column="modifyon" jdbcType="TIMESTAMP" property="modifyon" />
+		<result column="createby" jdbcType="VARCHAR" property="createby" />
+		<result column="modifyby" jdbcType="VARCHAR" property="modifyby" />
+		<result column="groupid" property="groupid" jdbcType="VARCHAR" />
+		<result column="id" property="id" jdbcType="VARCHAR" />
+		<result column="unit_inner_coding" property="unitInnerCoding" jdbcType="VARCHAR" />
+		<result column="status" property="status" jdbcType="VARCHAR" />
+		<result column="emp_inner_coding" property="empInnerCoding" jdbcType="VARCHAR" />
+		<result column="emp_no" property="empNo" jdbcType="VARCHAR" />
+		<result column="new_org_no" property="newOrgNo" jdbcType="VARCHAR" />
+		<result column="org_name" property="orgName" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		id,seqno, name, password, email, username, xb, 
+		departmentid, createon,
+		modifyon,
+		createby, modifyby, groupid , unit_inner_coding , status , emp_inner_coding ,
+		emp_no
+	</sql>
+	
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from fdfb_user
+		where seqno = #{seqno,jdbcType=VARCHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from fdfb_user
+		where seqno = #{seqno,jdbcType=VARCHAR}
+	</delete>
+	<insert id="insert" parameterType="org.FDFBpersistence.pojos.FDFBUser">
+		insert into fdfb_user (seqno, name, password,
+		email, username, xb, departmentid, createon,
+		modifyon, createby, modifyby, groupid, emp_no
+		)
+		values (#{seqno,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR},
+		#{password,jdbcType=VARCHAR},
+		#{email,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{xb,jdbcType=VARCHAR},
+		#{departmentid,jdbcType=VARCHAR},
+		#{createon,jdbcType=TIMESTAMP},
+		#{modifyon,jdbcType=TIMESTAMP}, #{createby,jdbcType=VARCHAR}, #{modifyby,jdbcType=VARCHAR}, #{groupid,jdbcType=VARCHAR},
+		#{id,jdbcType=VARCHAR}, #{unitInnerCoding,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR} , #{empInnerCoding,jdbcType=VARCHAR},
+		#{empNo,jdbcType=VARCHAR}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="org.FDFBpersistence.pojos.FDFBUser">
+		insert into fdfb_user
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="seqno != null">
+				seqno,
+			</if>
+			<if test="name != null">
+				name,
+			</if>
+			<if test="password != null">
+				password,
+			</if>
+			<if test="email != null">
+				email,
+			</if>
+			<if test="username != null">
+				username,
+			</if>
+			<if test="xb != null">
+				xb,
+			</if>
+			<if test="departmentid != null">
+				departmentid,
+			</if>
+			<if test="createon != null">
+				createon,
+			</if>
+			<if test="modifyon != null">
+				modifyon,
+			</if>
+			<if test="createby != null">
+				createby,
+			</if>
+			<if test="modifyby != null">
+				modifyby,
+			</if>
+			<if test="groupid != null">
+				groupid,
+			</if>
+			<if test="id != null">
+				id,
+			</if>
+			<if test="unitInnerCoding != null">
+				unit_inner_coding,
+			</if>
+			<if test="status != null">
+				status,
+			</if>
+			<if test="empInnerCoding != null">
+				emp_inner_coding,
+			</if>
+			<if test="empNo != null">
+				emp_no,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="seqno != null">
+				#{seqno,jdbcType=VARCHAR},
+			</if>
+			<if test="name != null">
+				#{name,jdbcType=VARCHAR},
+			</if>
+			<if test="password != null">
+				#{password,jdbcType=VARCHAR},
+			</if>
+			<if test="email != null">
+				#{email,jdbcType=VARCHAR},
+			</if>
+			<if test="username != null">
+				#{username,jdbcType=VARCHAR},
+			</if>
+			<if test="xb != null">
+				#{xb,jdbcType=VARCHAR},
+			</if>
+			<if test="departmentid != null">
+				#{departmentid,jdbcType=VARCHAR},
+			</if>
+			<if test="createon != null">
+				#{createon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modifyon != null">
+				#{modifyon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createby != null">
+				#{createby,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyby != null">
+				#{modifyby,jdbcType=VARCHAR},
+			</if>
+			<if test="groupid != null">
+				#{groupid,jdbcType=VARCHAR},
+			</if>
+			<if test="id != null">
+				#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="unitInnerCoding != null">
+				#{unitInnerCoding,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				#{status,jdbcType=VARCHAR},
+			</if>
+			<if test="empInnerCoding != null">
+				#{empInnerCoding,jdbcType=VARCHAR},
+			</if>
+			<if test="empNo != null">
+				#{empNo,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="org.FDFBpersistence.pojos.FDFBUser">
+		update fdfb_user
+		<set>
+			<if test="name != null">
+				name = #{name,jdbcType=VARCHAR},
+			</if>
+			<if test="password != null">
+				password = #{password,jdbcType=VARCHAR},
+			</if>
+			<if test="email != null">
+				email = #{email,jdbcType=VARCHAR},
+			</if>
+			<if test="username != null">
+				username = #{username,jdbcType=VARCHAR},
+			</if>
+			<if test="xb != null">
+				xb = #{xb,jdbcType=VARCHAR},
+			</if>
+			<if test="departmentid != null">
+				departmentid = #{departmentid,jdbcType=VARCHAR},
+			</if>
+			<if test="createon != null">
+				createon = #{createon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="newMofifyon != null">
+				modifyon = #{newMofifyon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createby != null">
+				createby = #{createby,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyby != null">
+				modifyby = #{modifyby,jdbcType=VARCHAR},
+			</if>
+			<if test="groupid != null">
+				groupid = #{groupid,jdbcType=VARCHAR},
+			</if>
+			<if test="id != null">
+				id = #{id,jdbcType=VARCHAR},
+			</if>
+			<if test="unitInnerCoding != null">
+				unit_inner_coding = #{unitInnerCoding,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				status = #{status,jdbcType=VARCHAR},
+			</if>
+			<if test="empInnerCoding != null">
+				emp_inner_coding = #{unitInnerCoding,jdbcType=VARCHAR},
+			</if>
+			<if test="empNo != null">
+				emp_no = #{empNo,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where seqno = #{seqno,jdbcType=VARCHAR}
+		and modifyon = #{modifyon,jdbcType=TIMESTAMP}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="org.FDFBpersistence.pojos.FDFBUser">
+		update fdfb_user
+		set name = #{name,jdbcType=VARCHAR},
+		password = #{password,jdbcType=VARCHAR},
+		email = #{email,jdbcType=VARCHAR},
+		username = #{username,jdbcType=VARCHAR},
+		xb = #{xb,jdbcType=VARCHAR},
+		departmentid = #{departmentid,jdbcType=VARCHAR},
+		createon = #{createon,jdbcType=TIMESTAMP},
+		modifyon = #{newMofifyon,jdbcType=TIMESTAMP},
+		createby = #{createby,jdbcType=VARCHAR},
+		modifyby = #{modifyby,jdbcType=VARCHAR},
+		id = #{id,jdbcType=VARCHAR},
+		unit_inner_coding = #{unitInnerCoding,jdbcType=VARCHAR},
+		status = #{status,jdbcType=VARCHAR},
+		emp_inner_coding = #{empInnerCoding,jdbcType=VARCHAR},
+		groupid = #{groupid,jdbcType=VARCHAR},
+		and modifyon = #{modifyon,jdbcType=TIMESTAMP},
+		and emp_no = #{empNo,jdbcType=VARCHAR}
+		where seqno = #{seqno,jdbcType=VARCHAR}
+		
+	</update>
+
+
+	<select id="selectByUsernameAndPassword" resultMap="BaseResultMap"
+		parameterType="org.FDFBpersistence.pojos.FDFBUser">
+		select
+		<include refid="Base_Column_List" />
+		from fdfb_user
+		where username = #{username,jdbcType=VARCHAR}
+		and password =
+		#{password,jdbcType=VARCHAR}
+	</select>
+
+	<select id="selectAllByPage" resultMap="BaseResultMap"
+		parameterType="org.FDFBpersistence.pojos.FDFBUser">
+		select
+		<include refid="Base_Column_List" />
+		from fdfb_user
+		where 1=1
+		<if test="id != null and id != '' ">
+			and id = #{id,jdbcType=VARCHAR}
+		</if>
+		<if test="name != null and name != '' ">
+			and name = #{name,jdbcType=VARCHAR}
+		</if>
+		<if test="username != null and username != '' ">
+			and username = #{username,jdbcType=VARCHAR}
+		</if>
+		<if test="xb != null and xb != '' ">
+			and xb = #{xb,jdbcType=VARCHAR}
+		</if>
+		<if test="email != null and email != '' ">
+			and email = #{email,jdbcType=VARCHAR}
+		</if>
+		<if test="departmentid != null and departmentid != '' ">
+			and departmentid = #{departmentid,jdbcType=VARCHAR}
+		</if>
+		<if test="groupid != null and groupid != '' ">
+			and groupid = #{groupid,jdbcType=VARCHAR}
+		</if>
+		<if test="empInnerCoding != null">
+			and emp_inner_coding = #{empInnerCoding,jdbcType=VARCHAR}
+		</if>
+		<if test="empNo != null">
+			and emp_no = #{empNo,jdbcType=VARCHAR}
+		</if>
+		<if test="orderByStr != null and orderByStr != ''">
+			order by ${orderByStr}
+		</if>
+	</select>
+
+	<select id="selectAll" resultMap="BaseResultMap"
+		parameterType="org.FDFBpersistence.pojos.FDFBUser">
+		select
+		<include refid="Base_Column_List" />
+		from fdfb_user
+
+	</select>
+
+	<select id="getAllUsersCount" resultType="java.lang.Integer"
+		parameterType="org.FDFBpersistence.pojos.FDFBUser">
+		select count(1)
+		from fdfb_user
+		where 1=1
+		<if test="id != null and id != '' ">
+			and id = #{id,jdbcType=VARCHAR}
+		</if>
+		<if test="name != null and name != '' ">
+			and name = #{name,jdbcType=VARCHAR}
+		</if>
+		<if test="username != null and username != '' ">
+			and username = #{username,jdbcType=VARCHAR}
+		</if>
+		<if test="xb != null and xb != '' ">
+			and xb = #{xb,jdbcType=VARCHAR}
+		</if>
+		<if test="email != null and email != '' ">
+			and email = #{email,jdbcType=VARCHAR}
+		</if>
+		<if test="departmentid != null and departmentid != '' ">
+			and departmentid = #{departmentid,jdbcType=VARCHAR}
+		</if>
+		<if test="groupid != null and groupid != '' ">
+			and groupid = #{groupid,jdbcType=VARCHAR}
+		</if>
+		<if test="empInnerCoding != null">
+			and emp_inner_coding = #{empInnerCoding,jdbcType=VARCHAR}
+		</if>
+		<if test="empNo != null">
+			and emp_no = #{empNo,jdbcType=VARCHAR}
+		</if>
+	</select>
+
+	<select id="getUsersByRoleidAndDepid" resultMap="BaseResultMap"
+		parameterType="org.FDFBpersistence.pojos.FDFBUser">
+		select
+		<include refid="Base_Column_List" />
+		from fdfb_user
+		where departmentid = #{1}
+		and seqno in
+		(select userid as seqno from fdfb_user_role a where a.roleid = #{0} )
+	</select>
+
+
+	<select id="getUserCountByUsername" resultType="java.lang.Integer"
+		parameterType="org.FDFBpersistence.pojos.FDFBUser">
+		select count(1)
+		from fdfb_user
+		where username = #{0}
+	</select>
+	
+	<select id="getUserByUsername" resultMap="BaseResultMap"
+		parameterType="org.FDFBpersistence.pojos.FDFBUser">
+		select
+		<include refid="Base_Column_List" />
+		from fdfb_user
+		where username = #{0}
+	</select>
+	
+	
+ 	<select id="getUserOrgParentInfo" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT org_name,org_inner_coding as porgId,new_org_no as orgcode from aml_org c
+where c.org_inner_coding in (
+select b.p_org_inncoding  from  aml_org b where b.org_inner_coding=#{org_inner_coding,jdbcType=VARCHAR} and b.`status`='1'
+)
+	</select> 
+	
+	 <select id="getFirstOrgInfo" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+	 	select b.org_name as orgName,b.new_org_no orgCode,b.org_inner_coding as orgId from  aml_org b where b.p_org_inncoding=#{org_inner_coding,jdbcType=INTEGER} and b.`status`='1'
+	</select> 
+	
+	<select id="getOrgInfo" parameterType="java.util.HashMap" resultType="java.util.HashMap">	
+	select b.org_name as orgName,b.new_org_no orgCode,b.org_inner_coding as orgId from  aml_org b where b.org_inner_coding=#{org_inner_coding,jdbcType=INTEGER} and b.`status`='1'
+	</select> 
+	
+	<select id="getOrganInfo" resultType="java.util.HashMap" parameterType="java.lang.String">
+		select o.org_name,o.new_org_no,o.org_inner_coding
+		from fdfb_user user,aml_emp_post e,aml_post_unit p,aml_unit unit,aml_org o
+		where user.emp_inner_coding = e.emp_inner_coding 
+		and e.post_inner_coding = p.post_inner_coding
+		and p.unit_inner_coding = unit.unit_inner_coding
+		and unit.org_id = o.org_inner_coding
+		and e.status = '1'
+		and e.main_post = '1'
+		and p.status = '1'
+		and unit.status = '1'
+		and o.status = '1'
+		and user.seqno = #{seqno,jdbcType=VARCHAR}
+	</select>
+	
+	<select id="getAllUserWithOrgByPage" resultMap="BaseResultMap" parameterType="org.FDFBpersistence.pojos.FDFBUser">
+		select user.*,org_name,new_org_no
+		from fdfb_user user,aml_emp_post e,aml_post_unit p,aml_unit unit,aml_org o
+		where user.emp_inner_coding = e.emp_inner_coding 
+		and e.post_inner_coding = p.post_inner_coding
+		and p.unit_inner_coding = unit.unit_inner_coding
+		and unit.org_id = o.org_inner_coding
+		and e.status = '1'
+		and e.main_post = '1'
+		and p.status = '1'
+		and unit.status = '1'
+		and o.status = '1'
+		<if test="id != null and id != '' ">
+			and id = #{id,jdbcType=VARCHAR}
+		</if>
+		<if test="name != null and name != '' ">
+			and name = #{name,jdbcType=VARCHAR}
+		</if>
+		<if test="username != null and username != '' ">
+			and username = #{username,jdbcType=VARCHAR}
+		</if>
+		<if test="xb != null and xb != '' ">
+			and xb = #{xb,jdbcType=VARCHAR}
+		</if>
+		<if test="email != null and email != '' ">
+			and email = #{email,jdbcType=VARCHAR}
+		</if>
+		<if test="departmentid != null and departmentid != '' ">
+			and departmentid = #{departmentid,jdbcType=VARCHAR}
+		</if>
+		<if test="groupid != null and groupid != '' ">
+			and groupid = #{groupid,jdbcType=VARCHAR}
+		</if>
+		<if test="empInnerCoding != null">
+			and emp_inner_coding = #{empInnerCoding,jdbcType=VARCHAR}
+		</if>
+		<if test="empNo != null">
+			and emp_no = #{empNo,jdbcType=VARCHAR}
+		</if>
+		<if test="newOrgNo != null">
+			and new_org_no = #{newOrgNo,jdbcType=VARCHAR}
+		</if>
+	</select>
+	
+	<select id="getAllUserWithCount" resultType="java.lang.Integer" parameterType="org.FDFBpersistence.pojos.FDFBUser">
+		select count(*)
+		from fdfb_user user,aml_emp_post e,aml_post_unit p,aml_unit unit,aml_org o
+		where user.emp_inner_coding = e.emp_inner_coding 
+		and e.post_inner_coding = p.post_inner_coding
+		and p.unit_inner_coding = unit.unit_inner_coding
+		and unit.org_id = o.org_inner_coding
+		and e.status = '1'
+		and e.main_post = '1'
+		and p.status = '1'
+		and unit.status = '1'
+		and o.status = '1'
+		<if test="id != null and id != '' ">
+			and id = #{id,jdbcType=VARCHAR}
+		</if>
+		<if test="name != null and name != '' ">
+			and name = #{name,jdbcType=VARCHAR}
+		</if>
+		<if test="username != null and username != '' ">
+			and username = #{username,jdbcType=VARCHAR}
+		</if>
+		<if test="xb != null and xb != '' ">
+			and xb = #{xb,jdbcType=VARCHAR}
+		</if>
+		<if test="email != null and email != '' ">
+			and email = #{email,jdbcType=VARCHAR}
+		</if>
+		<if test="departmentid != null and departmentid != '' ">
+			and departmentid = #{departmentid,jdbcType=VARCHAR}
+		</if>
+		<if test="groupid != null and groupid != '' ">
+			and groupid = #{groupid,jdbcType=VARCHAR}
+		</if>
+		<if test="empInnerCoding != null">
+			and emp_inner_coding = #{empInnerCoding,jdbcType=VARCHAR}
+		</if>
+		<if test="empNo != null">
+			and emp_no = #{empNo,jdbcType=VARCHAR}
+		</if>
+		<if test="newOrgNo != null">
+			and new_org_no = #{newOrgNo,jdbcType=VARCHAR}
+		</if>
+	</select>
+	
+	
+</mapper>

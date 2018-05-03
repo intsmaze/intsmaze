@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.FDFBpersistence.mapper.PunishMapper" >
+  <resultMap id="BaseResultMap" type="org.FDFBpersistence.pojos.Punish" >
+    <id column="seqno" property="seqno" jdbcType="VARCHAR" />
+    <result column="insert_time" property="insertTime" jdbcType="TIMESTAMP" />
+    <result column="punish_time" property="punishTime" jdbcType="TIMESTAMP" />
+    <result column="punish_organ" property="punishOrgan" jdbcType="VARCHAR" />
+    <result column="organ_id" property="organId" jdbcType="VARCHAR" />
+    <result column="punish_reason" property="punishReason" jdbcType="VARCHAR" />
+    <result column="punish_content" property="punishContent" jdbcType="VARCHAR" />
+    <result column="punish_way" property="punishWay" jdbcType="VARCHAR" />
+    <result column="punish_measure" property="punishMeasure" jdbcType="VARCHAR" />
+    <result column="upload" property="upload" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="path" property="path" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    seqno, insert_time, punish_time, punish_organ, organ_id, punish_reason, punish_content, 
+    punish_way, punish_measure, upload, remark, path
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_punish
+    where seqno = #{seqno,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="selectAllByPage" resultMap="BaseResultMap"
+		parameterType="org.FDFBpersistence.pojos.Punish">
+		select
+		<include refid="Base_Column_List" />
+		from t_punish
+		where 1=1
+	    <if test="punishOrgan != null" >
+	        and punish_organ like '%${punishOrgan}%'
+        </if>
+        <if test="startInsertTime != null" >
+      		and insert_time >= #{startInsertTime,jdbcType=TIMESTAMP}
+      	</if>
+      	<if test="endInsertTime != null" >
+      		and insert_time &lt;= #{endInsertTime,jdbcType=TIMESTAMP}
+      	</if>
+        <if test="startPunishTime != null" >
+      		and punish_time >= #{startPunishTime,jdbcType=TIMESTAMP}
+      	</if>
+      	<if test="endPunishTime != null" >
+      		and punish_time &lt;= #{endPunishTime,jdbcType=TIMESTAMP}
+      	</if>
+        <if test="organId != null" >
+            and organ_id like '%${organId}%'
+        </if>
+	</select>
+  <select id="getAllUsersCount" resultType="java.lang.Integer"
+		parameterType="org.FDFBpersistence.pojos.Punish">
+		select count(1)
+		from t_punish
+		where 1=1
+	    <if test="punishOrgan != null" >
+            and punish_organ like '%${punishOrgan}%'
+        </if>
+        <if test="startInsertTime != null" >
+      		and insert_time >= #{startInsertTime,jdbcType=TIMESTAMP}
+      	</if>
+      	<if test="endInsertTime != null" >
+      		and insert_time &lt;= #{endInsertTime,jdbcType=TIMESTAMP}
+      	</if>
+        <if test="startPunishTime != null" >
+      		and punish_time >= #{startPunishTime,jdbcType=TIMESTAMP}
+      	</if>
+      	<if test="endPunishTime != null" >
+      		and punish_time &lt;= #{endPunishTime,jdbcType=TIMESTAMP}
+      	</if>
+        <if test="organId != null" >
+            and organ_id like '%${organId}%'
+        </if>        
+	</select>
+	
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_punish
+    where seqno = #{seqno,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="org.FDFBpersistence.pojos.Punish" >
+    insert into t_punish (seqno, insert_time, punish_time, 
+      punish_organ, organ_id, punish_reason, 
+      punish_content, punish_way, punish_measure, 
+      upload, remark, path
+      )
+    values (#{seqno,jdbcType=VARCHAR}, #{insertTime,jdbcType=TIMESTAMP}, #{punishTime,jdbcType=TIMESTAMP}, 
+      #{punishOrgan,jdbcType=VARCHAR}, #{organId,jdbcType=VARCHAR}, #{punishReason,jdbcType=VARCHAR}, 
+      #{punishContent,jdbcType=VARCHAR}, #{punishWay,jdbcType=VARCHAR}, #{punishMeasure,jdbcType=VARCHAR}, 
+      #{upload,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{path,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.FDFBpersistence.pojos.Punish" >
+    insert into t_punish
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="seqno != null" >
+        seqno,
+      </if>
+      <if test="insertTime != null" >
+        insert_time,
+      </if>
+      <if test="punishTime != null" >
+        punish_time,
+      </if>
+      <if test="punishOrgan != null" >
+        punish_organ,
+      </if>
+      <if test="organId != null" >
+        organ_id,
+      </if>
+      <if test="punishReason != null" >
+        punish_reason,
+      </if>
+      <if test="punishContent != null" >
+        punish_content,
+      </if>
+      <if test="punishWay != null" >
+        punish_way,
+      </if>
+      <if test="punishMeasure != null" >
+        punish_measure,
+      </if>
+      <if test="upload != null" >
+        upload,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="path != null" >
+        path,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="seqno != null" >
+        #{seqno,jdbcType=VARCHAR},
+      </if>
+      <if test="insertTime != null" >
+        #{insertTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="punishTime != null" >
+        #{punishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="punishOrgan != null" >
+        #{punishOrgan,jdbcType=VARCHAR},
+      </if>
+      <if test="organId != null" >
+        #{organId,jdbcType=VARCHAR},
+      </if>
+      <if test="punishReason != null" >
+        #{punishReason,jdbcType=VARCHAR},
+      </if>
+      <if test="punishContent != null" >
+        #{punishContent,jdbcType=VARCHAR},
+      </if>
+      <if test="punishWay != null" >
+        #{punishWay,jdbcType=VARCHAR},
+      </if>
+      <if test="punishMeasure != null" >
+        #{punishMeasure,jdbcType=VARCHAR},
+      </if>
+      <if test="upload != null" >
+        #{upload,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="path != null" >
+        #{path,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.FDFBpersistence.pojos.Punish" >
+    update t_punish
+    <set >
+      <if test="insertTime != null" >
+        insert_time = #{insertTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="punishTime != null" >
+        punish_time = #{punishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="punishOrgan != null" >
+        punish_organ = #{punishOrgan,jdbcType=VARCHAR},
+      </if>
+      <if test="organId != null" >
+        organ_id = #{organId,jdbcType=VARCHAR},
+      </if>
+      <if test="punishReason != null" >
+        punish_reason = #{punishReason,jdbcType=VARCHAR},
+      </if>
+      <if test="punishContent != null" >
+        punish_content = #{punishContent,jdbcType=VARCHAR},
+      </if>
+      <if test="punishWay != null" >
+        punish_way = #{punishWay,jdbcType=VARCHAR},
+      </if>
+      <if test="punishMeasure != null" >
+        punish_measure = #{punishMeasure,jdbcType=VARCHAR},
+      </if>
+      <if test="upload != null" >
+        upload = #{upload,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="path != null" >
+        path = #{path,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where seqno = #{seqno,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.FDFBpersistence.pojos.Punish" >
+    update t_punish
+    set insert_time = #{insertTime,jdbcType=TIMESTAMP},
+      punish_time = #{punishTime,jdbcType=TIMESTAMP},
+      punish_organ = #{punishOrgan,jdbcType=VARCHAR},
+      organ_id = #{organId,jdbcType=VARCHAR},
+      punish_reason = #{punishReason,jdbcType=VARCHAR},
+      punish_content = #{punishContent,jdbcType=VARCHAR},
+      punish_way = #{punishWay,jdbcType=VARCHAR},
+      punish_measure = #{punishMeasure,jdbcType=VARCHAR},
+      upload = #{upload,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      path = #{path,jdbcType=VARCHAR}
+    where seqno = #{seqno,jdbcType=VARCHAR}
+  </update>
+</mapper>

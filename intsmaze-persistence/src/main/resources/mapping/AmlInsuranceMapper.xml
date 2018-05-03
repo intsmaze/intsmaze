@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.FDFBpersistence.mapper.AmlInsuranceMapper">
+	<resultMap id="BaseResultMap" type="org.FDFBpersistence.pojos.AmlInsurance">
+		<id column="seqno" property="seqno" jdbcType="BIGINT" />
+		<result column="lv2_div_name" property="lv2DivName" jdbcType="VARCHAR" />
+		<result column="lv3_div_name" property="lv3DivName" jdbcType="VARCHAR" />
+		<result column="quarter" property="quarter" jdbcType="VARCHAR" />
+		<result column="counts" property="counts" jdbcType="VARCHAR" />
+		<result column="id" property="id" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		seqno, lv2_div_name, lv3_div_name, quarter, counts, id
+	</sql>
+
+	<select id="selectAmlCounts" resultType="java.lang.Integer"
+		parameterType="java.lang.String">
+		select ifnull(sum(counts),0)
+		from t_aml_insurance
+		where id = #{id,jdbcType=VARCHAR}
+		and lv2_div_name like '%${lv2DivName}%'
+		and lv3_div_name like '%${lv3DivName}%'
+		<if test="quarter != null">
+			and quarter = #{quarter,jdbcType=VARCHAR}
+		</if>
+		and addtime = #{addTime,jdbcType=INTEGER}
+	</select>
+
+	<select id="selectAmlSum" resultType="java.lang.Integer"
+		parameterType="java.lang.String">
+		select ifnull(sum(counts),0)
+		from t_aml_insurance
+		where id = #{id,jdbcType=VARCHAR}
+		and lv2_div_name like '%${lv2DivName}%'
+		and lv3_div_name like '%${lv3DivName}%'
+		<if test="quarter != null">
+			and quarter in
+			 <foreach collection="status" index="index" item="item" open="(" separator="," close=")">  
+        	#{item}  
+    		</foreach>  
+		</if>
+		and addtime = #{addTime,jdbcType=INTEGER}
+	</select>
+
+</mapper>

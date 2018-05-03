@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.FDFBpersistence.mapper.SusReportLogMapper" >
+  <resultMap id="BaseResultMap" type="org.FDFBpersistence.pojos.SusReportLog" >
+    <id column="seqno" property="seqno" jdbcType="VARCHAR" />
+    <result column="REPORT_TYPE" property="reportType" jdbcType="VARCHAR" />
+    <result column="TRADE_FEATURE" property="tradeFeature" jdbcType="VARCHAR" />
+    <result column="FILE_TYPE" property="fileType" jdbcType="VARCHAR" />
+    <result column="FILE_NAME" property="fileName" jdbcType="VARCHAR" />
+    <result column="GENERATE_TIME" property="generateTime" jdbcType="VARCHAR" />
+    <result column="REPORT_TIME" property="reportTime" jdbcType="VARCHAR" />
+    <result column="ZIP_NAME" property="zipName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    seqno, REPORT_TYPE, TRADE_FEATURE, FILE_TYPE, FILE_NAME, GENERATE_TIME, REPORT_TIME, 
+    ZIP_NAME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from sus_report_log
+    where seqno = #{seqno,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAllByPage" resultMap="BaseResultMap" parameterType="org.FDFBpersistence.pojos.SusReportLog" >
+    select 
+    <include refid="Base_Column_List" />
+    from sus_report_log
+     where 1=1
+      <if test="reportType != null" >
+       AND REPORT_TYPE = #{reportType,jdbcType=VARCHAR}
+      </if>
+      <if test="tradeFeature != null" >
+       AND TRADE_FEATURE = #{tradeFeature,jdbcType=VARCHAR}
+      </if>
+      <if test="fileType != null" >
+       AND FILE_TYPE = #{fileType,jdbcType=VARCHAR}
+      </if>
+      <if test="fileName != null" >
+       AND FILE_NAME = #{fileName,jdbcType=VARCHAR}
+      </if>
+      <if test="generateTime != null" >
+       AND GENERATE_TIME = #{generateTime,jdbcType=VARCHAR}
+      </if>
+      <if test="reportTime != null" >
+       AND REPORT_TIME = #{reportTime,jdbcType=VARCHAR}
+      </if>   
+      <if test="reportTime == null" >
+       AND REPORT_TIME is null
+      </if>      
+      <if test="zipName != null" >
+       AND ZIP_NAME = #{zipName,jdbcType=VARCHAR}
+      </if>
+      <if test="zipName == null" >
+       AND ZIP_NAME is null 
+      </if>
+  </select>
+  <select id="getSelectiveCount" resultType="java.lang.Integer" parameterType="org.FDFBpersistence.pojos.SusReportLog" >
+    select 
+    count(1)
+    from sus_report_log
+    where 1=1
+      <if test="reportType != null" >
+       AND REPORT_TYPE = #{reportType,jdbcType=VARCHAR}
+      </if>
+      <if test="tradeFeature != null" >
+       AND TRADE_FEATURE = #{tradeFeature,jdbcType=VARCHAR}
+      </if>
+      <if test="fileType != null" >
+       AND FILE_TYPE = #{fileType,jdbcType=VARCHAR}
+      </if>
+      <if test="fileName != null" >
+       AND FILE_NAME = #{fileName,jdbcType=VARCHAR}
+      </if>
+      <if test="generateTime != null" >
+       AND GENERATE_TIME = #{generateTime,jdbcType=VARCHAR}
+      </if>
+      <if test="reportTime != null" >
+       AND REPORT_TIME = #{reportTime,jdbcType=VARCHAR}
+      </if>   
+      <if test="reportTime == null" >
+       AND REPORT_TIME is null
+      </if>      
+      <if test="zipName != null" >
+       AND ZIP_NAME = #{zipName,jdbcType=VARCHAR}
+      </if>
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from sus_report_log
+    where seqno = #{seqno,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="org.FDFBpersistence.pojos.SusReportLog" >
+    insert into sus_report_log (seqno, REPORT_TYPE, TRADE_FEATURE, 
+      FILE_TYPE, FILE_NAME, GENERATE_TIME, 
+      REPORT_TIME, ZIP_NAME)
+    values (#{seqno,jdbcType=VARCHAR}, #{reportType,jdbcType=VARCHAR}, #{tradeFeature,jdbcType=VARCHAR}, 
+      #{fileType,jdbcType=VARCHAR}, #{fileName,jdbcType=VARCHAR}, #{generateTime,jdbcType=VARCHAR}, 
+      #{reportTime,jdbcType=VARCHAR}, #{zipName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.FDFBpersistence.pojos.SusReportLog" >
+    insert into sus_report_log
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="seqno != null" >
+        seqno,
+      </if>
+      <if test="reportType != null" >
+        REPORT_TYPE,
+      </if>
+      <if test="tradeFeature != null" >
+        TRADE_FEATURE,
+      </if>
+      <if test="fileType != null" >
+        FILE_TYPE,
+      </if>
+      <if test="fileName != null" >
+        FILE_NAME,
+      </if>
+      <if test="generateTime != null" >
+        GENERATE_TIME,
+      </if>
+      <if test="reportTime != null" >
+        REPORT_TIME,
+      </if>
+      <if test="zipName != null" >
+        ZIP_NAME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="seqno != null" >
+        #{seqno,jdbcType=VARCHAR},
+      </if>
+      <if test="reportType != null" >
+        #{reportType,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeFeature != null" >
+        #{tradeFeature,jdbcType=VARCHAR},
+      </if>
+      <if test="fileType != null" >
+        #{fileType,jdbcType=VARCHAR},
+      </if>
+      <if test="fileName != null" >
+        #{fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="generateTime != null" >
+        #{generateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="reportTime != null" >
+        #{reportTime,jdbcType=VARCHAR},
+      </if>
+      <if test="zipName != null" >
+        #{zipName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.FDFBpersistence.pojos.SusReportLog" >
+    update sus_report_log
+    <set >
+      <if test="reportType != null" >
+        REPORT_TYPE = #{reportType,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeFeature != null" >
+        TRADE_FEATURE = #{tradeFeature,jdbcType=VARCHAR},
+      </if>
+      <if test="fileType != null" >
+        FILE_TYPE = #{fileType,jdbcType=VARCHAR},
+      </if>
+      <if test="fileName != null" >
+        FILE_NAME = #{fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="generateTime != null" >
+        GENERATE_TIME = #{generateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="reportTime != null" >
+        REPORT_TIME = #{reportTime,jdbcType=VARCHAR},
+      </if>
+      <if test="zipName != null" >
+        ZIP_NAME = #{zipName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where seqno = #{seqno,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.FDFBpersistence.pojos.SusReportLog" >
+    update sus_report_log
+    set REPORT_TYPE = #{reportType,jdbcType=VARCHAR},
+      TRADE_FEATURE = #{tradeFeature,jdbcType=VARCHAR},
+      FILE_TYPE = #{fileType,jdbcType=VARCHAR},
+      FILE_NAME = #{fileName,jdbcType=VARCHAR},
+      GENERATE_TIME = #{generateTime,jdbcType=VARCHAR},
+      REPORT_TIME = #{reportTime,jdbcType=VARCHAR},
+      ZIP_NAME = #{zipName,jdbcType=VARCHAR}
+    where seqno = #{seqno,jdbcType=VARCHAR}
+  </update>
+</mapper>

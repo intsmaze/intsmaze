@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.FDFBpersistence.mapper.UnitMapper" >
+  <resultMap id="BaseResultMap" type="org.FDFBpersistence.pojos.Unit" >
+    <id column="SEQNO" property="seqno" jdbcType="VARCHAR" />
+    <result column="VERSION" property="version" jdbcType="INTEGER" />
+    <result column="UNIT_INNER_CODING" property="unitInnerCoding" jdbcType="VARCHAR" />
+    <result column="ORG_ID" property="orgId" jdbcType="VARCHAR" />
+    <result column="STATUS" property="status" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    SEQNO, VERSION, UNIT_INNER_CODING, ORG_ID, STATUS
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from aml_unit
+    where SEQNO = #{seqno,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from aml_unit
+    where SEQNO = #{seqno,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="org.FDFBpersistence.pojos.Unit" >
+    insert into aml_unit (SEQNO, VERSION, UNIT_INNER_CODING, 
+      ORG_ID, STATUS)
+    values (#{seqno,jdbcType=VARCHAR}, #{version,jdbcType=INTEGER}, #{unitInnerCoding,jdbcType=VARCHAR}, 
+      #{orgId,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.FDFBpersistence.pojos.Unit" >
+    insert into aml_unit
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="seqno != null" >
+        SEQNO,
+      </if>
+      <if test="version != null" >
+        VERSION,
+      </if>
+      <if test="unitInnerCoding != null" >
+        UNIT_INNER_CODING,
+      </if>
+      <if test="orgId != null" >
+        ORG_ID,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="seqno != null" >
+        #{seqno,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null" >
+        #{version,jdbcType=INTEGER},
+      </if>
+      <if test="unitInnerCoding != null" >
+        #{unitInnerCoding,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.FDFBpersistence.pojos.Unit" >
+    update aml_unit
+    <set >
+      <if test="version != null" >
+        VERSION = #{version,jdbcType=INTEGER},
+      </if>
+      <if test="unitInnerCoding != null" >
+        UNIT_INNER_CODING = #{unitInnerCoding,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null" >
+        ORG_ID = #{orgId,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where SEQNO = #{seqno,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.FDFBpersistence.pojos.Unit" >
+    update aml_unit
+    set VERSION = #{version,jdbcType=INTEGER},
+      UNIT_INNER_CODING = #{unitInnerCoding,jdbcType=VARCHAR},
+      ORG_ID = #{orgId,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=VARCHAR}
+    where SEQNO = #{seqno,jdbcType=VARCHAR}
+  </update>
+  <select id="selectAllByPage" resultMap="BaseResultMap"
+		parameterType="org.FDFBpersistence.pojos.Unit">
+	  select
+	  <include refid="Base_Column_List" />
+	  from aml_unit
+	  where 1=1
+	  <if test="version != null" >
+        and VERSION = #{version,jdbcType=INTEGER}
+      </if>
+      <if test="unitInnerCoding != null" >
+        and UNIT_INNER_CODING = #{unitInnerCoding,jdbcType=VARCHAR}
+      </if>
+      <if test="orgId != null" >
+        and ORG_ID = #{orgId,jdbcType=VARCHAR}
+      </if>
+      <if test="status != null" >
+        and STATUS = #{status,jdbcType=VARCHAR}
+      </if>
+  </select>
+  
+  <select id="selectAllCount" resultType="java.lang.Integer"
+		parameterType="org.FDFBpersistence.pojos.Unit">
+	  select
+	  <include refid="Base_Column_List" />
+	  from aml_unit
+	  where 1=1
+	  <if test="version != null" >
+        and VERSION = #{version,jdbcType=INTEGER}
+      </if>
+      <if test="unitInnerCoding != null" >
+        and UNIT_INNER_CODING = #{unitInnerCoding,jdbcType=VARCHAR}
+      </if>
+      <if test="orgId != null" >
+        and ORG_ID = #{orgId,jdbcType=VARCHAR}
+      </if>
+      <if test="status != null" >
+        and STATUS = #{status,jdbcType=VARCHAR}
+      </if>
+  </select>
+  
+  
+</mapper>

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.FDFBpersistence.mapper.FDFBUserRoleMapper">
+	<resultMap id="BaseResultMap" type="org.FDFBpersistence.pojos.FDFBUserRole">
+		<id column="seqno" property="seqno" jdbcType="VARCHAR" />
+		<result column="userid" property="userid" jdbcType="VARCHAR" />
+		<result column="roleid" property="roleid" jdbcType="VARCHAR" />
+		<result column="createon" property="createon" jdbcType="TIMESTAMP" />
+		<result column="createby" property="createby" jdbcType="VARCHAR" />
+		<result column="modifyon" property="modifyon" jdbcType="TIMESTAMP" />
+		<result column="modifyby" property="modifyby" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		seqno, userid, roleid, createon, createby, modifyon, modifyby
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from fdfb_user_role
+		where seqno = #{seqno,jdbcType=VARCHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from fdfb_user_role
+		where seqno = #{seqno,jdbcType=VARCHAR}
+	</delete>
+	<insert id="insert" parameterType="org.FDFBpersistence.pojos.FDFBUserRole">
+		insert into fdfb_user_role (seqno, userid, roleid,
+		createon, createby, modifyon,
+		modifyby)
+		values (#{seqno,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR},
+		#{roleid,jdbcType=VARCHAR},
+		#{createon,jdbcType=TIMESTAMP}, #{createby,jdbcType=VARCHAR}, #{modifyon,jdbcType=TIMESTAMP},
+		#{modifyby,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="org.FDFBpersistence.pojos.FDFBUserRole">
+		insert into fdfb_user_role
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="seqno != null">
+				seqno,
+			</if>
+			<if test="userid != null">
+				userid,
+			</if>
+			<if test="roleid != null">
+				roleid,
+			</if>
+			<if test="createon != null">
+				createon,
+			</if>
+			<if test="createby != null">
+				createby,
+			</if>
+			<if test="modifyon != null">
+				modifyon,
+			</if>
+			<if test="modifyby != null">
+				modifyby,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="seqno != null">
+				#{seqno,jdbcType=VARCHAR},
+			</if>
+			<if test="userid != null">
+				#{userid,jdbcType=VARCHAR},
+			</if>
+			<if test="roleid != null">
+				#{roleid,jdbcType=VARCHAR},
+			</if>
+			<if test="createon != null">
+				#{createon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createby != null">
+				#{createby,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyon != null">
+				#{modifyon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modifyby != null">
+				#{modifyby,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="org.FDFBpersistence.pojos.FDFBUserRole">
+		update fdfb_user_role
+		<set>
+			<if test="userid != null">
+				userid = #{userid,jdbcType=VARCHAR},
+			</if>
+			<if test="roleid != null">
+				roleid = #{roleid,jdbcType=VARCHAR},
+			</if>
+			<if test="createon != null">
+				createon = #{createon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createby != null">
+				createby = #{createby,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyon != null">
+				modifyon = #{modifyon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modifyby != null">
+				modifyby = #{modifyby,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where seqno = #{seqno,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="org.FDFBpersistence.pojos.FDFBUserRole">
+		update fdfb_user_role
+		set userid = #{userid,jdbcType=VARCHAR},
+		roleid = #{roleid,jdbcType=VARCHAR},
+		createon = #{createon,jdbcType=TIMESTAMP},
+		createby = #{createby,jdbcType=VARCHAR},
+		modifyon = #{modifyon,jdbcType=TIMESTAMP},
+		modifyby = #{modifyby,jdbcType=VARCHAR}
+		where seqno = #{seqno,jdbcType=VARCHAR}
+	</update>
+	
+	<select id="getRolesByUserid" resultMap="BaseResultMap"
+		parameterType="org.FDFBpersistence.pojos.FDFBUserRole">
+		select
+		<include refid="Base_Column_List" />
+		from fdfb_user_role
+		where userid = #{userid,jdbcType=VARCHAR}
+	</select>
+	
+	<delete id="deleteUserRolesByUserid" parameterType="java.lang.String">
+		delete from fdfb_user_role
+		where userid = #{userid,jdbcType=VARCHAR}
+	</delete>
+	
+	<select id="getCountByUseridAndRoleid" resultType="java.lang.Integer"
+		parameterType="org.FDFBpersistence.pojos.FDFBUser">
+		select count(1)
+		from fdfb_user_role
+		where userid = #{0} and roleid = #{1}
+	</select>
+	
+</mapper>

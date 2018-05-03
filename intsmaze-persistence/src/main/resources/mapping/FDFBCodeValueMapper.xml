@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.FDFBpersistence.mapper.FDFBCodeValueMapper">
+
+	<cache type="org.mybatis.caches.ehcache.LoggingEhcache" > <!-- 输出日志 -->
+		<property name="timeToIdleSeconds" value="3600"/><!--1 hour-->  
+	    <property name="timeToLiveSeconds" value="3600"/><!--1 hour-->  
+	    <property name="maxEntriesLocalHeap" value="2000"/>  
+	    <property name="maxEntriesLocalDisk" value="10000"/>  
+	    <property name="memoryStoreEvictionPolicy" value="LRU"/> 
+	</cache>
+    <!-- 	<cache type="org.mybatis.caches.ehcache.EhcacheCache"/>  不输出日志-->
+	
+	<resultMap id="BaseResultMap" type="org.FDFBpersistence.pojos.FDFBCodeValue">
+		<id column="seqno" jdbcType="VARCHAR" property="seqno" />
+		<result column="cKey" jdbcType="VARCHAR" property="cKey" />
+		<result column="cValue" jdbcType="VARCHAR" property="cValue" />
+		<result column="cDesc" jdbcType="VARCHAR" property="cDesc" />
+		<result column="processstatus" jdbcType="VARCHAR" property="processstatus" />
+		<result column="createon" jdbcType="TIMESTAMP" property="createon" />
+		<result column="modifyon" jdbcType="TIMESTAMP" property="modifyon" />
+		<result column="createby" jdbcType="VARCHAR" property="createby" />
+		<result column="modifyby" jdbcType="VARCHAR" property="modifyby" />
+		<result column="cCode" jdbcType="VARCHAR" property="cCode" />
+		<result column="parentid" jdbcType="VARCHAR" property="parentid" />
+		<result column="isleaf" jdbcType="VARCHAR" property="isleaf" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		seqno, cKey, cValue, cDesc, processstatus, createon, modifyon, createby,
+		modifyby,
+		cCode, parentid, isleaf
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.String"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from fdfb_codevalue
+		where seqno = #{seqno,jdbcType=VARCHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from fdfb_codevalue
+		where seqno = #{seqno,jdbcType=VARCHAR}
+	</delete>
+	<insert id="insert" parameterType="org.FDFBpersistence.pojos.FDFBCodeValue">
+		insert into fdfb_codevalue (seqno, cKey, cValue,
+		cDesc, processstatus, createon,
+		modifyon, createby, modifyby,
+		cCode, parentid, isleaf)
+		values (#{seqno,jdbcType=VARCHAR}, #{cKey,jdbcType=VARCHAR},
+		#{cValue,jdbcType=VARCHAR},
+		#{cDesc,jdbcType=VARCHAR}, #{processstatus,jdbcType=VARCHAR}, #{createon,jdbcType=TIMESTAMP},
+		#{modifyon,jdbcType=TIMESTAMP}, #{createby,jdbcType=VARCHAR},
+		#{modifyby,jdbcType=VARCHAR},
+		#{cCode,jdbcType=VARCHAR},#{parentid,jdbcType=VARCHAR},#{isleaf,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="org.FDFBpersistence.pojos.FDFBCodeValue">
+		insert into fdfb_codevalue
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="seqno != null">
+				seqno,
+			</if>
+			<if test="cKey != null">
+				cKey,
+			</if>
+			<if test="cValue != null">
+				cValue,
+			</if>
+			<if test="cDesc != null">
+				cDesc,
+			</if>
+			<if test="processstatus != null">
+				processstatus,
+			</if>
+			<if test="createon != null">
+				createon,
+			</if>
+			<if test="modifyon != null">
+				modifyon,
+			</if>
+			<if test="createby != null">
+				createby,
+			</if>
+			<if test="modifyby != null">
+				modifyby,
+			</if>
+			<if test="cCode != null">
+				cCode,
+			</if>
+			<if test="parentid != null">
+				parentid,
+			</if>
+			<if test="isleaf != null">
+				isleaf,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="seqno != null">
+				#{seqno,jdbcType=VARCHAR},
+			</if>
+			<if test="cKey != null">
+				#{cKey,jdbcType=VARCHAR},
+			</if>
+			<if test="cValue != null">
+				#{cValue,jdbcType=VARCHAR},
+			</if>
+			<if test="cDesc != null">
+				#{cDesc,jdbcType=VARCHAR},
+			</if>
+			<if test="processstatus != null">
+				#{processstatus,jdbcType=VARCHAR},
+			</if>
+			<if test="createon != null">
+				#{createon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modifyon != null">
+				#{modifyon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createby != null">
+				#{createby,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyby != null">
+				#{modifyby,jdbcType=VARCHAR},
+			</if>
+			<if test="cCode != null">
+				#{cCode,jdbcType=VARCHAR},
+			</if>
+			<if test="parentid != null">
+				#{parentid,jdbcType=VARCHAR},
+			</if>
+			<if test="isleaf != null">
+				#{isleaf,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="org.FDFBpersistence.pojos.FDFBCodeValue">
+		update fdfb_codevalue
+		<set>
+			<if test="cKey != null">
+				cKey = #{cKey,jdbcType=VARCHAR},
+			</if>
+			<if test="cValue != null">
+				cValue = #{cValue,jdbcType=VARCHAR},
+			</if>
+			<if test="cDesc != null">
+				cDesc = #{cDesc,jdbcType=VARCHAR},
+			</if>
+			<if test="processstatus != null">
+				processstatus = #{processstatus,jdbcType=VARCHAR},
+			</if>
+			<if test="createon != null">
+				createon = #{createon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modifyon != null">
+				modifyon = #{newMofifyon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createby != null">
+				createby = #{createby,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyby != null">
+				modifyby = #{modifyby,jdbcType=VARCHAR},
+			</if>
+			<if test="cCode != null">
+				cCode = #{cCode,jdbcType=VARCHAR},
+			</if>
+			<if test="parentid != null">
+				parentid = #{parentid,jdbcType=VARCHAR},
+			</if>
+			<if test="isleaf != null">
+				isleaf = #{isleaf,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where seqno = #{seqno,jdbcType=VARCHAR}
+		and modifyon = #{modifyon,jdbcType=TIMESTAMP}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="org.FDFBpersistence.pojos.FDFBCodeValue">
+		update fdfb_codevalue
+		set cKey = #{cKey,jdbcType=VARCHAR},
+		cValue = #{cValue,jdbcType=VARCHAR},
+		cDesc = #{cDesc,jdbcType=VARCHAR},
+		processstatus = #{processstatus,jdbcType=VARCHAR},
+		createon = #{createon,jdbcType=TIMESTAMP},
+		modifyon = #{newMofifyon,jdbcType=TIMESTAMP},
+		createby = #{createby,jdbcType=VARCHAR},
+		modifyby = #{modifyby,jdbcType=VARCHAR},
+		cCode = #{cCode,jdbcType=VARCHAR},
+		parentid = #{parentid,jdbcType=VARCHAR},
+		isleaf = #{isleaf,jdbcType=VARCHAR}
+		where seqno = #{seqno,jdbcType=VARCHAR}
+	</update>
+
+	<select id="getValueByKeyAndCode" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from fdfb_codevalue
+		where cKey = #{0} and cCode =	#{1}
+	</select>
+	
+	<select id="getCodeByKeyAndValue" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from fdfb_codevalue
+		where cKey = #{0} and cValue =	#{1}
+	</select>
+
+	<select id="getAllCodeValue" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from fdfb_codevalue
+	</select>
+
+	<select id="getAllCodeValueByKey" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from fdfb_codevalue
+		where cKey = #{key,jdbcType=VARCHAR}
+		order by cCode
+	</select>
+	
+	<select id="getCodevalueByKyeAndCode" parameterType="java.lang.String"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from fdfb_codevalue
+		where cKey = #{0} and cCode = #{1}
+	</select>
+	
+	<select id="getCodeValuesByParentid" parameterType="java.lang.String"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from fdfb_codevalue
+		where parentid = #{0}
+	</select>
+
+</mapper>

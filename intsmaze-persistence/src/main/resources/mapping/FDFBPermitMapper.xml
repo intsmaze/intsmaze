@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.FDFBpersistence.mapper.FDFBPermitMapper">
+	<resultMap id="BaseResultMap" type="org.FDFBpersistence.pojos.FDFBPermit">
+		<id column="seqno" property="seqno" jdbcType="VARCHAR" />
+		<result column="permittype" property="permittype" jdbcType="VARCHAR" />
+		<result column="permitname" property="permitname" jdbcType="VARCHAR" />
+		<result column="permitresource" property="permitresource"
+			jdbcType="VARCHAR" />
+		<result column="parentseqno" property="parentseqno" jdbcType="VARCHAR" />
+		<result column="permitorder" property="permitorder" jdbcType="INTEGER" />
+		<result column="isleaf" property="isleaf" jdbcType="VARCHAR" />
+		<result column="status" property="status" jdbcType="VARCHAR" />
+		<result column="createon" property="createon" jdbcType="TIMESTAMP" />
+		<result column="modifyon" property="modifyon" jdbcType="TIMESTAMP" />
+		<result column="createby" property="createby" jdbcType="VARCHAR" />
+		<result column="modifyby" property="modifyby" jdbcType="VARCHAR" />
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+		<result column="roleId" property="roleId" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		seqno, permittype, permitname, permitresource, parentseqno, permitorder,
+		isleaf,
+		status, createon, modifyon, createby, modifyby, remark
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from fdfb_permit
+		where seqno = #{seqno,jdbcType=VARCHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from fdfb_permit
+		where seqno = #{seqno,jdbcType=VARCHAR}
+	</delete>
+	<insert id="insert" parameterType="org.FDFBpersistence.pojos.FDFBPermit">
+		insert into fdfb_permit (seqno, permittype, permitname,
+		permitresource, parentseqno, permitorder,
+		isleaf, status, createon,
+		modifyon, createby, modifyby,
+		remark)
+		values (#{seqno,jdbcType=VARCHAR}, #{permittype,jdbcType=VARCHAR},
+		#{permitname,jdbcType=VARCHAR},
+		#{permitresource,jdbcType=VARCHAR}, #{parentseqno,jdbcType=VARCHAR}, #{permitorder,jdbcType=INTEGER},
+		#{isleaf,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR},
+		#{createon,jdbcType=TIMESTAMP},
+		#{modifyon,jdbcType=TIMESTAMP}, #{createby,jdbcType=VARCHAR}, #{modifyby,jdbcType=VARCHAR},
+		#{remark,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="org.FDFBpersistence.pojos.FDFBPermit">
+		insert into fdfb_permit
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="seqno != null">
+				seqno,
+			</if>
+			<if test="permittype != null">
+				permittype,
+			</if>
+			<if test="permitname != null">
+				permitname,
+			</if>
+			<if test="permitresource != null">
+				permitresource,
+			</if>
+			<if test="parentseqno != null">
+				parentseqno,
+			</if>
+			<if test="permitorder != null">
+				permitorder,
+			</if>
+			<if test="isleaf != null">
+				isleaf,
+			</if>
+			<if test="status != null">
+				status,
+			</if>
+			<if test="createon != null">
+				createon,
+			</if>
+			<if test="modifyon != null">
+				modifyon,
+			</if>
+			<if test="createby != null">
+				createby,
+			</if>
+			<if test="modifyby != null">
+				modifyby,
+			</if>
+			<if test="remark != null">
+				remark,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="seqno != null">
+				#{seqno,jdbcType=VARCHAR},
+			</if>
+			<if test="permittype != null">
+				#{permittype,jdbcType=VARCHAR},
+			</if>
+			<if test="permitname != null">
+				#{permitname,jdbcType=VARCHAR},
+			</if>
+			<if test="permitresource != null">
+				#{permitresource,jdbcType=VARCHAR},
+			</if>
+			<if test="parentseqno != null">
+				#{parentseqno,jdbcType=VARCHAR},
+			</if>
+			<if test="permitorder != null">
+				#{permitorder,jdbcType=INTEGER},
+			</if>
+			<if test="isleaf != null">
+				#{isleaf,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				#{status,jdbcType=VARCHAR},
+			</if>
+			<if test="createon != null">
+				#{createon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modifyon != null">
+				#{modifyon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createby != null">
+				#{createby,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyby != null">
+				#{modifyby,jdbcType=VARCHAR},
+			</if>
+			<if test="remark != null">
+				#{remark,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="org.FDFBpersistence.pojos.FDFBPermit">
+		update fdfb_permit
+		<set>
+			<if test="permittype != null">
+				permittype = #{permittype,jdbcType=VARCHAR},
+			</if>
+			<if test="permitname != null">
+				permitname = #{permitname,jdbcType=VARCHAR},
+			</if>
+			<if test="permitresource != null">
+				permitresource = #{permitresource,jdbcType=VARCHAR},
+			</if>
+			<if test="parentseqno != null">
+				parentseqno = #{parentseqno,jdbcType=VARCHAR},
+			</if>
+			<if test="permitorder != null">
+				permitorder = #{permitorder,jdbcType=INTEGER},
+			</if>
+			<if test="isleaf != null">
+				isleaf = #{isleaf,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				status = #{status,jdbcType=VARCHAR},
+			</if>
+			<if test="createon != null">
+				createon = #{createon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="newMofifyon != null">
+				modifyon = #{newMofifyon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createby != null">
+				createby = #{createby,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyby != null">
+				modifyby = #{modifyby,jdbcType=VARCHAR},
+			</if>
+			<if test="remark != null">
+				remark = #{remark,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where seqno = #{seqno,jdbcType=VARCHAR}
+		and modifyon = #{modifyon,jdbcType=TIMESTAMP}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="org.FDFBpersistence.pojos.FDFBPermit">
+		update fdfb_permit
+		set permittype = #{permittype,jdbcType=VARCHAR},
+		permitname = #{permitname,jdbcType=VARCHAR},
+		permitresource = #{permitresource,jdbcType=VARCHAR},
+		parentseqno = #{parentseqno,jdbcType=VARCHAR},
+		permitorder = #{permitorder,jdbcType=INTEGER},
+		isleaf = #{isleaf,jdbcType=VARCHAR},
+		status = #{status,jdbcType=VARCHAR},
+		createon = #{createon,jdbcType=TIMESTAMP},
+		modifyon = #{newMofifyon,jdbcType=TIMESTAMP},
+		createby = #{createby,jdbcType=VARCHAR},
+		modifyby = #{modifyby,jdbcType=VARCHAR},
+		remark = #{remark,jdbcType=VARCHAR}
+		where seqno = #{seqno,jdbcType=VARCHAR}
+		and modifyon = #{modifyon,jdbcType=TIMESTAMP}
+	</update>
+	
+	<select id="getPermitByParentSeqno" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from fdfb_permit a
+		where parentseqno = #{parentseqno,jdbcType=VARCHAR}
+		and permittype = #{permittype,jdbcType=VARCHAR} 
+		<if test="roleId != null">
+			and EXISTS(select 0 from fdfb_rolepermit b where a.seqno = b.permitid and b.roleid in (${roleId}) )
+		</if>
+		order by ${orderByStr}
+	</select>
+	
+	<select id="getRootPermit" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from fdfb_permit a
+		where permittype = #{permittype,jdbcType=VARCHAR} 
+		and parentseqno is NULL
+		<if test="roleId != null">
+			and EXISTS(select 0 from fdfb_rolepermit b where a.seqno = b.permitid and b.roleid in (${roleId}) )
+		</if>
+		order by ${orderByStr}
+	</select>
+	
+	<select id="getLeafPermit" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from fdfb_permit a
+		where permittype = #{permittype,jdbcType=VARCHAR} 
+		and isleaf = 'Y'
+		<if test="roleId != null">
+			and EXISTS(select 0 from fdfb_rolepermit b where a.seqno = b.permitid and b.roleid in (${roleId}) )
+		</if>
+		order by ${orderByStr}
+	</select>
+	
+</mapper>

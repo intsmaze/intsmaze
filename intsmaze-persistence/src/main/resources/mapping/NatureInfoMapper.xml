@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.FDFBpersistence.mapper.NatureInfoMapper" >
+  <resultMap id="BaseResultMap" type="org.FDFBpersistence.pojos.NatureInfo" >
+    <id column="seqno" property="seqno" jdbcType="VARCHAR" />
+    <result column="party_id" property="partyId" jdbcType="VARCHAR" />
+    <result column="gmt_last_issue_time" property="gmtLastIssueTime" jdbcType="TIMESTAMP" />
+    <result column="gmt_last_effect_end" property="gmtLastEffectEnd" jdbcType="TIMESTAMP" />
+    <result column="customer_name" property="customerName" jdbcType="VARCHAR" />
+    <result column="gender" property="gender" jdbcType="VARCHAR" />
+    <result column="country" property="country" jdbcType="VARCHAR" />
+    <result column="job_code1" property="jobCode1" jdbcType="VARCHAR" />
+    <result column="job_code2" property="jobCode2" jdbcType="VARCHAR" />
+    <result column="job_is_expire" property="jobIsExpire" jdbcType="VARCHAR" />
+    <result column="mailing_country" property="mailingCountry" jdbcType="VARCHAR" />
+    <result column="mailing_province" property="mailingProvince" jdbcType="VARCHAR" />
+    <result column="mailing_city" property="mailingCity" jdbcType="VARCHAR" />
+    <result column="mailing_region" property="mailingRegion" jdbcType="VARCHAR" />
+    <result column="mailing_other" property="mailingOther" jdbcType="VARCHAR" />
+    <result column="mailing_postal_code" property="mailingPostalCode" jdbcType="VARCHAR" />
+    <result column="mailing_is_expire" property="mailingIsExpire" jdbcType="VARCHAR" />
+    <result column="contact_phone" property="contactPhone" jdbcType="VARCHAR" />
+    <result column="mobile_phone" property="mobilePhone" jdbcType="VARCHAR" />
+    <result column="connect_is_expire" property="connectIsExpire" jdbcType="VARCHAR" />
+    <result column="identify_type" property="identifyType" jdbcType="VARCHAR" />
+    <result column="identify_number" property="identifyNumber" jdbcType="VARCHAR" />
+    <result column="certi_start_date" property="certiStartDate" jdbcType="TIMESTAMP" />
+    <result column="certi_end_date" property="certiEndDate" jdbcType="TIMESTAMP" />
+    <result column="certi_is_expire" property="certiIsExpire" jdbcType="VARCHAR" />
+    <result column="unit" property="unit" jdbcType="VARCHAR" />
+    <result column="insert_time" property="insertTime" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    seqno, party_id, gmt_last_issue_time, gmt_last_effect_end, customer_name, gender, 
+    country, job_code1, job_code2, job_is_expire, mailing_country, mailing_province, 
+    mailing_city, mailing_region, mailing_other, mailing_postal_code, mailing_is_expire, 
+    contact_phone, mobile_phone, connect_is_expire, identify_type, identify_number, certi_start_date, 
+    certi_end_date, certi_is_expire, unit, insert_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from aml_customer_nature_info
+    where seqno = #{seqno,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from aml_customer_nature_info
+    where seqno = #{seqno,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="org.FDFBpersistence.pojos.NatureInfo" >
+    insert into aml_customer_nature_info (seqno, party_id, gmt_last_issue_time, 
+      gmt_last_effect_end, customer_name, gender, 
+      country, job_code1, job_code2, 
+      job_is_expire, mailing_country, mailing_province, 
+      mailing_city, mailing_region, mailing_other, 
+      mailing_postal_code, mailing_is_expire, contact_phone, 
+      mobile_phone, connect_is_expire, identify_type, 
+      identify_number, certi_start_date, certi_end_date, 
+      certi_is_expire, unit, insert_time
+      )
+    values (#{seqno,jdbcType=VARCHAR}, #{partyId,jdbcType=VARCHAR}, #{gmtLastIssueTime,jdbcType=TIMESTAMP}, 
+      #{gmtLastEffectEnd,jdbcType=TIMESTAMP}, #{customerName,jdbcType=VARCHAR}, #{gender,jdbcType=VARCHAR}, 
+      #{country,jdbcType=VARCHAR}, #{jobCode1,jdbcType=VARCHAR}, #{jobCode2,jdbcType=VARCHAR}, 
+      #{jobIsExpire,jdbcType=VARCHAR}, #{mailingCountry,jdbcType=VARCHAR}, #{mailingProvince,jdbcType=VARCHAR}, 
+      #{mailingCity,jdbcType=VARCHAR}, #{mailingRegion,jdbcType=VARCHAR}, #{mailingOther,jdbcType=VARCHAR}, 
+      #{mailingPostalCode,jdbcType=VARCHAR}, #{mailingIsExpire,jdbcType=VARCHAR}, #{contactPhone,jdbcType=VARCHAR}, 
+      #{mobilePhone,jdbcType=VARCHAR}, #{connectIsExpire,jdbcType=VARCHAR}, #{identifyType,jdbcType=VARCHAR}, 
+      #{identifyNumber,jdbcType=VARCHAR}, #{certiStartDate,jdbcType=TIMESTAMP}, #{certiEndDate,jdbcType=TIMESTAMP}, 
+      #{certiIsExpire,jdbcType=VARCHAR}, #{unit,jdbcType=VARCHAR}, #{insertTime,jdbcType=DATE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.FDFBpersistence.pojos.NatureInfo" >
+    insert into aml_customer_nature_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="seqno != null" >
+        seqno,
+      </if>
+      <if test="partyId != null" >
+        party_id,
+      </if>
+      <if test="gmtLastIssueTime != null" >
+        gmt_last_issue_time,
+      </if>
+      <if test="gmtLastEffectEnd != null" >
+        gmt_last_effect_end,
+      </if>
+      <if test="customerName != null" >
+        customer_name,
+      </if>
+      <if test="gender != null" >
+        gender,
+      </if>
+      <if test="country != null" >
+        country,
+      </if>
+      <if test="jobCode1 != null" >
+        job_code1,
+      </if>
+      <if test="jobCode2 != null" >
+        job_code2,
+      </if>
+      <if test="jobIsExpire != null" >
+        job_is_expire,
+      </if>
+      <if test="mailingCountry != null" >
+        mailing_country,
+      </if>
+      <if test="mailingProvince != null" >
+        mailing_province,
+      </if>
+      <if test="mailingCity != null" >
+        mailing_city,
+      </if>
+      <if test="mailingRegion != null" >
+        mailing_region,
+      </if>
+      <if test="mailingOther != null" >
+        mailing_other,
+      </if>
+      <if test="mailingPostalCode != null" >
+        mailing_postal_code,
+      </if>
+      <if test="mailingIsExpire != null" >
+        mailing_is_expire,
+      </if>
+      <if test="contactPhone != null" >
+        contact_phone,
+      </if>
+      <if test="mobilePhone != null" >
+        mobile_phone,
+      </if>
+      <if test="connectIsExpire != null" >
+        connect_is_expire,
+      </if>
+      <if test="identifyType != null" >
+        identify_type,
+      </if>
+      <if test="identifyNumber != null" >
+        identify_number,
+      </if>
+      <if test="certiStartDate != null" >
+        certi_start_date,
+      </if>
+      <if test="certiEndDate != null" >
+        certi_end_date,
+      </if>
+      <if test="certiIsExpire != null" >
+        certi_is_expire,
+      </if>
+      <if test="unit != null" >
+        unit,
+      </if>
+      <if test="insertTime != null" >
+        insert_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="seqno != null" >
+        #{seqno,jdbcType=VARCHAR},
+      </if>
+      <if test="partyId != null" >
+        #{partyId,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtLastIssueTime != null" >
+        #{gmtLastIssueTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtLastEffectEnd != null" >
+        #{gmtLastEffectEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="customerName != null" >
+        #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null" >
+        #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="jobCode1 != null" >
+        #{jobCode1,jdbcType=VARCHAR},
+      </if>
+      <if test="jobCode2 != null" >
+        #{jobCode2,jdbcType=VARCHAR},
+      </if>
+      <if test="jobIsExpire != null" >
+        #{jobIsExpire,jdbcType=VARCHAR},
+      </if>
+      <if test="mailingCountry != null" >
+        #{mailingCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="mailingProvince != null" >
+        #{mailingProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="mailingCity != null" >
+        #{mailingCity,jdbcType=VARCHAR},
+      </if>
+      <if test="mailingRegion != null" >
+        #{mailingRegion,jdbcType=VARCHAR},
+      </if>
+      <if test="mailingOther != null" >
+        #{mailingOther,jdbcType=VARCHAR},
+      </if>
+      <if test="mailingPostalCode != null" >
+        #{mailingPostalCode,jdbcType=VARCHAR},
+      </if>
+      <if test="mailingIsExpire != null" >
+        #{mailingIsExpire,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null" >
+        #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="mobilePhone != null" >
+        #{mobilePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="connectIsExpire != null" >
+        #{connectIsExpire,jdbcType=VARCHAR},
+      </if>
+      <if test="identifyType != null" >
+        #{identifyType,jdbcType=VARCHAR},
+      </if>
+      <if test="identifyNumber != null" >
+        #{identifyNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="certiStartDate != null" >
+        #{certiStartDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="certiEndDate != null" >
+        #{certiEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="certiIsExpire != null" >
+        #{certiIsExpire,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null" >
+        #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="insertTime != null" >
+        #{insertTime,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.FDFBpersistence.pojos.NatureInfo" >
+    update aml_customer_nature_info
+    <set >
+      <if test="partyId != null" >
+        party_id = #{partyId,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtLastIssueTime != null" >
+        gmt_last_issue_time = #{gmtLastIssueTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtLastEffectEnd != null" >
+        gmt_last_effect_end = #{gmtLastEffectEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="customerName != null" >
+        customer_name = #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        gender = #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null" >
+        country = #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="jobCode1 != null" >
+        job_code1 = #{jobCode1,jdbcType=VARCHAR},
+      </if>
+      <if test="jobCode2 != null" >
+        job_code2 = #{jobCode2,jdbcType=VARCHAR},
+      </if>
+      <if test="jobIsExpire != null" >
+        job_is_expire = #{jobIsExpire,jdbcType=VARCHAR},
+      </if>
+      <if test="mailingCountry != null" >
+        mailing_country = #{mailingCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="mailingProvince != null" >
+        mailing_province = #{mailingProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="mailingCity != null" >
+        mailing_city = #{mailingCity,jdbcType=VARCHAR},
+      </if>
+      <if test="mailingRegion != null" >
+        mailing_region = #{mailingRegion,jdbcType=VARCHAR},
+      </if>
+      <if test="mailingOther != null" >
+        mailing_other = #{mailingOther,jdbcType=VARCHAR},
+      </if>
+      <if test="mailingPostalCode != null" >
+        mailing_postal_code = #{mailingPostalCode,jdbcType=VARCHAR},
+      </if>
+      <if test="mailingIsExpire != null" >
+        mailing_is_expire = #{mailingIsExpire,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null" >
+        contact_phone = #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="mobilePhone != null" >
+        mobile_phone = #{mobilePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="connectIsExpire != null" >
+        connect_is_expire = #{connectIsExpire,jdbcType=VARCHAR},
+      </if>
+      <if test="identifyType != null" >
+        identify_type = #{identifyType,jdbcType=VARCHAR},
+      </if>
+      <if test="identifyNumber != null" >
+        identify_number = #{identifyNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="certiStartDate != null" >
+        certi_start_date = #{certiStartDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="certiEndDate != null" >
+        certi_end_date = #{certiEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="certiIsExpire != null" >
+        certi_is_expire = #{certiIsExpire,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null" >
+        unit = #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="insertTime != null" >
+        insert_time = #{insertTime,jdbcType=DATE},
+      </if>
+    </set>
+    where seqno = #{seqno,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.FDFBpersistence.pojos.NatureInfo" >
+    update aml_customer_nature_info
+    set party_id = #{partyId,jdbcType=VARCHAR},
+      gmt_last_issue_time = #{gmtLastIssueTime,jdbcType=TIMESTAMP},
+      gmt_last_effect_end = #{gmtLastEffectEnd,jdbcType=TIMESTAMP},
+      customer_name = #{customerName,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=VARCHAR},
+      country = #{country,jdbcType=VARCHAR},
+      job_code1 = #{jobCode1,jdbcType=VARCHAR},
+      job_code2 = #{jobCode2,jdbcType=VARCHAR},
+      job_is_expire = #{jobIsExpire,jdbcType=VARCHAR},
+      mailing_country = #{mailingCountry,jdbcType=VARCHAR},
+      mailing_province = #{mailingProvince,jdbcType=VARCHAR},
+      mailing_city = #{mailingCity,jdbcType=VARCHAR},
+      mailing_region = #{mailingRegion,jdbcType=VARCHAR},
+      mailing_other = #{mailingOther,jdbcType=VARCHAR},
+      mailing_postal_code = #{mailingPostalCode,jdbcType=VARCHAR},
+      mailing_is_expire = #{mailingIsExpire,jdbcType=VARCHAR},
+      contact_phone = #{contactPhone,jdbcType=VARCHAR},
+      mobile_phone = #{mobilePhone,jdbcType=VARCHAR},
+      connect_is_expire = #{connectIsExpire,jdbcType=VARCHAR},
+      identify_type = #{identifyType,jdbcType=VARCHAR},
+      identify_number = #{identifyNumber,jdbcType=VARCHAR},
+      certi_start_date = #{certiStartDate,jdbcType=TIMESTAMP},
+      certi_end_date = #{certiEndDate,jdbcType=TIMESTAMP},
+      certi_is_expire = #{certiIsExpire,jdbcType=VARCHAR},
+      unit = #{unit,jdbcType=VARCHAR},
+      insert_time = #{insertTime,jdbcType=DATE}
+    where seqno = #{seqno,jdbcType=VARCHAR}
+  </update>
+  
+  <select id="selectAllByPage" resultMap="BaseResultMap"
+   parameterType="org.FDFBpersistence.pojos.NatureInfo">
+  	select
+	<include refid="Base_Column_List" />
+	from aml_customer_nature_info
+	where 1=1
+	<if test="unit != null" >
+       AND unit = #{unit,jdbcType=VARCHAR}
+    </if>
+    <if test="startGmtLastIssueTime != null">
+       AND gmt_last_issue_time >= #{startGmtLastIssueTime,jdbcType=TIMESTAMP}
+    </if>
+    <if test="endGmtLastIssueTime != null">
+       AND gmt_last_issue_time &lt; date_add(#{endGmtLastIssueTime,jdbcType=TIMESTAMP}, interval 1 day)
+    </if>
+  </select>
+  
+  <select id="selectAll" resultMap="BaseResultMap"
+   parameterType="org.FDFBpersistence.pojos.NatureInfo">
+  	select
+	<include refid="Base_Column_List" />
+	from aml_customer_nature_info
+	where 1=1
+	<if test="unit != null" >
+       AND unit = #{unit,jdbcType=VARCHAR}
+    </if>
+    <if test="startGmtLastIssueTime != null">
+       AND gmt_last_issue_time >= #{startGmtLastIssueTime,jdbcType=TIMESTAMP}
+    </if>
+    <if test="endGmtLastIssueTime != null">
+       AND gmt_last_issue_time &lt; date_add(#{endGmtLastIssueTime,jdbcType=TIMESTAMP}, interval 1 day)
+    </if>
+  </select>
+  
+  <select id="selectAllCount" resultType="java.lang.Integer"
+  parameterType="org.FDFBpersistence.pojos.NatureInfo">
+  	select count(1)
+	from aml_customer_nature_info
+	where 1=1
+	<if test="unit != null" >
+       AND unit = #{unit,jdbcType=VARCHAR}
+    </if>
+    <if test="startGmtLastIssueTime != null">
+       AND gmt_last_issue_time >= #{startGmtLastIssueTime,jdbcType=TIMESTAMP}
+    </if>
+    <if test="endGmtLastIssueTime != null">
+       AND gmt_last_issue_time &lt; date_add(#{endGmtLastIssueTime,jdbcType=TIMESTAMP}, interval 1 day)
+    </if>
+  </select>
+  
+</mapper>

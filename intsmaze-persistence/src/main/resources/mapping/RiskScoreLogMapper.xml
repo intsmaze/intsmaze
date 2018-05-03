@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.FDFBpersistence.mapper.RiskScoreLogMapper" >
+  <resultMap id="BaseResultMap" type="org.FDFBpersistence.pojos.RiskScoreLog" >
+    <id column="SEQNO" property="seqno" jdbcType="VARCHAR" />
+    <result column="CUSTOMER_ID" property="customerId" jdbcType="VARCHAR" />
+    <result column="CUSTOMER_NAME" property="customerName" jdbcType="VARCHAR" />
+    <result column="OLD_LEVEL" property="oldLevel" jdbcType="VARCHAR" />
+    <result column="NEW_LEVEL" property="newLevel" jdbcType="VARCHAR" />
+    <result column="SUGGESTION" property="suggestion" jdbcType="VARCHAR" />
+    <result column="OPERATION" property="operation" jdbcType="VARCHAR" />
+    <result column="OPERATION_TIME" property="operationTime" jdbcType="TIMESTAMP" />
+    <result column="OPERATION_PERSON" property="operationPerson" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    SEQNO, CUSTOMER_ID, CUSTOMER_NAME, OLD_LEVEL, NEW_LEVEL, SUGGESTION, OPERATION, OPERATION_TIME, 
+    OPERATION_PERSON
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_riskscore_log
+    where SEQNO = #{seqno,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_riskscore_log
+    where SEQNO = #{seqno,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="org.FDFBpersistence.pojos.RiskScoreLog" >
+    insert into t_riskscore_log (SEQNO, CUSTOMER_ID, CUSTOMER_NAME, 
+      OLD_LEVEL, NEW_LEVEL, SUGGESTION, 
+      OPERATION, OPERATION_TIME, OPERATION_PERSON
+      )
+    values (#{seqno,jdbcType=VARCHAR}, #{customerId,jdbcType=VARCHAR}, #{customerName,jdbcType=VARCHAR}, 
+      #{oldLevel,jdbcType=VARCHAR}, #{newLevel,jdbcType=VARCHAR}, #{suggestion,jdbcType=VARCHAR}, 
+      #{operation,jdbcType=VARCHAR}, #{operationTime,jdbcType=TIMESTAMP}, #{operationPerson,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.FDFBpersistence.pojos.RiskScoreLog" >
+    insert into t_riskscore_log
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="seqno != null" >
+        SEQNO,
+      </if>
+      <if test="customerId != null" >
+        CUSTOMER_ID,
+      </if>
+      <if test="customerName != null" >
+        CUSTOMER_NAME,
+      </if>
+      <if test="oldLevel != null" >
+        OLD_LEVEL,
+      </if>
+      <if test="newLevel != null" >
+        NEW_LEVEL,
+      </if>
+      <if test="suggestion != null" >
+        SUGGESTION,
+      </if>
+      <if test="operation != null" >
+        OPERATION,
+      </if>
+      <if test="operationTime != null" >
+        OPERATION_TIME,
+      </if>
+      <if test="operationPerson != null" >
+        OPERATION_PERSON,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="seqno != null" >
+        #{seqno,jdbcType=VARCHAR},
+      </if>
+      <if test="customerId != null" >
+        #{customerId,jdbcType=VARCHAR},
+      </if>
+      <if test="customerName != null" >
+        #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="oldLevel != null" >
+        #{oldLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="newLevel != null" >
+        #{newLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="suggestion != null" >
+        #{suggestion,jdbcType=VARCHAR},
+      </if>
+      <if test="operation != null" >
+        #{operation,jdbcType=VARCHAR},
+      </if>
+      <if test="operationTime != null" >
+        #{operationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operationPerson != null" >
+        #{operationPerson,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.FDFBpersistence.pojos.RiskScoreLog" >
+    update t_riskscore_log
+    <set >
+      <if test="customerId != null" >
+        CUSTOMER_ID = #{customerId,jdbcType=VARCHAR},
+      </if>
+      <if test="customerName != null" >
+        CUSTOMER_NAME = #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="oldLevel != null" >
+        OLD_LEVEL = #{oldLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="newLevel != null" >
+        NEW_LEVEL = #{newLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="suggestion != null" >
+        SUGGESTION = #{suggestion,jdbcType=VARCHAR},
+      </if>
+      <if test="operation != null" >
+        OPERATION = #{operation,jdbcType=VARCHAR},
+      </if>
+      <if test="operationTime != null" >
+        OPERATION_TIME = #{operationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operationPerson != null" >
+        OPERATION_PERSON = #{operationPerson,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where SEQNO = #{seqno,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.FDFBpersistence.pojos.RiskScoreLog" >
+    update t_riskscore_log
+    set CUSTOMER_ID = #{customerId,jdbcType=VARCHAR},
+      CUSTOMER_NAME = #{customerName,jdbcType=VARCHAR},
+      OLD_LEVEL = #{oldLevel,jdbcType=VARCHAR},
+      NEW_LEVEL = #{newLevel,jdbcType=VARCHAR},
+      SUGGESTION = #{suggestion,jdbcType=VARCHAR},
+      OPERATION = #{operation,jdbcType=VARCHAR},
+      OPERATION_TIME = #{operationTime,jdbcType=TIMESTAMP},
+      OPERATION_PERSON = #{operationPerson,jdbcType=VARCHAR}
+    where SEQNO = #{seqno,jdbcType=VARCHAR}
+  </update>
+  
+  	<select id="selectAllByPage" resultMap="BaseResultMap"
+		parameterType="org.FDFBpersistence.pojos.RiskScoreLog">
+		select
+		<include refid="Base_Column_List" />
+		from t_riskscore_log
+		where 1=1
+      <if test="customerId != null" >
+        and CUSTOMER_ID = #{customerId,jdbcType=VARCHAR}
+      </if>
+      <if test="customerName != null" >
+        and CUSTOMER_NAME = #{customerName,jdbcType=VARCHAR}
+      </if>
+      <if test="oldLevel != null" >
+        and OLD_LEVEL = #{oldLevel,jdbcType=VARCHAR}
+      </if>
+      <if test="newLevel != null" >
+        and NEW_LEVEL = #{newLevel,jdbcType=VARCHAR}
+      </if>
+      <if test="suggestion != null" >
+        and SUGGESTION = #{suggestion,jdbcType=VARCHAR}
+      </if>
+      <if test="operation != null" >
+        and OPERATION = #{operation,jdbcType=VARCHAR}
+      </if>
+      <if test="operationTime != null" >
+        and OPERATION_TIME = #{operationTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="operationPerson != null" >
+        and OPERATION_PERSON = #{operationPerson,jdbcType=VARCHAR}
+      </if>
+      order by OPERATION_TIME desc
+	</select>
+	
+	<select id="selectAllCount" resultType="java.lang.Integer"
+		parameterType="org.FDFBpersistence.pojos.RiskScoreLog">
+		select count(1)
+		from t_riskscore_log
+		where 1=1
+      <if test="customerId != null" >
+        and CUSTOMER_ID = #{customerId,jdbcType=VARCHAR}
+      </if>
+      <if test="customerName != null" >
+        and CUSTOMER_NAME = #{customerName,jdbcType=VARCHAR}
+      </if>
+      <if test="oldLevel != null" >
+        and OLD_LEVEL = #{oldLevel,jdbcType=VARCHAR}
+      </if>
+      <if test="newLevel != null" >
+        and NEW_LEVEL = #{newLevel,jdbcType=VARCHAR}
+      </if>
+      <if test="suggestion != null" >
+        and SUGGESTION = #{suggestion,jdbcType=VARCHAR}
+      </if>
+      <if test="operation != null" >
+        and OPERATION = #{operation,jdbcType=VARCHAR}
+      </if>
+      <if test="operationTime != null" >
+        and OPERATION_TIME = #{operationTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="operationPerson != null" >
+        and OPERATION_PERSON = #{operationPerson,jdbcType=VARCHAR}
+      </if>
+      order by OPERATION_TIME desc
+	</select>
+  
+</mapper>

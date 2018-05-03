@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.FDFBpersistence.mapper.CordonedMapper" >
+  <resultMap id="BaseResultMap" type="org.FDFBpersistence.pojos.Cordoned" >
+    <id column="seqno" property="seqno" jdbcType="VARCHAR" />
+    <result column="insert_time" property="insertTime" jdbcType="TIMESTAMP" />
+    <result column="cordoned_time" property="cordonedTime" jdbcType="TIMESTAMP" />
+    <result column="outorgan" property="outorgan" jdbcType="VARCHAR" />
+    <result column="organ_id" property="organId" jdbcType="VARCHAR" />
+    <result column="prono" property="prono" jdbcType="VARCHAR" />
+    <result column="custom_type" property="customType" jdbcType="VARCHAR" />
+    <result column="custom" property="custom" jdbcType="VARCHAR" />
+    <result column="parpers_no" property="parpersNo" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="return_result" property="returnResult" jdbcType="VARCHAR" />
+    <result column="cordoned_file" property="cordonedFile" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="case_money" property="caseMoney" jdbcType="DOUBLE" />
+    <result column="work_position" property="workPosition" jdbcType="VARCHAR" />
+    <result column="cordoned_fileno" property="cordonedFileno" jdbcType="VARCHAR" />
+    <result column="present_grade" property="presentGrade" jdbcType="VARCHAR" />
+    <result column="ontime_send" property="ontimeSend" jdbcType="VARCHAR" />
+    <result column="issend_big" property="issendBig" jdbcType="VARCHAR" />
+    <result column="issend_sus" property="issendSus" jdbcType="VARCHAR" />
+    <result column="check_reason" property="checkReason" jdbcType="VARCHAR" />
+    <result column="papers_type" property="papersType" jdbcType="VARCHAR" />
+    <result column="pay_time" property="payTime" jdbcType="VARCHAR" />
+    <result column="pay_way" property="payWay" jdbcType="VARCHAR" />
+    <result column="product_type" property="productType" jdbcType="VARCHAR" />
+    <result column="is_identify" property="isIdentify" jdbcType="VARCHAR" />
+    <result column="is_freeze" property="isFreeze" jdbcType="VARCHAR" />
+    <result column="case_status" property="caseStatus" jdbcType="VARCHAR" />
+    <result column="policy_status" property="policyStatus" jdbcType="VARCHAR" />
+    <result column="path" property="path" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    seqno, insert_time, cordoned_time, outorgan, organ_id, prono, custom_type, custom, 
+    parpers_no, content, return_result, cordoned_file, remark, case_money, work_position, 
+    cordoned_fileno, present_grade, ontime_send, issend_big, issend_sus, check_reason, 
+    papers_type, pay_time, pay_way, product_type, is_identify, is_freeze, case_status, 
+    policy_status, path
+  </sql>
+  <select id="selectByPrimaryId" resultType="java.lang.String" parameterType="org.FDFBpersistence.pojos.Cordoned" >
+    select 
+    path
+    from t_cordoned
+    where seqno = #{seqno,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_cordoned
+    where seqno = #{seqno,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAllByPage" resultMap="BaseResultMap"
+		parameterType="org.FDFBpersistence.pojos.Cordoned">
+		select
+		<include refid="Base_Column_List" />
+		from t_cordoned
+		where 1=1
+	  <if test="organId != null" >
+	       and organ_id like '%${organId}%'
+      </if>
+      <if test="startInsertTime != null" >
+      		and insert_time >= #{startInsertTime,jdbcType=TIMESTAMP}
+      	</if>
+      	<if test="endInsertTime != null" >
+      		and insert_time &lt;= #{endInsertTime,jdbcType=TIMESTAMP}
+      	</if>
+      <if test="startCordonedTime != null" >
+      		and cordoned_time >= #{startCordonedTime,jdbcType=TIMESTAMP}
+      	</if>
+      	<if test="endCordonedTime != null" >
+      		and cordoned_time &lt;= #{endCordonedTime,jdbcType=TIMESTAMP}
+      	</if>
+      <if test="outorgan != null" >
+         and outorgan like '%${outorgan}%'
+      </if>	
+	</select>
+  <select id="getAllUsersCount" resultType="java.lang.Integer"
+		parameterType="org.FDFBpersistence.pojos.Cordoned">
+		select count(1)
+		from t_cordoned
+		where 1=1
+	  <if test="organId != null" >
+            and organ_id like '%${organId}%'
+      </if>
+      <if test="startInsertTime != null" >
+      		and insert_time >= #{startInsertTime,jdbcType=TIMESTAMP}
+      	</if>
+      	<if test="endInsertTime != null" >
+      		and insert_time &lt;= date_add(#{endInsertTime,jdbcType=TIMESTAMP}, interval 1 day)
+      	</if>
+      <if test="startCordonedTime != null" >
+      		and cordoned_time >= #{startCordonedTime,jdbcType=TIMESTAMP}
+      	</if>
+      	<if test="endCordonedTime != null" >
+      		and cordoned_time &lt;= date_add(#{endCordonedTime,jdbcType=TIMESTAMP}, interval 1 day)
+      	</if>
+      	<if test="outorgan != null" >
+            and outorgan like '%${outorgan}%'
+      </if>
+	</select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_cordoned
+    where seqno = #{seqno,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="org.FDFBpersistence.pojos.Cordoned" >
+    insert into t_cordoned (seqno, insert_time, cordoned_time, 
+      outorgan, organ_id, prono, 
+      custom_type, custom, parpers_no, 
+      content, return_result, cordoned_file, 
+      remark, case_money, work_position, 
+      cordoned_fileno, present_grade, ontime_send, 
+      issend_big, issend_sus, check_reason, 
+      papers_type, pay_time, pay_way, 
+      product_type, is_identify, is_freeze, 
+      case_status, policy_status, path
+      )
+    values (#{seqno,jdbcType=VARCHAR}, #{insertTime,jdbcType=TIMESTAMP}, #{cordonedTime,jdbcType=TIMESTAMP}, 
+      #{outorgan,jdbcType=VARCHAR}, #{organId,jdbcType=VARCHAR}, #{prono,jdbcType=VARCHAR}, 
+      #{customType,jdbcType=VARCHAR}, #{custom,jdbcType=VARCHAR}, #{parpersNo,jdbcType=VARCHAR}, 
+      #{content,jdbcType=VARCHAR}, #{returnResult,jdbcType=VARCHAR}, #{cordonedFile,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{caseMoney,jdbcType=DOUBLE}, #{workPosition,jdbcType=VARCHAR}, 
+      #{cordonedFileno,jdbcType=VARCHAR}, #{presentGrade,jdbcType=VARCHAR}, #{ontimeSend,jdbcType=VARCHAR}, 
+      #{issendBig,jdbcType=VARCHAR}, #{issendSus,jdbcType=VARCHAR}, #{checkReason,jdbcType=VARCHAR}, 
+      #{papersType,jdbcType=VARCHAR}, #{payTime,jdbcType=VARCHAR}, #{payWay,jdbcType=VARCHAR}, 
+      #{productType,jdbcType=VARCHAR}, #{isIdentify,jdbcType=VARCHAR}, #{isFreeze,jdbcType=VARCHAR}, 
+      #{caseStatus,jdbcType=VARCHAR}, #{policyStatus,jdbcType=VARCHAR}, #{path,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.FDFBpersistence.pojos.Cordoned" >
+    insert into t_cordoned
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="seqno != null" >
+        seqno,
+      </if>
+      <if test="insertTime != null" >
+        insert_time,
+      </if>
+      <if test="cordonedTime != null" >
+        cordoned_time,
+      </if>
+      <if test="outorgan != null" >
+        outorgan,
+      </if>
+      <if test="organId != null" >
+        organ_id,
+      </if>
+      <if test="prono != null" >
+        prono,
+      </if>
+      <if test="customType != null" >
+        custom_type,
+      </if>
+      <if test="custom != null" >
+        custom,
+      </if>
+      <if test="parpersNo != null" >
+        parpers_no,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="returnResult != null" >
+        return_result,
+      </if>
+      <if test="cordonedFile != null" >
+        cordoned_file,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="caseMoney != null" >
+        case_money,
+      </if>
+      <if test="workPosition != null" >
+        work_position,
+      </if>
+      <if test="cordonedFileno != null" >
+        cordoned_fileno,
+      </if>
+      <if test="presentGrade != null" >
+        present_grade,
+      </if>
+      <if test="ontimeSend != null" >
+        ontime_send,
+      </if>
+      <if test="issendBig != null" >
+        issend_big,
+      </if>
+      <if test="issendSus != null" >
+        issend_sus,
+      </if>
+      <if test="checkReason != null" >
+        check_reason,
+      </if>
+      <if test="papersType != null" >
+        papers_type,
+      </if>
+      <if test="payTime != null" >
+        pay_time,
+      </if>
+      <if test="payWay != null" >
+        pay_way,
+      </if>
+      <if test="productType != null" >
+        product_type,
+      </if>
+      <if test="isIdentify != null" >
+        is_identify,
+      </if>
+      <if test="isFreeze != null" >
+        is_freeze,
+      </if>
+      <if test="caseStatus != null" >
+        case_status,
+      </if>
+      <if test="policyStatus != null" >
+        policy_status,
+      </if>
+      <if test="path != null" >
+        path,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="seqno != null" >
+        #{seqno,jdbcType=VARCHAR},
+      </if>
+      <if test="insertTime != null" >
+        #{insertTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cordonedTime != null" >
+        #{cordonedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="outorgan != null" >
+        #{outorgan,jdbcType=VARCHAR},
+      </if>
+      <if test="organId != null" >
+        #{organId,jdbcType=VARCHAR},
+      </if>
+      <if test="prono != null" >
+        #{prono,jdbcType=VARCHAR},
+      </if>
+      <if test="customType != null" >
+        #{customType,jdbcType=VARCHAR},
+      </if>
+      <if test="custom != null" >
+        #{custom,jdbcType=VARCHAR},
+      </if>
+      <if test="parpersNo != null" >
+        #{parpersNo,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="returnResult != null" >
+        #{returnResult,jdbcType=VARCHAR},
+      </if>
+      <if test="cordonedFile != null" >
+        #{cordonedFile,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="caseMoney != null" >
+        #{caseMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="workPosition != null" >
+        #{workPosition,jdbcType=VARCHAR},
+      </if>
+      <if test="cordonedFileno != null" >
+        #{cordonedFileno,jdbcType=VARCHAR},
+      </if>
+      <if test="presentGrade != null" >
+        #{presentGrade,jdbcType=VARCHAR},
+      </if>
+      <if test="ontimeSend != null" >
+        #{ontimeSend,jdbcType=VARCHAR},
+      </if>
+      <if test="issendBig != null" >
+        #{issendBig,jdbcType=VARCHAR},
+      </if>
+      <if test="issendSus != null" >
+        #{issendSus,jdbcType=VARCHAR},
+      </if>
+      <if test="checkReason != null" >
+        #{checkReason,jdbcType=VARCHAR},
+      </if>
+      <if test="papersType != null" >
+        #{papersType,jdbcType=VARCHAR},
+      </if>
+      <if test="payTime != null" >
+        #{payTime,jdbcType=VARCHAR},
+      </if>
+      <if test="payWay != null" >
+        #{payWay,jdbcType=VARCHAR},
+      </if>
+      <if test="productType != null" >
+        #{productType,jdbcType=VARCHAR},
+      </if>
+      <if test="isIdentify != null" >
+        #{isIdentify,jdbcType=VARCHAR},
+      </if>
+      <if test="isFreeze != null" >
+        #{isFreeze,jdbcType=VARCHAR},
+      </if>
+      <if test="caseStatus != null" >
+        #{caseStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="policyStatus != null" >
+        #{policyStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="path != null" >
+        #{path,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.FDFBpersistence.pojos.Cordoned" >
+    update t_cordoned
+    <set >
+      <if test="insertTime != null" >
+        insert_time = #{insertTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cordonedTime != null" >
+        cordoned_time = #{cordonedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="outorgan != null" >
+        outorgan = #{outorgan,jdbcType=VARCHAR},
+      </if>
+      <if test="organId != null" >
+        organ_id = #{organId,jdbcType=VARCHAR},
+      </if>
+      <if test="prono != null" >
+        prono = #{prono,jdbcType=VARCHAR},
+      </if>
+      <if test="customType != null" >
+        custom_type = #{customType,jdbcType=VARCHAR},
+      </if>
+      <if test="custom != null" >
+        custom = #{custom,jdbcType=VARCHAR},
+      </if>
+      <if test="parpersNo != null" >
+        parpers_no = #{parpersNo,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="returnResult != null" >
+        return_result = #{returnResult,jdbcType=VARCHAR},
+      </if>
+      <if test="cordonedFile != null" >
+        cordoned_file = #{cordonedFile,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="caseMoney != null" >
+        case_money = #{caseMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="workPosition != null" >
+        work_position = #{workPosition,jdbcType=VARCHAR},
+      </if>
+      <if test="cordonedFileno != null" >
+        cordoned_fileno = #{cordonedFileno,jdbcType=VARCHAR},
+      </if>
+      <if test="presentGrade != null" >
+        present_grade = #{presentGrade,jdbcType=VARCHAR},
+      </if>
+      <if test="ontimeSend != null" >
+        ontime_send = #{ontimeSend,jdbcType=VARCHAR},
+      </if>
+      <if test="issendBig != null" >
+        issend_big = #{issendBig,jdbcType=VARCHAR},
+      </if>
+      <if test="issendSus != null" >
+        issend_sus = #{issendSus,jdbcType=VARCHAR},
+      </if>
+      <if test="checkReason != null" >
+        check_reason = #{checkReason,jdbcType=VARCHAR},
+      </if>
+      <if test="papersType != null" >
+        papers_type = #{papersType,jdbcType=VARCHAR},
+      </if>
+      <if test="payTime != null" >
+        pay_time = #{payTime,jdbcType=VARCHAR},
+      </if>
+      <if test="payWay != null" >
+        pay_way = #{payWay,jdbcType=VARCHAR},
+      </if>
+      <if test="productType != null" >
+        product_type = #{productType,jdbcType=VARCHAR},
+      </if>
+      <if test="isIdentify != null" >
+        is_identify = #{isIdentify,jdbcType=VARCHAR},
+      </if>
+      <if test="isFreeze != null" >
+        is_freeze = #{isFreeze,jdbcType=VARCHAR},
+      </if>
+      <if test="caseStatus != null" >
+        case_status = #{caseStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="policyStatus != null" >
+        policy_status = #{policyStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="path != null" >
+        path = #{path,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where seqno = #{seqno,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.FDFBpersistence.pojos.Cordoned" >
+    update t_cordoned
+    set insert_time = #{insertTime,jdbcType=TIMESTAMP},
+      cordoned_time = #{cordonedTime,jdbcType=TIMESTAMP},
+      outorgan = #{outorgan,jdbcType=VARCHAR},
+      organ_id = #{organId,jdbcType=VARCHAR},
+      prono = #{prono,jdbcType=VARCHAR},
+      custom_type = #{customType,jdbcType=VARCHAR},
+      custom = #{custom,jdbcType=VARCHAR},
+      parpers_no = #{parpersNo,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      return_result = #{returnResult,jdbcType=VARCHAR},
+      cordoned_file = #{cordonedFile,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      case_money = #{caseMoney,jdbcType=DOUBLE},
+      work_position = #{workPosition,jdbcType=VARCHAR},
+      cordoned_fileno = #{cordonedFileno,jdbcType=VARCHAR},
+      present_grade = #{presentGrade,jdbcType=VARCHAR},
+      ontime_send = #{ontimeSend,jdbcType=VARCHAR},
+      issend_big = #{issendBig,jdbcType=VARCHAR},
+      issend_sus = #{issendSus,jdbcType=VARCHAR},
+      check_reason = #{checkReason,jdbcType=VARCHAR},
+      papers_type = #{papersType,jdbcType=VARCHAR},
+      pay_time = #{payTime,jdbcType=VARCHAR},
+      pay_way = #{payWay,jdbcType=VARCHAR},
+      product_type = #{productType,jdbcType=VARCHAR},
+      is_identify = #{isIdentify,jdbcType=VARCHAR},
+      is_freeze = #{isFreeze,jdbcType=VARCHAR},
+      case_status = #{caseStatus,jdbcType=VARCHAR},
+      policy_status = #{policyStatus,jdbcType=VARCHAR},
+      path = #{path,jdbcType=VARCHAR}
+    where seqno = #{seqno,jdbcType=VARCHAR}
+  </update>
+</mapper>

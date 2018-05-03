@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.FDFBpersistence.mapper.LegalInfoMapper" >
+  <resultMap id="BaseResultMap" type="org.FDFBpersistence.pojos.LegalInfo" >
+    <id column="seqno" property="seqno" jdbcType="VARCHAR" />
+    <result column="party_id" property="partyId" jdbcType="VARCHAR" />
+    <result column="gmt_last_issue_time" property="gmtLastIssueTime" jdbcType="TIMESTAMP" />
+    <result column="gmt_last_effect_end" property="gmtLastEffectEnd" jdbcType="TIMESTAMP" />
+    <result column="customer_name" property="customerName" jdbcType="VARCHAR" />
+    <result column="mailing_country" property="mailingCountry" jdbcType="VARCHAR" />
+    <result column="mailing_province" property="mailingProvince" jdbcType="VARCHAR" />
+    <result column="mailing_city" property="mailingCity" jdbcType="VARCHAR" />
+    <result column="mailing_region" property="mailingRegion" jdbcType="VARCHAR" />
+    <result column="mailing_other" property="mailingOther" jdbcType="VARCHAR" />
+    <result column="mailing_postal_code" property="mailingPostalCode" jdbcType="VARCHAR" />
+    <result column="mailing_is_expire" property="mailingIsExpire" jdbcType="VARCHAR" />
+    <result column="business_scope" property="businessScope" jdbcType="VARCHAR" />
+    <result column="identify_type" property="identifyType" jdbcType="VARCHAR" />
+    <result column="identify_number" property="identifyNumber" jdbcType="VARCHAR" />
+    <result column="valid_start_date" property="validStartDate" jdbcType="TIMESTAMP" />
+    <result column="valid_end_date" property="validEndDate" jdbcType="TIMESTAMP" />
+    <result column="valid_is_expire" property="validIsExpire" jdbcType="VARCHAR" />
+    <result column="controller_name" property="controllerName" jdbcType="VARCHAR" />
+    <result column="cont_certificate_type" property="contCertificateType" jdbcType="VARCHAR" />
+    <result column="cont_certificate_num" property="contCertificateNum" jdbcType="VARCHAR" />
+    <result column="cont_certificate_start_time" property="contCertificateStartTime" jdbcType="TIMESTAMP" />
+    <result column="cont_certificate_end_time" property="contCertificateEndTime" jdbcType="TIMESTAMP" />
+    <result column="cont_certificate_is_expire" property="contCertificateIsExpire" jdbcType="VARCHAR" />
+    <result column="legalperson_name" property="legalpersonName" jdbcType="VARCHAR" />
+    <result column="legal_certificate_type" property="legalCertificateType" jdbcType="VARCHAR" />
+    <result column="legal_certificate_num" property="legalCertificateNum" jdbcType="VARCHAR" />
+    <result column="legal_certificate_start_time" property="legalCertificateStartTime" jdbcType="TIMESTAMP" />
+    <result column="legal_certificate_end_time" property="legalCertificateEndTime" jdbcType="TIMESTAMP" />
+    <result column="legal_certificate_is_expire" property="legalCertificateIsExpire" jdbcType="VARCHAR" />
+    <result column="unit" property="unit" jdbcType="VARCHAR" />
+    <result column="insert_time" property="insertTime" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    seqno, party_id, gmt_last_issue_time, gmt_last_effect_end, customer_name, mailing_country, 
+    mailing_province, mailing_city, mailing_region, mailing_other, mailing_postal_code, 
+    mailing_is_expire, business_scope, identify_type, identify_number, valid_start_date, 
+    valid_end_date, valid_is_expire, controller_name, cont_certificate_type, cont_certificate_num, 
+    cont_certificate_start_time, cont_certificate_end_time, cont_certificate_is_expire, 
+    legalperson_name, legal_certificate_type, legal_certificate_num, legal_certificate_start_time, 
+    legal_certificate_end_time, legal_certificate_is_expire, unit, insert_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from aml_customer_legal_info
+    where seqno = #{seqno,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from aml_customer_legal_info
+    where seqno = #{seqno,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="org.FDFBpersistence.pojos.LegalInfo" >
+    insert into aml_customer_legal_info (seqno, party_id, gmt_last_issue_time, 
+      gmt_last_effect_end, customer_name, mailing_country, 
+      mailing_province, mailing_city, mailing_region, 
+      mailing_other, mailing_postal_code, mailing_is_expire, 
+      business_scope, identify_type, identify_number, 
+      valid_start_date, valid_end_date, valid_is_expire, 
+      controller_name, cont_certificate_type, cont_certificate_num, 
+      cont_certificate_start_time, cont_certificate_end_time, 
+      cont_certificate_is_expire, legalperson_name, 
+      legal_certificate_type, legal_certificate_num, 
+      legal_certificate_start_time, legal_certificate_end_time, 
+      legal_certificate_is_expire, unit, insert_time
+      )
+    values (#{seqno,jdbcType=VARCHAR}, #{partyId,jdbcType=VARCHAR}, #{gmtLastIssueTime,jdbcType=TIMESTAMP}, 
+      #{gmtLastEffectEnd,jdbcType=TIMESTAMP}, #{customerName,jdbcType=VARCHAR}, #{mailingCountry,jdbcType=VARCHAR}, 
+      #{mailingProvince,jdbcType=VARCHAR}, #{mailingCity,jdbcType=VARCHAR}, #{mailingRegion,jdbcType=VARCHAR}, 
+      #{mailingOther,jdbcType=VARCHAR}, #{mailingPostalCode,jdbcType=VARCHAR}, #{mailingIsExpire,jdbcType=VARCHAR}, 
+      #{businessScope,jdbcType=VARCHAR}, #{identifyType,jdbcType=VARCHAR}, #{identifyNumber,jdbcType=VARCHAR}, 
+      #{validStartDate,jdbcType=TIMESTAMP}, #{validEndDate,jdbcType=TIMESTAMP}, #{validIsExpire,jdbcType=VARCHAR}, 
+      #{controllerName,jdbcType=VARCHAR}, #{contCertificateType,jdbcType=VARCHAR}, #{contCertificateNum,jdbcType=VARCHAR}, 
+      #{contCertificateStartTime,jdbcType=TIMESTAMP}, #{contCertificateEndTime,jdbcType=TIMESTAMP}, 
+      #{contCertificateIsExpire,jdbcType=VARCHAR}, #{legalpersonName,jdbcType=VARCHAR}, 
+      #{legalCertificateType,jdbcType=VARCHAR}, #{legalCertificateNum,jdbcType=VARCHAR}, 
+      #{legalCertificateStartTime,jdbcType=TIMESTAMP}, #{legalCertificateEndTime,jdbcType=TIMESTAMP}, 
+      #{legalCertificateIsExpire,jdbcType=VARCHAR}, #{unit,jdbcType=VARCHAR}, #{insertTime,jdbcType=DATE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.FDFBpersistence.pojos.LegalInfo" >
+    insert into aml_customer_legal_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="seqno != null" >
+        seqno,
+      </if>
+      <if test="partyId != null" >
+        party_id,
+      </if>
+      <if test="gmtLastIssueTime != null" >
+        gmt_last_issue_time,
+      </if>
+      <if test="gmtLastEffectEnd != null" >
+        gmt_last_effect_end,
+      </if>
+      <if test="customerName != null" >
+        customer_name,
+      </if>
+      <if test="mailingCountry != null" >
+        mailing_country,
+      </if>
+      <if test="mailingProvince != null" >
+        mailing_province,
+      </if>
+      <if test="mailingCity != null" >
+        mailing_city,
+      </if>
+      <if test="mailingRegion != null" >
+        mailing_region,
+      </if>
+      <if test="mailingOther != null" >
+        mailing_other,
+      </if>
+      <if test="mailingPostalCode != null" >
+        mailing_postal_code,
+      </if>
+      <if test="mailingIsExpire != null" >
+        mailing_is_expire,
+      </if>
+      <if test="businessScope != null" >
+        business_scope,
+      </if>
+      <if test="identifyType != null" >
+        identify_type,
+      </if>
+      <if test="identifyNumber != null" >
+        identify_number,
+      </if>
+      <if test="validStartDate != null" >
+        valid_start_date,
+      </if>
+      <if test="validEndDate != null" >
+        valid_end_date,
+      </if>
+      <if test="validIsExpire != null" >
+        valid_is_expire,
+      </if>
+      <if test="controllerName != null" >
+        controller_name,
+      </if>
+      <if test="contCertificateType != null" >
+        cont_certificate_type,
+      </if>
+      <if test="contCertificateNum != null" >
+        cont_certificate_num,
+      </if>
+      <if test="contCertificateStartTime != null" >
+        cont_certificate_start_time,
+      </if>
+      <if test="contCertificateEndTime != null" >
+        cont_certificate_end_time,
+      </if>
+      <if test="contCertificateIsExpire != null" >
+        cont_certificate_is_expire,
+      </if>
+      <if test="legalpersonName != null" >
+        legalperson_name,
+      </if>
+      <if test="legalCertificateType != null" >
+        legal_certificate_type,
+      </if>
+      <if test="legalCertificateNum != null" >
+        legal_certificate_num,
+      </if>
+      <if test="legalCertificateStartTime != null" >
+        legal_certificate_start_time,
+      </if>
+      <if test="legalCertificateEndTime != null" >
+        legal_certificate_end_time,
+      </if>
+      <if test="legalCertificateIsExpire != null" >
+        legal_certificate_is_expire,
+      </if>
+      <if test="unit != null" >
+        unit,
+      </if>
+      <if test="insertTime != null" >
+        insert_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="seqno != null" >
+        #{seqno,jdbcType=VARCHAR},
+      </if>
+      <if test="partyId != null" >
+        #{partyId,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtLastIssueTime != null" >
+        #{gmtLastIssueTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtLastEffectEnd != null" >
+        #{gmtLastEffectEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="customerName != null" >
+        #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="mailingCountry != null" >
+        #{mailingCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="mailingProvince != null" >
+        #{mailingProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="mailingCity != null" >
+        #{mailingCity,jdbcType=VARCHAR},
+      </if>
+      <if test="mailingRegion != null" >
+        #{mailingRegion,jdbcType=VARCHAR},
+      </if>
+      <if test="mailingOther != null" >
+        #{mailingOther,jdbcType=VARCHAR},
+      </if>
+      <if test="mailingPostalCode != null" >
+        #{mailingPostalCode,jdbcType=VARCHAR},
+      </if>
+      <if test="mailingIsExpire != null" >
+        #{mailingIsExpire,jdbcType=VARCHAR},
+      </if>
+      <if test="businessScope != null" >
+        #{businessScope,jdbcType=VARCHAR},
+      </if>
+      <if test="identifyType != null" >
+        #{identifyType,jdbcType=VARCHAR},
+      </if>
+      <if test="identifyNumber != null" >
+        #{identifyNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="validStartDate != null" >
+        #{validStartDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="validEndDate != null" >
+        #{validEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="validIsExpire != null" >
+        #{validIsExpire,jdbcType=VARCHAR},
+      </if>
+      <if test="controllerName != null" >
+        #{controllerName,jdbcType=VARCHAR},
+      </if>
+      <if test="contCertificateType != null" >
+        #{contCertificateType,jdbcType=VARCHAR},
+      </if>
+      <if test="contCertificateNum != null" >
+        #{contCertificateNum,jdbcType=VARCHAR},
+      </if>
+      <if test="contCertificateStartTime != null" >
+        #{contCertificateStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="contCertificateEndTime != null" >
+        #{contCertificateEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="contCertificateIsExpire != null" >
+        #{contCertificateIsExpire,jdbcType=VARCHAR},
+      </if>
+      <if test="legalpersonName != null" >
+        #{legalpersonName,jdbcType=VARCHAR},
+      </if>
+      <if test="legalCertificateType != null" >
+        #{legalCertificateType,jdbcType=VARCHAR},
+      </if>
+      <if test="legalCertificateNum != null" >
+        #{legalCertificateNum,jdbcType=VARCHAR},
+      </if>
+      <if test="legalCertificateStartTime != null" >
+        #{legalCertificateStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="legalCertificateEndTime != null" >
+        #{legalCertificateEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="legalCertificateIsExpire != null" >
+        #{legalCertificateIsExpire,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null" >
+        #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="insertTime != null" >
+        #{insertTime,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.FDFBpersistence.pojos.LegalInfo" >
+    update aml_customer_legal_info
+    <set >
+      <if test="partyId != null" >
+        party_id = #{partyId,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtLastIssueTime != null" >
+        gmt_last_issue_time = #{gmtLastIssueTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtLastEffectEnd != null" >
+        gmt_last_effect_end = #{gmtLastEffectEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="customerName != null" >
+        customer_name = #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="mailingCountry != null" >
+        mailing_country = #{mailingCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="mailingProvince != null" >
+        mailing_province = #{mailingProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="mailingCity != null" >
+        mailing_city = #{mailingCity,jdbcType=VARCHAR},
+      </if>
+      <if test="mailingRegion != null" >
+        mailing_region = #{mailingRegion,jdbcType=VARCHAR},
+      </if>
+      <if test="mailingOther != null" >
+        mailing_other = #{mailingOther,jdbcType=VARCHAR},
+      </if>
+      <if test="mailingPostalCode != null" >
+        mailing_postal_code = #{mailingPostalCode,jdbcType=VARCHAR},
+      </if>
+      <if test="mailingIsExpire != null" >
+        mailing_is_expire = #{mailingIsExpire,jdbcType=VARCHAR},
+      </if>
+      <if test="businessScope != null" >
+        business_scope = #{businessScope,jdbcType=VARCHAR},
+      </if>
+      <if test="identifyType != null" >
+        identify_type = #{identifyType,jdbcType=VARCHAR},
+      </if>
+      <if test="identifyNumber != null" >
+        identify_number = #{identifyNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="validStartDate != null" >
+        valid_start_date = #{validStartDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="validEndDate != null" >
+        valid_end_date = #{validEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="validIsExpire != null" >
+        valid_is_expire = #{validIsExpire,jdbcType=VARCHAR},
+      </if>
+      <if test="controllerName != null" >
+        controller_name = #{controllerName,jdbcType=VARCHAR},
+      </if>
+      <if test="contCertificateType != null" >
+        cont_certificate_type = #{contCertificateType,jdbcType=VARCHAR},
+      </if>
+      <if test="contCertificateNum != null" >
+        cont_certificate_num = #{contCertificateNum,jdbcType=VARCHAR},
+      </if>
+      <if test="contCertificateStartTime != null" >
+        cont_certificate_start_time = #{contCertificateStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="contCertificateEndTime != null" >
+        cont_certificate_end_time = #{contCertificateEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="contCertificateIsExpire != null" >
+        cont_certificate_is_expire = #{contCertificateIsExpire,jdbcType=VARCHAR},
+      </if>
+      <if test="legalpersonName != null" >
+        legalperson_name = #{legalpersonName,jdbcType=VARCHAR},
+      </if>
+      <if test="legalCertificateType != null" >
+        legal_certificate_type = #{legalCertificateType,jdbcType=VARCHAR},
+      </if>
+      <if test="legalCertificateNum != null" >
+        legal_certificate_num = #{legalCertificateNum,jdbcType=VARCHAR},
+      </if>
+      <if test="legalCertificateStartTime != null" >
+        legal_certificate_start_time = #{legalCertificateStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="legalCertificateEndTime != null" >
+        legal_certificate_end_time = #{legalCertificateEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="legalCertificateIsExpire != null" >
+        legal_certificate_is_expire = #{legalCertificateIsExpire,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null" >
+        unit = #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="insertTime != null" >
+        insert_time = #{insertTime,jdbcType=DATE},
+      </if>
+    </set>
+    where seqno = #{seqno,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.FDFBpersistence.pojos.LegalInfo" >
+    update aml_customer_legal_info
+    set party_id = #{partyId,jdbcType=VARCHAR},
+      gmt_last_issue_time = #{gmtLastIssueTime,jdbcType=TIMESTAMP},
+      gmt_last_effect_end = #{gmtLastEffectEnd,jdbcType=TIMESTAMP},
+      customer_name = #{customerName,jdbcType=VARCHAR},
+      mailing_country = #{mailingCountry,jdbcType=VARCHAR},
+      mailing_province = #{mailingProvince,jdbcType=VARCHAR},
+      mailing_city = #{mailingCity,jdbcType=VARCHAR},
+      mailing_region = #{mailingRegion,jdbcType=VARCHAR},
+      mailing_other = #{mailingOther,jdbcType=VARCHAR},
+      mailing_postal_code = #{mailingPostalCode,jdbcType=VARCHAR},
+      mailing_is_expire = #{mailingIsExpire,jdbcType=VARCHAR},
+      business_scope = #{businessScope,jdbcType=VARCHAR},
+      identify_type = #{identifyType,jdbcType=VARCHAR},
+      identify_number = #{identifyNumber,jdbcType=VARCHAR},
+      valid_start_date = #{validStartDate,jdbcType=TIMESTAMP},
+      valid_end_date = #{validEndDate,jdbcType=TIMESTAMP},
+      valid_is_expire = #{validIsExpire,jdbcType=VARCHAR},
+      controller_name = #{controllerName,jdbcType=VARCHAR},
+      cont_certificate_type = #{contCertificateType,jdbcType=VARCHAR},
+      cont_certificate_num = #{contCertificateNum,jdbcType=VARCHAR},
+      cont_certificate_start_time = #{contCertificateStartTime,jdbcType=TIMESTAMP},
+      cont_certificate_end_time = #{contCertificateEndTime,jdbcType=TIMESTAMP},
+      cont_certificate_is_expire = #{contCertificateIsExpire,jdbcType=VARCHAR},
+      legalperson_name = #{legalpersonName,jdbcType=VARCHAR},
+      legal_certificate_type = #{legalCertificateType,jdbcType=VARCHAR},
+      legal_certificate_num = #{legalCertificateNum,jdbcType=VARCHAR},
+      legal_certificate_start_time = #{legalCertificateStartTime,jdbcType=TIMESTAMP},
+      legal_certificate_end_time = #{legalCertificateEndTime,jdbcType=TIMESTAMP},
+      legal_certificate_is_expire = #{legalCertificateIsExpire,jdbcType=VARCHAR},
+      unit = #{unit,jdbcType=VARCHAR},
+      insert_time = #{insertTime,jdbcType=DATE}
+    where seqno = #{seqno,jdbcType=VARCHAR}
+  </update>
+  
+  <select id="selectAllByPage" resultMap="BaseResultMap"
+   parameterType="org.FDFBpersistence.pojos.LegalInfo">
+  	select
+	<include refid="Base_Column_List" />
+	from aml_customer_legal_info
+	where 1=1
+	<if test="unit != null" >
+       AND unit = #{unit,jdbcType=VARCHAR}
+    </if>
+    <if test="startGmtLastIssueTime != null">
+       AND gmt_last_issue_time >= #{startGmtLastIssueTime,jdbcType=TIMESTAMP}
+    </if>
+    <if test="endGmtLastIssueTime != null">
+       AND gmt_last_issue_time &lt; date_add(#{endGmtLastIssueTime,jdbcType=TIMESTAMP}, interval 1 day)
+    </if>
+  </select>
+  
+  <select id="selectAll" resultMap="BaseResultMap"
+   parameterType="org.FDFBpersistence.pojos.LegalInfo">
+  	select
+	<include refid="Base_Column_List" />
+	from aml_customer_legal_info
+	where 1=1
+	<if test="unit != null" >
+       AND unit = #{unit,jdbcType=VARCHAR}
+    </if>
+    <if test="startGmtLastIssueTime != null">
+       AND gmt_last_issue_time >= #{startGmtLastIssueTime,jdbcType=TIMESTAMP}
+    </if>
+    <if test="endGmtLastIssueTime != null">
+       AND gmt_last_issue_time &lt; date_add(#{endGmtLastIssueTime,jdbcType=TIMESTAMP}, interval 1 day)
+    </if>
+  </select>
+  
+  <select id="selectAllCount" resultType="java.lang.Integer"
+  parameterType="org.FDFBpersistence.pojos.LegalInfo">
+  	select count(1)
+	from aml_customer_legal_info
+	where 1=1
+	<if test="unit != null" >
+       AND unit = #{unit,jdbcType=VARCHAR}
+    </if>
+    <if test="startGmtLastIssueTime != null">
+       AND gmt_last_issue_time >= #{startGmtLastIssueTime,jdbcType=TIMESTAMP}
+    </if>
+    <if test="endGmtLastIssueTime != null">
+       AND gmt_last_issue_time &lt; date_add(#{endGmtLastIssueTime,jdbcType=TIMESTAMP}, interval 1 day)
+    </if>
+  </select>
+  
+</mapper>

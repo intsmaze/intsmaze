@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.FDFBpersistence.mapper.FDFBUserProfileMapper">
+	<resultMap id="BaseResultMap" type="org.FDFBpersistence.pojos.FDFBUserProfile">
+		<id column="seqno" property="seqno" jdbcType="VARCHAR" />
+		<result column="userStyle" property="userStyle" jdbcType="VARCHAR" />
+		<result column="userHomepage" property="userHomepage"
+			jdbcType="VARCHAR" />
+		<result column="userAtt1" property="userAtt1" jdbcType="VARCHAR" />
+		<result column="userAtt2" property="userAtt2" jdbcType="VARCHAR" />
+		<result column="userAtt3" property="userAtt3" jdbcType="VARCHAR" />
+		<result column="createon" property="createon" jdbcType="TIMESTAMP" />
+		<result column="createby" property="createby" jdbcType="VARCHAR" />
+		<result column="modifyon" property="modifyon" jdbcType="TIMESTAMP" />
+		<result column="modifyby" property="modifyby" jdbcType="VARCHAR" />
+		<result column="userId" property="userId" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		seqno, userStyle, userHomepage, userAtt1, userAtt2, userAtt3, createon,
+		createby,
+		modifyon, modifyby, userId
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from fdfb_user_profile
+		where seqno = #{seqno,jdbcType=VARCHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from fdfb_user_profile
+		where seqno = #{seqno,jdbcType=VARCHAR}
+	</delete>
+	<insert id="insert" parameterType="org.FDFBpersistence.pojos.FDFBUserProfile">
+		insert into fdfb_user_profile (seqno, userStyle, userHomepage,
+		userAtt1, userAtt2, userAtt3,
+		createon, createby, modifyon,
+		modifyby, userId)
+		values (#{seqno,jdbcType=VARCHAR}, #{userStyle,jdbcType=VARCHAR},
+		#{userHomepage,jdbcType=VARCHAR},
+		#{userAtt1,jdbcType=VARCHAR}, #{userAtt2,jdbcType=VARCHAR}, #{userAtt3,jdbcType=VARCHAR},
+		#{createon,jdbcType=TIMESTAMP}, #{createby,jdbcType=VARCHAR},
+		#{modifyon,jdbcType=TIMESTAMP},
+		#{modifyby,jdbcType=VARCHAR},
+		#{userId,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="org.FDFBpersistence.pojos.FDFBUserProfile">
+		insert into fdfb_user_profile
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="seqno != null">
+				seqno,
+			</if>
+			<if test="userStyle != null">
+				userStyle,
+			</if>
+			<if test="userHomepage != null">
+				userHomepage,
+			</if>
+			<if test="userAtt1 != null">
+				userAtt1,
+			</if>
+			<if test="userAtt2 != null">
+				userAtt2,
+			</if>
+			<if test="userAtt3 != null">
+				userAtt3,
+			</if>
+			<if test="createon != null">
+				createon,
+			</if>
+			<if test="createby != null">
+				createby,
+			</if>
+			<if test="modifyon != null">
+				modifyon,
+			</if>
+			<if test="modifyby != null">
+				modifyby,
+			</if>
+			<if test="userId != null">
+				userId,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="seqno != null">
+				#{seqno,jdbcType=VARCHAR},
+			</if>
+			<if test="userStyle != null">
+				#{userStyle,jdbcType=VARCHAR},
+			</if>
+			<if test="userHomepage != null">
+				#{userHomepage,jdbcType=VARCHAR},
+			</if>
+			<if test="userAtt1 != null">
+				#{userAtt1,jdbcType=VARCHAR},
+			</if>
+			<if test="userAtt2 != null">
+				#{userAtt2,jdbcType=VARCHAR},
+			</if>
+			<if test="userAtt3 != null">
+				#{userAtt3,jdbcType=VARCHAR},
+			</if>
+			<if test="createon != null">
+				#{createon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createby != null">
+				#{createby,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyon != null">
+				#{modifyon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modifyby != null">
+				#{modifyby,jdbcType=VARCHAR},
+			</if>
+			<if test="userId != null">
+				#{userId,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="org.FDFBpersistence.pojos.FDFBUserProfile">
+		update fdfb_user_profile
+		<set>
+			<if test="userStyle != null">
+				userStyle = #{userStyle,jdbcType=VARCHAR},
+			</if>
+			<if test="userHomepage != null">
+				userHomepage = #{userHomepage,jdbcType=VARCHAR},
+			</if>
+			<if test="userAtt1 != null">
+				userAtt1 = #{userAtt1,jdbcType=VARCHAR},
+			</if>
+			<if test="userAtt2 != null">
+				userAtt2 = #{userAtt2,jdbcType=VARCHAR},
+			</if>
+			<if test="userAtt3 != null">
+				userAtt3 = #{userAtt3,jdbcType=VARCHAR},
+			</if>
+			<if test="createon != null">
+				createon = #{createon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createby != null">
+				createby = #{createby,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyon != null">
+				modifyon = #{newModifyon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modifyby != null">
+				modifyby = #{modifyby,jdbcType=VARCHAR},
+			</if>
+			<if test="userId != null">
+				userId = #{userId,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where seqno = #{seqno,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="org.FDFBpersistence.pojos.FDFBUserProfile">
+		update fdfb_user_profile
+		set userStyle = #{userStyle,jdbcType=VARCHAR},
+		userHomepage = #{userHomepage,jdbcType=VARCHAR},
+		userAtt1 = #{userAtt1,jdbcType=VARCHAR},
+		userAtt2 = #{userAtt2,jdbcType=VARCHAR},
+		userAtt3 = #{userAtt3,jdbcType=VARCHAR},
+		createon = #{createon,jdbcType=TIMESTAMP},
+		createby = #{createby,jdbcType=VARCHAR},
+		modifyon = #{modifyon,jdbcType=TIMESTAMP},
+		modifyby = #{modifyby,jdbcType=VARCHAR},
+		userId = #{userId,jdbcType=VARCHAR}
+		where seqno = #{seqno,jdbcType=VARCHAR}
+	</update>
+	
+	<select id="getUserProfileByUserid" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from fdfb_user_profile
+		where userid = #{userid,jdbcType=VARCHAR}
+	</select>
+</mapper>

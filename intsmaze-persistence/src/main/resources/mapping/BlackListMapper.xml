@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.FDFBpersistence.mapper.BlackListMapper" >
+  <resultMap id="BaseResultMap" type="org.FDFBpersistence.pojos.BlackList" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="CASE_ID" property="caseId" jdbcType="VARCHAR" />
+    <result column="TYPE" property="type" jdbcType="VARCHAR" />
+    <result column="STATUS" property="status" jdbcType="VARCHAR" />
+    <result column="CUST_INFO_ID" property="custInfoId" jdbcType="BIGINT" />
+    <result column="RECORD_TYPE" property="recordType" jdbcType="VARCHAR" />
+    <result column="RECORD_ID" property="recordId" jdbcType="VARCHAR" />
+    <result column="COUNTRY_TYPE" property="countryType" jdbcType="VARCHAR" />
+    <result column="COUNTRY_VALUE" property="countryValue" jdbcType="VARCHAR" />	
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, CASE_ID, TYPE, STATUS, RANK, RANK_TYPE, CUST_INFO_ID, RECORD_TYPE,RECORD_ID,COUNTRY_TYPE,COUNTRY_VALUE
+  </sql>
+  <select id="selectMonitorNature" resultType="java.lang.Integer" parameterType="org.FDFBpersistence.pojos.BlackList">
+	select count(distinct cas.CASE_ID)
+	from bl_case cas
+	left join bl_cust_info info
+	on cas.CUST_INFO_ID= info.ID
+	left join bl_branch br
+	on br.ID=cas.OWNER_BRANCH_ID
+	where cas.status = 'BLOCK' and cas.type = 'N'
+	and info.RECORD_TYPE ='Person'
+	and FIND_IN_SET(br.name,f_queryChildBranch(  ifnull(
+	if(
+	<if test="lv3DivName != null" >
+	  #{lv3DivName,jdbcType=VARCHAR}
+    </if>
+     is null,NULL,
+    <if test="lv3DivName != null" >
+	  #{lv3DivName,jdbcType=VARCHAR}
+    </if>)
+	,
+	<if test="lv2DivName != null" >
+	  #{lv3DivName,jdbcType=VARCHAR}
+    </if>
+	)
+	)) > 0;
+  </select>
+  <select id="selectMonitorLegal" resultType="java.lang.Integer" parameterType="org.FDFBpersistence.pojos.BlackList">
+	select count(distinct cas.CASE_ID)
+	from bl_case cas
+	left join bl_cust_info info
+	on cas.CUST_INFO_ID= info.ID
+	left join bl_branch br
+	on br.ID=cas.OWNER_BRANCH_ID
+	where cas.status = 'BLOCK' and cas.type = 'N'
+	and info.RECORD_TYPE ='Entity'
+	and FIND_IN_SET(br.name,f_queryChildBranch(  ifnull(
+	if(
+	<if test="lv3DivName != null" >
+	  #{lv3DivName,jdbcType=VARCHAR}
+    </if>
+     is null,NULL,
+    <if test="lv3DivName != null" >
+	  #{lv3DivName,jdbcType=VARCHAR}
+    </if>)
+	,
+	<if test="lv2DivName != null" >
+	  #{lv3DivName,jdbcType=VARCHAR}
+    </if>
+	)
+	)) > 0;
+  </select>
+  <select id="selectLimitNature" resultType="java.lang.Integer" parameterType="org.FDFBpersistence.pojos.BlackList">
+	select count(distinct cas.CASE_ID)
+	from bl_case cas
+	left join bl_case_detail dtl
+	on dtl.case_id = cas.id
+	left join bl_branch br
+	on br.ID=cas.OWNER_BRANCH_ID
+	left join bl_record_country cty
+	on cty.record_id = dtl.record_id
+	left join bl_cust_info info
+	on cas.CUST_INFO_ID= info.ID
+	where cas.status = 'BLOCK'
+	and cty.country_type = 'Citizenship' 
+	and cty.country_value != 'China'
+	and info.RECORD_TYPE ='Person'
+	and FIND_IN_SET(br.name,f_queryChildBranch(  ifnull(
+	if(
+	<if test="lv3DivName != null" >
+	  #{lv3DivName,jdbcType=VARCHAR}
+    </if>
+     is null,NULL,
+    <if test="lv3DivName != null" >
+	  #{lv3DivName,jdbcType=VARCHAR}
+    </if>)
+	,
+	<if test="lv2DivName != null" >
+	  #{lv3DivName,jdbcType=VARCHAR}
+    </if>
+	)
+	)) > 0;
+  </select>
+  <select id="selectLimitLegal" resultType="java.lang.Integer" parameterType="org.FDFBpersistence.pojos.BlackList">
+	select count(distinct cas.CASE_ID)
+	from bl_case cas
+	left join bl_case_detail dtl
+	on dtl.case_id = cas.id
+	left join bl_branch br
+	on br.ID=cas.OWNER_BRANCH_ID
+	left join bl_record_country cty
+	on cty.record_id = dtl.record_id
+	left join bl_cust_info info
+	on cas.CUST_INFO_ID= info.ID
+	where cas.status = 'BLOCK'
+	and cas.type = 'N'
+	and cty.country_type = 'Citizenship' 
+	and cty.country_value != 'China'
+	and info.RECORD_TYPE ='Entity'
+	and FIND_IN_SET(br.name,f_queryChildBranch(  ifnull(
+	if(
+	<if test="lv3DivName != null" >
+	  #{lv3DivName,jdbcType=VARCHAR}
+    </if>
+     is null,NULL,
+    <if test="lv3DivName != null" >
+	  #{lv3DivName,jdbcType=VARCHAR}
+    </if>)
+	,
+	<if test="lv2DivName != null" >
+	  #{lv3DivName,jdbcType=VARCHAR}
+    </if>
+	)
+	)) > 0;
+  
+  </select>
+ <select id="selectTerrorNature" resultType="java.lang.Integer" parameterType="org.FDFBpersistence.pojos.BlackList">
+	select count(distinct cas.CASE_ID)
+	from bl_case cas
+	left join bl_case_detail dtl
+	on cas.case_id = dtl.id
+	left join bl_branch br
+	on br.ID=cas.OWNER_BRANCH_ID
+	left join bl_cust_info info
+	on cas.CUST_INFO_ID= info.ID
+	where cas.status = 'BLOCK' 
+	and cas.type = 'N'
+	and dtl.bl_type_name = 'TERROR'
+	and info.RECORD_TYPE ='Person'
+	and FIND_IN_SET(br.name,f_queryChildBranch(  ifnull(
+	if(
+	<if test="lv3DivName != null" >
+	  #{lv3DivName,jdbcType=VARCHAR}
+    </if>
+     is null,NULL,
+    <if test="lv3DivName != null" >
+	  #{lv3DivName,jdbcType=VARCHAR}
+    </if>)
+	,
+	<if test="lv2DivName != null" >
+	  #{lv3DivName,jdbcType=VARCHAR}
+    </if>
+	)
+	)) > 0;  
+  </select>
+  <select id="selectTerrorLegal" resultType="java.lang.Integer" parameterType="org.FDFBpersistence.pojos.BlackList">
+	select count(distinct cas.CASE_ID)
+	from bl_case cas
+	left join bl_case_detail dtl
+	on cas.case_id = dtl.id
+	left join bl_branch br
+	on br.ID=cas.OWNER_BRANCH_ID
+	left join bl_cust_info info
+	on cas.CUST_INFO_ID= info.ID
+	where cas.status = 'BLOCK' 
+	and cas.type = 'N'
+	and dtl.bl_type_name = 'TERROR'
+	and info.RECORD_TYPE ='Entity'
+	and FIND_IN_SET(br.name,f_queryChildBranch(  ifnull(
+	if(
+	<if test="lv3DivName != null" >
+	  #{lv3DivName,jdbcType=VARCHAR}
+    </if>
+     is null,NULL,
+    <if test="lv3DivName != null" >
+	  #{lv3DivName,jdbcType=VARCHAR}
+    </if>)
+	,
+	<if test="lv2DivName != null" >
+	  #{lv3DivName,jdbcType=VARCHAR}
+    </if>
+	)
+	)) > 0;
+  </select>
+</mapper>

@@ -1,0 +1,610 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.FDFBpersistence.mapper.SusTransInfoMapper" >
+  <resultMap id="BaseResultMap" type="org.FDFBpersistence.pojos.SusTransInfo" >
+    <id column="seqno" property="seqno" jdbcType="VARCHAR" />
+    <result column="SU_DATA_ID" property="suDataId" jdbcType="VARCHAR" />
+    <result column="TRADE_FEATURE" property="tradeFeature" jdbcType="VARCHAR" />
+    <result column="ISTP" property="istp" jdbcType="VARCHAR" />
+    <result column="PROD_NAME" property="prodName" jdbcType="VARCHAR" />
+    <result column="ISOG" property="isog" jdbcType="VARCHAR" />
+    <result column="PARTY_ID" property="partyId" jdbcType="VARCHAR" />
+    <result column="ORGAN_CODE" property="organCode" jdbcType="VARCHAR" />
+    <result column="CUSTOMER_NAME" property="customerName" jdbcType="VARCHAR" />
+    <result column="CUSTOMER_CERTI_TYPE" property="customerCertiType" jdbcType="VARCHAR" />
+    <result column="CUSTOMER_OTHER_CERTI_TYPE" property="customerOtherCertiType" jdbcType="VARCHAR" />
+    <result column="CUSTOMER_CERTI_CODE" property="customerCertiCode" jdbcType="VARCHAR" />
+    <result column="POLICY_NO" property="policyNo" jdbcType="VARCHAR" />
+    <result column="POLICY_EFFECT_TIME" property="policyEffectTime" jdbcType="VARCHAR" />
+    <result column="ISAT" property="isat" jdbcType="VARCHAR" />
+    <result column="ISFE" property="isfe" jdbcType="VARCHAR" />
+    <result column="ISPT" property="ispt" jdbcType="VARCHAR" />
+    <result column="CTES" property="ctes" jdbcType="VARCHAR" />
+    <result column="INSURED_NAME" property="insuredName" jdbcType="VARCHAR" />
+    <result column="INSURED_CERTI_TYPE" property="insuredCertiType" jdbcType="VARCHAR" />
+    <result column="INSURED_CERTI_OTHER_TYPE" property="insuredCertiOtherType" jdbcType="VARCHAR" />
+    <result column="INSURED_CERTI_CODE" property="insuredCertiCode" jdbcType="VARCHAR" />
+    <result column="RELATIONSHIP" property="relationship" jdbcType="VARCHAR" />
+    <result column="BENIFIT_NAME" property="benifitName" jdbcType="VARCHAR" />
+    <result column="BENIFIT_CERTI_CODE" property="benifitCertiCode" jdbcType="VARCHAR" />
+    <result column="BENIFIT_OTHER_CERTI_TYPE" property="benifitOtherCertiType" jdbcType="VARCHAR" />
+    <result column="BENIFIT_CERTI_TYPE" property="benifitCertiType" jdbcType="VARCHAR" />
+    <result column="ORGAN_ID" property="organId" jdbcType="VARCHAR" />
+    <result column="CRDR" property="crdr" jdbcType="VARCHAR" />
+    <result column="CSTP" property="cstp" jdbcType="VARCHAR" />
+    <result column="REMARK_ONE" property="remarkOne" jdbcType="VARCHAR" />
+    <result column="REMARK_TWO" property="remarkTwo" jdbcType="VARCHAR" />
+    <result column="ADDTIME" property="addtime" jdbcType="VARCHAR" />
+    <result column="CUR_KIND" property="curKind" jdbcType="VARCHAR" />
+    <result column="TRADE_TIME" property="tradeTime" jdbcType="VARCHAR" />
+    <result column="CUR_PREM" property="curPrem" jdbcType="VARCHAR" />
+    <result column="PROD_TRADE_TYPE" property="prodTradeType" jdbcType="VARCHAR" />
+    <result column="UNIT" property="unit" jdbcType="VARCHAR" />    
+
+   <!--  <result column="SDGR" property="sdgr" jdbcType="VARCHAR" /> -->
+  </resultMap>
+  <sql id="Base_Column_List" >
+    seqno, SU_DATA_ID, TRADE_FEATURE, ISTP, PROD_NAME, ISOG, PARTY_ID, ORGAN_CODE, CUSTOMER_NAME, 
+    CUSTOMER_CERTI_TYPE, CUSTOMER_OTHER_CERTI_TYPE, CUSTOMER_CERTI_CODE, POLICY_NO, POLICY_EFFECT_TIME, 
+    ISAT, ISFE, ISPT, CTES, INSURED_NAME, INSURED_CERTI_TYPE, INSURED_CERTI_OTHER_TYPE, 
+    INSURED_CERTI_CODE, RELATIONSHIP, BENIFIT_NAME, BENIFIT_CERTI_CODE, BENIFIT_OTHER_CERTI_TYPE, 
+    BENIFIT_CERTI_TYPE, ORGAN_ID, CRDR, CSTP, REMARK_ONE, REMARK_TWO, ADDTIME, CUR_KIND, 
+    TRADE_TIME, CUR_PREM, PROD_TRADE_TYPE ,UNIT
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from sus_transinfo
+    where seqno = #{seqno,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from sus_transinfo
+    where seqno = #{seqno,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="org.FDFBpersistence.pojos.SusTransInfo" >
+    insert into sus_transinfo (seqno, SU_DATA_ID, TRADE_FEATURE, 
+      ISTP, PROD_NAME, ISOG, 
+      PARTY_ID, ORGAN_CODE, CUSTOMER_NAME, 
+      CUSTOMER_CERTI_TYPE, CUSTOMER_OTHER_CERTI_TYPE, 
+      CUSTOMER_CERTI_CODE, POLICY_NO, POLICY_EFFECT_TIME, 
+      ISAT, ISFE, ISPT, CTES, 
+      INSURED_NAME, INSURED_CERTI_TYPE, INSURED_CERTI_OTHER_TYPE, 
+      INSURED_CERTI_CODE, RELATIONSHIP, BENIFIT_NAME, 
+      BENIFIT_CERTI_CODE, BENIFIT_OTHER_CERTI_TYPE, 
+      BENIFIT_CERTI_TYPE, ORGAN_ID, CRDR, 
+      CSTP, REMARK_ONE, REMARK_TWO, 
+      ADDTIME, CUR_KIND, TRADE_TIME,
+      CUR_PREM, PROD_TRADE_TYPE,UNIT )
+    values (#{seqno,jdbcType=VARCHAR}, #{suDataId,jdbcType=VARCHAR}, #{tradeFeature,jdbcType=VARCHAR}, 
+      #{istp,jdbcType=VARCHAR}, #{prodName,jdbcType=VARCHAR}, #{isog,jdbcType=VARCHAR}, 
+      #{partyId,jdbcType=VARCHAR}, #{organCode,jdbcType=VARCHAR}, #{customerName,jdbcType=VARCHAR}, 
+      #{customerCertiType,jdbcType=VARCHAR}, #{customerOtherCertiType,jdbcType=VARCHAR}, 
+      #{customerCertiCode,jdbcType=VARCHAR}, #{policyNo,jdbcType=VARCHAR}, #{policyEffectTime,jdbcType=VARCHAR}, 
+      #{isat,jdbcType=VARCHAR}, #{isfe,jdbcType=VARCHAR}, #{ispt,jdbcType=VARCHAR}, #{ctes,jdbcType=VARCHAR}, 
+      #{insuredName,jdbcType=VARCHAR}, #{insuredCertiType,jdbcType=VARCHAR}, #{insuredCertiOtherType,jdbcType=VARCHAR}, 
+      #{insuredCertiCode,jdbcType=VARCHAR}, #{relationship,jdbcType=VARCHAR}, #{benifitName,jdbcType=VARCHAR}, 
+      #{benifitCertiCode,jdbcType=VARCHAR}, #{benifitOtherCertiType,jdbcType=VARCHAR}, 
+      #{benifitCertiType,jdbcType=VARCHAR}, #{organId,jdbcType=VARCHAR}, #{crdr,jdbcType=VARCHAR}, 
+      #{cstp,jdbcType=VARCHAR}, #{remarkOne,jdbcType=VARCHAR}, #{remarkTwo,jdbcType=VARCHAR}, 
+      #{addtime,jdbcType=VARCHAR}, #{curKind,jdbcType=VARCHAR}, #{tradeTime,jdbcType=VARCHAR}, 
+      #{curPrem,jdbcType=VARCHAR}, #{prodTradeType,jdbcType=VARCHAR} , #{unit,jdbcType=VARCHAR}    )
+  </insert>
+  <insert id="insertSelective" parameterType="org.FDFBpersistence.pojos.SusTransInfo" >
+    insert into sus_transinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="seqno != null" >
+        seqno,
+      </if>
+      <if test="suDataId != null" >
+        SU_DATA_ID,
+      </if>
+      <if test="tradeFeature != null" >
+        TRADE_FEATURE,
+      </if>
+      <if test="istp != null" >
+        ISTP,
+      </if>
+      <if test="prodName != null" >
+        PROD_NAME,
+      </if>
+      <if test="isog != null" >
+        ISOG,
+      </if>
+      <if test="partyId != null" >
+        PARTY_ID,
+      </if>
+      <if test="organCode != null" >
+        ORGAN_CODE,
+      </if>
+      <if test="customerName != null" >
+        CUSTOMER_NAME,
+      </if>
+      <if test="customerCertiType != null" >
+        CUSTOMER_CERTI_TYPE,
+      </if>
+      <if test="customerOtherCertiType != null" >
+        CUSTOMER_OTHER_CERTI_TYPE,
+      </if>
+      <if test="customerCertiCode != null" >
+        CUSTOMER_CERTI_CODE,
+      </if>
+      <if test="policyNo != null" >
+        POLICY_NO,
+      </if>
+      <if test="policyEffectTime != null" >
+        POLICY_EFFECT_TIME,
+      </if>
+      <if test="isat != null" >
+        ISAT,
+      </if>
+      <if test="isfe != null" >
+        ISFE,
+      </if>
+      <if test="ispt != null" >
+        ISPT,
+      </if>
+      <if test="ctes != null" >
+        CTES,
+      </if>
+      <if test="insuredName != null" >
+        INSURED_NAME,
+      </if>
+      <if test="insuredCertiType != null" >
+        INSURED_CERTI_TYPE,
+      </if>
+      <if test="insuredCertiOtherType != null" >
+        INSURED_CERTI_OTHER_TYPE,
+      </if>
+      <if test="insuredCertiCode != null" >
+        INSURED_CERTI_CODE,
+      </if>
+      <if test="relationship != null" >
+        RELATIONSHIP,
+      </if>
+      <if test="benifitName != null" >
+        BENIFIT_NAME,
+      </if>
+      <if test="benifitCertiCode != null" >
+        BENIFIT_CERTI_CODE,
+      </if>
+      <if test="benifitOtherCertiType != null" >
+        BENIFIT_OTHER_CERTI_TYPE,
+      </if>
+      <if test="benifitCertiType != null" >
+        BENIFIT_CERTI_TYPE,
+      </if>
+      <if test="organId != null" >
+        ORGAN_ID,
+      </if>
+      <if test="crdr != null" >
+        CRDR,
+      </if>
+      <if test="cstp != null" >
+        CSTP,
+      </if>
+      <if test="remarkOne != null" >
+        REMARK_ONE,
+      </if>
+      <if test="remarkTwo != null" >
+        REMARK_TWO,
+      </if>
+      <if test="addtime != null" >
+        ADDTIME,
+      </if>
+      <if test="curKind != null" >
+        CUR_KIND,
+      </if>
+      <if test="tradeTime != null" >
+        TRADE_TIME,
+      </if>
+      <if test="curPrem != null" >
+        CUR_PREM,
+      </if>
+      <if test="prodTradeType != null" >
+        PROD_TRADE_TYPE,
+      </if>
+      <if test="unit != null" >
+        UNIT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="seqno != null" >
+        #{seqno,jdbcType=VARCHAR},
+      </if>
+      <if test="suDataId != null" >
+        #{suDataId,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeFeature != null" >
+        #{tradeFeature,jdbcType=VARCHAR},
+      </if>
+      <if test="istp != null" >
+        #{istp,jdbcType=VARCHAR},
+      </if>
+      <if test="prodName != null" >
+        #{prodName,jdbcType=VARCHAR},
+      </if>
+      <if test="isog != null" >
+        #{isog,jdbcType=VARCHAR},
+      </if>
+      <if test="partyId != null" >
+        #{partyId,jdbcType=VARCHAR},
+      </if>
+      <if test="organCode != null" >
+        #{organCode,jdbcType=VARCHAR},
+      </if>
+      <if test="customerName != null" >
+        #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="customerCertiType != null" >
+        #{customerCertiType,jdbcType=VARCHAR},
+      </if>
+      <if test="customerOtherCertiType != null" >
+        #{customerOtherCertiType,jdbcType=VARCHAR},
+      </if>
+      <if test="customerCertiCode != null" >
+        #{customerCertiCode,jdbcType=VARCHAR},
+      </if>
+      <if test="policyNo != null" >
+        #{policyNo,jdbcType=VARCHAR},
+      </if>
+      <if test="policyEffectTime != null" >
+        #{policyEffectTime,jdbcType=VARCHAR},
+      </if>
+      <if test="isat != null" >
+        #{isat,jdbcType=VARCHAR},
+      </if>
+      <if test="isfe != null" >
+        #{isfe,jdbcType=VARCHAR},
+      </if>
+      <if test="ispt != null" >
+        #{ispt,jdbcType=VARCHAR},
+      </if>
+      <if test="ctes != null" >
+        #{ctes,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredName != null" >
+        #{insuredName,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredCertiType != null" >
+        #{insuredCertiType,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredCertiOtherType != null" >
+        #{insuredCertiOtherType,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredCertiCode != null" >
+        #{insuredCertiCode,jdbcType=VARCHAR},
+      </if>
+      <if test="relationship != null" >
+        #{relationship,jdbcType=VARCHAR},
+      </if>
+      <if test="benifitName != null" >
+        #{benifitName,jdbcType=VARCHAR},
+      </if>
+      <if test="benifitCertiCode != null" >
+        #{benifitCertiCode,jdbcType=VARCHAR},
+      </if>
+      <if test="benifitOtherCertiType != null" >
+        #{benifitOtherCertiType,jdbcType=VARCHAR},
+      </if>
+      <if test="benifitCertiType != null" >
+        #{benifitCertiType,jdbcType=VARCHAR},
+      </if>
+      <if test="organId != null" >
+        #{organId,jdbcType=VARCHAR},
+      </if>
+      <if test="crdr != null" >
+        #{crdr,jdbcType=VARCHAR},
+      </if>
+      <if test="cstp != null" >
+        #{cstp,jdbcType=VARCHAR},
+      </if>
+      <if test="remarkOne != null" >
+        #{remarkOne,jdbcType=VARCHAR},
+      </if>
+      <if test="remarkTwo != null" >
+        #{remarkTwo,jdbcType=VARCHAR},
+      </if>
+      <if test="addtime != null" >
+        #{addtime,jdbcType=VARCHAR},
+      </if>
+      <if test="curKind != null" >
+        #{curKind,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeTime != null" >
+        #{tradeTime,jdbcType=VARCHAR},
+      </if>
+      <if test="curPrem != null" >
+        #{curPrem,jdbcType=VARCHAR},
+      </if>
+      <if test="prodTradeType != null" >
+        #{prodTradeType,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null" >
+        #{unit,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.FDFBpersistence.pojos.SusTransInfo" >
+    update sus_transinfo
+    <set >
+      <if test="suDataId != null" >
+        SU_DATA_ID = #{suDataId,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeFeature != null" >
+        TRADE_FEATURE = #{tradeFeature,jdbcType=VARCHAR},
+      </if>
+      <if test="istp != null" >
+        ISTP = #{istp,jdbcType=VARCHAR},
+      </if>
+      <if test="prodName != null" >
+        PROD_NAME = #{prodName,jdbcType=VARCHAR},
+      </if>
+      <if test="isog != null" >
+        ISOG = #{isog,jdbcType=VARCHAR},
+      </if>
+      <if test="partyId != null" >
+        PARTY_ID = #{partyId,jdbcType=VARCHAR},
+      </if>
+      <if test="organCode != null" >
+        ORGAN_CODE = #{organCode,jdbcType=VARCHAR},
+      </if>
+      <if test="customerName != null" >
+        CUSTOMER_NAME = #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="customerCertiType != null" >
+        CUSTOMER_CERTI_TYPE = #{customerCertiType,jdbcType=VARCHAR},
+      </if>
+      <if test="customerOtherCertiType != null" >
+        CUSTOMER_OTHER_CERTI_TYPE = #{customerOtherCertiType,jdbcType=VARCHAR},
+      </if>
+      <if test="customerCertiCode != null" >
+        CUSTOMER_CERTI_CODE = #{customerCertiCode,jdbcType=VARCHAR},
+      </if>
+      <if test="policyNo != null" >
+        POLICY_NO = #{policyNo,jdbcType=VARCHAR},
+      </if>
+      <if test="policyEffectTime != null" >
+        POLICY_EFFECT_TIME = #{policyEffectTime,jdbcType=VARCHAR},
+      </if>
+      <if test="isat != null" >
+        ISAT = #{isat,jdbcType=VARCHAR},
+      </if>
+      <if test="isfe != null" >
+        ISFE = #{isfe,jdbcType=VARCHAR},
+      </if>
+      <if test="ispt != null" >
+        ISPT = #{ispt,jdbcType=VARCHAR},
+      </if>
+      <if test="ctes != null" >
+        CTES = #{ctes,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredName != null" >
+        INSURED_NAME = #{insuredName,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredCertiType != null" >
+        INSURED_CERTI_TYPE = #{insuredCertiType,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredCertiOtherType != null" >
+        INSURED_CERTI_OTHER_TYPE = #{insuredCertiOtherType,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredCertiCode != null" >
+        INSURED_CERTI_CODE = #{insuredCertiCode,jdbcType=VARCHAR},
+      </if>
+      <if test="relationship != null" >
+        RELATIONSHIP = #{relationship,jdbcType=VARCHAR},
+      </if>
+      <if test="benifitName != null" >
+        BENIFIT_NAME = #{benifitName,jdbcType=VARCHAR},
+      </if>
+      <if test="benifitCertiCode != null" >
+        BENIFIT_CERTI_CODE = #{benifitCertiCode,jdbcType=VARCHAR},
+      </if>
+      <if test="benifitOtherCertiType != null" >
+        BENIFIT_OTHER_CERTI_TYPE = #{benifitOtherCertiType,jdbcType=VARCHAR},
+      </if>
+      <if test="benifitCertiType != null" >
+        BENIFIT_CERTI_TYPE = #{benifitCertiType,jdbcType=VARCHAR},
+      </if>
+      <if test="organId != null" >
+        ORGAN_ID = #{organId,jdbcType=VARCHAR},
+      </if>
+      <if test="crdr != null" >
+        CRDR = #{crdr,jdbcType=VARCHAR},
+      </if>
+      <if test="cstp != null" >
+        CSTP = #{cstp,jdbcType=VARCHAR},
+      </if>
+      <if test="remarkOne != null" >
+        REMARK_ONE = #{remarkOne,jdbcType=VARCHAR},
+      </if>
+      <if test="remarkTwo != null" >
+        REMARK_TWO = #{remarkTwo,jdbcType=VARCHAR},
+      </if>
+      <if test="addtime != null" >
+        ADDTIME = #{addtime,jdbcType=VARCHAR},
+      </if>
+      <if test="curKind != null" >
+        CUR_KIND = #{curKind,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeTime != null" >
+        TRADE_TIME = #{tradeTime,jdbcType=VARCHAR},
+      </if>
+      <if test="curPrem != null" >
+        CUR_PREM = #{curPrem,jdbcType=VARCHAR},
+      </if>
+      <if test="prodTradeType != null" >
+        PROD_TRADE_TYPE = #{prodTradeType,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null" >
+        UNIT = #{unit,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where seqno = #{seqno,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.FDFBpersistence.pojos.SusTransInfo" >
+    update sus_transinfo
+    set SU_DATA_ID = #{suDataId,jdbcType=VARCHAR},
+      TRADE_FEATURE = #{tradeFeature,jdbcType=VARCHAR},
+      ISTP = #{istp,jdbcType=VARCHAR},
+      PROD_NAME = #{prodName,jdbcType=VARCHAR},
+      ISOG = #{isog,jdbcType=VARCHAR},
+      PARTY_ID = #{partyId,jdbcType=VARCHAR},
+      ORGAN_CODE = #{organCode,jdbcType=VARCHAR},
+      CUSTOMER_NAME = #{customerName,jdbcType=VARCHAR},
+      CUSTOMER_CERTI_TYPE = #{customerCertiType,jdbcType=VARCHAR},
+      CUSTOMER_OTHER_CERTI_TYPE = #{customerOtherCertiType,jdbcType=VARCHAR},
+      CUSTOMER_CERTI_CODE = #{customerCertiCode,jdbcType=VARCHAR},
+      POLICY_NO = #{policyNo,jdbcType=VARCHAR},
+      POLICY_EFFECT_TIME = #{policyEffectTime,jdbcType=VARCHAR},
+      ISAT = #{isat,jdbcType=VARCHAR},
+      ISFE = #{isfe,jdbcType=VARCHAR},
+      ISPT = #{ispt,jdbcType=VARCHAR},
+      CTES = #{ctes,jdbcType=VARCHAR},
+      INSURED_NAME = #{insuredName,jdbcType=VARCHAR},
+      INSURED_CERTI_TYPE = #{insuredCertiType,jdbcType=VARCHAR},
+      INSURED_CERTI_OTHER_TYPE = #{insuredCertiOtherType,jdbcType=VARCHAR},
+      INSURED_CERTI_CODE = #{insuredCertiCode,jdbcType=VARCHAR},
+      RELATIONSHIP = #{relationship,jdbcType=VARCHAR},
+      BENIFIT_NAME = #{benifitName,jdbcType=VARCHAR},
+      BENIFIT_CERTI_CODE = #{benifitCertiCode,jdbcType=VARCHAR},
+      BENIFIT_OTHER_CERTI_TYPE = #{benifitOtherCertiType,jdbcType=VARCHAR},
+      BENIFIT_CERTI_TYPE = #{benifitCertiType,jdbcType=VARCHAR},
+      ORGAN_ID = #{organId,jdbcType=VARCHAR},
+      CRDR = #{crdr,jdbcType=VARCHAR},
+      CSTP = #{cstp,jdbcType=VARCHAR},
+      REMARK_ONE = #{remarkOne,jdbcType=VARCHAR},
+      REMARK_TWO = #{remarkTwo,jdbcType=VARCHAR},
+      ADDTIME = #{addtime,jdbcType=VARCHAR},
+      CUR_KIND = #{curKind,jdbcType=VARCHAR},
+      TRADE_TIME = #{tradeTime,jdbcType=VARCHAR},
+      CUR_PREM = #{curPrem,jdbcType=VARCHAR},
+      PROD_TRADE_TYPE = #{prodTradeType,jdbcType=VARCHAR},
+      UNTT = #{unit,jdbcType=VARCHAR},
+    where seqno = #{seqno,jdbcType=VARCHAR}
+  </update>
+  <select id="selectForC2T" resultMap="BaseResultMap" parameterType="org.FDFBpersistence.pojos.SusTransInfo" >
+    SELECT 
+    <include refid="Base_Column_List" />
+    FROM sus_transinfo st
+    WHERE 1=1 
+      <if test="suDataId != null" >
+       AND st.SU_DATA_ID = #{suDataId,jdbcType=VARCHAR}
+      </if>
+      <if test="tradeFeature != null" >
+       AND st.TRADE_FEATURE = #{tradeFeature,jdbcType=VARCHAR}
+      </if>
+      <if test="istp != null" >
+       AND st.ISTP = #{istp,jdbcType=VARCHAR}
+      </if>
+      <if test="prodName != null" >
+       AND st.PROD_NAME = #{prodName,jdbcType=VARCHAR}
+      </if>
+      <if test="isog != null" >
+       AND st.ISOG = #{isog,jdbcType=VARCHAR}
+      </if>
+      <if test="partyId != null" >
+       AND st.PARTY_ID = #{partyId,jdbcType=VARCHAR}
+      </if>
+      <if test="organCode != null" >
+       AND st.ORGAN_CODE = #{organCode,jdbcType=VARCHAR}
+      </if>
+      <if test="customerName != null" >
+       AND st.CUSTOMER_NAME = #{customerName,jdbcType=VARCHAR}
+      </if>
+      <if test="customerCertiType != null" >
+       AND st.CUSTOMER_CERTI_TYPE = #{customerCertiType,jdbcType=VARCHAR}
+      </if>
+      <if test="customerOtherCertiType != null" >
+       AND st.CUSTOMER_OTHER_CERTI_TYPE = #{customerOtherCertiType,jdbcType=VARCHAR}
+      </if>
+      <if test="customerCertiCode != null" >
+       AND st.CUSTOMER_CERTI_CODE = #{customerCertiCode,jdbcType=VARCHAR}
+      </if>
+      <if test="policyNo != null" >
+       AND st.POLICY_NO = #{policyNo,jdbcType=VARCHAR}
+      </if>
+      <if test="policyEffectTime != null" >
+       AND st.POLICY_EFFECT_TIME = #{policyEffectTime,jdbcType=VARCHAR}
+      </if>
+      <if test="isat != null" >
+       AND st.ISAT = #{isat,jdbcType=VARCHAR}
+      </if>
+      <if test="isfe != null" >
+       AND st.ISFE = #{isfe,jdbcType=VARCHAR}
+      </if>
+      <if test="ispt != null" >
+       AND st.ISPT = #{ispt,jdbcType=VARCHAR}
+      </if>
+      <if test="ctes != null" >
+       AND st.CTES = #{ctes,jdbcType=VARCHAR}
+      </if>
+      <if test="insuredName != null" >
+       AND st.INSURED_NAME = #{insuredName,jdbcType=VARCHAR}
+      </if>
+      <if test="insuredCertiType != null" >
+       AND st.INSURED_CERTI_TYPE = #{insuredCertiType,jdbcType=VARCHAR}
+      </if>
+      <if test="insuredCertiOtherType != null" >
+       AND st.INSURED_CERTI_OTHER_TYPE = #{insuredCertiOtherType,jdbcType=VARCHAR}
+      </if>
+      <if test="insuredCertiCode != null" >
+       AND st.INSURED_CERTI_CODE = #{insuredCertiCode,jdbcType=VARCHAR}
+      </if>
+      <if test="relationship != null" >
+       AND st.RELATIONSHIP = #{relationship,jdbcType=VARCHAR}
+      </if>
+      <if test="benifitName != null" >
+       AND st.BENIFIT_NAME = #{benifitName,jdbcType=VARCHAR}
+      </if>
+      <if test="benifitCertiCode != null" >
+       AND st.BENIFIT_CERTI_CODE = #{benifitCertiCode,jdbcType=VARCHAR}
+      </if>
+      <if test="benifitOtherCertiType != null" >
+       AND st.BENIFIT_OTHER_CERTI_TYPE = #{benifitOtherCertiType,jdbcType=VARCHAR}
+      </if>
+      <if test="benifitCertiType != null" >
+       AND st.BENIFIT_CERTI_TYPE = #{benifitCertiType,jdbcType=VARCHAR}
+      </if>
+      <if test="organId != null" >
+       AND st.ORGAN_ID = #{organId,jdbcType=VARCHAR}
+      </if>
+      <if test="crdr != null" >
+       AND st.CRDR = #{crdr,jdbcType=VARCHAR}
+      </if>
+      <if test="cstp != null" >
+       AND st.CSTP = #{cstp,jdbcType=VARCHAR}
+      </if>
+      <if test="remarkOne != null" >
+       AND st.REMARK_ONE = #{remarkOne,jdbcType=VARCHAR}
+      </if>
+      <if test="remarkTwo != null" >
+       AND st.REMARK_TWO = #{remarkTwo,jdbcType=VARCHAR}
+      </if>
+      <if test="addtime != null" >
+       AND st.ADDTIME = #{addtime,jdbcType=VARCHAR}
+      </if>
+      <if test="curKind != null" >
+       AND st.CUR_KIND = #{curKind,jdbcType=VARCHAR}
+      </if>
+      <if test="tradeTime != null" >
+       AND st.TRADE_TIME = #{tradeTime,jdbcType=VARCHAR}
+      </if>
+      <if test="curPrem != null" >
+       AND st.CUR_PREM = #{curPrem,jdbcType=VARCHAR}
+      </if>
+      <if test="prodTradeType != null" >
+       AND st.PROD_TRADE_TYPE = #{prodTradeType,jdbcType=VARCHAR}
+      </if>
+      <if test="unit != null" >
+       AND st.UNIT = #{unit,jdbcType=VARCHAR}
+      </if>
+  </select>
+  <select id="selectBySuDataId" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    SELECT 
+    <include refid="Base_Column_List" />
+    FROM sus_transinfo st
+    WHERE st.SU_DATA_ID = #{suDataId,jdbcType=VARCHAR}
+  </select>
+  
+  
+</mapper>

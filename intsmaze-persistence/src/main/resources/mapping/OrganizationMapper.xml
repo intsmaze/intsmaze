@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.FDFBpersistence.mapper.OrganizationMapper" >
+  <resultMap id="BaseResultMap" type="org.FDFBpersistence.pojos.Organization" >
+    <id column="seqno" property="seqno" jdbcType="VARCHAR" />
+    <result column="org_inner_coding" property="orgInnerCoding" jdbcType="VARCHAR" />
+    <result column="org_no" property="orgNo" jdbcType="VARCHAR" />
+    <result column="org_name" property="orgName" jdbcType="VARCHAR" />
+    <result column="parent_compnay_id" property="parentCompnayId" jdbcType="VARCHAR" />
+    <result column="p_org_inncoding" property="pOrgInncoding" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="new_org_no" property ="newOrgNo" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    seqno, org_inner_coding, org_no, org_name, parent_compnay_id, p_org_inncoding, status, new_org_no
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from aml_org
+    where seqno = #{seqno,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from aml_org
+    where seqno = #{seqno,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="org.FDFBpersistence.pojos.Organization" >
+    insert into aml_org (seqno, org_inner_coding, org_no, 
+      org_name, parent_compnay_id, p_org_inncoding, 
+      status, new_org_no)
+    values (#{seqno,jdbcType=VARCHAR}, #{orgInnerCoding,jdbcType=VARCHAR}, #{orgNo,jdbcType=VARCHAR}, 
+      #{orgName,jdbcType=VARCHAR}, #{parentCompnayId,jdbcType=VARCHAR}, #{pOrgInncoding,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR}, #{newOrgNo,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.FDFBpersistence.pojos.Organization" >
+    insert into aml_org
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="seqno != null" >
+        seqno,
+      </if>
+      <if test="orgInnerCoding != null" >
+        org_inner_coding,
+      </if>
+      <if test="orgNo != null" >
+        org_no,
+      </if>
+      <if test="orgName != null" >
+        org_name,
+      </if>
+      <if test="parentCompnayId != null" >
+        parent_compnay_id,
+      </if>
+      <if test="pOrgInncoding != null" >
+        p_org_inncoding,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="newOrgNo != null" >
+        new_org_no,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="seqno != null" >
+        #{seqno,jdbcType=VARCHAR},
+      </if>
+      <if test="orgInnerCoding != null" >
+        #{orgInnerCoding,jdbcType=VARCHAR},
+      </if>
+      <if test="orgNo != null" >
+        #{orgNo,jdbcType=VARCHAR},
+      </if>
+      <if test="orgName != null" >
+        #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="parentCompnayId != null" >
+        #{parentCompnayId,jdbcType=VARCHAR},
+      </if>
+      <if test="pOrgInncoding != null" >
+        #{pOrgInncoding,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="newOrgNo != null" >
+        #{newOrgNo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.FDFBpersistence.pojos.Organization" >
+    update aml_org
+    <set >
+      <if test="orgInnerCoding != null" >
+        org_inner_coding = #{orgInnerCoding,jdbcType=VARCHAR},
+      </if>
+      <if test="orgNo != null" >
+        org_no = #{orgNo,jdbcType=VARCHAR},
+      </if>
+      <if test="orgName != null" >
+        org_name = #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="parentCompnayId != null" >
+        parent_compnay_id = #{parentCompnayId,jdbcType=VARCHAR},
+      </if>
+      <if test="pOrgInncoding != null" >
+        p_org_inncoding = #{pOrgInncoding,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="newOrgNo != null" >
+        new_org_no = #{newOrgNo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where seqno = #{seqno,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.FDFBpersistence.pojos.Organization" >
+    update aml_org
+    set org_inner_coding = #{orgInnerCoding,jdbcType=VARCHAR},
+      org_no = #{orgNo,jdbcType=VARCHAR},
+      org_name = #{orgName,jdbcType=VARCHAR},
+      parent_compnay_id = #{parentCompnayId,jdbcType=VARCHAR},
+      p_org_inncoding = #{pOrgInncoding,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      new_org_no = #{newOrgNo,jdbcType=VARCHAR} 
+    where seqno = #{seqno,jdbcType=VARCHAR}
+  </update>
+  <select id="selectAll" resultMap="BaseResultMap"
+		parameterType="org.FDFBpersistence.pojos.Organization">
+	  select
+	  <include refid="Base_Column_List" />
+	  from aml_org
+	  where 1=1
+      <if test="orgInnerCoding != null" >
+        and org_inner_coding = #{orgInnerCoding,jdbcType=VARCHAR}
+      </if>
+      <if test="orgNo != null" >
+        and org_no = #{orgNo,jdbcType=VARCHAR}
+      </if>
+      <if test="orgName != null" >
+        and org_name = #{orgName,jdbcType=VARCHAR}
+      </if>
+      <if test="parentCompnayId != null" >
+        and parent_compnay_id = #{parentCompnayId,jdbcType=VARCHAR}
+      </if>
+      <if test="pOrgInncoding != null" >
+       and p_org_inncoding = #{pOrgInncoding,jdbcType=VARCHAR}
+      </if>
+      <if test="status != null" >
+       and status = #{status,jdbcType=VARCHAR}
+      </if>
+      <if test="newOrgNo != null" >
+       and new_org_no = #{newOrgNo,jdbcType=VARCHAR}
+      </if>
+  </select>
+  
+  
+  
+</mapper>

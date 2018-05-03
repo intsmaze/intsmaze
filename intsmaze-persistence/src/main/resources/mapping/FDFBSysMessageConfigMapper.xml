@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.FDFBpersistence.mapper.FDFBSysMessageConfigMapper">
+
+	<cache type="org.mybatis.caches.ehcache.LoggingEhcache"> 
+		<property name="timeToIdleSeconds" value="36000" /><!-- 10小时刷新 -->
+		<property name="timeToLiveSeconds" value="36000" />
+		<property name="maxEntriesLocalHeap" value="100" />
+		<property name="maxEntriesLocalDisk" value="1000" />
+		<property name="memoryStoreEvictionPolicy" value="LRU" />
+	</cache>
+
+	<resultMap id="BaseResultMap"
+		type="org.FDFBpersistence.pojos.FDFBSysMessageConfig">
+		<id column="SEQNO" property="seqno" jdbcType="VARCHAR" />
+		<result column="SHEETTYPE" property="sheettype" jdbcType="VARCHAR" />
+		<result column="SHEETSTATE" property="sheetstate" jdbcType="VARCHAR" />
+		<result column="MESSAGETEMPLATE" property="messagetemplate"
+			jdbcType="VARCHAR" />
+		<result column="ROLEID" property="roleid" jdbcType="VARCHAR" />
+		<result column="DEPID" property="depid" jdbcType="VARCHAR" />
+		<result column="PAGEURL" property="pageurl" jdbcType="VARCHAR" />
+		<result column="CREATEON" property="createon" jdbcType="TIMESTAMP" />
+		<result column="CREATEBY" property="createby" jdbcType="VARCHAR" />
+		<result column="MODIFYON" property="modifyon" jdbcType="TIMESTAMP" />
+		<result column="MODIFYBY" property="modifyby" jdbcType="VARCHAR" />
+		<result column="MESSAGETYPE" property="messagetype" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		SEQNO, SHEETTYPE, SHEETSTATE, MESSAGETEMPLATE, ROLEID,
+		DEPID, PAGEURL,
+		CREATEON,
+		CREATEBY, MODIFYON, MODIFYBY,messagetype
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from fdfb_sys_message_config
+		where SEQNO = #{seqno,jdbcType=VARCHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from
+		fdfb_sys_message_config
+		where SEQNO = #{seqno,jdbcType=VARCHAR}
+	</delete>
+	<insert id="insert" parameterType="org.FDFBpersistence.pojos.FDFBSysMessageConfig">
+		insert into
+		fdfb_sys_message_config (SEQNO, SHEETTYPE, SHEETSTATE,
+		MESSAGETEMPLATE, ROLEID, DEPID,
+		PAGEURL, CREATEON, CREATEBY,
+		MODIFYON,
+		MODIFYBY,messagetype)
+		values (#{seqno,jdbcType=VARCHAR},
+		#{sheettype,jdbcType=VARCHAR},
+		#{sheetstate,jdbcType=VARCHAR},
+		#{messagetemplate,jdbcType=VARCHAR}, #{roleid,jdbcType=VARCHAR},
+		#{depid,jdbcType=VARCHAR},
+		#{pageurl,jdbcType=VARCHAR},
+		#{createon,jdbcType=TIMESTAMP},
+		#{createby,jdbcType=VARCHAR},
+		#{modifyon,jdbcType=TIMESTAMP}, #{modifyby,jdbcType=VARCHAR}
+		, #{messagetype,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="org.FDFBpersistence.pojos.FDFBSysMessageConfig">
+		insert into fdfb_sys_message_config
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="seqno != null">
+				SEQNO,
+			</if>
+			<if test="sheettype != null">
+				SHEETTYPE,
+			</if>
+			<if test="sheetstate != null">
+				SHEETSTATE,
+			</if>
+			<if test="messagetemplate != null">
+				MESSAGETEMPLATE,
+			</if>
+			<if test="roleid != null">
+				ROLEID,
+			</if>
+			<if test="depid != null">
+				DEPID,
+			</if>
+			<if test="pageurl != null">
+				PAGEURL,
+			</if>
+			<if test="createon != null">
+				CREATEON,
+			</if>
+			<if test="createby != null">
+				CREATEBY,
+			</if>
+			<if test="modifyon != null">
+				MODIFYON,
+			</if>
+			<if test="modifyby != null">
+				MODIFYBY,
+			</if>
+			<if test="messagetype != null">
+				messagetype,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="seqno != null">
+				#{seqno,jdbcType=VARCHAR},
+			</if>
+			<if test="sheettype != null">
+				#{sheettype,jdbcType=VARCHAR},
+			</if>
+			<if test="sheetstate != null">
+				#{sheetstate,jdbcType=VARCHAR},
+			</if>
+			<if test="messagetemplate != null">
+				#{messagetemplate,jdbcType=VARCHAR},
+			</if>
+			<if test="roleid != null">
+				#{roleid,jdbcType=VARCHAR},
+			</if>
+			<if test="depid != null">
+				#{depid,jdbcType=VARCHAR},
+			</if>
+			<if test="pageurl != null">
+				#{pageurl,jdbcType=VARCHAR},
+			</if>
+			<if test="createon != null">
+				#{createon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createby != null">
+				#{createby,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyon != null">
+				#{modifyon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modifyby != null">
+				#{modifyby,jdbcType=VARCHAR},
+			</if>
+			<if test="messagetype != null">
+				#{messagetype,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="org.FDFBpersistence.pojos.FDFBSysMessageConfig">
+		update fdfb_sys_message_config
+		<set>
+			<if test="sheettype != null">
+				SHEETTYPE = #{sheettype,jdbcType=VARCHAR},
+			</if>
+			<if test="sheetstate != null">
+				SHEETSTATE = #{sheetstate,jdbcType=VARCHAR},
+			</if>
+			<if test="messagetemplate != null">
+				MESSAGETEMPLATE = #{messagetemplate,jdbcType=VARCHAR},
+			</if>
+			<if test="roleid != null">
+				ROLEID = #{roleid,jdbcType=VARCHAR},
+			</if>
+			<if test="depid != null">
+				DEPID = #{depid,jdbcType=VARCHAR},
+			</if>
+			<if test="pageurl != null">
+				PAGEURL = #{pageurl,jdbcType=VARCHAR},
+			</if>
+			<if test="createon != null">
+				CREATEON = #{createon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createby != null">
+				CREATEBY = #{createby,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyon != null">
+				MODIFYON = #{modifyon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modifyby != null">
+				MODIFYBY = #{modifyby,jdbcType=VARCHAR},
+			</if>
+			<if test="messagetype != null">
+				messagetype = #{messagetype,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where SEQNO = #{seqno,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="org.FDFBpersistence.pojos.FDFBSysMessageConfig">
+		update
+		fdfb_sys_message_config
+		set SHEETTYPE = #{sheettype,jdbcType=VARCHAR},
+		SHEETSTATE = #{sheetstate,jdbcType=VARCHAR},
+		MESSAGETEMPLATE =
+		#{messagetemplate,jdbcType=VARCHAR},
+		ROLEID =
+		#{roleid,jdbcType=VARCHAR},
+		DEPID = #{depid,jdbcType=VARCHAR},
+		PAGEURL =
+		#{pageurl,jdbcType=VARCHAR},
+		CREATEON = #{createon,jdbcType=TIMESTAMP},
+		CREATEBY = #{createby,jdbcType=VARCHAR},
+		MODIFYON =
+		#{modifyon,jdbcType=TIMESTAMP},
+		MODIFYBY = #{modifyby,jdbcType=VARCHAR},messagetype = #{messagetype,jdbcType=VARCHAR}
+		where SEQNO = #{seqno,jdbcType=VARCHAR}
+	</update>
+	
+	<select id="getSysMessageConfigBySheettypeAndSheetstate" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from fdfb_sys_message_config
+		where SHEETTYPE = #{0}
+		and SHEETSTATE = #{1}
+		and messagetype = #{2}
+	</select>
+</mapper>

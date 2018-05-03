@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.FDFBpersistence.mapper.RiskScoreDetailMapper" >
+  <resultMap id="BaseResultMap" type="org.FDFBpersistence.pojos.RiskScoreDetail" >
+    <id column="SEQNO" property="seqno" jdbcType="VARCHAR" />
+    <result column="CUSTOMER_ID" property="customerId" jdbcType="VARCHAR" />
+    <result column="NUM" property="num" jdbcType="VARCHAR" />
+    <result column="RISK_SUBITEM" property="riskSubitem" jdbcType="VARCHAR" />
+    <result column="ONE" property="one" jdbcType="VARCHAR" />
+    <result column="TWO" property="two" jdbcType="VARCHAR" />
+    <result column="THREE" property="three" jdbcType="VARCHAR" />
+    <result column="FOUR" property="four" jdbcType="VARCHAR" />
+    <result column="SCORE" property="score" jdbcType="VARCHAR" />
+    <result column="FROM_WEIGHT" property="fromWeight" jdbcType="VARCHAR" />
+    <result column="PRONO" property="prono" jdbcType="VARCHAR" />
+    <result column="CREATEBY" property="createby" jdbcType="VARCHAR" />
+    <result column="CREATEON" property="createon" jdbcType="TIMESTAMP" />
+    <result column="MODIFYBY" property="modifyby" jdbcType="VARCHAR" />
+    <result column="MODIFYON" property="modifyon" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    SEQNO, CUSTOMER_ID, NUM, RISK_SUBITEM, ONE, TWO, THREE, FOUR, SCORE, FROM_WEIGHT, 
+    PRONO, CREATEBY, CREATEON, MODIFYBY, MODIFYON
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_baseprocedure
+    where SEQNO = #{seqno,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_baseprocedure
+    where SEQNO = #{seqno,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="org.FDFBpersistence.pojos.RiskScoreDetail" >
+    insert into t_baseprocedure (SEQNO, CUSTOMER_ID, NUM, 
+      RISK_SUBITEM, ONE, TWO, 
+      THREE, FOUR, SCORE, 
+      FROM_WEIGHT, PRONO, CREATEBY, 
+      CREATEON, MODIFYBY, MODIFYON
+      )
+    values (#{seqno,jdbcType=VARCHAR}, #{customerId,jdbcType=VARCHAR}, #{num,jdbcType=VARCHAR}, 
+      #{riskSubitem,jdbcType=VARCHAR}, #{one,jdbcType=VARCHAR}, #{two,jdbcType=VARCHAR}, 
+      #{three,jdbcType=VARCHAR}, #{four,jdbcType=VARCHAR}, #{score,jdbcType=VARCHAR}, 
+      #{fromWeight,jdbcType=VARCHAR}, #{prono,jdbcType=VARCHAR}, #{createby,jdbcType=VARCHAR}, 
+      #{createon,jdbcType=TIMESTAMP}, #{modifyby,jdbcType=VARCHAR}, #{modifyon,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.FDFBpersistence.pojos.RiskScoreDetail" >
+    insert into t_baseprocedure
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="seqno != null" >
+        SEQNO,
+      </if>
+      <if test="customerId != null" >
+        CUSTOMER_ID,
+      </if>
+      <if test="num != null" >
+        NUM,
+      </if>
+      <if test="riskSubitem != null" >
+        RISK_SUBITEM,
+      </if>
+      <if test="one != null" >
+        ONE,
+      </if>
+      <if test="two != null" >
+        TWO,
+      </if>
+      <if test="three != null" >
+        THREE,
+      </if>
+      <if test="four != null" >
+        FOUR,
+      </if>
+      <if test="score != null" >
+        SCORE,
+      </if>
+      <if test="fromWeight != null" >
+        FROM_WEIGHT,
+      </if>
+      <if test="prono != null" >
+        PRONO,
+      </if>
+      <if test="createby != null" >
+        CREATEBY,
+      </if>
+      <if test="createon != null" >
+        CREATEON,
+      </if>
+      <if test="modifyby != null" >
+        MODIFYBY,
+      </if>
+      <if test="modifyon != null" >
+        MODIFYON,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="seqno != null" >
+        #{seqno,jdbcType=VARCHAR},
+      </if>
+      <if test="customerId != null" >
+        #{customerId,jdbcType=VARCHAR},
+      </if>
+      <if test="num != null" >
+        #{num,jdbcType=VARCHAR},
+      </if>
+      <if test="riskSubitem != null" >
+        #{riskSubitem,jdbcType=VARCHAR},
+      </if>
+      <if test="one != null" >
+        #{one,jdbcType=VARCHAR},
+      </if>
+      <if test="two != null" >
+        #{two,jdbcType=VARCHAR},
+      </if>
+      <if test="three != null" >
+        #{three,jdbcType=VARCHAR},
+      </if>
+      <if test="four != null" >
+        #{four,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null" >
+        #{score,jdbcType=VARCHAR},
+      </if>
+      <if test="fromWeight != null" >
+        #{fromWeight,jdbcType=VARCHAR},
+      </if>
+      <if test="prono != null" >
+        #{prono,jdbcType=VARCHAR},
+      </if>
+      <if test="createby != null" >
+        #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="createon != null" >
+        #{createon,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyby != null" >
+        #{modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyon != null" >
+        #{modifyon,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.FDFBpersistence.pojos.RiskScoreDetail" >
+    update t_baseprocedure
+    <set >
+      <if test="customerId != null" >
+        CUSTOMER_ID = #{customerId,jdbcType=VARCHAR},
+      </if>
+      <if test="num != null" >
+        NUM = #{num,jdbcType=VARCHAR},
+      </if>
+      <if test="riskSubitem != null" >
+        RISK_SUBITEM = #{riskSubitem,jdbcType=VARCHAR},
+      </if>
+      <if test="one != null" >
+        ONE = #{one,jdbcType=VARCHAR},
+      </if>
+      <if test="two != null" >
+        TWO = #{two,jdbcType=VARCHAR},
+      </if>
+      <if test="three != null" >
+        THREE = #{three,jdbcType=VARCHAR},
+      </if>
+      <if test="four != null" >
+        FOUR = #{four,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null" >
+        SCORE = #{score,jdbcType=VARCHAR},
+      </if>
+      <if test="fromWeight != null" >
+        FROM_WEIGHT = #{fromWeight,jdbcType=VARCHAR},
+      </if>
+      <if test="prono != null" >
+        PRONO = #{prono,jdbcType=VARCHAR},
+      </if>
+      <if test="createby != null" >
+        CREATEBY = #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="createon != null" >
+        CREATEON = #{createon,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyby != null" >
+        MODIFYBY = #{modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyon != null" >
+        MODIFYON = #{modifyon,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where SEQNO = #{seqno,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.FDFBpersistence.pojos.RiskScoreDetail" >
+    update t_baseprocedure
+    set CUSTOMER_ID = #{customerId,jdbcType=VARCHAR},
+      NUM = #{num,jdbcType=VARCHAR},
+      RISK_SUBITEM = #{riskSubitem,jdbcType=VARCHAR},
+      ONE = #{one,jdbcType=VARCHAR},
+      TWO = #{two,jdbcType=VARCHAR},
+      THREE = #{three,jdbcType=VARCHAR},
+      FOUR = #{four,jdbcType=VARCHAR},
+      SCORE = #{score,jdbcType=VARCHAR},
+      FROM_WEIGHT = #{fromWeight,jdbcType=VARCHAR},
+      PRONO = #{prono,jdbcType=VARCHAR},
+      CREATEBY = #{createby,jdbcType=VARCHAR},
+      CREATEON = #{createon,jdbcType=TIMESTAMP},
+      MODIFYBY = #{modifyby,jdbcType=VARCHAR},
+      MODIFYON = #{modifyon,jdbcType=TIMESTAMP}
+    where SEQNO = #{seqno,jdbcType=VARCHAR}
+  </update>
+  
+  	<select id="selectAll" resultMap="BaseResultMap"
+		parameterType="org.FDFBpersistence.pojos.RiskScoreDetail">
+		select
+		<include refid="Base_Column_List" />
+		from t_baseprocedure
+		where 1=1
+      <if test="customerId != null" >
+        and CUSTOMER_ID = #{customerId,jdbcType=VARCHAR}
+      </if>
+      <if test="num != null" >
+        and NUM = #{num,jdbcType=VARCHAR}
+      </if>
+      <if test="riskSubitem != null" >
+        and RISK_SUBITEM = #{riskSubitem,jdbcType=VARCHAR}
+      </if>
+      <if test="one != null" >
+        and ONE = #{one,jdbcType=VARCHAR}
+      </if>
+      <if test="two != null" >
+        and TWO = #{two,jdbcType=VARCHAR}
+      </if>
+      <if test="three != null" >
+        and THREE = #{three,jdbcType=VARCHAR}
+      </if>
+      <if test="four != null" >
+        and FOUR = #{four,jdbcType=VARCHAR}
+      </if>
+      <if test="score != null" >
+        and SCORE = #{score,jdbcType=VARCHAR}
+      </if>
+      <if test="fromWeight != null" >
+        and FROM_WEIGHT = #{fromWeight,jdbcType=VARCHAR}
+      </if>
+      <if test="prono != null" >
+        and PRONO = #{prono,jdbcType=VARCHAR}
+      </if>
+      <if test="createby != null" >
+        and CREATEBY = #{createby,jdbcType=VARCHAR}
+      </if>
+      <if test="createon != null" >
+        and CREATEON = #{createon,jdbcType=TIMESTAMP}
+      </if>
+      <if test="modifyby != null" >
+        and MODIFYBY = #{modifyby,jdbcType=VARCHAR}
+      </if>
+      <if test="modifyon != null" >
+        and MODIFYON = #{modifyon,jdbcType=TIMESTAMP}
+      </if>
+	  order by CAST(num AS decimal(3,2)) asc
+	</select>
+	
+  	<select id="selectAllCount" resultType="java.lang.Integer"
+		parameterType="org.FDFBpersistence.pojos.RiskScoreDetail">
+		select count(1)
+		from t_baseprocedure
+		where 1=1
+      <if test="customerId != null" >
+        and CUSTOMER_ID = #{customerId,jdbcType=VARCHAR}
+      </if>
+      <if test="num != null" >
+        and NUM = #{num,jdbcType=VARCHAR}
+      </if>
+      <if test="riskSubitem != null" >
+        and RISK_SUBITEM = #{riskSubitem,jdbcType=VARCHAR}
+      </if>
+      <if test="one != null" >
+        and ONE = #{one,jdbcType=VARCHAR}
+      </if>
+      <if test="two != null" >
+        and TWO = #{two,jdbcType=VARCHAR}
+      </if>
+      <if test="three != null" >
+        and THREE = #{three,jdbcType=VARCHAR}
+      </if>
+      <if test="four != null" >
+        and FOUR = #{four,jdbcType=VARCHAR}
+      </if>
+      <if test="score != null" >
+        and SCORE = #{score,jdbcType=VARCHAR}
+      </if>
+      <if test="fromWeight != null" >
+        and FROM_WEIGHT = #{fromWeight,jdbcType=VARCHAR}
+      </if>
+      <if test="prono != null" >
+        and PRONO = #{prono,jdbcType=VARCHAR}
+      </if>
+      <if test="createby != null" >
+        and CREATEBY = #{createby,jdbcType=VARCHAR}
+      </if>
+      <if test="createon != null" >
+        and CREATEON = #{createon,jdbcType=TIMESTAMP}
+      </if>
+      <if test="modifyby != null" >
+        and MODIFYBY = #{modifyby,jdbcType=VARCHAR}
+      </if>
+      <if test="modifyon != null" >
+        and MODIFYON = #{modifyon,jdbcType=TIMESTAMP}
+      </if>
+	</select>
+	
+	<delete id="deleteByCustomerId" parameterType="java.lang.String">
+		delete from t_baseprocedure where customer_id = #{id,jdbcType=VARCHAR}
+	</delete>
+  
+</mapper>

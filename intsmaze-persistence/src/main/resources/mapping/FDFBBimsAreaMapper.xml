@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.FDFBpersistence.mapper.FDFBBimsAreaMapper">
+	<resultMap id="BaseResultMap" type="org.FDFBpersistence.pojos.FDFBBimsArea">
+		<id column="SEQNO" property="seqno" jdbcType="VARCHAR" />
+		<result column="AREANAME" property="areaname" jdbcType="VARCHAR" />
+		<result column="AREADESC" property="areadesc" jdbcType="VARCHAR" />
+		<result column="BELONGPRO" property="belongpro" jdbcType="VARCHAR" />
+		<result column="BELONGCITY" property="belongcity" jdbcType="VARCHAR" />
+		<result column="AREACODE" property="areacode" jdbcType="VARCHAR" />
+		<result column="CLEANINGID" property="cleaningid" jdbcType="VARCHAR" />
+		<result column="MAINTAINID" property="maintainid" jdbcType="VARCHAR" />
+		<result column="STATUS" property="status" jdbcType="VARCHAR" />
+		<result column="ISPACK" property="ispack" jdbcType="VARCHAR" />
+		<result column="PACKCOMPANY" property="packcompany" jdbcType="VARCHAR" />
+		<result column="PACKFAULTTYPE" property="packfaulttype"
+			jdbcType="VARCHAR" />
+		<result column="CREATEON" property="createon" jdbcType="TIMESTAMP" />
+		<result column="CREATEBY" property="createby" jdbcType="VARCHAR" />
+		<result column="MODIFYON" property="modifyon" jdbcType="TIMESTAMP" />
+		<result column="MODIFYBY" property="modifyby" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		SEQNO, AREANAME, AREADESC, BELONGPRO, BELONGCITY, AREACODE, CLEANINGID,
+		MAINTAINID,
+		STATUS, ISPACK, PACKCOMPANY, PACKFAULTTYPE, CREATEON, CREATEBY, MODIFYON,
+		MODIFYBY
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from fdfb_bims_area
+		where SEQNO = #{seqno,jdbcType=VARCHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from fdfb_bims_area
+		where SEQNO = #{seqno,jdbcType=VARCHAR}
+	</delete>
+	<insert id="insert" parameterType="org.FDFBpersistence.pojos.FDFBBimsArea">
+		insert into fdfb_bims_area (SEQNO, AREANAME, AREADESC,
+		BELONGPRO, BELONGCITY, AREACODE,
+		CLEANINGID, MAINTAINID, STATUS,
+		ISPACK, PACKCOMPANY, PACKFAULTTYPE,
+		CREATEON, CREATEBY, MODIFYON,
+		MODIFYBY)
+		values (#{seqno,jdbcType=VARCHAR}, #{areaname,jdbcType=VARCHAR},
+		#{areadesc,jdbcType=VARCHAR},
+		#{belongpro,jdbcType=VARCHAR}, #{belongcity,jdbcType=VARCHAR}, #{areacode,jdbcType=VARCHAR},
+		#{cleaningid,jdbcType=VARCHAR}, #{maintainid,jdbcType=VARCHAR},
+		#{status,jdbcType=VARCHAR},
+		#{ispack,jdbcType=VARCHAR}, #{packcompany,jdbcType=VARCHAR}, #{packfaulttype,jdbcType=VARCHAR},
+		#{createon,jdbcType=TIMESTAMP}, #{createby,jdbcType=VARCHAR},
+		#{modifyon,jdbcType=TIMESTAMP},
+		#{modifyby,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="org.FDFBpersistence.pojos.FDFBBimsArea">
+		insert into fdfb_bims_area
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="seqno != null">
+				SEQNO,
+			</if>
+			<if test="areaname != null">
+				AREANAME,
+			</if>
+			<if test="areadesc != null">
+				AREADESC,
+			</if>
+			<if test="belongpro != null">
+				BELONGPRO,
+			</if>
+			<if test="belongcity != null">
+				BELONGCITY,
+			</if>
+			<if test="areacode != null">
+				AREACODE,
+			</if>
+			<if test="cleaningid != null">
+				CLEANINGID,
+			</if>
+			<if test="maintainid != null">
+				MAINTAINID,
+			</if>
+			<if test="status != null">
+				STATUS,
+			</if>
+			<if test="ispack != null">
+				ISPACK,
+			</if>
+			<if test="packcompany != null">
+				PACKCOMPANY,
+			</if>
+			<if test="packfaulttype != null">
+				PACKFAULTTYPE,
+			</if>
+			<if test="createon != null">
+				CREATEON,
+			</if>
+			<if test="createby != null">
+				CREATEBY,
+			</if>
+			<if test="modifyon != null">
+				MODIFYON,
+			</if>
+			<if test="modifyby != null">
+				MODIFYBY,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="seqno != null">
+				#{seqno,jdbcType=VARCHAR},
+			</if>
+			<if test="areaname != null">
+				#{areaname,jdbcType=VARCHAR},
+			</if>
+			<if test="areadesc != null">
+				#{areadesc,jdbcType=VARCHAR},
+			</if>
+			<if test="belongpro != null">
+				#{belongpro,jdbcType=VARCHAR},
+			</if>
+			<if test="belongcity != null">
+				#{belongcity,jdbcType=VARCHAR},
+			</if>
+			<if test="areacode != null">
+				#{areacode,jdbcType=VARCHAR},
+			</if>
+			<if test="cleaningid != null">
+				#{cleaningid,jdbcType=VARCHAR},
+			</if>
+			<if test="maintainid != null">
+				#{maintainid,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				#{status,jdbcType=VARCHAR},
+			</if>
+			<if test="ispack != null">
+				#{ispack,jdbcType=VARCHAR},
+			</if>
+			<if test="packcompany != null">
+				#{packcompany,jdbcType=VARCHAR},
+			</if>
+			<if test="packfaulttype != null">
+				#{packfaulttype,jdbcType=VARCHAR},
+			</if>
+			<if test="createon != null">
+				#{createon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createby != null">
+				#{createby,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyon != null">
+				#{modifyon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modifyby != null">
+				#{modifyby,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="org.FDFBpersistence.pojos.FDFBBimsArea">
+		update fdfb_bims_area
+		<set>
+			<if test="areaname != null">
+				AREANAME = #{areaname,jdbcType=VARCHAR},
+			</if>
+			<if test="areadesc != null">
+				AREADESC = #{areadesc,jdbcType=VARCHAR},
+			</if>
+			<if test="belongpro != null">
+				BELONGPRO = #{belongpro,jdbcType=VARCHAR},
+			</if>
+			<if test="belongcity != null">
+				BELONGCITY = #{belongcity,jdbcType=VARCHAR},
+			</if>
+			<if test="areacode != null">
+				AREACODE = #{areacode,jdbcType=VARCHAR},
+			</if>
+			<if test="cleaningid != null">
+				CLEANINGID = #{cleaningid,jdbcType=VARCHAR},
+			</if>
+			<if test="maintainid != null">
+				MAINTAINID = #{maintainid,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				STATUS = #{status,jdbcType=VARCHAR},
+			</if>
+			<if test="ispack != null">
+				ISPACK = #{ispack,jdbcType=VARCHAR},
+			</if>
+			<if test="packcompany != null">
+				PACKCOMPANY = #{packcompany,jdbcType=VARCHAR},
+			</if>
+			<if test="packfaulttype != null">
+				PACKFAULTTYPE = #{packfaulttype,jdbcType=VARCHAR},
+			</if>
+			<if test="createon != null">
+				CREATEON = #{createon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createby != null">
+				CREATEBY = #{createby,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyon != null">
+				MODIFYON = #{modifyon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modifyby != null">
+				MODIFYBY = #{modifyby,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where SEQNO = #{seqno,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="org.FDFBpersistence.pojos.FDFBBimsArea">
+		update fdfb_bims_area
+		set AREANAME = #{areaname,jdbcType=VARCHAR},
+		AREADESC = #{areadesc,jdbcType=VARCHAR},
+		BELONGPRO = #{belongpro,jdbcType=VARCHAR},
+		BELONGCITY = #{belongcity,jdbcType=VARCHAR},
+		AREACODE = #{areacode,jdbcType=VARCHAR},
+		CLEANINGID = #{cleaningid,jdbcType=VARCHAR},
+		MAINTAINID = #{maintainid,jdbcType=VARCHAR},
+		STATUS = #{status,jdbcType=VARCHAR},
+		ISPACK = #{ispack,jdbcType=VARCHAR},
+		PACKCOMPANY = #{packcompany,jdbcType=VARCHAR},
+		PACKFAULTTYPE = #{packfaulttype,jdbcType=VARCHAR},
+		CREATEON = #{createon,jdbcType=TIMESTAMP},
+		CREATEBY = #{createby,jdbcType=VARCHAR},
+		MODIFYON = #{modifyon,jdbcType=TIMESTAMP},
+		MODIFYBY = #{modifyby,jdbcType=VARCHAR}
+		where SEQNO = #{seqno,jdbcType=VARCHAR}
+	</update>
+	
+	<select id="selectAllByPage" resultMap="BaseResultMap"
+		parameterType="org.FDFBpersistence.pojos.FDFBBimsArea">
+		select
+		<include refid="Base_Column_List" />
+		from fdfb_bims_area
+		where 1=1
+
+		<if test="areaname != null and areaname != ''">
+			and AREANAME = #{areaname,jdbcType=VARCHAR}
+		</if>
+		<if test="cleaningid != null and cleaningid != ''">
+			and CLEANINGID = #{cleaningid,jdbcType=VARCHAR}
+		</if>
+		<if test="maintainid != null and maintainid != ''">
+			and MAINTAINID = #{maintainid,jdbcType=VARCHAR}
+		</if>
+		<if test="ispack != null and ispack != ''">
+			and ISPACK = #{ispack,jdbcType=VARCHAR}
+		</if>
+		<if test="packcompany != null and packcompany != ''">
+			and PACKCOMPANY = #{packcompany,jdbcType=VARCHAR}
+		</if>
+		<if test="packfaulttype != null and packcompany != ''">
+			and PACKFAULTTYPE = #{packfaulttype,jdbcType=VARCHAR}
+		</if>
+		<if test="orderByStr != null and orderByStr != ''">
+			order by ${orderByStr}
+		</if>
+	</select>
+
+	<select id="selectAll" resultMap="BaseResultMap"
+		parameterType="org.FDFBpersistence.pojos.FDFBBimsArea">
+		select
+		<include refid="Base_Column_List" />
+		from fdfb_bims_area
+		order by areaname
+	</select>
+
+	<select id="getAllBimsAreasCount" resultType="java.lang.Integer"
+		parameterType="org.FDFBpersistence.pojos.FDFBBimsArea">
+		select count(1)
+		from fdfb_bims_area
+		where 1=1
+		<if test="areaname != null and areaname != ''">
+			and AREANAME = #{areaname,jdbcType=VARCHAR}
+		</if>
+		<if test="cleaningid != null and cleaningid != ''">
+			and CLEANINGID = #{cleaningid,jdbcType=VARCHAR}
+		</if>
+		<if test="maintainid != null and maintainid != ''">
+			and MAINTAINID = #{maintainid,jdbcType=VARCHAR}
+		</if>
+		<if test="ispack != null and ispack != ''">
+			and ISPACK = #{ispack,jdbcType=VARCHAR}
+		</if>
+		<if test="packcompany != null and packcompany != ''">
+			and PACKCOMPANY = #{packcompany,jdbcType=VARCHAR}
+		</if>
+		<if test="packfaulttype != null and packcompany != ''">
+			and PACKFAULTTYPE = #{packfaulttype,jdbcType=VARCHAR}
+		</if>
+	</select>
+</mapper>

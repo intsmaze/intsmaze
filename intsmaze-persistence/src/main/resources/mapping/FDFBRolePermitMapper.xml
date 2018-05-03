@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.FDFBpersistence.mapper.FDFBRolePermitMapper">
+	<resultMap id="BaseResultMap" type="org.FDFBpersistence.pojos.FDFBRolePermit">
+		<id column="seqno" property="seqno" jdbcType="VARCHAR" />
+		<result column="roleid" property="roleid" jdbcType="VARCHAR" />
+		<result column="permitid" property="permitid" jdbcType="VARCHAR" />
+		<result column="createon" property="createon" jdbcType="TIMESTAMP" />
+		<result column="modifyon" property="modifyon" jdbcType="TIMESTAMP" />
+		<result column="createby" property="createby" jdbcType="VARCHAR" />
+		<result column="modifyby" property="modifyby" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		seqno, roleid, permitid, createon, modifyon, createby, modifyby
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from fdfb_rolepermit
+		where seqno = #{seqno,jdbcType=VARCHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from fdfb_rolepermit
+		where seqno = #{seqno,jdbcType=VARCHAR}
+	</delete>
+	<insert id="insert" parameterType="org.FDFBpersistence.pojos.FDFBRolePermit">
+		insert into fdfb_rolepermit (seqno, roleid, permitid,
+		createon, modifyon, createby,
+		modifyby)
+		values (#{seqno,jdbcType=VARCHAR}, #{roleid,jdbcType=VARCHAR},
+		#{permitid,jdbcType=VARCHAR},
+		#{createon,jdbcType=TIMESTAMP}, #{modifyon,jdbcType=TIMESTAMP}, #{createby,jdbcType=VARCHAR},
+		#{modifyby,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="org.FDFBpersistence.pojos.FDFBRolePermit">
+		insert into fdfb_rolepermit
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="seqno != null">
+				seqno,
+			</if>
+			<if test="roleid != null">
+				roleid,
+			</if>
+			<if test="permitid != null">
+				permitid,
+			</if>
+			<if test="createon != null">
+				createon,
+			</if>
+			<if test="modifyon != null">
+				modifyon,
+			</if>
+			<if test="createby != null">
+				createby,
+			</if>
+			<if test="modifyby != null">
+				modifyby,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="seqno != null">
+				#{seqno,jdbcType=VARCHAR},
+			</if>
+			<if test="roleid != null">
+				#{roleid,jdbcType=VARCHAR},
+			</if>
+			<if test="permitid != null">
+				#{permitid,jdbcType=VARCHAR},
+			</if>
+			<if test="createon != null">
+				#{createon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modifyon != null">
+				#{modifyon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createby != null">
+				#{createby,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyby != null">
+				#{modifyby,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="org.FDFBpersistence.pojos.FDFBRolePermit">
+		update fdfb_rolepermit
+		<set>
+			<if test="roleid != null">
+				roleid = #{roleid,jdbcType=VARCHAR},
+			</if>
+			<if test="permitid != null">
+				permitid = #{permitid,jdbcType=VARCHAR},
+			</if>
+			<if test="createon != null">
+				createon = #{createon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modifyon != null">
+				modifyon = #{newModifyon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createby != null">
+				createby = #{createby,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyby != null">
+				modifyby = #{modifyby,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where seqno = #{seqno,jdbcType=VARCHAR}
+		and modifyon = #{modifyon,jdbcType=TIMESTAMP}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="org.FDFBpersistence.pojos.FDFBRolePermit">
+		update fdfb_rolepermit
+		set roleid = #{roleid,jdbcType=VARCHAR},
+		permitid = #{permitid,jdbcType=VARCHAR},
+		createon = #{createon,jdbcType=TIMESTAMP},
+		modifyon = #{newModifyon,jdbcType=TIMESTAMP},
+		createby = #{createby,jdbcType=VARCHAR},
+		modifyby = #{modifyby,jdbcType=VARCHAR}
+		where seqno = #{seqno,jdbcType=VARCHAR}
+		and modifyon = #{modifyon,jdbcType=TIMESTAMP}
+	</update>
+	
+	<select id="selectAll" resultMap="BaseResultMap"
+		parameterType="org.FDFBpersistence.pojos.FDFBRolePermit">
+		select
+		<include refid="Base_Column_List" />
+		from fdfb_rolepermit
+	</select>
+	
+	<delete id="delRolePermitByRoleId" parameterType="java.lang.String">
+		delete from fdfb_rolepermit
+		where roleid = #{roleid,jdbcType=VARCHAR}
+	</delete>
+	
+	<select id="getRolePermitListByRoleid" resultMap="BaseResultMap"
+		parameterType="org.FDFBpersistence.pojos.FDFBRolePermit">
+		select
+		<include refid="Base_Column_List" />
+		from fdfb_rolepermit
+		where roleid = #{roleid,jdbcType=VARCHAR}
+	</select>
+	
+</mapper>

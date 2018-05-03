@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.FDFBpersistence.mapper.FDFBRoleMapper">
+	<resultMap id="BaseResultMap" type="org.FDFBpersistence.pojos.FDFBRole">
+		<id column="seqno" property="seqno" jdbcType="VARCHAR" />
+		<result column="rolename" property="rolename" jdbcType="VARCHAR" />
+		<result column="roledesc" property="roledesc" jdbcType="VARCHAR" />
+		<result column="createon" property="createon" jdbcType="TIMESTAMP" />
+		<result column="createby" property="createby" jdbcType="VARCHAR" />
+		<result column="modifyon" property="modifyon" jdbcType="TIMESTAMP" />
+		<result column="modifyby" property="modifyby" jdbcType="VARCHAR" />
+		<result column="roleIds" property="roleIds" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		seqno, rolename, roledesc, createon, createby, modifyon,
+		modifyby
+	</sql>
+	
+	
+	<select id="selectUserList" parameterType="java.util.HashMap"
+		resultType="java.util.HashMap">
+		select fu.username,fu.seqno,fu.name, fr.rolename from  fdfb_user fu LEFT JOIN fdfb_user_role fur on fu.seqno=fur.userid 
+			LEFT JOIN fdfb_role fr on fr.seqno=fur.roleid 
+			where 1=1
+		<if test="username != null">
+			and fu.username =#{username,jdbcType=VARCHAR}
+		</if>
+		<if test="seqno != null">
+			and fr.seqno =#{seqno,jdbcType=VARCHAR}
+		</if>
+	</select>
+	
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from fdfb_role
+		where seqno = #{seqno,jdbcType=VARCHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from fdfb_role
+		where seqno = #{seqno,jdbcType=VARCHAR}
+	</delete>
+	<insert id="insert" parameterType="org.FDFBpersistence.pojos.FDFBRole">
+		insert into fdfb_role (seqno, rolename,
+		roledesc, createon,
+		createby, modifyon, modifyby
+		)
+		values (#{seqno,jdbcType=VARCHAR},
+		#{rolename,jdbcType=VARCHAR},
+		#{roledesc,jdbcType=VARCHAR}, #{createon,jdbcType=TIMESTAMP},
+		#{createby,jdbcType=VARCHAR}, #{modifyon,jdbcType=TIMESTAMP},
+		#{modifyby,jdbcType=VARCHAR}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="org.FDFBpersistence.pojos.FDFBRole">
+		insert into fdfb_role
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="seqno != null">
+				seqno,
+			</if>
+			<if test="rolename != null">
+				rolename,
+			</if>
+			<if test="roledesc != null">
+				roledesc,
+			</if>
+			<if test="createon != null">
+				createon,
+			</if>
+			<if test="createby != null">
+				createby,
+			</if>
+			<if test="modifyon != null">
+				modifyon,
+			</if>
+			<if test="modifyby != null">
+				modifyby,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="seqno != null">
+				#{seqno,jdbcType=VARCHAR},
+			</if>
+			<if test="rolename != null">
+				#{rolename,jdbcType=VARCHAR},
+			</if>
+			<if test="roledesc != null">
+				#{roledesc,jdbcType=VARCHAR},
+			</if>
+			<if test="createon != null">
+				#{createon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createby != null">
+				#{createby,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyon != null">
+				#{modifyon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modifyby != null">
+				#{modifyby,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="org.FDFBpersistence.pojos.FDFBRole">
+		update fdfb_role
+		<set>
+			<if test="rolename != null">
+				rolename = #{rolename,jdbcType=VARCHAR},
+			</if>
+			<if test="roledesc != null">
+				roledesc = #{roledesc,jdbcType=VARCHAR},
+			</if>
+			<if test="createon != null">
+				createon = #{createon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createby != null">
+				createby = #{createby,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyon != null">
+				modifyon = #{newMofifyon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modifyby != null">
+				modifyby = #{modifyby,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where seqno = #{seqno,jdbcType=VARCHAR}
+		and modifyon = #{modifyon,jdbcType=TIMESTAMP}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="org.FDFBpersistence.pojos.FDFBRole">
+		update fdfb_role
+		set rolename = #{rolename,jdbcType=VARCHAR},
+		roledesc = #{roledesc,jdbcType=VARCHAR},
+		createon = #{createon,jdbcType=TIMESTAMP},
+		createby = #{createby,jdbcType=VARCHAR},
+		modifyon = #{newMofifyon,jdbcType=TIMESTAMP},
+		modifyby = #{modifyby,jdbcType=VARCHAR}
+		where seqno = #{seqno,jdbcType=VARCHAR}
+		and modifyon = #{modifyon,jdbcType=TIMESTAMP}
+	</update>
+	
+	<select id="selectAllByPage" resultMap="BaseResultMap"
+		parameterType="org.FDFBpersistence.pojos.FDFBRole">
+		select
+		<include refid="Base_Column_List" />
+		from fdfb_role
+		where 1=1
+		<if test="rolename != null and rolename != '' ">
+			and rolename = #{rolename,jdbcType=VARCHAR}
+		</if>
+		<if test="roledesc != null and roledesc != '' ">
+			and roledesc = #{roledesc,jdbcType=VARCHAR}
+		</if>
+
+		<if test="orderByStr != null and orderByStr != ''">
+			order by ${orderByStr}
+		</if>
+	</select>
+
+	<select id="selectAll" resultMap="BaseResultMap"
+		parameterType="org.FDFBpersistence.pojos.FDFBRole">
+		select
+		<include refid="Base_Column_List" />
+		from fdfb_role
+
+	</select>
+
+	<select id="getAllFDFBRolesCount" resultType="java.lang.Integer"
+		parameterType="org.FDFBpersistence.pojos.FDFBRole">
+		select count(1)
+		from fdfb_role
+		where 1=1
+		<if test="rolename != null and rolename != '' ">
+			and rolename = #{rolename,jdbcType=VARCHAR}
+		</if>
+		<if test="roledesc != null and roledesc != '' ">
+			and roledesc = #{roledesc,jdbcType=VARCHAR}
+		</if>
+	</select>
+	
+	<select id="selectRolesByRoleIds" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from fdfb_role
+		where seqno in (${roleIds})
+	</select>
+	
+</mapper>

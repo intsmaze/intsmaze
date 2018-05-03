@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.FDFBpersistence.mapper.PostUnitMapper">
+  <resultMap id="BaseResultMap" type="org.FDFBpersistence.pojos.PostUnit">
+    <id column="SEQNO" jdbcType="VARCHAR" property="seqno" />
+    <result column="VERSION" jdbcType="INTEGER" property="version" />
+    <result column="POST_INNER_CODING" jdbcType="VARCHAR" property="postInnerCoding" />
+    <result column="UNIT_INNER_CODING" jdbcType="VARCHAR" property="unitInnerCoding" />
+    <result column="STATUS" jdbcType="VARCHAR" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    SEQNO, VERSION, POST_INNER_CODING, UNIT_INNER_CODING, STATUS
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from aml_post_unit
+    where SEQNO = #{seqno,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from aml_post_unit
+    where SEQNO = #{seqno,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="org.FDFBpersistence.pojos.PostUnit">
+    insert into aml_post_unit (SEQNO, VERSION, POST_INNER_CODING, 
+      UNIT_INNER_CODING, STATUS)
+    values (#{seqno,jdbcType=VARCHAR}, #{version,jdbcType=INTEGER}, #{postInnerCoding,jdbcType=VARCHAR}, 
+      #{unitInnerCoding,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.FDFBpersistence.pojos.PostUnit">
+    insert into aml_post_unit
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="seqno != null">
+        SEQNO,
+      </if>
+      <if test="version != null">
+        VERSION,
+      </if>
+      <if test="postInnerCoding != null">
+        POST_INNER_CODING,
+      </if>
+      <if test="unitInnerCoding != null">
+        UNIT_INNER_CODING,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="seqno != null">
+        #{seqno,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=INTEGER},
+      </if>
+      <if test="postInnerCoding != null">
+        #{postInnerCoding,jdbcType=VARCHAR},
+      </if>
+      <if test="unitInnerCoding != null">
+        #{unitInnerCoding,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.FDFBpersistence.pojos.PostUnit">
+    update aml_post_unit
+    <set>
+      <if test="version != null">
+        VERSION = #{version,jdbcType=INTEGER},
+      </if>
+      <if test="postInnerCoding != null">
+        POST_INNER_CODING = #{postInnerCoding,jdbcType=VARCHAR},
+      </if>
+      <if test="unitInnerCoding != null">
+        UNIT_INNER_CODING = #{unitInnerCoding,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where SEQNO = #{seqno,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.FDFBpersistence.pojos.PostUnit">
+    update aml_post_unit
+    set VERSION = #{version,jdbcType=INTEGER},
+      POST_INNER_CODING = #{postInnerCoding,jdbcType=VARCHAR},
+      UNIT_INNER_CODING = #{unitInnerCoding,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=VARCHAR}
+    where SEQNO = #{seqno,jdbcType=VARCHAR}
+  </update>
+  <select id="selectAllByPage" resultMap="BaseResultMap"
+		parameterType="org.FDFBpersistence.pojos.PostUnit">
+	  select
+	  <include refid="Base_Column_List" />
+	  from aml_post_unit
+	  where 1=1
+      <if test="version != null">
+        and VERSION = #{version,jdbcType=INTEGER}
+      </if>
+      <if test="postInnerCoding != null">
+        and POST_INNER_CODING = #{postInnerCoding,jdbcType=VARCHAR}
+      </if>
+      <if test="unitInnerCoding != null">
+        and UNIT_INNER_CODING = #{unitInnerCoding,jdbcType=VARCHAR}
+      </if>
+      <if test="status != null">
+        and STATUS = #{status,jdbcType=VARCHAR}
+      </if>
+  </select>
+</mapper>

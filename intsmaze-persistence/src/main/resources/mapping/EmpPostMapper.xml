@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.FDFBpersistence.mapper.EmpPostMapper" >
+  <resultMap id="BaseResultMap" type="org.FDFBpersistence.pojos.EmpPost" >
+    <id column="SEQNO" property="seqno" jdbcType="VARCHAR" />
+    <result column="VERSION" property="version" jdbcType="INTEGER" />
+    <result column="EMP_INNER_CODING" property="empInnerCoding" jdbcType="VARCHAR" />
+    <result column="POST_INNER_CODING" property="postInnerCoding" jdbcType="VARCHAR" />
+    <result column="STATUS" property="status" jdbcType="VARCHAR" />
+    <result column="MAIN_POST" property="mainPost" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    SEQNO, VERSION, EMP_INNER_CODING, POST_INNER_CODING, STATUS, MAIN_POST
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from aml_emp_post
+    where SEQNO = #{seqno,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from aml_emp_post
+    where SEQNO = #{seqno,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="org.FDFBpersistence.pojos.EmpPost" >
+    insert into aml_emp_post (SEQNO, VERSION, EMP_INNER_CODING, 
+      POST_INNER_CODING, STATUS, MAIN_POST
+      )
+    values (#{seqno,jdbcType=VARCHAR}, #{version,jdbcType=INTEGER}, #{empInnerCoding,jdbcType=VARCHAR}, 
+      #{postInnerCoding,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{mainPost,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.FDFBpersistence.pojos.EmpPost" >
+    insert into aml_emp_post
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="seqno != null" >
+        SEQNO,
+      </if>
+      <if test="version != null" >
+        VERSION,
+      </if>
+      <if test="empInnerCoding != null" >
+        EMP_INNER_CODING,
+      </if>
+      <if test="postInnerCoding != null" >
+        POST_INNER_CODING,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="mainPost != null" >
+        MAIN_POST,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="seqno != null" >
+        #{seqno,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null" >
+        #{version,jdbcType=INTEGER},
+      </if>
+      <if test="empInnerCoding != null" >
+        #{empInnerCoding,jdbcType=VARCHAR},
+      </if>
+      <if test="postInnerCoding != null" >
+        #{postInnerCoding,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="mainPost != null" >
+        #{mainPost,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.FDFBpersistence.pojos.EmpPost" >
+    update aml_emp_post
+    <set >
+      <if test="version != null" >
+        VERSION = #{version,jdbcType=INTEGER},
+      </if>
+      <if test="empInnerCoding != null" >
+        EMP_INNER_CODING = #{empInnerCoding,jdbcType=VARCHAR},
+      </if>
+      <if test="postInnerCoding != null" >
+        POST_INNER_CODING = #{postInnerCoding,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="mainPost != null" >
+        MAIN_POST = #{mainPost,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where SEQNO = #{seqno,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.FDFBpersistence.pojos.EmpPost" >
+    update aml_emp_post
+    set VERSION = #{version,jdbcType=INTEGER},
+      EMP_INNER_CODING = #{empInnerCoding,jdbcType=VARCHAR},
+      POST_INNER_CODING = #{postInnerCoding,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=VARCHAR},
+      MAIN_POST = #{mainPost,jdbcType=VARCHAR}
+    where SEQNO = #{seqno,jdbcType=VARCHAR}
+  </update>
+  <select id="selectAllByPage" resultMap="BaseResultMap"
+		parameterType="org.FDFBpersistence.pojos.EmpPost">
+	  select
+	  <include refid="Base_Column_List" />
+	  from aml_emp_post
+	  where 1=1	
+      <if test="version != null" >
+        and VERSION = #{version,jdbcType=INTEGER}
+      </if>
+      <if test="empInnerCoding != null" >
+        and EMP_INNER_CODING = #{empInnerCoding,jdbcType=VARCHAR}
+      </if>
+      <if test="postInnerCoding != null" >
+        and POST_INNER_CODING = #{postInnerCoding,jdbcType=VARCHAR}
+      </if>
+      <if test="status != null" >
+        and STATUS = #{status,jdbcType=VARCHAR}
+      </if>
+      <if test="mainPost != null" >
+        and MAIN_POST = #{mainPost,jdbcType=VARCHAR}
+      </if>	
+  </select>
+  
+  <update id="setMainPost" parameterType="java.lang.String">
+  	update aml_emp_post set main_post = '0' where EMP_INNER_CODING = #{empInnerCoding,jdbcType=VARCHAR}
+  </update>
+  
+</mapper>

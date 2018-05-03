@@ -1,0 +1,1074 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.FDFBpersistence.mapper.SusDataMapper" >
+  <resultMap id="BaseResultMap" type="org.FDFBpersistence.pojos.SusData" >
+    	<id column="seqno" property="seqno" jdbcType="VARCHAR" />
+    	
+		<result column="TRANS_SPOT" property="transSpot" jdbcType="VARCHAR" />
+		<result column="STCR" property="stcr" jdbcType="VARCHAR" />
+		<result column="SDGR" property="sdgr" jdbcType="VARCHAR" />
+		<result column="TKMS" property="tkms" jdbcType="VARCHAR" />
+		<result column="SSDS" property="ssds" jdbcType="VARCHAR" />
+		<result column="INSERT_ORGAN_ID" property="insertOrganId" jdbcType="VARCHAR" />
+		<result column="INSERT_OPER" property="insertOper" jdbcType="VARCHAR" />
+		<result column="INSERT_TIME" property="insertTime" jdbcType="TIMESTAMP" />
+		<result column="STATUS" property="status" jdbcType="VARCHAR" />
+		<result column="REPORT_TIME" property="reportTime" jdbcType="TIMESTAMP" />
+		<result column="REPORT_ID" property="reportId" jdbcType="VARCHAR" />
+		<result column="SSCAT" property="sscat" jdbcType="VARCHAR" />
+		<result column="CONDITION_CODE" property="conditionCode" jdbcType="VARCHAR" />
+		<result column="EXPLICATION" property="explication" jdbcType="VARCHAR" />
+		
+		<result column="FIRST_NAME" property="firstName" jdbcType="VARCHAR" />
+		<result column="FIRST_END_TIME" property="firstEndTime" jdbcType="TIMESTAMP" />
+		<result column="SECOND_NAME" property="secondName" jdbcType="VARCHAR" />
+		<result column="SECOND_END_TIME" property="secondEndTime" jdbcType="TIMESTAMP" />
+		<result column="FINAL_NAME" property="finalName" jdbcType="VARCHAR" />
+		<result column="FINAL_END_TIME" property="finalEndTime" jdbcType="TIMESTAMP" />
+		
+		<result column="APPROVE_FINISH_ID" property="approveFinishId" jdbcType="VARCHAR" />
+		<result column="APPROVE_FINISH_TIME" property="approveFinishTime" jdbcType="TIMESTAMP" />
+		<result column="POLICY_TYPE" property="policyType" jdbcType="CHAR" />
+		<result column="CTID" property="ctid" jdbcType="VARCHAR" />
+		<result column="CRNM" property="crnm" jdbcType="VARCHAR" />
+		<result column="CRIT" property="crit" jdbcType="VARCHAR" />
+		<result column="CRID" property="crid" jdbcType="VARCHAR" />
+		<result column="APPROVE_ID" property="approveId" jdbcType="VARCHAR" />
+		<result column="APPROVE_TIME" property="approveTime" jdbcType="TIMESTAMP" />
+
+		<result column="AGREE_SUGGESTION" property="agreeSuggestion" jdbcType="VARCHAR" />
+
+		<result column="FIRST_INSPECT_OPERATE" property="firstInspectOperate" jdbcType="VARCHAR" />
+		<result column="SECOND_INSPECT_OPERATE" property="secondInspectOperate" jdbcType="VARCHAR" />
+		<result column="APPROVE_OPERATE" property="approveOperate" jdbcType="VARCHAR" />
+		<result column="REVIEW" property="review" jdbcType="VARCHAR" />
+		<result column="ENTER_AUDIT_TIME" property="enterAuditTime" jdbcType="TIMESTAMP" />
+		<result column="POLICY_NO" property="policyNo" jdbcType="VARCHAR" />
+		<result column="CUSTOMER_NAME" property="customerName" jdbcType="VARCHAR" />
+		<result column="CUSTOMER_ID" property="customerId" jdbcType="VARCHAR" />
+		
+<!--     <association property="susContract" javaType="org.FDFBpersistence.pojos.SusContract">   
+		<id column="seqno" property="seqno" jdbcType="VARCHAR" />
+	    <result column="SU_DATA_ID" property="suDataId" jdbcType="VARCHAR" />
+	    <result column="POLICY_NO" property="policyNo" jdbcType="VARCHAR" />
+    </association>
+    
+    <association property="susCustomer" javaType="org.FDFBpersistence.pojos.SusCustomer">   
+		<id column="seqno" property="seqno" jdbcType="VARCHAR" />
+	    <result column="SU_DATA_ID" property="suDataId" jdbcType="VARCHAR" />
+	    <result column="CUSTOMER_NAME" property="customerName" jdbcType="VARCHAR" />
+    </association> -->
+   
+<!--     <collection ofType="org.FDFBpersistence.pojos.SusCustomer" property="susCustomer"   >
+		<id column="seqno" property="seqno" jdbcType="VARCHAR" />
+	    <result column="SU_DATA_ID" property="suDataId" jdbcType="VARCHAR" />
+	    <result column="CUSTOMER_NAME" property="customerName" jdbcType="VARCHAR" />
+	</collection>
+	
+     <collection ofType="org.FDFBpersistence.pojos.SusContract" property="susContract"   >
+		<id column="seqno" property="seqno" jdbcType="VARCHAR" />
+	    <result column="SU_DATA_ID" property="suDataId" jdbcType="VARCHAR" />
+	    <result column="POLICY_NO" property="policyNo" jdbcType="VARCHAR" />
+	</collection>	 --> 
+
+ </resultMap>
+  
+  <sql id="Base_Column_List" >
+    sd.seqno, sd.TRANS_SPOT, sd.STCR, sd.SDGR, sd.TKMS, sd.SSDS, sd.INSERT_ORGAN_ID, sd.INSERT_OPER, sd.INSERT_TIME, 
+    sd.STATUS, sd.REPORT_TIME, sd.REPORT_ID, sd.SSCAT, sd.CONDITION_CODE, sd.EXPLICATION,sd.FIRST_ID, sd.FIRST_END_TIME, 
+    sd.SECOND_ID, sd.SECOND_END_TIME, sd.FINAL_ID, sd.FINAL_END_TIME, sd.APPROVE_FINISH_ID, sd.APPROVE_FINISH_TIME, 
+    sd.POLICY_TYPE, sd.CTID, sd.CRNM, sd.CRIT, sd.CRID, sd.APPROVE_ID, sd.APPROVE_TIME, sd.AGREE_SUGGESTION,
+    sd.FIRST_INSPECT_OPERATE, sd.SECOND_INSPECT_OPERATE, sd.APPROVE_OPERATE, REVIEW, sd.ENTER_AUDIT_TIME,
+    sct.POLICY_NO, scm.CUSTOMER_NAME, scm.CUSTOMER_ID
+  </sql>
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    SELECT 
+   			<include refid="Base_Column_List" />
+    FROM 	
+    		sus_data sd
+			LEFT JOIN sus_customer scm ON sd.seqno = scm.su_data_id
+			LEFT JOIN sus_contract sct ON sd.seqno = sct.su_data_id 
+    WHERE 
+    		sd.seqno = #{seqno,jdbcType=VARCHAR}
+  </select>
+  
+  <update id="updateByPrimaryKeySelectiveForInsert" parameterType="org.FDFBpersistence.pojos.SusData">
+       update sus_data
+       set
+       TRANS_SPOT = #{transSpot,jdbcType=VARCHAR},
+       STCR = #{stcr,jdbcType=VARCHAR},
+       SDGR = #{sdgr,jdbcType=VARCHAR},
+       TKMS = #{tkms,jdbcType=VARCHAR},
+       SSDS = #{ssds,jdbcType=VARCHAR},
+       SSCAT = #{sscat,jdbcType=VARCHAR}
+       
+       where sd.seqno = #{seqno,jdbcType=VARCHAR}
+  </update>
+
+  
+  <select id="selectAllByPage" resultMap="BaseResultMap" parameterType="org.FDFBpersistence.pojos.SusData">
+		select
+		<include refid="Base_Column_List" />
+		from sus_data
+		where 1=1
+	  <if test="transSpot != null and transSpot != ''" >
+       and TRANS_SPOT = #{transSpot,jdbcType=VARCHAR}
+      </if>
+      <if test="stcr != null and stcr != ''  " >
+       and STCR = #{stcr,jdbcType=VARCHAR}
+      </if>
+      <if test="sdgr != null and sdgr != '' " >
+       and SDGR = #{sdgr,jdbcType=VARCHAR}
+      </if>
+      <if test="tkms != null and tkms != '' " >
+       and TKMS = #{tkms,jdbcType=VARCHAR}
+      </if>
+      <if test="ssds != null and ssds != '' " >
+       and SSDS = #{ssds,jdbcType=VARCHAR}
+      </if>
+      <if test="insertOrganId != null and insertOrganId !='' " >
+       and INSERT_ORGAN_ID = #{insertOrganId,jdbcType=VARCHAR}
+      </if>
+      <if test="insertOper != null and insertOper != '' " >
+       and INSERT_OPER = #{insertOper,jdbcType=VARCHAR}
+      </if>
+      <if test="insertTime != null and insertTime != '' " >
+       and INSERT_TIME = #{insertTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="status != null and status != '' " >
+       and STATUS = #{status,jdbcType=VARCHAR}
+      </if>
+      <if test="reportTime != null and reportTime != '' " >
+       and REPORT_TIME = #{reportTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="reportId != null and reportId != '' " >
+       and REPORT_ID = #{reportId,jdbcType=VARCHAR}
+      </if>
+      <if test="sscat != null and sscat != '' " >
+       and SSCAT = #{sscat,jdbcType=VARCHAR}
+      </if>
+      <if test="conditionCode != null and conditionCode != '' " >
+       and CONDITION_CODE = #{conditionCode,jdbcType=VARCHAR}
+      </if>
+      <if test="explication != null and explication != '' " >
+       and EXPLICATION = #{explication,jdbcType=VARCHAR}
+      </if>
+      <if test="firstId != null and firstId != '' " >
+       and FIRST_ID = #{firstId,jdbcType=VARCHAR}
+      </if>
+      <if test="firstEndTime != null and firstEndTime != ''"  >
+       and FIRST_END_TIME = #{firstEndTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="secondId != null and secondId != ''" >
+       and SECOND_ID = #{secondId,jdbcType=VARCHAR}
+      </if>
+      <if test="secondEndTime != null and secondEndTime != ''" >
+       and SECOND_END_TIME = #{secondEndTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="finalId != null and finalId != ''" >
+       and FINAL_ID = #{finalId,jdbcType=VARCHAR}
+      </if>
+      <if test="finalEndTime != null and finalEndTime != ''" >
+       and FINAL_END_TIME = #{finalEndTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="approveFinishId != null and approveFinishId != '' " >
+       and APPROVE_FINISH_ID = #{approveFinishId,jdbcType=VARCHAR}
+      </if>
+      <if test="approveFinishTime != null and approveFinishTime != '' " >
+       and APPROVE_FINISH_TIME = #{approveFinishTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="policyType != null and policyType != '' " >
+       and POLICY_TYPE = #{policyType,jdbcType=CHAR}
+      </if>
+      <if test="ctid != null and ctid != '' " >
+       and CTID = #{ctid,jdbcType=VARCHAR}
+      </if>
+      <if test="crnm != null and crnm != '' " >
+       and CRNM = #{crnm,jdbcType=VARCHAR}
+      </if>
+      <if test="crit != null and crit != '' " >
+       and CRIT = #{crit,jdbcType=VARCHAR}
+      </if>
+      <if test="crid != null and crid != '' " >
+       and CRID = #{crid,jdbcType=VARCHAR}
+      </if>
+      <if test="approveId != null and approveId != '' " >
+       and APPROVE_ID = #{approveId,jdbcType=VARCHAR}
+      </if>
+      <if test="approveTime != null and approveTime != '' " >
+       and APPROVE_TIME = #{approveTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="agreeSuggestion != null and agreeSuggestion != '' " >
+       and AGREE_SUGGESTION = #{agreeSuggestion,jdbcType=VARCHAR}
+      </if>
+      <if test="cTransMrk != null and cTransMrk != '' " >
+       and C_TRANS_MRK = #{cTransMrk,jdbcType=CHAR}
+      </if>
+      <if test="tTransTm != null and tTransTm != '' " >
+       and T_TRANS_TM = #{tTransTm,jdbcType=TIMESTAMP}
+      </if>
+      <if test="firstInspectOperate != null and firstInspectOperate != '' " >
+       and FIRST_INSPECT_OPERATE = #{firstInspectOperate,jdbcType=VARCHAR}
+      </if>
+      <if test="secondInspectOperate != null and secondInspectOperate != '' " >
+       and SECOND_INSPECT_OPERATE = #{secondInspectOperate,jdbcType=VARCHAR}
+      </if>
+      <if test="approveOperate != null and approveOperate != '' " >
+       and APPROVE_OPERATE = #{approveOperate,jdbcType=VARCHAR}
+      </if>
+      <if test="review != null and review != ''" >
+       and REVIEW = #{review,jdbcType=VARCHAR}
+      </if>
+      <if test="enterAuditTime != null and enterAuditTime != '' " >
+       and ENTER_AUDIT_TIME = #{enterAuditTime,jdbcType=TIMESTAMP}
+      </if>
+
+<!--       <if test="createby != null and createby != '' " >
+       and CREATEBY = #{createby,jdbcType=VARCHAR}
+      </if>
+      <if test="createon != null and createon != '' " >
+       and CREATEON = #{createon,jdbcType=TIMESTAMP}
+      </if>
+      <if test="modifyby != null and modifyby != '' " >
+       and MODIFYBY = #{modifyby,jdbcType=VARCHAR}
+      </if>
+      <if test="modifyon != null and modifyon != '' " >
+       and MODIFYON = #{modifyon,jdbcType=TIMESTAMP}
+      </if> -->
+	</select>
+	
+  <select id="getAllSusDataCount" resultType="java.lang.Integer" parameterType="org.FDFBpersistence.pojos.SusData">
+		select count(1)
+		from sus_data
+		where 1=1
+	  <if test="transSpot != null and transSpot != ''" >
+       and TRANS_SPOT = #{transSpot,jdbcType=VARCHAR}
+      </if>
+      <if test="stcr != null and stcr != ''  " >
+       and STCR = #{stcr,jdbcType=VARCHAR}
+      </if>
+      <if test="sdgr != null and sdgr != '' " >
+       and SDGR = #{sdgr,jdbcType=VARCHAR}
+      </if>
+      <if test="tkms != null and tkms != '' " >
+       and TKMS = #{tkms,jdbcType=VARCHAR}
+      </if>
+      <if test="ssds != null and ssds != '' " >
+       and SSDS = #{ssds,jdbcType=VARCHAR}
+      </if>
+      <if test="insertOrganId != null and insertOrganId !='' " >
+       and INSERT_ORGAN_ID = #{insertOrganId,jdbcType=VARCHAR}
+      </if>
+      <if test="insertOper != null and insertOper != '' " >
+       and INSERT_OPER = #{insertOper,jdbcType=VARCHAR}
+      </if>
+      <if test="insertTime != null and insertTime != '' " >
+       and INSERT_TIME = #{insertTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="status != null and status != '' " >
+       and STATUS = #{status,jdbcType=VARCHAR}
+      </if>
+      <if test="reportTime != null and reportTime != '' " >
+       and REPORT_TIME = #{reportTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="reportId != null and reportId != '' " >
+       and REPORT_ID = #{reportId,jdbcType=VARCHAR}
+      </if>
+      <if test="sscat != null and sscat != '' " >
+       and SSCAT = #{sscat,jdbcType=VARCHAR}
+      </if>
+      <if test="conditionCode != null and conditionCode != '' " >
+       and CONDITION_CODE = #{conditionCode,jdbcType=VARCHAR}
+      </if>
+      <if test="explication != null and explication != '' " >
+       and EXPLICATION = #{explication,jdbcType=VARCHAR}
+      </if>
+      <if test="firstId != null and firstId != '' " >
+       and FIRST_ID = #{firstId,jdbcType=VARCHAR}
+      </if>
+      <if test="firstEndTime != null and firstEndTime != ''"  >
+       and FIRST_END_TIME = #{firstEndTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="secondId != null and secondId != ''" >
+       and SECOND_ID = #{secondId,jdbcType=VARCHAR}
+      </if>
+      <if test="secondEndTime != null and secondEndTime != ''" >
+       and SECOND_END_TIME = #{secondEndTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="finalId != null and finalId != ''" >
+       and FINAL_ID = #{finalId,jdbcType=VARCHAR}
+      </if>
+      <if test="finalEndTime != null and finalEndTime != ''" >
+       and FINAL_END_TIME = #{finalEndTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="approveFinishId != null and approveFinishId != '' " >
+       and APPROVE_FINISH_ID = #{approveFinishId,jdbcType=VARCHAR}
+      </if>
+      <if test="approveFinishTime != null and approveFinishTime != '' " >
+       and APPROVE_FINISH_TIME = #{approveFinishTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="policyType != null and policyType != '' " >
+       and POLICY_TYPE = #{policyType,jdbcType=CHAR}
+      </if>
+      <if test="ctid != null and ctid != '' " >
+       and CTID = #{ctid,jdbcType=VARCHAR}
+      </if>
+      <if test="crnm != null and crnm != '' " >
+       and CRNM = #{crnm,jdbcType=VARCHAR}
+      </if>
+      <if test="crit != null and crit != '' " >
+       and CRIT = #{crit,jdbcType=VARCHAR}
+      </if>
+      <if test="crid != null and crid != '' " >
+       and CRID = #{crid,jdbcType=VARCHAR}
+      </if>
+      <if test="approveId != null and approveId != '' " >
+       and APPROVE_ID = #{approveId,jdbcType=VARCHAR}
+      </if>
+      <if test="approveTime != null and approveTime != '' " >
+       and APPROVE_TIME = #{approveTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="agreeSuggestion != null and agreeSuggestion != '' " >
+       and AGREE_SUGGESTION = #{agreeSuggestion,jdbcType=VARCHAR}
+      </if>
+      <if test="cTransMrk != null and cTransMrk != '' " >
+       and C_TRANS_MRK = #{cTransMrk,jdbcType=CHAR}
+      </if>
+      <if test="tTransTm != null and tTransTm != '' " >
+       and T_TRANS_TM = #{tTransTm,jdbcType=TIMESTAMP}
+      </if>
+      <if test="firstInspectOperate != null and firstInspectOperate != '' " >
+       and FIRST_INSPECT_OPERATE = #{firstInspectOperate,jdbcType=VARCHAR}
+      </if>
+      <if test="secondInspectOperate != null and secondInspectOperate != '' " >
+       and SECOND_INSPECT_OPERATE = #{secondInspectOperate,jdbcType=VARCHAR}
+      </if>
+      <if test="approveOperate != null and approveOperate != '' " >
+       and APPROVE_OPERATE = #{approveOperate,jdbcType=VARCHAR}
+      </if>
+      <if test="review != null and review != ''" >
+       and REVIEW = #{review,jdbcType=VARCHAR}
+      </if>
+ 
+      <if test="enterAuditTime != null and enterAuditTime != '' " >
+       and ENTER_AUDIT_TIME = #{enterAuditTime,jdbcType=TIMESTAMP}
+      </if>
+<!--       <if test="createby != null and createby != '' " >
+       and CREATEBY = #{createby,jdbcType=VARCHAR}
+      </if>
+      <if test="createon != null and createon != '' " >
+       and CREATEON = #{createon,jdbcType=TIMESTAMP}
+      </if>
+      <if test="modifyby != null and modifyby != '' " >
+       and MODIFYBY = #{modifyby,jdbcType=VARCHAR}
+      </if>
+      <if test="modifyon != null and modifyon != '' " >
+       and MODIFYON = #{modifyon,jdbcType=TIMESTAMP}
+      </if> -->
+	</select>
+	
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from sus_data
+    where seqno = #{seqno,jdbcType=VARCHAR}
+  </delete>
+
+  <insert id="insert" parameterType="org.FDFBpersistence.pojos.SusData" >
+    insert into sus_data (seqno, TRANS_SPOT, STCR, 
+      SDGR, TKMS, SSDS, INSERT_ORGAN_ID, 
+      INSERT_OPER, INSERT_TIME, STATUS, 
+      REPORT_TIME, REPORT_ID, SSCAT, 
+      CONDITION_CODE, EXPLICATION, FIRST_ID, 
+      FIRST_END_TIME, SECOND_ID, SECOND_END_TIME, 
+      FINAL_ID, FINAL_END_TIME, APPROVE_FINISH_ID, 
+      APPROVE_FINISH_TIME, POLICY_TYPE, CTID, 
+      CRNM, CRIT, CRID, APPROVE_ID, 
+      APPROVE_TIME, AGREE_SUGGESTION, 
+      C_TRANS_MRK, T_TRANS_TM, FIRST_INSPECT_OPERATE, 
+      SECOND_INSPECT_OPERATE, APPROVE_OPERATE, REVIEW, 
+      ENTER_AUDIT_TIME)
+    values (#{seqno,jdbcType=VARCHAR}, #{transSpot,jdbcType=VARCHAR}, #{stcr,jdbcType=VARCHAR}, 
+      #{sdgr,jdbcType=VARCHAR}, #{tkms,jdbcType=VARCHAR}, #{ssds,jdbcType=VARCHAR}, #{insertOrganId,jdbcType=VARCHAR}, 
+      #{insertOper,jdbcType=VARCHAR}, #{insertTime,jdbcType=TIMESTAMP}, #{status,jdbcType=VARCHAR}, 
+      #{reportTime,jdbcType=TIMESTAMP}, #{reportId,jdbcType=VARCHAR}, #{sscat,jdbcType=VARCHAR}, 
+      #{conditionCode,jdbcType=VARCHAR}, #{explication,jdbcType=VARCHAR}, #{firstId,jdbcType=VARCHAR}, 
+      #{firstEndTime,jdbcType=TIMESTAMP}, #{secondId,jdbcType=VARCHAR}, #{secondEndTime,jdbcType=TIMESTAMP}, 
+      #{finalId,jdbcType=VARCHAR}, #{finalEndTime,jdbcType=TIMESTAMP}, #{approveFinishId,jdbcType=VARCHAR}, 
+      #{approveFinishTime,jdbcType=TIMESTAMP}, #{policyType,jdbcType=CHAR}, #{ctid,jdbcType=VARCHAR}, 
+      #{crnm,jdbcType=VARCHAR}, #{crit,jdbcType=VARCHAR}, #{crid,jdbcType=VARCHAR}, #{approveId,jdbcType=VARCHAR}, 
+      #{approveTime,jdbcType=TIMESTAMP}, #{inspectorStatus,jdbcType=VARCHAR}, #{agreeSuggestion,jdbcType=VARCHAR}, 
+      #{cTransMrk,jdbcType=CHAR}, #{tTransTm,jdbcType=TIMESTAMP}, #{firstInspectOperate,jdbcType=VARCHAR}, 
+      #{secondInspectOperate,jdbcType=VARCHAR}, #{approveOperate,jdbcType=VARCHAR}, #{review,jdbcType=VARCHAR}, 
+      #{enterAuditTime,jdbcType=TIMESTAMP})
+  </insert>
+  
+  <insert id="insertSelective" parameterType="org.FDFBpersistence.pojos.SusData" >
+    insert into sus_data
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="seqno != null" >
+        seqno,
+      </if>
+      <if test="transSpot != null" >
+        TRANS_SPOT,
+      </if>
+      <if test="stcr != null" >
+        STCR,
+      </if>
+      <if test="sdgr != null" >
+        SDGR,
+      </if>
+      <if test="tkms != null" >
+        TKMS,
+      </if>
+      <if test="ssds != null" >
+        SSDS,
+      </if>
+      <if test="insertOrganId != null" >
+        INSERT_ORGAN_ID,
+      </if>
+      <if test="insertOper != null" >
+        INSERT_OPER,
+      </if>
+      <if test="insertTime != null" >
+        INSERT_TIME,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="reportTime != null" >
+        REPORT_TIME,
+      </if>
+      <if test="reportId != null" >
+        REPORT_ID,
+      </if>
+      <if test="sscat != null" >
+        SSCAT,
+      </if>
+      <if test="conditionCode != null" >
+        CONDITION_CODE,
+      </if>
+      <if test="explication != null" >
+        EXPLICATION,
+      </if>
+      <if test="firstId != null" >
+        FIRST_ID,
+      </if>
+      <if test="firstEndTime != null" >
+        FIRST_END_TIME,
+      </if>
+      <if test="secondId != null" >
+        SECOND_ID,
+      </if>
+      <if test="secondEndTime != null" >
+        SECOND_END_TIME,
+      </if>
+      <if test="finalId != null" >
+        FINAL_ID,
+      </if>
+      <if test="finalEndTime != null" >
+        FINAL_END_TIME,
+      </if>
+      <if test="approveFinishId != null" >
+        APPROVE_FINISH_ID,
+      </if>
+      <if test="approveFinishTime != null" >
+        APPROVE_FINISH_TIME,
+      </if>
+      <if test="policyType != null" >
+        POLICY_TYPE,
+      </if>
+      <if test="ctid != null" >
+        CTID,
+      </if>
+      <if test="crnm != null" >
+        CRNM,
+      </if>
+      <if test="crit != null" >
+        CRIT,
+      </if>
+      <if test="crid != null" >
+        CRID,
+      </if>
+      <if test="approveId != null" >
+        APPROVE_ID,
+      </if>
+      <if test="approveTime != null" >
+        APPROVE_TIME,
+      </if>
+      <if test="agreeSuggestion != null" >
+        AGREE_SUGGESTION,
+      </if>
+      <if test="cTransMrk != null" >
+        C_TRANS_MRK,
+      </if>
+      <if test="tTransTm != null" >
+        T_TRANS_TM,
+      </if>
+      <if test="firstInspectOperate != null" >
+        FIRST_INSPECT_OPERATE,
+      </if>
+      <if test="secondInspectOperate != null" >
+        SECOND_INSPECT_OPERATE,
+      </if>
+      <if test="approveOperate != null" >
+        APPROVE_OPERATE,
+      </if>
+      <if test="review != null" >
+        REVIEW,
+      </if>
+
+      <if test="enterAuditTime != null" >
+        ENTER_AUDIT_TIME,
+      </if>
+<!--       <if test="createby != null" >
+        CREATEBY,
+      </if>
+      <if test="createon != null" >
+        CREATEON,
+      </if>
+      <if test="modifyby != null" >
+        MODIFYBY,
+      </if>
+      <if test="modifyon != null" >
+        MODIFYON,
+      </if> -->
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="seqno != null" >
+        #{seqno,jdbcType=VARCHAR},
+      </if>
+      <if test="transSpot != null" >
+        #{transSpot,jdbcType=VARCHAR},
+      </if>
+      <if test="stcr != null" >
+        #{stcr,jdbcType=VARCHAR},
+      </if>
+      <if test="sdgr != null" >
+        #{sdgr,jdbcType=VARCHAR},
+      </if>
+      <if test="tkms != null" >
+        #{tkms,jdbcType=VARCHAR},
+      </if>
+      <if test="ssds != null" >
+        #{ssds,jdbcType=VARCHAR},
+      </if>
+      <if test="insertOrganId != null" >
+        #{insertOrganId,jdbcType=VARCHAR},
+      </if>
+      <if test="insertOper != null" >
+        #{insertOper,jdbcType=VARCHAR},
+      </if>
+      <if test="insertTime != null" >
+        #{insertTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="reportTime != null" >
+        #{reportTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reportId != null" >
+        #{reportId,jdbcType=VARCHAR},
+      </if>
+      <if test="sscat != null" >
+        #{sscat,jdbcType=VARCHAR},
+      </if>
+      <if test="conditionCode != null" >
+        #{conditionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="explication != null" >
+        #{explication,jdbcType=VARCHAR},
+      </if>
+      <if test="firstId != null" >
+        #{firstId,jdbcType=VARCHAR},
+      </if>
+      <if test="firstEndTime != null" >
+        #{firstEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="secondId != null" >
+        #{secondId,jdbcType=VARCHAR},
+      </if>
+      <if test="secondEndTime != null" >
+        #{secondEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="finalId != null" >
+        #{finalId,jdbcType=VARCHAR},
+      </if>
+      <if test="finalEndTime != null" >
+        #{finalEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="approveFinishId != null" >
+        #{approveFinishId,jdbcType=VARCHAR},
+      </if>
+      <if test="approveFinishTime != null" >
+        #{approveFinishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="policyType != null" >
+        #{policyType,jdbcType=CHAR},
+      </if>
+      <if test="ctid != null" >
+        #{ctid,jdbcType=VARCHAR},
+      </if>
+      <if test="crnm != null" >
+        #{crnm,jdbcType=VARCHAR},
+      </if>
+      <if test="crit != null" >
+        #{crit,jdbcType=VARCHAR},
+      </if>
+      <if test="crid != null" >
+        #{crid,jdbcType=VARCHAR},
+      </if>
+      <if test="approveId != null" >
+        #{approveId,jdbcType=VARCHAR},
+      </if>
+      <if test="approveTime != null" >
+        #{approveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="inspectorStatus != null" >
+        #{inspectorStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="agreeSuggestion != null" >
+        #{agreeSuggestion,jdbcType=VARCHAR},
+      </if>
+      <if test="cTransMrk != null" >
+        #{cTransMrk,jdbcType=CHAR},
+      </if>
+      <if test="tTransTm != null" >
+        #{tTransTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="firstInspectOperate != null" >
+        #{firstInspectOperate,jdbcType=VARCHAR},
+      </if>
+      <if test="secondInspectOperate != null" >
+        #{secondInspectOperate,jdbcType=VARCHAR},
+      </if>
+      <if test="approveOperate != null" >
+        #{approveOperate,jdbcType=VARCHAR},
+      </if>
+      <if test="review != null" >
+        #{review,jdbcType=VARCHAR},
+      </if>
+  
+      <if test="enterAuditTime != null" >
+        #{enterAuditTime,jdbcType=TIMESTAMP},
+      </if>
+<!--       <if test="createby != null" >
+        #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="createon != null" >
+        #{createon,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyby != null" >
+        #{modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyon != null" > 
+        #{modifyon,jdbcType=TIMESTAMP},
+      </if>-->
+    </trim>
+  </insert>
+  
+  <update id="updateByPrimaryKeySelective" parameterType="org.FDFBpersistence.pojos.SusData" >
+    update sus_data
+    <set >
+      <if test="transSpot != null" >
+        TRANS_SPOT = #{transSpot,jdbcType=VARCHAR},
+      </if>
+      <if test="stcr != null" >
+        STCR = #{stcr,jdbcType=VARCHAR},
+      </if>
+      <if test="sdgr != null" >
+        SDGR = #{sdgr,jdbcType=VARCHAR},
+      </if>
+      <if test="tkms != null" >
+        TKMS = #{tkms,jdbcType=VARCHAR},
+      </if>
+      <if test="ssds != null" >
+        SSDS = #{ssds,jdbcType=VARCHAR},
+      </if>
+      <if test="insertOrganId != null" >
+        INSERT_ORGAN_ID = #{insertOrganId,jdbcType=VARCHAR},
+      </if>
+      <if test="insertOper != null" >
+        INSERT_OPER = #{insertOper,jdbcType=VARCHAR},
+      </if>
+      <if test="insertTime != null" >
+        INSERT_TIME = #{insertTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="reportTime != null" >
+        REPORT_TIME = #{reportTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reportId != null" >
+        REPORT_ID = #{reportId,jdbcType=VARCHAR},
+      </if>
+      <if test="sscat != null" >
+        SSCAT = #{sscat,jdbcType=VARCHAR},
+      </if>
+      <if test="conditionCode != null" >
+        CONDITION_CODE = #{conditionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="explication != null" >
+        EXPLICATION = #{explication,jdbcType=VARCHAR},
+      </if>
+      <if test="firstId != null" >
+        FIRST_ID = #{firstId,jdbcType=VARCHAR},
+      </if>
+      <if test="firstEndTime != null" >
+        FIRST_END_TIME = #{firstEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="secondId != null" >
+        SECOND_ID = #{secondId,jdbcType=VARCHAR},
+      </if>
+      <if test="secondEndTime != null" >
+        SECOND_END_TIME = #{secondEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="finalId != null" >
+        FINAL_ID = #{finalId,jdbcType=VARCHAR},
+      </if>
+      <if test="finalEndTime != null" >
+        FINAL_END_TIME = #{finalEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="approveFinishId != null" >
+        APPROVE_FINISH_ID = #{approveFinishId,jdbcType=VARCHAR},
+      </if>
+      <if test="approveFinishTime != null" >
+        APPROVE_FINISH_TIME = #{approveFinishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="policyType != null" >
+        POLICY_TYPE = #{policyType,jdbcType=CHAR},
+      </if>
+      <if test="ctid != null" >
+        CTID = #{ctid,jdbcType=VARCHAR},
+      </if>
+      <if test="crnm != null" >
+        CRNM = #{crnm,jdbcType=VARCHAR},
+      </if>
+      <if test="crit != null" >
+        CRIT = #{crit,jdbcType=VARCHAR},
+      </if>
+      <if test="crid != null" >
+        CRID = #{crid,jdbcType=VARCHAR},
+      </if>
+      <if test="approveId != null" >
+        APPROVE_ID = #{approveId,jdbcType=VARCHAR},
+      </if>
+      <if test="approveTime != null" >
+        APPROVE_TIME = #{approveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="agreeSuggestion != null" >
+        AGREE_SUGGESTION = #{agreeSuggestion,jdbcType=VARCHAR},
+      </if>
+      <if test="cTransMrk != null" >
+        C_TRANS_MRK = #{cTransMrk,jdbcType=CHAR},
+      </if>
+      <if test="tTransTm != null" >
+        T_TRANS_TM = #{tTransTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="firstInspectOperate != null" >
+        FIRST_INSPECT_OPERATE = #{firstInspectOperate,jdbcType=VARCHAR},
+      </if>
+      <if test="secondInspectOperate != null" >
+        SECOND_INSPECT_OPERATE = #{secondInspectOperate,jdbcType=VARCHAR},
+      </if>
+      <if test="approveOperate != null" >
+        APPROVE_OPERATE = #{approveOperate,jdbcType=VARCHAR},
+      </if>
+      <if test="review != null" >
+        REVIEW = #{review,jdbcType=VARCHAR},
+      </if>
+
+      <if test="enterAuditTime != null" >
+        ENTER_AUDIT_TIME = #{enterAuditTime,jdbcType=TIMESTAMP}
+      </if>
+     <!--  <if test="createby != null" >
+        CREATEBY = #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="createon != null" >
+        CREATEON = #{createon,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyby != null" >
+        MODIFYBY = #{modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyon != null" >
+        MODIFYON = #{modifyon,jdbcType=TIMESTAMP},
+      </if> -->
+    </set>
+    where seqno = #{seqno,jdbcType=VARCHAR}
+  </update>
+  
+  <update id="updateByPrimaryKey" parameterType="org.FDFBpersistence.pojos.SusData" >
+    update sus_data
+    set TRANS_SPOT = #{transSpot,jdbcType=VARCHAR},
+      STCR = #{stcr,jdbcType=VARCHAR},
+      SDGR = #{sdgr,jdbcType=VARCHAR},
+      TKMS = #{tkms,jdbcType=VARCHAR},
+      SSDS = #{ssds,jdbcType=VARCHAR},
+      INSERT_ORGAN_ID = #{insertOrganId,jdbcType=VARCHAR},
+      INSERT_OPER = #{insertOper,jdbcType=VARCHAR},
+      INSERT_TIME = #{insertTime,jdbcType=TIMESTAMP},
+      STATUS = #{status,jdbcType=VARCHAR},
+      REPORT_TIME = #{reportTime,jdbcType=TIMESTAMP},
+      REPORT_ID = #{reportId,jdbcType=VARCHAR},
+      SSCAT = #{sscat,jdbcType=VARCHAR},
+      CONDITION_CODE = #{conditionCode,jdbcType=VARCHAR},
+      EXPLICATION = #{explication,jdbcType=VARCHAR},
+      FIRST_ID = #{firstId,jdbcType=VARCHAR},
+      FIRST_END_TIME = #{firstEndTime,jdbcType=TIMESTAMP},
+      SECOND_ID = #{secondId,jdbcType=VARCHAR},
+      SECOND_END_TIME = #{secondEndTime,jdbcType=TIMESTAMP},
+      FINAL_ID = #{finalId,jdbcType=VARCHAR},
+      FINAL_END_TIME = #{finalEndTime,jdbcType=TIMESTAMP},
+      APPROVE_FINISH_ID = #{approveFinishId,jdbcType=VARCHAR},
+      APPROVE_FINISH_TIME = #{approveFinishTime,jdbcType=TIMESTAMP},
+      POLICY_TYPE = #{policyType,jdbcType=CHAR},
+      CTID = #{ctid,jdbcType=VARCHAR},
+      CRNM = #{crnm,jdbcType=VARCHAR},
+      CRIT = #{crit,jdbcType=VARCHAR},
+      CRID = #{crid,jdbcType=VARCHAR},
+      APPROVE_ID = #{approveId,jdbcType=VARCHAR},
+      APPROVE_TIME = #{approveTime,jdbcType=TIMESTAMP},
+      AGREE_SUGGESTION = #{agreeSuggestion,jdbcType=VARCHAR},
+      C_TRANS_MRK = #{cTransMrk,jdbcType=CHAR},
+      T_TRANS_TM = #{tTransTm,jdbcType=TIMESTAMP},
+      FIRST_INSPECT_OPERATE = #{firstInspectOperate,jdbcType=VARCHAR},
+      SECOND_INSPECT_OPERATE = #{secondInspectOperate,jdbcType=VARCHAR},
+      APPROVE_OPERATE = #{approveOperate,jdbcType=VARCHAR},
+      REVIEW = #{review,jdbcType=VARCHAR},
+      ENTER_AUDIT_TIME = #{enterAuditTime,jdbcType=TIMESTAMP}
+
+    where seqno = #{seqno,jdbcType=VARCHAR}
+  </update>
+  
+  <select id="selectAllFirstInspectByPage" resultMap="BaseResultMap" parameterType="org.FDFBpersistence.pojos.SusData">
+		SELECT
+			sd.seqno,
+			sd.SSDS,
+			sd.STCR,
+			sd.SDGR,
+			sd.CONDITION_CODE,
+			sd.INSERT_ORGAN_ID,
+			sd.FIRST_ID,
+			sd.STATUS,
+			sd.EXPLICATION,
+			sd.INSERT_TIME,
+			sd.TKMS,
+			scm.CUSTOMER_NAME,
+			sct.POLICY_NO 
+		FROM
+			sus_data sd
+			LEFT JOIN sus_customer scm ON sd.seqno = scm.su_data_id
+			LEFT JOIN sus_contract sct ON sd.seqno = sct.su_data_id 
+		WHERE
+			( sd.`STATUS` = '10' OR sd.`STATUS` = '21') 
+	      <if test="insertOrganId != null and insertOrganId !='' " >
+	       and INSERT_ORGAN_ID = #{insertOrganId,jdbcType=VARCHAR}
+	      </if>
+	      
+		  <if test="conditionCode != null and conditionCode != '' " >
+     		  and CONDITION_CODE = #{conditionCode,jdbcType=VARCHAR}
+     	  </if>
+
+	      <if test="status != null and status != '' " >
+	       and STATUS = #{status,jdbcType=VARCHAR}
+	      </if>
+	    
+	      <if test="firstId != null and firstId != '' " >
+	       and FIRST_ID = #{firstId,jdbcType=VARCHAR}
+	      </if>
+	      
+		  <if test="customerName != null and customerName != '' " >
+     		  and scm.CUSTOMER_NAME = #{customerName,jdbcType=VARCHAR}
+     	  </if>	      
+     	  
+		  <if test="policyNo != null and policyNo != '' " >
+     		  and POLICY_NO = #{policyNo,jdbcType=VARCHAR}
+     	  </if>	      
+  </select>
+	
+  <select id="getAllFirstInspectCount" resultType="java.lang.Integer" parameterType="org.FDFBpersistence.pojos.SusData">
+     	SELECT 
+			count(1)		
+		FROM
+			sus_data sd 
+			left join sus_customer scm ON sd.seqno = scm.su_data_id
+			left join sus_contract sct on sd.seqno = sct.su_data_id
+		WHERE
+			( sd.`STATUS` = '10' OR sd.`STATUS` = '21') 
+	      <if test="insertOrganId != null and insertOrganId !='' " >
+	       and INSERT_ORGAN_ID = #{insertOrganId,jdbcType=VARCHAR}
+	      </if>
+	      
+		  <if test="conditionCode != null and conditionCode != '' " >
+     		  and CONDITION_CODE = #{conditionCode,jdbcType=VARCHAR}
+     	  </if>
+
+	      <if test="status != null and status != '' " >
+	       and STATUS = #{status,jdbcType=VARCHAR}
+	      </if>
+	    
+	      <if test="firstId != null and firstId != '' " >
+	       and FIRST_ID = #{firstId,jdbcType=VARCHAR}
+	      </if>
+	      
+		  <if test="customerName != null and customerName != '' " >
+     		  and scm.CUSTOMER_NAME = #{customerName,jdbcType=VARCHAR}
+     	  </if>	      
+     	  
+		  <if test="policyNo != null and policyNo != '' " >
+     		  and sct.POLICY_NO = #{policyNo,jdbcType=VARCHAR}
+     	  </if>	 
+  </select>
+  
+  <select id="selectAllSecondInspectByPage" resultMap="BaseResultMap" parameterType="org.FDFBpersistence.pojos.SusData">
+		SELECT
+			sd.seqno,
+			sd.SSDS,
+			sd.STCR,
+			sd.SDGR,
+			sd.CONDITION_CODE,
+			sd.INSERT_ORGAN_ID,
+			sd.FIRST_ID,
+			sd.STATUS,
+			sd.EXPLICATION,
+			sd.INSERT_TIME,
+			sd.TKMS,
+			scm.CUSTOMER_NAME,
+			sct.POLICY_NO 
+		FROM
+			sus_data sd
+			LEFT JOIN sus_customer scm ON sd.seqno = scm.su_data_id
+			LEFT JOIN sus_contract sct ON sd.seqno = sct.su_data_id 
+		WHERE
+			(sd.`STATUS` = '20' OR sd.`STATUS` = '31') 
+	      <if test="insertOrganId != null and insertOrganId !='' " >
+	       and INSERT_ORGAN_ID = #{insertOrganId,jdbcType=VARCHAR}
+	      </if>
+	      
+		  <if test="conditionCode != null and conditionCode != '' " >
+     		  and CONDITION_CODE = #{conditionCode,jdbcType=VARCHAR}
+     	  </if>
+
+	      <if test="firstId != null and firstId != '' " >
+	         and FIRST_ID = #{firstId,jdbcType=VARCHAR}
+	      </if>
+	      
+		  <if test="customerName != null and customerName != '' " >
+			  and scm.CUSTOMER_NAME = #{customerName,jdbcType=VARCHAR}
+     	  </if>	      
+     	  
+		  <if test="policyNo != null and policyNo != '' " >
+			  and POLICY_NO = #{policyNo,jdbcType=VARCHAR}
+     	  </if>	 
+     	       
+  </select>
+	
+  <select id="getAllSecondInspectCount" resultType="java.lang.Integer" parameterType="org.FDFBpersistence.pojos.SusData">
+     	SELECT 
+			count(1)		
+		FROM
+			sus_data sd 
+			left join sus_customer scm ON sd.seqno = scm.su_data_id
+			left join sus_contract sct on sd.seqno = sct.su_data_id
+		WHERE
+			(sd.`STATUS` = '20' OR sd.`STATUS` = '31')  
+	      <if test="insertOrganId != null and insertOrganId !='' " >
+				and INSERT_ORGAN_ID = #{insertOrganId,jdbcType=VARCHAR}
+	      </if>
+	      
+		  <if test="conditionCode != null and conditionCode != '' " >
+				and CONDITION_CODE = #{conditionCode,jdbcType=VARCHAR}
+     	  </if>
+	    
+	      <if test="firstId != null and firstId != '' " >
+				and FIRST_ID = #{firstId,jdbcType=VARCHAR}
+	      </if>
+	      
+		  <if test="customerName != null and customerName != '' " >
+				and scm.CUSTOMER_NAME = #{customerName,jdbcType=VARCHAR}
+     	  </if>	      
+     	  
+		  <if test="policyNo != null and policyNo != '' " >
+				and sct.POLICY_NO = #{policyNo,jdbcType=VARCHAR}
+     	  </if>	 
+  </select>
+	
+	
+  <select id="selectAllFinalInspectByPage" resultMap="BaseResultMap" parameterType="org.FDFBpersistence.pojos.SusData">
+		SELECT
+			sd.seqno,
+			sd.SSDS,
+			sd.STCR,
+			sd.SDGR,
+			sd.CONDITION_CODE,
+			sd.INSERT_ORGAN_ID,
+			sd.SECOND_ID,
+			sd.STATUS,
+			sd.EXPLICATION,
+			sd.INSERT_TIME,
+			sd.TKMS,
+			scm.CUSTOMER_NAME,
+			sct.POLICY_NO 
+		FROM
+			sus_data sd
+			LEFT JOIN sus_customer scm ON sd.seqno = scm.su_data_id
+			LEFT JOIN sus_contract sct ON sd.seqno = sct.su_data_id 
+		WHERE
+			 sd.`STATUS` = '30' 
+	      <if test="insertOrganId != null and insertOrganId !='' " >
+	       and INSERT_ORGAN_ID = #{insertOrganId,jdbcType=VARCHAR}
+	      </if>
+	      
+		  <if test="conditionCode != null and conditionCode != '' " >
+     		  and CONDITION_CODE = #{conditionCode,jdbcType=VARCHAR}
+     	  </if>
+
+	      <if test="secondId != null and secondId != '' " >
+				and SECOND_ID = #{secondId,jdbcType=VARCHAR}
+	      </if>
+	      
+		  <if test="customerName != null and customerName != '' " >
+			  and scm.CUSTOMER_NAME = #{customerName,jdbcType=VARCHAR}
+     	  </if>	      
+     	  
+		  <if test="policyNo != null and policyNo != '' " >
+			  and POLICY_NO = #{policyNo,jdbcType=VARCHAR}
+     	  </if>	      
+  </select>
+	
+  <select id="getAllFinalInspectCount" resultType="java.lang.Integer" parameterType="org.FDFBpersistence.pojos.SusData">
+     	SELECT 
+			count(1)		
+		FROM
+			sus_data sd 
+			left join sus_customer scm ON sd.seqno = scm.su_data_id
+			left join sus_contract sct on sd.seqno = sct.su_data_id
+		WHERE
+			 sd.`STATUS` = '30' 
+	      <if test="insertOrganId != null and insertOrganId !='' " >
+				and INSERT_ORGAN_ID = #{insertOrganId,jdbcType=VARCHAR}
+	      </if>
+	      
+		  <if test="conditionCode != null and conditionCode != '' " >
+				and CONDITION_CODE = #{conditionCode,jdbcType=VARCHAR}
+     	  </if>
+	    
+	      <if test="secondId != null and secondId != '' " >
+				and SECOND_ID = #{secondId,jdbcType=VARCHAR}
+	      </if>
+	      
+		  <if test="customerName != null and customerName != '' " >
+				and scm.CUSTOMER_NAME = #{customerName,jdbcType=VARCHAR}
+     	  </if>	      
+     	  
+		  <if test="policyNo != null and policyNo != '' " >
+				and sct.POLICY_NO = #{policyNo,jdbcType=VARCHAR}
+     	  </if>	 
+  </select>
+  
+  
+  
+  
+ 
+</mapper>

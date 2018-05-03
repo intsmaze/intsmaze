@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.FDFBpersistence.mapper.RiskGradeMapper" >
+  <resultMap id="BaseResultMap" type="org.FDFBpersistence.pojos.RiskGrade" >
+    <id column="SEQNO" property="seqno" jdbcType="VARCHAR" />
+    <result column="CUSTOMER_ID" property="customerId" jdbcType="VARCHAR" />
+    <result column="CUSTOMER_NAME" property="customerName" jdbcType="VARCHAR" />
+    <result column="IDENTIFY_TYPE" property="identifyType" jdbcType="VARCHAR" />
+    <result column="IDENTIFY_NUMBER" property="identifyNumber" jdbcType="VARCHAR" />
+    <result column="ORG_CODE" property="orgCode" jdbcType="VARCHAR" />
+    <result column="PREVIOUS_GRADETYPE" property="previousGradetype" jdbcType="VARCHAR" />
+    <result column="GRADE_TYPE" property="gradeType" jdbcType="VARCHAR" />
+    <result column="PREVIOUS_SCORE" property="previousScore" jdbcType="VARCHAR" />
+    <result column="SCORE_TIME" property="scoreTime" jdbcType="TIMESTAMP" />
+    <result column="PREVIOUS_GRADE" property="previousGrade" jdbcType="VARCHAR" />
+    <result column="PRESENT_GRADE" property="presentGrade" jdbcType="VARCHAR" />
+    <result column="GRADE_TIME" property="gradeTime" jdbcType="TIMESTAMP" />
+    <result column="SUGGESTION" property="suggestion" jdbcType="VARCHAR" />
+    <result column="STATUS" property="status" jdbcType="VARCHAR" />
+    <result column="RETURN_SUGGESTION" property="returnSuggestion" jdbcType="VARCHAR" />
+    <result column="CANCLE_SUGGESTION" property="cancleSuggestion" jdbcType="VARCHAR" />
+    <result column="NEXT_REVIEWTIME" property="nextReviewtime" jdbcType="TIMESTAMP" />
+    <result column="PREVIOUS_GRADETIME" property="previousGradetime" jdbcType="TIMESTAMP" />
+    <result column="MOD_GRADE" property="modGrade" jdbcType="VARCHAR" />
+    <result column="FIRST_TIME" property="firstTime" jdbcType="TIMESTAMP" />
+    <result column="REVIEW" property="review" jdbcType="VARCHAR" />
+    <result column="FROMUSER" property="fromuser" jdbcType="VARCHAR" />
+    <result column="CREATEBY" property="createby" jdbcType="VARCHAR" />
+    <result column="CREATEON" property="createon" jdbcType="TIMESTAMP" />
+    <result column="MODIFYBY" property="modifyby" jdbcType="VARCHAR" />
+    <result column="MODIFYON" property="modifyon" jdbcType="TIMESTAMP" />
+    <result column="ORG_NAME" property="orgName" jdbcType="VARCHAR" />
+    <result column="total_amount" property="totalAmount" jdbcType="INTEGER" />
+    <result column="unaudited_customers" property="unauditedCustomers" jdbcType="VARCHAR" />
+    <result column="Overdue_audit_customers" property="overdueAuditCustomers" jdbcType="VARCHAR" />
+    <result column="extended_audit_rate" property="extendedAuditRate" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    SEQNO, CUSTOMER_ID, CUSTOMER_NAME, IDENTIFY_TYPE, IDENTIFY_NUMBER, ORG_CODE, PREVIOUS_GRADETYPE, 
+    GRADE_TYPE, PREVIOUS_SCORE, SCORE_TIME, PREVIOUS_GRADE, PRESENT_GRADE, GRADE_TIME, 
+    SUGGESTION, STATUS, RETURN_SUGGESTION, CANCLE_SUGGESTION, NEXT_REVIEWTIME, PREVIOUS_GRADETIME, 
+    MOD_GRADE, FIRST_TIME, REVIEW, FROMUSER, CREATEBY, CREATEON, MODIFYBY, MODIFYON
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_sco
+    where SEQNO = #{seqno,jdbcType=VARCHAR}
+  </select>
+  
+  	<select id="selectAllByPage" resultMap="BaseResultMap"
+		parameterType="org.FDFBpersistence.pojos.RiskGrade">
+		select
+		<include refid="Base_Column_List" />
+		from t_sco
+		where 1=1
+		<if test="customerId != null" >
+      		and CUSTOMER_ID = #{customerId,jdbcType=VARCHAR}
+      	</if>
+      	<if test="customerName != null" >
+        	and CUSTOMER_NAME like '%${customerName}%'
+      	</if>
+      	<if test="identifyType != null" >
+        	and IDENTIFY_TYPE = #{identifyType,jdbcType=VARCHAR}
+      	</if>
+      	<if test="identifyNumber != null" >
+        	and IDENTIFY_NUMBER = #{identifyNumber,jdbcType=VARCHAR}
+      	</if>
+      	<if test="orgCode != null" >
+        	and ORG_CODE like '${orgCode}%'
+      	</if>
+      	<if test="previousGradetype != null" >
+        	and PREVIOUS_GRADETYPE = #{previousGradetype,jdbcType=VARCHAR}
+      	</if>
+      	<if test="gradeType != null" >
+        	and GRADE_TYPE = #{gradeType,jdbcType=VARCHAR}
+      	</if>
+      	<if test="previousScore != null" >
+        	and PREVIOUS_SCORE = #{previousScore,jdbcType=VARCHAR}
+      	</if>
+      	<if test="scoreTime != null" >
+        	and SCORE_TIME = #{scoreTime,jdbcType=TIMESTAMP}
+      	</if>
+      	<if test="previousGrade != null" >
+        	and PREVIOUS_GRADE = #{previousGrade,jdbcType=VARCHAR}
+      	</if>
+      	<if test="presentGrade != null" >
+        	and PRESENT_GRADE = #{presentGrade,jdbcType=VARCHAR}
+      	</if>
+      	<if test="gradeTime != null" >
+        	and GRADE_TIME = #{gradeTime,jdbcType=TIMESTAMP}
+      	</if>
+      	<if test="suggestion != null" >
+        	and SUGGESTION = #{suggestion,jdbcType=VARCHAR}
+      	</if>
+        <if test="status != null" >
+        	and STATUS = #{status,jdbcType=VARCHAR}
+      	</if>
+        <if test="returnSuggestion != null" >
+        	and RETURN_SUGGESTION = #{returnSuggestion,jdbcType=VARCHAR}
+       	</if>
+      	<if test="cancleSuggestion != null" >
+        	and CANCLE_SUGGESTION = #{cancleSuggestion,jdbcType=VARCHAR}
+      	</if>
+      	<if test="nextReviewtime != null" >
+        	and NEXT_REVIEWTIME = #{nextReviewtime,jdbcType=TIMESTAMP}
+      	</if>
+      	<if test="previousGradetime != null" >
+        	and PREVIOUS_GRADETIME = #{previousGradetime,jdbcType=TIMESTAMP}
+      	</if>
+      	<if test="modGrade != null" >
+        	and MOD_GRADE = #{modGrade,jdbcType=VARCHAR}
+      	</if>
+      	<if test="firstTime != null" >
+        	and FIRST_TIME = #{firstTime,jdbcType=TIMESTAMP}
+      	</if>
+      	<if test="review != null" >
+        	and REVIEW like '%${review}%'
+      	</if>
+      	<if test="fromuser != null" >
+      	<choose>
+        	<when test="fromuser == 'FIRST' " >
+        	and FROMUSER is null
+        	</when>
+        	<when test="fromuser == 'NOT_FIRST'">
+        	and FROMUSER is not null and FROMUSER &lt;&gt; ""
+        	</when>
+        	<otherwise>
+        	and FROMUSER = #{fromuser,jdbcType=VARCHAR}
+        	</otherwise>
+       	</choose>
+      	</if>
+		<if test="orderByStr != null and orderByStr != ''">
+			order by ${orderByStr}
+		</if>
+	</select>
+	
+	<select id="selectAllCount" resultType="java.lang.Integer"
+		parameterType="org.FDFBpersistence.pojos.RiskGrade">
+		select count(1)
+		from t_sco
+		where 1=1
+		<if test="customerId != null" >
+      		and CUSTOMER_ID = #{customerId,jdbcType=VARCHAR}
+      	</if>
+      	<if test="customerName != null" >
+        	and CUSTOMER_NAME like '%${customerName}%'
+      	</if>
+      	<if test="identifyType != null" >
+        	and IDENTIFY_TYPE = #{identifyType,jdbcType=VARCHAR}
+      	</if>
+      	<if test="identifyNumber != null" >
+        	and IDENTIFY_NUMBER = #{identifyNumber,jdbcType=VARCHAR}
+      	</if>
+      	<if test="orgCode != null" >
+        	and ORG_CODE like '${orgCode}%'
+      	</if>
+      	<if test="previousGradetype != null" >
+        	and PREVIOUS_GRADETYPE = #{previousGradetype,jdbcType=VARCHAR}
+      	</if>
+      	<if test="gradeType != null" >
+        	and GRADE_TYPE = #{gradeType,jdbcType=VARCHAR}
+      	</if>
+      	<if test="previousScore != null" >
+        	and PREVIOUS_SCORE = #{previousScore,jdbcType=VARCHAR}
+      	</if>
+      	<if test="scoreTime != null" >
+        	and SCORE_TIME = #{scoreTime,jdbcType=TIMESTAMP}
+      	</if>
+      	<if test="previousGrade != null" >
+        	and PREVIOUS_GRADE = #{previousGrade,jdbcType=VARCHAR}
+      	</if>
+      	<if test="presentGrade != null" >
+        	and PRESENT_GRADE = #{presentGrade,jdbcType=VARCHAR}
+      	</if>
+      	<if test="gradeTime != null" >
+        	and GRADE_TIME = #{gradeTime,jdbcType=TIMESTAMP}
+      	</if>
+      	<if test="suggestion != null" >
+        	and SUGGESTION = #{suggestion,jdbcType=VARCHAR}
+      	</if>
+        <if test="status != null" >
+        	and STATUS = #{status,jdbcType=VARCHAR}
+      	</if>
+        <if test="returnSuggestion != null" >
+        	and RETURN_SUGGESTION = #{returnSuggestion,jdbcType=VARCHAR}
+       	</if>
+      	<if test="cancleSuggestion != null" >
+        	and CANCLE_SUGGESTION = #{cancleSuggestion,jdbcType=VARCHAR}
+      	</if>
+      	<if test="nextReviewtime != null" >
+        	and NEXT_REVIEWTIME = #{nextReviewtime,jdbcType=TIMESTAMP}
+      	</if>
+      	<if test="previousGradetime != null" >
+        	and PREVIOUS_GRADETIME = #{previousGradetime,jdbcType=TIMESTAMP}
+      	</if>
+      	<if test="modGrade != null" >
+        	and MOD_GRADE = #{modGrade,jdbcType=VARCHAR}
+      	</if>
+      	<if test="firstTime != null" >
+        	and FIRST_TIME = #{firstTime,jdbcType=TIMESTAMP}
+      	</if>
+      	<if test="customerName != null" >
+        	and CUSTOMER_NAME like '%${customerName}%'
+      	</if>
+      	<if test="fromuser != null" >
+      	<choose>
+        	<when test="fromuser == 'FIRST' " >
+        	and FROMUSER is null
+        	</when>
+        	<when test="fromuser == 'NOT_FIRST'">
+        	and FROMUSER is not null and FROMUSER &lt;&gt; ""
+        	</when>
+        	<otherwise>
+        	and FROMUSER = #{fromuser,jdbcType=VARCHAR}
+        	</otherwise>
+       	</choose>
+      	</if>
+		<if test="orderByStr != null and orderByStr != ''">
+			order by ${orderByStr}
+		</if>
+	</select>
+  
+    <select id="selectRiskAssessmentTimeManagementList" resultMap="BaseResultMap"
+   	parameterType="org.FDFBpersistence.pojos.RiskGrade">
+		select t_sco.ORG_CODE,b.ORG_NAME,count(1) total_amount,a.unaudited_customers,
+		sum(case when TIMESTAMPDIFF(DAY,(case when STATUS=8 then GRADE_TIME else SCORE_TIME end),
+		(case when STATUS=4 or STATUS=8 then sysdate() else FIRST_TIME end)
+		)>7 then 1 else 0 end) 
+		Overdue_audit_customers,sum(case when TIMESTAMPDIFF(DAY,(case when STATUS=8 then GRADE_TIME else SCORE_TIME end),
+		(case when STATUS=4 or STATUS=8 then sysdate() else FIRST_TIME end)
+		)>7 then 1 else 0 end)/count(1) extended_audit_rate from t_sco 
+		left join (select ORG_CODE,count(1) unaudited_customers from t_sco where STATUS=4 or STATUS=8 group by ORG_CODE) a on t_sco.ORG_CODE = a.ORG_CODE 
+		left join t_organname b on t_sco.ORG_CODE=b.ORG_CODE
+		where 1=1
+		<if test="orgCode != null" >
+        	and t_sco.ORG_CODE = #{orgCode,jdbcType=VARCHAR}
+      	</if> 
+      	<if test="startEvaluationDate != null" >
+      		and t_sco.SCORE_TIME >= #{startEvaluationDate,jdbcType=DATE}
+      	</if>
+      	<if test="endEvaluationDate != null" >
+      		and t_sco.SCORE_TIME &lt;= #{endEvaluationDate,jdbcType=DATE}
+      	</if>    	
+		group by ORG_CODE;
+	</select>
+    <select id="selectRiskAssessmentTimeManagementListCount" resultType="java.lang.Integer"
+	parameterType="org.FDFBpersistence.pojos.RiskGrade">
+			select count(1) from (select t_sco.ORG_CODE,b.ORG_NAME,count(1) total_amount,a.unaudited_customers,
+			sum(case when TIMESTAMPDIFF(DAY,(case when STATUS=8 then GRADE_TIME else SCORE_TIME end),
+			(case when STATUS=4 or STATUS=8 then sysdate() else FIRST_TIME end)
+			)>7 then 1 else 0 end) 
+			Overdue_audit_customers,sum(case when TIMESTAMPDIFF(DAY,(case when STATUS=8 then GRADE_TIME else SCORE_TIME end),
+			(case when STATUS=4 or STATUS=8 then sysdate() else FIRST_TIME end)
+			)>7 then 1 else 0 end)/count(1) extended_audit_rate from t_sco 
+			left join (select ORG_CODE,count(1) unaudited_customers from t_sco where STATUS=4 or STATUS=8 group by ORG_CODE) a on t_sco.ORG_CODE = a.ORG_CODE 
+			left join t_organname b on t_sco.ORG_CODE=b.ORG_CODE
+			where 1=1
+		<if test="orgCode != null" >
+        	and t_sco.ORG_CODE = #{orgCode,jdbcType=VARCHAR}
+      	</if>
+      	<if test="startEvaluationDate != null" >
+      		and t_sco.SCORE_TIME >= #{startEvaluationDate,jdbcType=DATE}
+      	</if>
+      	<if test="endEvaluationDate != null" >
+      		and t_sco.SCORE_TIME &lt;= #{endEvaluationDate,jdbcType=DATE}
+      	</if>    	
+			group by ORG_CODE ) c		
+	</select>
+</mapper>

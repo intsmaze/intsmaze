@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.FDFBpersistence.mapper.FDFBButtonCustomConfigMapper">
+
+	<cache type="org.mybatis.caches.ehcache.LoggingEhcache" > <!-- 输出日志 -->
+		<property name="timeToIdleSeconds" value="36000"/><!--1 hour-->  
+	    <property name="timeToLiveSeconds" value="36000"/><!--1 hour-->  
+	    <property name="maxEntriesLocalHeap" value="2000"/>  
+	    <property name="maxEntriesLocalDisk" value="10000"/>  
+	    <property name="memoryStoreEvictionPolicy" value="LRU"/> 
+	</cache>
+    <!-- 	<cache type="org.mybatis.caches.ehcache.EhcacheCache"/>  不输出日志-->
+    
+	<resultMap id="BaseResultMap"
+		type="org.FDFBpersistence.pojos.FDFBButtonCustomConfig">
+		<id column="seqno" property="seqno" jdbcType="VARCHAR" />
+		<result column="pageName" property="pagename" jdbcType="VARCHAR" />
+		<result column="pageUrl" property="pageurl" jdbcType="VARCHAR" />
+		<result column="username" property="username" jdbcType="VARCHAR" />
+		<result column="columnName" property="columnname" jdbcType="VARCHAR" />
+		<result column="columnDesc" property="columndesc" jdbcType="VARCHAR" />
+		<result column="processstatus" property="processstatus"
+			jdbcType="VARCHAR" />
+		<result column="createon" property="createon" jdbcType="TIMESTAMP" />
+		<result column="createby" property="createby" jdbcType="VARCHAR" />
+		<result column="modifyon" property="modifyon" jdbcType="TIMESTAMP" />
+		<result column="modifyby" property="modifyby" jdbcType="VARCHAR" />
+		<result column="delstatus" property="delstatus" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		seqno, pageName, pageUrl, username, columnName, columnDesc, processstatus,
+		createon,
+		createby, modifyon, modifyby, delstatus
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from fdfb_button_custom_config
+		where seqno = #{seqno,jdbcType=VARCHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from fdfb_button_custom_config
+		where seqno = #{seqno,jdbcType=VARCHAR}
+	</delete>
+	<insert id="insert" parameterType="org.FDFBpersistence.pojos.FDFBButtonCustomConfig">
+		insert into fdfb_button_custom_config (seqno, pageName, pageUrl,
+		username, columnName, columnDesc,
+		processstatus, createon, createby,
+		modifyon, modifyby, delstatus
+		)
+		values (#{seqno,jdbcType=VARCHAR}, #{pagename,jdbcType=VARCHAR},
+		#{pageurl,jdbcType=VARCHAR},
+		#{username,jdbcType=VARCHAR}, #{columnname,jdbcType=VARCHAR}, #{columndesc,jdbcType=VARCHAR},
+		#{processstatus,jdbcType=VARCHAR}, #{createon,jdbcType=TIMESTAMP},
+		#{createby,jdbcType=VARCHAR},
+		#{modifyon,jdbcType=TIMESTAMP}, #{modifyby,jdbcType=VARCHAR}, #{delstatus,jdbcType=VARCHAR}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="org.FDFBpersistence.pojos.FDFBButtonCustomConfig">
+		insert into fdfb_button_custom_config
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="seqno != null">
+				seqno,
+			</if>
+			<if test="pagename != null">
+				pageName,
+			</if>
+			<if test="pageurl != null">
+				pageUrl,
+			</if>
+			<if test="username != null">
+				username,
+			</if>
+			<if test="columnname != null">
+				columnName,
+			</if>
+			<if test="columndesc != null">
+				columnDesc,
+			</if>
+			<if test="processstatus != null">
+				processstatus,
+			</if>
+			<if test="createon != null">
+				createon,
+			</if>
+			<if test="createby != null">
+				createby,
+			</if>
+			<if test="modifyon != null">
+				modifyon,
+			</if>
+			<if test="modifyby != null">
+				modifyby,
+			</if>
+			<if test="delstatus != null">
+				delstatus,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="seqno != null">
+				#{seqno,jdbcType=VARCHAR},
+			</if>
+			<if test="pagename != null">
+				#{pagename,jdbcType=VARCHAR},
+			</if>
+			<if test="pageurl != null">
+				#{pageurl,jdbcType=VARCHAR},
+			</if>
+			<if test="username != null">
+				#{username,jdbcType=VARCHAR},
+			</if>
+			<if test="columnname != null">
+				#{columnname,jdbcType=VARCHAR},
+			</if>
+			<if test="columndesc != null">
+				#{columndesc,jdbcType=VARCHAR},
+			</if>
+			<if test="processstatus != null">
+				#{processstatus,jdbcType=VARCHAR},
+			</if>
+			<if test="createon != null">
+				#{createon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createby != null">
+				#{createby,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyon != null">
+				#{modifyon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modifyby != null">
+				#{modifyby,jdbcType=VARCHAR},
+			</if>
+			<if test="delstatus != null">
+				#{delstatus,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="org.FDFBpersistence.pojos.FDFBButtonCustomConfig">
+		update fdfb_button_custom_config
+		<set>
+			<if test="pagename != null">
+				pageName = #{pagename,jdbcType=VARCHAR},
+			</if>
+			<if test="pageurl != null">
+				pageUrl = #{pageurl,jdbcType=VARCHAR},
+			</if>
+			<if test="username != null">
+				username = #{username,jdbcType=VARCHAR},
+			</if>
+			<if test="columnname != null">
+				columnName = #{columnname,jdbcType=VARCHAR},
+			</if>
+			<if test="columndesc != null">
+				columnDesc = #{columndesc,jdbcType=VARCHAR},
+			</if>
+			<if test="processstatus != null">
+				processstatus = #{processstatus,jdbcType=VARCHAR},
+			</if>
+			<if test="createon != null">
+				createon = #{createon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createby != null">
+				createby = #{createby,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyon != null">
+				modifyon = #{modifyon,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modifyby != null">
+				modifyby = #{modifyby,jdbcType=VARCHAR},
+			</if>
+			<if test="delstatus != null">
+				delstatus = #{delstatus,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where seqno = #{seqno,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="org.FDFBpersistence.pojos.FDFBButtonCustomConfig">
+		update fdfb_button_custom_config
+		set pageName = #{pagename,jdbcType=VARCHAR},
+		pageUrl = #{pageurl,jdbcType=VARCHAR},
+		username = #{username,jdbcType=VARCHAR},
+		columnName = #{columnname,jdbcType=VARCHAR},
+		columnDesc = #{columndesc,jdbcType=VARCHAR},
+		processstatus = #{processstatus,jdbcType=VARCHAR},
+		createon = #{createon,jdbcType=TIMESTAMP},
+		createby = #{createby,jdbcType=VARCHAR},
+		modifyon = #{modifyon,jdbcType=TIMESTAMP},
+		modifyby = #{modifyby,jdbcType=VARCHAR},
+		delstatus = #{delstatus,jdbcType=VARCHAR}
+		where seqno = #{seqno,jdbcType=VARCHAR}
+	</update>
+	
+	
+	<select id="getButtonConfigByUsernameAndPageUrl" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from fdfb_button_custom_config
+		where username = #{0} and pageUrl = #{1} and delstatus = '0'
+	</select>
+	<delete id="delConfigByUsernameAndPageUrl" parameterType="java.lang.String">
+		delete from fdfb_button_custom_config
+		where username = #{0} and pageUrl = #{1}
+	</delete>
+</mapper>

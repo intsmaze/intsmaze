@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.FDFBpersistence.mapper.SusTradeMapper" >
+  <resultMap id="BaseResultMap" type="org.FDFBpersistence.pojos.SusTrade" >
+    <id column="seqno" property="seqno" jdbcType="VARCHAR" />
+    <result column="TRANS_SPOT" property="transSpot" jdbcType="VARCHAR" />
+    <result column="STCR" property="stcr" jdbcType="VARCHAR" />
+    <result column="SDGR" property="sdgr" jdbcType="VARCHAR" />
+    <result column="TKMS" property="tkms" jdbcType="VARCHAR" />
+    <result column="SSDS" property="ssds" jdbcType="VARCHAR" />
+    <result column="INSERT_ORGAN_ID" property="insertOrganId" jdbcType="VARCHAR" />
+    <result column="INSERT_OPER" property="insertOper" jdbcType="VARCHAR" />
+    <result column="INSERT_TIME" property="insertTime" jdbcType="TIMESTAMP" />
+    <result column="STATUS" property="status" jdbcType="VARCHAR" />
+    <result column="REPORT_TIME" property="reportTime" jdbcType="TIMESTAMP" />
+    <result column="REPORT_ID" property="reportId" jdbcType="VARCHAR" />
+    <result column="SSCAT" property="sscat" jdbcType="VARCHAR" />
+    <result column="CONDITION_CODE" property="conditionCode" jdbcType="VARCHAR" />
+    <result column="EXPLICATION" property="explication" jdbcType="VARCHAR" />
+    <result column="FIRST_ID" property="firstId" jdbcType="VARCHAR" />
+    <result column="FIRST_END_TIME" property="firstEndTime" jdbcType="TIMESTAMP" />
+    <result column="SECOND_ID" property="secondId" jdbcType="VARCHAR" />
+    <result column="SECOND_END_TIME" property="secondEndTime" jdbcType="TIMESTAMP" />
+    <result column="FINAL_ID" property="finalId" jdbcType="VARCHAR" />
+    <result column="FINAL_END_TIME" property="finalEndTime" jdbcType="TIMESTAMP" />
+    <result column="SECOND_INSPECT_STATUS" property="secondInspectStatus" jdbcType="VARCHAR" />
+    <result column="APPROVE_FINISH_ID" property="approveFinishId" jdbcType="VARCHAR" />
+    <result column="APPROVE_FINISH_TIME" property="approveFinishTime" jdbcType="TIMESTAMP" />
+    <result column="POLICY_TYPE" property="policyType" jdbcType="CHAR" />
+    <result column="CTID" property="ctid" jdbcType="VARCHAR" />
+    <result column="CRNM" property="crnm" jdbcType="VARCHAR" />
+    <result column="CRIT" property="crit" jdbcType="VARCHAR" />
+    <result column="CRID" property="crid" jdbcType="VARCHAR" />
+    <result column="APPROVE_ID" property="approveId" jdbcType="VARCHAR" />
+    <result column="APPROVE_TIME" property="approveTime" jdbcType="TIMESTAMP" />
+    <result column="AGREE_SUGGESTION" property="agreeSuggestion" jdbcType="VARCHAR" />
+    <result column="C_TRANS_MRK" property="cTransMrk" jdbcType="CHAR" />
+    <result column="T_TRANS_TM" property="tTransTm" jdbcType="TIMESTAMP" />
+    <result column="FIRST_INSPECT_OPERATE" property="firstInspectOperate" jdbcType="VARCHAR" />
+    <result column="SECOND_INSPECT_OPERATE" property="secondInspectOperate" jdbcType="VARCHAR" />
+    <result column="APPROVE_OPERATE" property="approveOperate" jdbcType="VARCHAR" />
+    <result column="REVIEW" property="review" jdbcType="VARCHAR" />
+    <result column="ENTER_AUDIT_TIME" property="enterAuditTime" jdbcType="TIMESTAMP" />
+    <result column="URGENCY_DEGREE" property="urgencyDegree" jdbcType="VARCHAR" />
+    <result column="SUBMISSION_DIRECTION" property="submissionDirection" jdbcType="VARCHAR" />
+    <result column="INVOLVED_CRIME_TYPE" property="involvedCrimeType" jdbcType="VARCHAR" />
+    <result column="SHOW_STATUS" property="showStatus" jdbcType="VARCHAR" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="MOD_IDENTIFYING" property="modIdentifying" jdbcType="VARCHAR" />
+    <result column="CUSTOMER_NAME" property="customerName" jdbcType="VARCHAR" />
+    <result column="total_amount" property="totalAmount" jdbcType="INTEGER" />
+     <result column="unaudit_count1" property="unauditCount1" jdbcType="INTEGER" />
+    <result column="overdue_audit_count1" property="overdueAuditCount1" jdbcType="INTEGER" />
+    <result column="reject_count1" property="rejectCount1" jdbcType="INTEGER" />
+    <result column="reject_rate1" property="rejectRate1" jdbcType="DOUBLE" />
+    <result column="unaudit_count2" property="unauditCount2" jdbcType="INTEGER" />
+    <result column="overdue_audit_count2" property="overdueAuditCount2" jdbcType="INTEGER" />
+    <result column="reject_count2" property="rejectCount2" jdbcType="INTEGER" />
+    <result column="reject_rate2" property="rejectRate2" jdbcType="DOUBLE" />   
+  </resultMap>
+  <sql id="Base_Column_List" >
+    seqno, TRANS_SPOT, STCR, SDGR, TKMS, SSDS, INSERT_ORGAN_ID, INSERT_OPER, INSERT_TIME, 
+    STATUS, REPORT_TIME, REPORT_ID, SSCAT, CONDITION_CODE, EXPLICATION, FIRST_ID, FIRST_END_TIME, 
+    SECOND_ID, SECOND_END_TIME, FINAL_ID, FINAL_END_TIME, SECOND_INSPECT_STATUS, APPROVE_FINISH_ID, 
+    APPROVE_FINISH_TIME, POLICY_TYPE, CTID, CRNM, CRIT, CRID, APPROVE_ID, APPROVE_TIME, 
+    AGREE_SUGGESTION, C_TRANS_MRK, T_TRANS_TM, FIRST_INSPECT_OPERATE, SECOND_INSPECT_OPERATE, 
+    APPROVE_OPERATE, REVIEW, ENTER_AUDIT_TIME, URGENCY_DEGREE, SUBMISSION_DIRECTION, 
+    INVOLVED_CRIME_TYPE, SHOW_STATUS, UPDATE_TIME, MOD_IDENTIFYING
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from sus_data
+    where seqno = #{seqno,jdbcType=VARCHAR}
+  </select>
+ <select id="selectSusTradeList" resultMap="BaseResultMap"
+		parameterType="org.FDFBpersistence.pojos.SusTrade">
+        SELECT UNIT as INSERT_ORGAN_ID,CUSTOMER_NAME,
+sum(total_amount1) as total_amount ,sum(unaudit_count11) as unaudit_count1,
+sum(overdue_audit_count11) as overdue_audit_count1,
+sum(reject_count11) as reject_count1,sum(reject_rate11) as reject_rate1
+,sum(unaudit_count22) as unaudit_count2,sum(reject_count22) as reject_count2
+,sum(reject_rate22) as reject_rate2
+from 
+(
+     Select tran.UNIT, '-' as CUSTOMER_NAME,count(1) as total_amount1,
+        sum(case when sc.REVIEW_STATUS='10' then 1 else 0 end) as unaudit_count11, 
+        sum(case when TO_DAYS(NOW()) - TO_DAYS(modifytime)>=7 then 1 else 0 end) as overdue_audit_count11,
+        sum(case when sc.REVIEW_STATUS='21' then 1 else 0 end) as reject_count11,
+        sum(case when sc.REVIEW_STATUS='21' then 1 else 0 end)/sum(case when sc.REVIEW_STATUS='10' then 1 else 0 end) as reject_rate11,
+        sum(case when sc.REVIEW_STATUS='20' then 1 else 0 end) as unaudit_count22,
+        sum(case when TO_DAYS(NOW()) - TO_DAYS(modifytime)>=7 then 1 else 0 end) as overdue_audit_count22,
+        sum(case when sc.REVIEW_STATUS='31' then 1 else 0 end) as reject_count22,
+        sum(case when sc.REVIEW_STATUS='31' then 1 else 0 end)/sum(case when sc.REVIEW_STATUS='20' then 1 else 0 end) as reject_rate22
+        from sus_customer sc
+        left join sus_transinfo tran
+        on sc.CUSTOMER_ID=tran.PARTY_ID
+        where 1=1
+        <if test="insertOrganId != null" >
+        	and tran.UNIT = #{insertOrganId,jdbcType=VARCHAR}
+      	</if>
+      	<if test="startSusTradeDate != null" >
+      		and dat.ENTER_AUDIT_TIME >= #{startSusTradeDate,jdbcType=TIMESTAMP}
+      	</if>
+      	<if test="endSusTradeDate != null" >
+      		and dat.ENTER_AUDIT_TIME &lt;= #{endSusTradeDate,jdbcType=TIMESTAMP}
+      	</if>
+      	group by sc.CUSTOMER_ID,tran.TRADE_TIME 
+HAVING tran.TRADE_TIME=
+(SELECT max(TRADE_TIME) from sus_customer a join sus_transinfo b on a.CUSTOMER_ID=b.PARTY_ID where a.CUSTOMER_ID=sc.CUSTOMER_ID ) 
+)temp group by temp.UNIT
+</select>
+
+<select id="selectSusTradeListCount" resultType="java.lang.Integer"
+		parameterType="org.FDFBpersistence.pojos.SusTrade">
+        select count(1) from (        SELECT UNIT as INSERT_ORGAN_ID,CUSTOMER_NAME,
+sum(total_amount1) as total_amount ,sum(unaudit_count11) as unaudit_count1,
+sum(overdue_audit_count11) as overdue_audit_count1,
+sum(reject_count11) as reject_count1,sum(reject_rate11) as reject_rate1
+,sum(unaudit_count22) as unaudit_count2,sum(reject_count22) as reject_count2
+,sum(reject_rate22) as reject_rate2
+from 
+(
+     Select tran.UNIT, '-' as CUSTOMER_NAME,count(1) as total_amount1,
+        sum(case when sc.REVIEW_STATUS='10' then 1 else 0 end) as unaudit_count11, 
+        sum(case when TO_DAYS(NOW()) - TO_DAYS(modifytime)>=7 then 1 else 0 end) as overdue_audit_count11,
+        sum(case when sc.REVIEW_STATUS='21' then 1 else 0 end) as reject_count11,
+        sum(case when sc.REVIEW_STATUS='21' then 1 else 0 end)/sum(case when sc.REVIEW_STATUS='10' then 1 else 0 end) as reject_rate11,
+        sum(case when sc.REVIEW_STATUS='20' then 1 else 0 end) as unaudit_count22,
+        sum(case when TO_DAYS(NOW()) - TO_DAYS(modifytime)>=7 then 1 else 0 end) as overdue_audit_count22,
+        sum(case when sc.REVIEW_STATUS='31' then 1 else 0 end) as reject_count22,
+        sum(case when sc.REVIEW_STATUS='31' then 1 else 0 end)/sum(case when sc.REVIEW_STATUS='20' then 1 else 0 end) as reject_rate22
+        from sus_customer sc
+        left join sus_transinfo tran
+        on sc.CUSTOMER_ID=tran.PARTY_ID
+        where 1=1
+        <if test="insertOrganId != null" >
+        	and tran.UNIT = #{insertOrganId,jdbcType=VARCHAR}
+      	</if>
+     	<if test="startSusTradeDate != null" >
+      		and dat.ENTER_AUDIT_TIME >= #{startSusTradeDate,jdbcType=TIMESTAMP}
+      	</if>
+      	<if test="endSusTradeDate != null" >
+      		and dat.ENTER_AUDIT_TIME &lt;= #{endSusTradeDate,jdbcType=TIMESTAMP}
+      	</if> 
+      	      	group by sc.CUSTOMER_ID,tran.TRADE_TIME 
+HAVING tran.TRADE_TIME=
+(SELECT max(TRADE_TIME) from sus_customer a join sus_transinfo b on a.CUSTOMER_ID=b.PARTY_ID where a.CUSTOMER_ID=sc.CUSTOMER_ID ) 
+)temp group by temp.UNIT   
+        ) a
+</select>
+  
+</mapper>

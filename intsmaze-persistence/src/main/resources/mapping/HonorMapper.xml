@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.FDFBpersistence.mapper.HonorMapper" >
+  <resultMap id="BaseResultMap" type="org.FDFBpersistence.pojos.Honor" >
+    <id column="seqno" property="seqno" jdbcType="VARCHAR" />
+    <result column="insert_time" property="insertTime" jdbcType="TIMESTAMP" />
+    <result column="honor_time" property="honorTime" jdbcType="TIMESTAMP" />
+    <result column="honor_organ" property="honorOrgan" jdbcType="VARCHAR" />
+    <result column="honor_dept" property="honorDept" jdbcType="VARCHAR" />
+    <result column="honor_reason" property="honorReason" jdbcType="VARCHAR" />
+    <result column="honor_way" property="honorWay" jdbcType="VARCHAR" />
+    <result column="honor_mode" property="honorMode" jdbcType="VARCHAR" />
+    <result column="upload" property="upload" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="path" property="path" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    seqno, insert_time, honor_time, honor_organ, honor_dept, honor_reason, honor_way, 
+    honor_mode, upload, remark, path
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_honor
+    where seqno = #{seqno,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="selectAllByPage" resultMap="BaseResultMap"
+		parameterType="org.FDFBpersistence.pojos.Honor">
+		select
+		<include refid="Base_Column_List" />
+		from t_honor
+		where 1=1
+	    <if test="honorOrgan != null" >
+            and honor_organ like '%${honorOrgan}%'
+        </if>
+        <if test="startInsertTime != null" >
+      		and insert_time >= #{startInsertTime,jdbcType=TIMESTAMP}
+      	</if>
+      	<if test="endInsertTime != null" >
+      		and insert_time &lt;= #{endInsertTime,jdbcType=TIMESTAMP}
+      	</if>
+        <if test="startHonorTime != null" >
+      		and honor_time >= #{startHonorTime,jdbcType=TIMESTAMP}
+      	</if>
+      	<if test="endHonorTime != null" >
+      		and honor_time &lt;= #{endHonorTime,jdbcType=TIMESTAMP}
+      	</if>
+        <if test="honorDept != null" >
+            and honor_dept like '%${honorDept}%'
+        </if>
+	</select>
+  <select id="getAllUsersCount" resultType="java.lang.Integer"
+		parameterType="org.FDFBpersistence.pojos.Honor">
+		select count(1)
+		from t_honor
+		where 1=1
+		<if test="honorOrgan != null" >
+            and honor_organ like '%${honorOrgan}%'
+        </if>
+        <if test="startInsertTime != null" >
+      		and insert_time >= #{startInsertTime,jdbcType=TIMESTAMP}
+      	</if>
+      	<if test="endInsertTime != null" >
+      		and insert_time &lt;= #{endInsertTime,jdbcType=TIMESTAMP}
+      	</if>
+        <if test="startHonorTime != null" >
+      		and honor_time >= #{startHonorTime,jdbcType=TIMESTAMP}
+      	</if>
+      	<if test="endHonorTime != null" >
+      		and honor_time &lt;= #{endHonorTime,jdbcType=TIMESTAMP}
+      	</if>
+        <if test="honorDept != null" >
+            and honor_dept = #{honorDept,jdbcType=VARCHAR}
+        </if>
+	</select>
+	
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_honor
+    where seqno = #{seqno,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="org.FDFBpersistence.pojos.Honor" >
+    insert into t_honor (seqno, insert_time, honor_time, 
+      honor_organ, honor_dept, honor_reason, 
+      honor_way, honor_mode, upload, 
+      remark, path)
+    values (#{seqno,jdbcType=VARCHAR}, #{insertTime,jdbcType=TIMESTAMP}, #{honorTime,jdbcType=TIMESTAMP}, 
+      #{honorOrgan,jdbcType=VARCHAR}, #{honorDept,jdbcType=VARCHAR}, #{honorReason,jdbcType=VARCHAR}, 
+      #{honorWay,jdbcType=VARCHAR}, #{honorMode,jdbcType=VARCHAR}, #{upload,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{path,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.FDFBpersistence.pojos.Honor" >
+    insert into t_honor
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="seqno != null" >
+        seqno,
+      </if>
+      <if test="insertTime != null" >
+        insert_time,
+      </if>
+      <if test="honorTime != null" >
+        honor_time,
+      </if>
+      <if test="honorOrgan != null" >
+        honor_organ,
+      </if>
+      <if test="honorDept != null" >
+        honor_dept,
+      </if>
+      <if test="honorReason != null" >
+        honor_reason,
+      </if>
+      <if test="honorWay != null" >
+        honor_way,
+      </if>
+      <if test="honorMode != null" >
+        honor_mode,
+      </if>
+      <if test="upload != null" >
+        upload,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="path != null" >
+        path,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="seqno != null" >
+        #{seqno,jdbcType=VARCHAR},
+      </if>
+      <if test="insertTime != null" >
+        #{insertTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="honorTime != null" >
+        #{honorTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="honorOrgan != null" >
+        #{honorOrgan,jdbcType=VARCHAR},
+      </if>
+      <if test="honorDept != null" >
+        #{honorDept,jdbcType=VARCHAR},
+      </if>
+      <if test="honorReason != null" >
+        #{honorReason,jdbcType=VARCHAR},
+      </if>
+      <if test="honorWay != null" >
+        #{honorWay,jdbcType=VARCHAR},
+      </if>
+      <if test="honorMode != null" >
+        #{honorMode,jdbcType=VARCHAR},
+      </if>
+      <if test="upload != null" >
+        #{upload,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="path != null" >
+        #{path,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.FDFBpersistence.pojos.Honor" >
+    update t_honor
+    <set >
+      <if test="insertTime != null" >
+        insert_time = #{insertTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="honorTime != null" >
+        honor_time = #{honorTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="honorOrgan != null" >
+        honor_organ = #{honorOrgan,jdbcType=VARCHAR},
+      </if>
+      <if test="honorDept != null" >
+        honor_dept = #{honorDept,jdbcType=VARCHAR},
+      </if>
+      <if test="honorReason != null" >
+        honor_reason = #{honorReason,jdbcType=VARCHAR},
+      </if>
+      <if test="honorWay != null" >
+        honor_way = #{honorWay,jdbcType=VARCHAR},
+      </if>
+      <if test="honorMode != null" >
+        honor_mode = #{honorMode,jdbcType=VARCHAR},
+      </if>
+      <if test="upload != null" >
+        upload = #{upload,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="path != null" >
+        path = #{path,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where seqno = #{seqno,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.FDFBpersistence.pojos.Honor" >
+    update t_honor
+    set insert_time = #{insertTime,jdbcType=TIMESTAMP},
+      honor_time = #{honorTime,jdbcType=TIMESTAMP},
+      honor_organ = #{honorOrgan,jdbcType=VARCHAR},
+      honor_dept = #{honorDept,jdbcType=VARCHAR},
+      honor_reason = #{honorReason,jdbcType=VARCHAR},
+      honor_way = #{honorWay,jdbcType=VARCHAR},
+      honor_mode = #{honorMode,jdbcType=VARCHAR},
+      upload = #{upload,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      path = #{path,jdbcType=VARCHAR}
+    where seqno = #{seqno,jdbcType=VARCHAR}
+  </update>
+</mapper>

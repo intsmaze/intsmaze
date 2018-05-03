@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.FDFBpersistence.mapper.SusRuleMapper" >
+  <resultMap id="BaseResultMap" type="org.FDFBpersistence.pojos.SusRule" >
+    <id column="seqno" property="seqno" jdbcType="VARCHAR" />
+    <result column="ruleid" property="ruleid" jdbcType="INTEGER" />
+    <result column="rule_desc" property="ruleDesc" jdbcType="VARCHAR" />
+    <result column="trade_feature" property="tradeFeature" jdbcType="VARCHAR" />
+    <result column="isTotal" property="istotal" jdbcType="INTEGER" />
+    <result column="trade_type" property="tradeType" jdbcType="VARCHAR" />
+    <result column="express" property="express" jdbcType="VARCHAR" />
+    <result column="rule_type" property="ruleType" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    seqno, ruleid, rule_desc, trade_feature, isTotal, trade_type, express, rule_type
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from rule_express
+    where seqno = #{seqno,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByTradeFeature" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from rule_express
+    where trade_feature = #{tradeFeature,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from rule_express
+    where seqno = #{seqno,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="org.FDFBpersistence.pojos.SusRule" >
+    insert into rule_express (seqno, ruleid, rule_desc, 
+      trade_feature, isTotal, trade_type, 
+      express, rule_type)
+    values (#{seqno,jdbcType=VARCHAR}, #{ruleid,jdbcType=INTEGER}, #{ruleDesc,jdbcType=VARCHAR}, 
+      #{tradeFeature,jdbcType=VARCHAR}, #{istotal,jdbcType=INTEGER}, #{tradeType,jdbcType=VARCHAR}, 
+      #{express,jdbcType=VARCHAR}, #{ruleType,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.FDFBpersistence.pojos.SusRule" >
+    insert into rule_express
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="seqno != null" >
+        seqno,
+      </if>
+      <if test="ruleid != null" >
+        ruleid,
+      </if>
+      <if test="ruleDesc != null" >
+        rule_desc,
+      </if>
+      <if test="tradeFeature != null" >
+        trade_feature,
+      </if>
+      <if test="istotal != null" >
+        isTotal,
+      </if>
+      <if test="tradeType != null" >
+        trade_type,
+      </if>
+      <if test="express != null" >
+        express,
+      </if>
+      <if test="ruleType != null" >
+        rule_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="seqno != null" >
+        #{seqno,jdbcType=VARCHAR},
+      </if>
+      <if test="ruleid != null" >
+        #{ruleid,jdbcType=INTEGER},
+      </if>
+      <if test="ruleDesc != null" >
+        #{ruleDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeFeature != null" >
+        #{tradeFeature,jdbcType=VARCHAR},
+      </if>
+      <if test="istotal != null" >
+        #{istotal,jdbcType=INTEGER},
+      </if>
+      <if test="tradeType != null" >
+        #{tradeType,jdbcType=VARCHAR},
+      </if>
+      <if test="express != null" >
+        #{express,jdbcType=VARCHAR},
+      </if>
+      <if test="ruleType != null" >
+        #{ruleType,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.FDFBpersistence.pojos.SusRule" >
+    update rule_express
+    <set >
+      <if test="ruleid != null" >
+        ruleid = #{ruleid,jdbcType=INTEGER},
+      </if>
+      <if test="ruleDesc != null" >
+        rule_desc = #{ruleDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeFeature != null" >
+        trade_feature = #{tradeFeature,jdbcType=VARCHAR},
+      </if>
+      <if test="istotal != null" >
+        isTotal = #{istotal,jdbcType=INTEGER},
+      </if>
+      <if test="tradeType != null" >
+        trade_type = #{tradeType,jdbcType=VARCHAR},
+      </if>
+      <if test="express != null" >
+        express = #{express,jdbcType=VARCHAR},
+      </if>
+      <if test="ruleType != null" >
+        rule_type = #{ruleType,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where seqno = #{seqno,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.FDFBpersistence.pojos.SusRule" >
+    update rule_express
+    set ruleid = #{ruleid,jdbcType=INTEGER},
+      rule_desc = #{ruleDesc,jdbcType=VARCHAR},
+      trade_feature = #{tradeFeature,jdbcType=VARCHAR},
+      isTotal = #{istotal,jdbcType=INTEGER},
+      trade_type = #{tradeType,jdbcType=VARCHAR},
+      express = #{express,jdbcType=VARCHAR},
+      rule_type = #{ruleType,jdbcType=VARCHAR}
+    where seqno = #{seqno,jdbcType=VARCHAR}
+  </update>
+</mapper>

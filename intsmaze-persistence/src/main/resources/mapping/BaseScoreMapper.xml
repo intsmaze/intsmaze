@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.FDFBpersistence.mapper.BaseScoreMapper" >
+  <resultMap id="BaseResultMap" type="org.FDFBpersistence.pojos.BaseScore" >
+    <id column="SEQNO" property="seqno" jdbcType="VARCHAR" />
+    <result column="NUM" property="num" jdbcType="VARCHAR" />
+    <result column="RISK_BASIC" property="riskBasic" jdbcType="VARCHAR" />
+    <result column="RISK_SUBITEM" property="riskSubitem" jdbcType="VARCHAR" />
+    <result column="ONE" property="one" jdbcType="VARCHAR" />
+    <result column="TWO" property="two" jdbcType="VARCHAR" />
+    <result column="THREE" property="three" jdbcType="VARCHAR" />
+    <result column="FOUR" property="four" jdbcType="VARCHAR" />
+    <result column="WEIGHT" property="weight" jdbcType="VARCHAR" />
+    <result column="CREATEBY" property="createby" jdbcType="VARCHAR" />
+    <result column="CREATEON" property="createon" jdbcType="TIMESTAMP" />
+    <result column="MODIFYBY" property="modifyby" jdbcType="VARCHAR" />
+    <result column="MODIFYON" property="modifyon" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    SEQNO, NUM, RISK_BASIC, RISK_SUBITEM, ONE, TWO, THREE, FOUR, WEIGHT, CREATEBY, CREATEON, 
+    MODIFYBY, MODIFYON
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_basescore
+    where SEQNO = #{seqno,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_basescore
+    where SEQNO = #{seqno,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="org.FDFBpersistence.pojos.BaseScore" >
+    insert into t_basescore (SEQNO, NUM, RISK_BASIC, 
+      RISK_SUBITEM, ONE, TWO, 
+      THREE, FOUR, WEIGHT, 
+      CREATEBY, CREATEON, MODIFYBY, 
+      MODIFYON)
+    values (#{seqno,jdbcType=VARCHAR}, #{num,jdbcType=VARCHAR}, #{riskBasic,jdbcType=VARCHAR}, 
+      #{riskSubitem,jdbcType=VARCHAR}, #{one,jdbcType=VARCHAR}, #{two,jdbcType=VARCHAR}, 
+      #{three,jdbcType=VARCHAR}, #{four,jdbcType=VARCHAR}, #{weight,jdbcType=VARCHAR}, 
+      #{createby,jdbcType=VARCHAR}, #{createon,jdbcType=TIMESTAMP}, #{modifyby,jdbcType=VARCHAR}, 
+      #{modifyon,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="org.FDFBpersistence.pojos.BaseScore" >
+    insert into t_basescore
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="seqno != null" >
+        SEQNO,
+      </if>
+      <if test="num != null" >
+        NUM,
+      </if>
+      <if test="riskBasic != null" >
+        RISK_BASIC,
+      </if>
+      <if test="riskSubitem != null" >
+        RISK_SUBITEM,
+      </if>
+      <if test="one != null" >
+        ONE,
+      </if>
+      <if test="two != null" >
+        TWO,
+      </if>
+      <if test="three != null" >
+        THREE,
+      </if>
+      <if test="four != null" >
+        FOUR,
+      </if>
+      <if test="weight != null" >
+        WEIGHT,
+      </if>
+      <if test="createby != null" >
+        CREATEBY,
+      </if>
+      <if test="createon != null" >
+        CREATEON,
+      </if>
+      <if test="modifyby != null" >
+        MODIFYBY,
+      </if>
+      <if test="modifyon != null" >
+        MODIFYON,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="seqno != null" >
+        #{seqno,jdbcType=VARCHAR},
+      </if>
+      <if test="num != null" >
+        #{num,jdbcType=VARCHAR},
+      </if>
+      <if test="riskBasic != null" >
+        #{riskBasic,jdbcType=VARCHAR},
+      </if>
+      <if test="riskSubitem != null" >
+        #{riskSubitem,jdbcType=VARCHAR},
+      </if>
+      <if test="one != null" >
+        #{one,jdbcType=VARCHAR},
+      </if>
+      <if test="two != null" >
+        #{two,jdbcType=VARCHAR},
+      </if>
+      <if test="three != null" >
+        #{three,jdbcType=VARCHAR},
+      </if>
+      <if test="four != null" >
+        #{four,jdbcType=VARCHAR},
+      </if>
+      <if test="weight != null" >
+        #{weight,jdbcType=VARCHAR},
+      </if>
+      <if test="createby != null" >
+        #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="createon != null" >
+        #{createon,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyby != null" >
+        #{modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyon != null" >
+        #{modifyon,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.FDFBpersistence.pojos.BaseScore" >
+    update t_basescore
+    <set >
+      <if test="num != null" >
+        NUM = #{num,jdbcType=VARCHAR},
+      </if>
+      <if test="riskBasic != null" >
+        RISK_BASIC = #{riskBasic,jdbcType=VARCHAR},
+      </if>
+      <if test="riskSubitem != null" >
+        RISK_SUBITEM = #{riskSubitem,jdbcType=VARCHAR},
+      </if>
+      <if test="one != null" >
+        ONE = #{one,jdbcType=VARCHAR},
+      </if>
+      <if test="two != null" >
+        TWO = #{two,jdbcType=VARCHAR},
+      </if>
+      <if test="three != null" >
+        THREE = #{three,jdbcType=VARCHAR},
+      </if>
+      <if test="four != null" >
+        FOUR = #{four,jdbcType=VARCHAR},
+      </if>
+      <if test="weight != null" >
+        WEIGHT = #{weight,jdbcType=VARCHAR},
+      </if>
+      <if test="createby != null" >
+        CREATEBY = #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="createon != null" >
+        CREATEON = #{createon,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyby != null" >
+        MODIFYBY = #{modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyon != null" >
+        MODIFYON = #{modifyon,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where SEQNO = #{seqno,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.FDFBpersistence.pojos.BaseScore" >
+    update t_basescore
+    set NUM = #{num,jdbcType=VARCHAR},
+      RISK_BASIC = #{riskBasic,jdbcType=VARCHAR},
+      RISK_SUBITEM = #{riskSubitem,jdbcType=VARCHAR},
+      ONE = #{one,jdbcType=VARCHAR},
+      TWO = #{two,jdbcType=VARCHAR},
+      THREE = #{three,jdbcType=VARCHAR},
+      FOUR = #{four,jdbcType=VARCHAR},
+      WEIGHT = #{weight,jdbcType=VARCHAR},
+      CREATEBY = #{createby,jdbcType=VARCHAR},
+      CREATEON = #{createon,jdbcType=TIMESTAMP},
+      MODIFYBY = #{modifyby,jdbcType=VARCHAR},
+      MODIFYON = #{modifyon,jdbcType=TIMESTAMP}
+    where SEQNO = #{seqno,jdbcType=VARCHAR}
+  </update>
+  <select id="selectAllByPage" resultMap="BaseResultMap"
+		parameterType="org.FDFBpersistence.pojos.BaseScore">
+		select
+		<include refid="Base_Column_List" />
+		from t_basescore
+		where 1=1
+		<if test="num != null" >
+        	and NUM like '${num}%'
+        </if>
+		<if test="riskBasic != null" >
+        	and RISK_BASIC = #{riskBasic,jdbcType=VARCHAR}
+      	</if>
+      	<if test="riskSubitem != null" >
+        	and RISK_SUBITEM = #{riskSubitem,jdbcType=VARCHAR}
+      	</if>
+      	<if test="one != null" >
+        	and ONE = #{one,jdbcType=VARCHAR}
+      	</if>
+      	<if test="two != null" >
+       		and TWO = #{two,jdbcType=VARCHAR}
+      	</if>
+      	<if test="three != null" >
+        	and THREE = #{three,jdbcType=VARCHAR}
+      	</if>
+      	<if test="four != null" >
+        	and FOUR = #{four,jdbcType=VARCHAR}
+      	</if>
+      	<if test="weight != null" >
+        	and WEIGHT like '${weight}%'
+      	</if>
+      	<if test="createby != null" >
+        	and CREATEBY = #{createby,jdbcType=VARCHAR}
+      	</if>
+      	<if test="createon != null" >
+       		and CREATEON = #{createon,jdbcType=TIMESTAMP}
+      	</if>
+      	<if test="modifyby != null" >
+        	and MODIFYBY = #{modifyby,jdbcType=VARCHAR}
+      	</if>
+      	<if test="modifyon != null" >
+        	and MODIFYON = #{modifyon,jdbcType=TIMESTAMP}
+        </if>
+			order by CAST(NUM AS SIGNED integer) asc
+	</select>
+  	
+  	<select id="getAllScoreRuleCount" resultType="java.lang.Integer"
+		parameterType="org.FDFBpersistence.pojos.BaseScore">
+		select count(1)
+		from t_basescore
+		where 1=1
+		<if test="num != null" >
+        	and NUM like '${num}%'
+        </if>
+		<if test="riskBasic != null" >
+        	and RISK_BASIC = #{riskBasic,jdbcType=VARCHAR}
+      	</if>
+      	<if test="riskSubitem != null" >
+        	and RISK_SUBITEM = #{riskSubitem,jdbcType=VARCHAR}
+      	</if>
+      	<if test="one != null" >
+        	and ONE = #{one,jdbcType=VARCHAR}
+      	</if>
+      	<if test="two != null" >
+       		and TWO = #{two,jdbcType=VARCHAR}
+      	</if>
+      	<if test="three != null" >
+        	and THREE = #{three,jdbcType=VARCHAR}
+      	</if>
+      	<if test="four != null" >
+        	and FOUR = #{four,jdbcType=VARCHAR}
+      	</if>
+      	<if test="weight != null" >
+        	and WEIGHT like '${weight}%'
+      	</if>
+      	<if test="createby != null" >
+        	and CREATEBY = #{createby,jdbcType=VARCHAR}
+      	</if>
+      	<if test="createon != null" >
+       		and CREATEON = #{createon,jdbcType=TIMESTAMP}
+      	</if>
+      	<if test="modifyby != null" >
+        	and MODIFYBY = #{modifyby,jdbcType=VARCHAR}
+      	</if>
+      	<if test="modifyon != null" >
+        	and MODIFYON = #{modifyon,jdbcType=TIMESTAMP}
+        </if>
+			order by CAST(NUM AS SIGNED integer) asc
+	</select>
+	
+	  <select id="selectAll" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_basescore
+		order by CAST(NUM AS SIGNED integer) asc
+	</select>
+  	
+</mapper>
