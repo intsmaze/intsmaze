@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"  
+    xmlns:context="http://www.springframework.org/schema/context"  
+    xmlns:mvc="http://www.springframework.org/schema/mvc"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans    
+                        http://www.springframework.org/schema/beans/spring-beans-3.1.xsd    
+                        http://www.springframework.org/schema/context    
+                        http://www.springframework.org/schema/context/spring-context-3.1.xsd    
+                        http://www.springframework.org/schema/mvc    
+                        http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">  
+	
+	<bean id="loginfoService" class="org.intsmaze.business.service.impl.FDFBLoginfoServiceImpl" />
+	
+	<bean id="codeValueService" class="org.intsmaze.business.service.impl.FDFBCodeValueServiceImpl" />
+	
+    <bean id="columnPermitService" class="org.intsmaze.business.service.impl.FDFBColumnPermitServiceImpl" />
+    
+    <bean id="buttonPermitService" class="org.intsmaze.business.service.impl.FDFBButtonPermitServiceImpl" />
+    
+    <bean id="auditLogService" class="org.intsmaze.business.service.impl.FDFBAuditLogServiceImpl" />
+    
+    <bean id="sysConfigService" class="org.intsmaze.business.service.impl.FDFBSysConfigSerivceImpl" />
+    
+    <bean id="buttonCustonConfigService" class="org.intsmaze.business.service.impl.FDFBButtonCustomConfigServiceImpl" />
+    
+    <bean id="springContextUtil" class="org.intsmaze.business.springInit.SpringContextUtil"></bean>
+    
+     <bean id="userService" class="org.intsmaze.business.user.service.impl.FDFBUserServiceImpl" />
+    
+    <bean id="userApi" class="org.intsmaze.business.user.api.UserApiImpl" />
+    
+    <bean id="roleService" class="org.intsmaze.business.user.service.impl.FDFBRoleServiceImpl" />
+    
+    <bean id="depService" class="org.intsmaze.business.user.service.impl.FDFBDepServiceImpl" />
+    
+	<bean id="permitService" class="org.intsmaze.business.user.service.impl.FDFBPermitServiceImpl" />
+	
+	<bean id="rolePermitService" class="org.intsmaze.business.user.service.impl.FDFBRolePermitServiceImpl" />
+	
+	<bean id="userProfileService" class="org.intsmaze.business.user.service.impl.FDFBUserProfileServiceImpl" />
+	
+	<bean id="userRoleService" class="org.intsmaze.business.user.service.impl.FDFBUserRoleServiceImpl" />
+	
+	<bean id="organizationService" class="org.intsmaze.business.user.service.impl.OrganizationServiceImpl" />
+    
+    <bean id="postUnitService" class="org.intsmaze.business.user.service.impl.PostUnitServiceImpl" />
+    
+    <bean id="unitService" class="org.intsmaze.business.user.service.impl.UnitServiceImpl" />
+    
+    <bean id="empPostService" class="org.intsmaze.business.user.service.impl.EmpPostServiceImpl" />
+    
+</beans> 

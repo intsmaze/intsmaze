@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans    
+                        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd    
+                        http://www.springframework.org/schema/context    
+                        http://www.springframework.org/schema/context/spring-context-4.0.xsd    
+                        http://www.springframework.org/schema/mvc    
+                        http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+                        http://www.springframework.org/schema/tx 
+           http://www.springframework.org/schema/tx/spring-tx-4.0.xsd 
+           http://www.springframework.org/schema/aop 
+           http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
+
+	<!-- 引入配置文件 -->
+	<bean id="propertyConfigurer" class="org.FDFBbusiness.springInit.CustomPropertiesInit">
+		<property name="location" value="/WEB-INF/db.properties" />
+	</bean>
+ 
+	<bean id="dataSource" class="org.FDFBcore.util.DBUtil"
+		destroy-method="close">
+		<property name="driverClassName" value="${driver}" />
+		<property name="url" value="${url}" />
+		<property name="username" value="${username}" />
+		<property name="password" value="${password}" />
+		<property name="initialSize" value="${initialSize}"></property>
+		<property name="maxActive" value="${maxActive}"></property>
+		<property name="maxIdle" value="${maxIdle}"></property>
+		<property name="minIdle" value="${minIdle}"></property>
+		<property name="maxWait" value="${maxWait}"></property>
+	</bean>
+	
+	<bean id="dataSourceRead" class="org.FDFBcore.util.DBUtil"
+		destroy-method="close">
+		<property name="driverClassName" value="${driverRead}" />
+		<property name="url" value="${urlRead}" />
+		<property name="username" value="${usernameRead}" />
+		<property name="password" value="${passwordRead}" />
+		<property name="initialSize" value="${initialSizeRead}"></property>
+		<property name="maxActive" value="${maxActiveRead}"></property>
+		<property name="maxIdle" value="${maxIdleRead}"></property>
+		<property name="minIdle" value="${minIdleRead}"></property>
+		<property name="maxWait" value="${maxWaitRead}"></property>
+	</bean>
+	
+	<!-- 动态数据源 -->  
+	<bean id="dynamicDataSource" class="org.FDFBpersistence.util.DynamicDataSource">  
+		<!-- 通过key-value关联数据源 -->  
+		<property name="targetDataSources">  
+			<map>  
+				<entry value-ref="dataSource" key="dataSource"></entry>  
+				<entry value-ref="dataSourceRead" key="dataSourceRead"></entry>  
+			</map>  
+		</property>  
+		<property name="defaultTargetDataSource" ref="dataSource" />      
+	</bean>  
+<!--	
+	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">  
+        <property name="jndiName">  
+            <value>java:jboss/datasources/MySqlDS</value>  
+        </property>  
+    </bean> 
+-->
+
+
+	<!-- (事务管理)transaction manager, use JtaTransactionManager for global tx -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<tx:advice id="userTxAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="delete*" propagation="REQUIRED" read-only="false"
+				rollback-for="java.lang.Exception" no-rollback-for="java.lang.RuntimeException" />
+			<tx:method name="insert*" propagation="REQUIRED" read-only="false"
+				rollback-for="java.lang.RuntimeException" />
+			<tx:method name="add*" propagation="REQUIRED" read-only="false"
+				rollback-for="java.lang.RuntimeException" />
+			<tx:method name="update*" propagation="REQUIRED" read-only="false"
+				rollback-for="java.lang.Exception" />
+
+			<tx:method name="find*" propagation="SUPPORTS" />
+			<tx:method name="get*" propagation="SUPPORTS" />
+			<tx:method name="select*" propagation="SUPPORTS" />
+		</tx:attributes>
+	</tx:advice>
+
+	<aop:config>
+		<aop:pointcut id="pc"
+			expression="execution(public * org.FDFBbusiness.*.service.*.*(..))" /> <!--把事务控制在Service层 -->
+		<aop:advisor pointcut-ref="pc" advice-ref="userTxAdvice" />
+	</aop:config>
+
+<!-- 	<bean id="exceptionHandler"
+		class="org.FDFBbusiness.springmvc.exception.FDFBexceptionHandler" /> -->
+
+	<!-- 指定自己定义的validator -->
+	<mvc:annotation-driven validator="validator" />
+
+	<!-- 以下 validator ConversionService 在使用 mvc:annotation-driven 会 自动注册 -->
+	<bean id="validator"
+		class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+		<property name="providerClass" value="org.hibernate.validator.HibernateValidator" />
+		<!-- 如果不加默认到 使用classpath下的 ValidationMessages.properties -->
+		<property name="validationMessageSource" ref="messageSource" />
+	</bean>
+
+	<!-- 国际化的消息资源文件 -->
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>messages</value>
+<!--  				<value>classpath:org/hibernate/validator/ValidationMessages</value> -->
+			</list>
+		</property>
+		<property name="useCodeAsDefaultMessage" value="true" />
+		<property name="defaultEncoding" value="UTF-8" />
+		<property name="cacheSeconds" value="0" />
+	</bean> 
+	<!-- 跨参数验证定义 
+	<bean
+		class="org.springframework.validation.beanvalidation.MethodValidationPostProcessor">
+		<property name="validator" ref="validator" />
+	</bean>-->
+	
+	<!-- 获取本地 -->  
+   <bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver"/> 
+
+	<bean name="multipartResolver"  
+    class="org.springframework.web.multipart.commons.CommonsMultipartResolver">  
+    	<property name="defaultEncoding" value="UTF-8"></property>  
+	</bean>  
+
+</beans> 
