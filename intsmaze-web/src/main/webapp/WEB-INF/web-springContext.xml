@@ -57,13 +57,6 @@
 		</property>  
 		<property name="defaultTargetDataSource" ref="dataSource" />      
 	</bean>  
-<!--	
-	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">  
-        <property name="jndiName">  
-            <value>java:jboss/datasources/MySqlDS</value>  
-        </property>  
-    </bean> 
--->
 
 
 	<!-- (事务管理)transaction manager, use JtaTransactionManager for global tx -->
@@ -95,9 +88,6 @@
 		<aop:advisor pointcut-ref="pc" advice-ref="userTxAdvice" />
 	</aop:config>
 
-<!-- 	<bean id="exceptionHandler"
-		class="org.FDFBbusiness.springmvc.exception.FDFBexceptionHandler" /> -->
-
 	<!-- 指定自己定义的validator -->
 	<mvc:annotation-driven validator="validator" />
 
@@ -122,11 +112,6 @@
 		<property name="defaultEncoding" value="UTF-8" />
 		<property name="cacheSeconds" value="0" />
 	</bean> 
-	<!-- 跨参数验证定义 
-	<bean
-		class="org.springframework.validation.beanvalidation.MethodValidationPostProcessor">
-		<property name="validator" ref="validator" />
-	</bean>-->
 	
 	<!-- 获取本地 -->  
    <bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver"/> 

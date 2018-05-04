@@ -23,6 +23,12 @@
 
 
 	<dependencies>
+	<dependency>
+	<groupId>org.intsmaze</groupId>
+	<artifactId>intsmaze-common</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	</dependency>
+	
 		 <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>dubbo</artifactId>
@@ -124,12 +130,7 @@
 			<artifactId>pagehelper</artifactId>
 			<version>4.2.1</version>
 		</dependency>
-		<!--阿里 FastJson依赖 -->
-		<dependency>
-			<groupId>com.alibaba</groupId>
-			<artifactId>fastjson</artifactId>
-			<version>1.2.44</version>
-		</dependency>
+
 		<!--阿里 Druid Spring Boot Starter依赖 -->
 		<dependency>
 			<groupId>com.alibaba</groupId>

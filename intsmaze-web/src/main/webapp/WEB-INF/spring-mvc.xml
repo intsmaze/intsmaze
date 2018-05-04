@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<!-- <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:p="http://www.springframework.org/schema/p" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
@@ -13,10 +13,10 @@
 	<task:annotation-driven/>
 	<context:component-scan base-package="org.FDFBbusiness.timedtask"></context:component-scan>  
 
-	<!-- spring4.0 已经完美处理了 annotation-driven -->
+	spring4.0 已经完美处理了 annotation-driven
 	<mvc:annotation-driven>
 		<mvc:message-converters register-defaults="true"> 
-			<!-- 将StringHttpMessageConverter的默认编码设为UTF-8 -->
+			将StringHttpMessageConverter的默认编码设为UTF-8
 			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
 				<constructor-arg value="UTF-8" />
 			</bean>
@@ -45,63 +45,64 @@
 		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
 		<property name="messageConverters">
 			<list>
-				<ref bean="mappingJacksonHttpMessageConverter" /><!-- json转换器 -->
+				<ref bean="mappingJacksonHttpMessageConverter" />json转换器
 			</list>
 		</property>
 	</bean>
 
-	<!-- velocity环境配置 -->
+	velocity环境配置
 	<bean id="velocityConfig"
 		class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
-		<!-- velocity模板路径 -->
+		velocity模板路径
 		<property name="resourceLoaderPath" value="classpath:velocity" />
-		<!-- <property name="configLocation" value="/WEB-INF/velocityConfig.properties" 
-			/> -->
-		<!-- Velocity属性配置 -->
+		<property name="configLocation" value="/WEB-INF/velocityConfig.properties" 
+			/>
+		Velocity属性配置
 		<property name="velocityProperties">
 			<props>
-				<prop key="input.encoding">UTF-8</prop><!-- 指定模板引擎进行模板处理的编码 -->
-				<prop key="output.encoding">UTF-8</prop><!-- 指定输出流的编码 -->
-				<prop key="contentType">text/html;charset=UTF-8</prop><!-- contentType -->
+				<prop key="input.encoding">UTF-8</prop>指定模板引擎进行模板处理的编码
+				<prop key="output.encoding">UTF-8</prop>指定输出流的编码
+				<prop key="contentType">text/html;charset=UTF-8</prop>contentType
 			</props>
 		</property>
 	</bean>
 
-	<!-- 配置视图的显示 -->
+	配置视图的显示
 	<bean id="ViewResolver"
 		class="org.springframework.web.servlet.view.velocity.VelocityLayoutViewResolver">
 		<property name="cache" value="false" />
-		<property name="prefix" value="" /><!-- 视图文件的前缀，即存放的路径 -->
-		<property name="suffix" value=".vm" /><!-- 视图文件的后缀名 -->
-		<property name="toolboxConfigLocation" value="/WEB-INF/toolbox.xml" /><!--toolbox配置文件路径 -->
-		<property name="dateToolAttribute" value="date" /><!--日期函数名称 -->
-		<property name="numberToolAttribute" value="number" /><!--数字函数名称 -->
+		<property name="prefix" value="" />视图文件的前缀，即存放的路径
+		<property name="suffix" value=".vm" />视图文件的后缀名
+		<property name="toolboxConfigLocation" value="/WEB-INF/toolbox.xml" />toolbox配置文件路径
+		<property name="dateToolAttribute" value="date" />日期函数名称
+		<property name="numberToolAttribute" value="number" />数字函数名称
 		<property name="contentType" value="text/html;charset=UTF-8" />
-		<property name="exposeSpringMacroHelpers" value="true" /><!--是否使用spring对宏定义的支持 -->
-		<property name="exposeRequestAttributes" value="true" /><!--是否开放request属性 -->
-		<property name="requestContextAttribute" value="rc" /><!--request属性引用名称 -->
-		<property name="layoutUrl" value="layout/default.vm" /><!-- 指定layout文件 ,！！该路径默认在resourceLoaderPath目录下！！ -->
+		<property name="exposeSpringMacroHelpers" value="true" />是否使用spring对宏定义的支持
+		<property name="exposeRequestAttributes" value="true" />是否开放request属性
+		<property name="requestContextAttribute" value="rc" />request属性引用名称
+		<property name="layoutUrl" value="layout/default.vm" />指定layout文件 ,！！该路径默认在resourceLoaderPath目录下！！
 	</bean>
 	
-	<!-- 上传文件的解析器 -->
+	上传文件的解析器
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
 
-	<!--配置拦截器, 多个拦截器,顺序执行 -->
+	配置拦截器, 多个拦截器,顺序执行
  	<mvc:interceptors>
 		<mvc:interceptor>
-			<!--匹配的是url路径， 如果不配置或/**,将拦截所有的Controller-->
+			匹配的是url路径， 如果不配置或/**,将拦截所有的Controller
 			<mvc:mapping path="/**" />
 			<mvc:exclude-mapping path="/bootstrap/**" />
 			<mvc:exclude-mapping path="/layout/**" />
 			<mvc:exclude-mapping path="/upload/**" />
 			<bean class="org.FDFBbusiness.springmvc.interaptor.FDFBhandlerInterceptor"></bean>
 		</mvc:interceptor>
-		<!--当设置多个拦截器时，先按顺序调用preHandle方法，然后逆序调用每个拦截器的postHandle和afterCompletion方法-->
+		当设置多个拦截器时，先按顺序调用preHandle方法，然后逆序调用每个拦截器的postHandle和afterCompletion方法
 	</mvc:interceptors>   
 
-	<!-- 对静态资源文件的访问 -->
-	<mvc:resources mapping="/bootstrap/**" location="/bootstrap/"/><!-- 静态文件缓存1年 -->
+	对静态资源文件的访问
+	<mvc:resources mapping="/bootstrap/**" location="/bootstrap/"/>静态文件缓存1年
 	<mvc:resources mapping="/upload/**" location="/upload/" />
-	<mvc:resources mapping="/layout/**" location="/layout/" /><!-- layout为vm模板目录，必须添加，否则无法找到模板 -->
+	<mvc:resources mapping="/layout/**" location="/layout/" />layout为vm模板目录，必须添加，否则无法找到模板
 
 </beans>
+ -->

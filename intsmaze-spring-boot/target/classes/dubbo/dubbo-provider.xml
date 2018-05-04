@@ -7,14 +7,16 @@
         http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
 	<!-- 提供方应用信息，用于计算依赖关系 -->
-	<dubbo:application name="example-provider" />
+	<dubbo:application name="spring-boot-provider  " />
 
 	<!-- 注册中心暴露服务地址 -->
 	<dubbo:registry protocol="zookeeper" address="127.0.0.1:2181 " />
+	
 	<dubbo:protocol name="dubbo" port="20880" />
+	<!-- <dubbo:protocol name="http" port="8080" server="jetty"/> -->
 
+	<dubbo:service interface="org.intsmaze.common.rpc.service.DubboJsonService"
+		ref="dubboServiceImpl" retries="0" timeout="6000" protocol="dubbo" />
 
-	<dubbo:service interface="org.intsmaze.project.service.DubboService"
-		ref="dubboServiceImpl" retries="0" timeout="6000" />
 
 </beans>  

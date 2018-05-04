@@ -32,5 +32,6 @@
     <module>intsmaze-core</module>
     <module>intsmaze-business</module>
     <module>intsmaze-persistence</module>
+    <module>intsmaze-common</module>
   </modules>
 </project>

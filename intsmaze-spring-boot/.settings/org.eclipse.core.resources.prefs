@@ -4,6 +4,5 @@ encoding//src/main/resources/application-dev.properties=UTF-8
 encoding//src/main/resources/application-prod.properties=UTF-8
 encoding//src/main/resources/application-test.properties=UTF-8
 encoding//src/main/resources/application.properties=UTF-8
-encoding//src/main/resources/dubbo/dubbo.properties=UTF-8
 encoding//src/test/java=UTF-8
 encoding/<project>=UTF-8
