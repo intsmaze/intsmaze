@@ -33,5 +33,8 @@
     <module>intsmaze-business</module>
     <module>intsmaze-persistence</module>
     <module>intsmaze-common</module>
+    <module>intsmaze-redis</module>
+    <module>intsmaze-groovy</module>
+    <module>intsmaze-socket</module>
   </modules>
 </project>
