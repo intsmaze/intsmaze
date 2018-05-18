@@ -17,3 +17,8 @@ intsmaze的项目虽然没有被用于各大生产环境，但是项目的各个
 ![image](https://github.com/intsmaze/intsmaze/raw/master/image/intsmaze1.png)
 # 技术博客
 http://www.cnblogs.com/intsmaze/
+
+
+| 功能        | 技术    |  背景介绍  |
+| --------   | -----:   | :----: |
+| 动态规则引擎        | Groovy&Java动态编译执行     |工作中，遇到部分业务经常动态变化，或者在不发布系统的前提下，对业务规则进行调整。那么可以将这部分业务逻辑改写成Groovy脚本来执行，那么就可以在业务运行过程中动态更改业务规则，达到快速响应。    |
