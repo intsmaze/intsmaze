@@ -15,8 +15,6 @@ intsmaze的项目虽然没有被用于各大生产环境，但是项目的各个
 (群内含启动文档文档、技术文档，视频教程下载)最重要的是技术方案的落地原因解释
 # 项目架构
 ![image](https://github.com/intsmaze/intsmaze/raw/master/image/intsmaze1.png)
-# 技术博客
-http://www.cnblogs.com/intsmaze/
 
 
 | 功能        | 技术    |  背景介绍  |
