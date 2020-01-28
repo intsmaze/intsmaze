@@ -1,0 +1,2501 @@
+<div id="work_position_layer" class="layer_class" init="true"
+	style="position: absolute; z-index: 1000; left: 197px; top: 27px; display: none;">
+	<div id="work_position_click_init" class="panel_lnp panel_py panel_ct con_m">
+		<h2 id="work_position_click_top">
+			<p id="work_position_click_top_message">
+				选择地区
+				<span class="sp">
+					（最多只能选择
+					<strong>5</strong>
+					项）
+				</span>
+			</p>
+			<a class="work_position_click_close" href="javascript:void(0);">
+				<i></i>
+			</a>
+		</h2>
+		<div id="work_position_click_multiple" class="panel_tags mk element_hide"
+			style="display: none;">
+			<div class="tin" id="work_position_click_multiple_selected"></div>
+			<p id="work_position_click_multiple_error" class="error element_hide">最多只能选择5项</p>
+		</div>
+		<div id="work_position_click_center" class="panel_selt">
+			<ul id="work_position_click_center_left" class="sbar">
+				<li id="work_position_click_center_left_each_000000" class="on"
+					data-value="000000">
+					热门城市
+					<em></em>
+				</li>
+				<li id="work_position_click_center_left_each_092200" class=""
+					data-value="092200">
+					A B C
+					<em></em>
+				</li>
+				<li id="work_position_click_center_left_each_091700" class=""
+					data-value="091700">
+					D E F G
+					<em></em>
+				</li>
+				<li id="work_position_click_center_left_each_220200" class=""
+					data-value="220200">
+					H I
+					<em></em>
+				</li>
+				<li id="work_position_click_center_left_each_220900" class=""
+					data-value="220900">
+					J K
+					<em></em>
+				</li>
+				<li id="work_position_click_center_left_each_300200" class=""
+					data-value="300200">
+					L M N
+					<em></em>
+				</li>
+				<li id="work_position_click_center_left_each_091000" class=""
+					data-value="091000">
+					O P Q R
+					<em></em>
+				</li>
+				<li id="work_position_click_center_left_each_171800" class=""
+					data-value="171800">
+					S T U
+					<em></em>
+				</li>
+				<li id="work_position_click_center_left_each_100700" class=""
+					data-value="100700">
+					V W X
+					<em></em>
+				</li>
+				<li id="work_position_click_center_left_each_102000" class=""
+					data-value="102000">
+					Y Z
+					<em></em>
+				</li>
+				<li id="work_position_click_center_left_each_030000" class=""
+					data-value="030000">
+					所有省份(含港澳台)
+					<em></em>
+				</li>
+				<li id="work_position_click_center_left_each_360000" class=""
+					data-value="360000">
+					国外
+					<em></em>
+				</li>
+			</ul>
+			<div id="work_position_click_center_right" class="con">
+				<div id="work_position_click_center_right_list_000000" class="work_position_click_center_right_list de d3"
+					style="display: block;">
+					<table>
+						<tbody>
+							<tr>
+								<td class="js_more">
+									<em
+										id="work_position_click_center_right_list_category_000000_010000"
+										data-value="010000" data-navigation="000000" class="">北京</em>
+								</td>
+								<td class="js_more">
+									<em
+										id="work_position_click_center_right_list_category_000000_020000"
+										data-value="020000" data-navigation="000000" class="">上海</em>
+								</td>
+								<td class="js_more">
+									<em
+										id="work_position_click_center_right_list_category_000000_030200"
+										data-value="030200" data-navigation="000000" class="">广州</em>
+								</td>
+								<td class="js_more">
+									<em
+										id="work_position_click_center_right_list_category_000000_040000"
+										data-value="040000" data-navigation="000000" class="">深圳</em>
+								</td>
+								<td class="js_more">
+									<em
+										id="work_position_click_center_right_list_category_000000_180200"
+										data-value="180200" data-navigation="000000" class="">武汉</em>
+								</td>
+								<td class="js_more">
+									<em
+										id="work_position_click_center_right_list_category_000000_200200"
+										data-value="200200" data-navigation="000000" class="">西安</em>
+								</td>
+								<td class="js_more">
+									<em
+										id="work_position_click_center_right_list_category_000000_080200"
+										data-value="080200" data-navigation="000000" class="">杭州</em>
+								</td>
+							</tr>
+							<tr>
+								<td class="js_more">
+									<em
+										id="work_position_click_center_right_list_category_000000_070200"
+										data-value="070200" data-navigation="000000" class="">南京</em>
+								</td>
+								<td class="js_more">
+									<em
+										id="work_position_click_center_right_list_category_000000_090200"
+										data-value="090200" data-navigation="000000" class="">成都</em>
+								</td>
+								<td class="js_more">
+									<em
+										id="work_position_click_center_right_list_category_000000_060000"
+										data-value="060000" data-navigation="000000" class="">重庆</em>
+								</td>
+								<td class="js_more">
+									<em
+										id="work_position_click_center_right_list_category_000000_030800"
+										data-value="030800" data-navigation="000000" class="">东莞</em>
+								</td>
+								<td class="js_more">
+									<em
+										id="work_position_click_center_right_list_category_000000_230300"
+										data-value="230300" data-navigation="000000" class="">大连</em>
+								</td>
+								<td class="js_more">
+									<em
+										id="work_position_click_center_right_list_category_000000_230200"
+										data-value="230200" data-navigation="000000" class="">沈阳</em>
+								</td>
+								<td class="js_more">
+									<em
+										id="work_position_click_center_right_list_category_000000_070300"
+										data-value="070300" data-navigation="000000" class="">苏州</em>
+								</td>
+							</tr>
+							<tr>
+								<td class="js_more">
+									<em
+										id="work_position_click_center_right_list_category_000000_250200"
+										data-value="250200" data-navigation="000000" class="">昆明</em>
+								</td>
+								<td class="js_more">
+									<em
+										id="work_position_click_center_right_list_category_000000_190200"
+										data-value="190200" data-navigation="000000" class="">长沙</em>
+								</td>
+								<td class="js_more">
+									<em
+										id="work_position_click_center_right_list_category_000000_150200"
+										data-value="150200" data-navigation="000000" class="">合肥</em>
+								</td>
+								<td class="js_more">
+									<em
+										id="work_position_click_center_right_list_category_000000_080300"
+										data-value="080300" data-navigation="000000" class="">宁波</em>
+								</td>
+								<td class="js_more">
+									<em
+										id="work_position_click_center_right_list_category_000000_170200"
+										data-value="170200" data-navigation="000000" class="">郑州</em>
+								</td>
+								<td class="js_more">
+									<em
+										id="work_position_click_center_right_list_category_000000_050000"
+										data-value="050000" data-navigation="000000" class="">天津</em>
+								</td>
+								<td class="js_more">
+									<em
+										id="work_position_click_center_right_list_category_000000_120300"
+										data-value="120300" data-navigation="000000" class="">青岛</em>
+								</td>
+							</tr>
+							<tr>
+								<td class="js_more">
+									<em
+										id="work_position_click_center_right_list_category_000000_120200"
+										data-value="120200" data-navigation="000000" class="">济南</em>
+								</td>
+								<td class="js_more">
+									<em
+										id="work_position_click_center_right_list_category_000000_220200"
+										data-value="220200" data-navigation="000000" class="">哈尔滨</em>
+								</td>
+								<td class="js_more">
+									<em
+										id="work_position_click_center_right_list_category_000000_240200"
+										data-value="240200" data-navigation="000000" class="">长春</em>
+								</td>
+								<td class="js_more">
+									<em
+										id="work_position_click_center_right_list_category_000000_110200"
+										data-value="110200" data-navigation="000000" class="">福州</em>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div id="work_position_click_center_right_list_220200" class="work_position_click_center_right_list de d3"
+					style="display: none;">
+					<table>
+						<tbody>
+							<tr>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_220200_220200"
+										data-value="220200" data-navigation="220200" class="">哈尔滨</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_220200_310700"
+										data-value="310700" data-navigation="220200" class="">哈密</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_220200_320500"
+										data-value="320500" data-navigation="220200" class="">海北</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_220200_320300"
+										data-value="320300" data-navigation="220200" class="">海东</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_220200_100200"
+										data-value="100200" data-navigation="220200" class="">海口</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_220200_320700"
+										data-value="320700" data-navigation="220200" class="">海南</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_220200_081600"
+										data-value="081600" data-navigation="220200" class="">海宁</em>
+								</td>
+							</tr>
+							<tr>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_220200_320400"
+										data-value="320400" data-navigation="220200" class="">海西</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_220200_160700"
+										data-value="160700" data-navigation="220200" class="">邯郸</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_220200_200900"
+										data-value="200900" data-navigation="220200" class="">汉中</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_220200_080200"
+										data-value="080200" data-navigation="220200" class="">杭州</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_220200_121400"
+										data-value="121400" data-navigation="220200" class="">菏泽</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_220200_311600"
+										data-value="311600" data-navigation="220200" class="">和田</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_220200_150200"
+										data-value="150200" data-navigation="220200" class="">合肥</em>
+								</td>
+							</tr>
+							<tr>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_220200_141200"
+										data-value="141200" data-navigation="220200" class="">河池</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_220200_032100"
+										data-value="032100" data-navigation="220200" class="">河源</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_220200_171700"
+										data-value="171700" data-navigation="220200" class="">鹤壁</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_220200_221000"
+										data-value="221000" data-navigation="220200" class="">鹤岗</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_220200_141500"
+										data-value="141500" data-navigation="220200" class="">贺州</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_220200_221200"
+										data-value="221200" data-navigation="220200" class="">黑河</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_220200_161200"
+										data-value="161200" data-navigation="220200" class="">衡水</em>
+								</td>
+							</tr>
+							<tr>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_220200_190500"
+										data-value="190500" data-navigation="220200" class="">衡阳</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_220200_251000"
+										data-value="251000" data-navigation="220200" class="">红河州</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_220200_280200"
+										data-value="280200" data-navigation="220200" class="">呼和浩特</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_220200_281100"
+										data-value="281100" data-navigation="220200" class="">呼伦贝尔</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_220200_230900"
+										data-value="230900" data-navigation="220200" class="">葫芦岛</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_220200_080900"
+										data-value="080900" data-navigation="220200" class="">湖州</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_220200_191100"
+										data-value="191100" data-navigation="220200" class="">怀化</em>
+								</td>
+							</tr>
+							<tr>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_220200_071900"
+										data-value="071900" data-navigation="220200" class="">淮安</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_220200_151700"
+										data-value="151700" data-navigation="220200" class="">淮北</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_220200_151100"
+										data-value="151100" data-navigation="220200" class="">淮南</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_220200_181100"
+										data-value="181100" data-navigation="220200" class="">黄冈</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_220200_320600"
+										data-value="320600" data-navigation="220200" class="">黄南</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_220200_151000"
+										data-value="151000" data-navigation="220200" class="">黄山</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_220200_180400"
+										data-value="180400" data-navigation="220200" class="">黄石</em>
+								</td>
+							</tr>
+							<tr>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_220200_030300"
+										data-value="030300" data-navigation="220200" class="">惠州</em>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div id="work_position_click_center_right_list_360000" class="work_position_click_center_right_list de d3"
+					style="display: none;">
+					<table>
+						<tbody>
+							<tr>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_360000_360000"
+										data-value="360000" data-navigation="360000" class="">国外</em>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div id="work_position_click_center_right_list_091700" class="work_position_click_center_right_list de d3"
+					style="display: none;">
+					<table>
+						<tbody>
+							<tr>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_091700_091700"
+										data-value="091700" data-navigation="091700" class="">达州</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_091700_250500"
+										data-value="250500" data-navigation="091700" class="">大理</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_091700_230300"
+										data-value="230300" data-navigation="091700" class="">大连</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_091700_220500"
+										data-value="220500" data-navigation="091700" class="">大庆</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_091700_210400"
+										data-value="210400" data-navigation="091700" class="">大同</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_091700_221400"
+										data-value="221400" data-navigation="091700" class="">大兴安岭</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_091700_230800"
+										data-value="230800" data-navigation="091700" class="">丹东</em>
+								</td>
+							</tr>
+							<tr>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_091700_072100"
+										data-value="072100" data-navigation="091700" class="">丹阳</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_091700_251600"
+										data-value="251600" data-navigation="091700" class="">德宏</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_091700_090600"
+										data-value="090600" data-navigation="091700" class="">德阳</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_091700_121300"
+										data-value="121300" data-navigation="091700" class="">德州</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_091700_172000"
+										data-value="172000" data-navigation="091700" class="">邓州</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_091700_252000"
+										data-value="252000" data-navigation="091700" class="">迪庆</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_091700_101100"
+										data-value="101100" data-navigation="091700" class="">定安</em>
+								</td>
+							</tr>
+							<tr>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_091700_271100"
+										data-value="271100" data-navigation="091700" class="">定西</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_091700_100900"
+										data-value="100900" data-navigation="091700" class="">东方</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_091700_121000"
+										data-value="121000" data-navigation="091700" class="">东营</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_091700_030800"
+										data-value="030800" data-navigation="091700" class="">东莞</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_091700_100800"
+										data-value="100800" data-navigation="091700" class="">儋州</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_091700_280800"
+										data-value="280800" data-navigation="091700" class="">鄂尔多斯</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_091700_181000"
+										data-value="181000" data-navigation="091700" class="">鄂州</em>
+								</td>
+							</tr>
+							<tr>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_091700_181800"
+										data-value="181800" data-navigation="091700" class="">恩施</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_091700_140800"
+										data-value="140800" data-navigation="091700" class="">防城港</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_091700_030600"
+										data-value="030600" data-navigation="091700" class="">佛山</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_091700_110200"
+										data-value="110200" data-navigation="091700" class="">福州</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_091700_230600"
+										data-value="230600" data-navigation="091700" class="">抚顺</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_091700_131100"
+										data-value="131100" data-navigation="091700" class="">抚州</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_091700_231500"
+										data-value="231500" data-navigation="091700" class="">阜新</em>
+								</td>
+							</tr>
+							<tr>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_091700_150700"
+										data-value="150700" data-navigation="091700" class="">阜阳</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_091700_271500"
+										data-value="271500" data-navigation="091700" class="">甘南</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_091700_092100"
+										data-value="092100" data-navigation="091700" class="">甘孜</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_091700_130800"
+										data-value="130800" data-navigation="091700" class="">赣州</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_091700_290600"
+										data-value="290600" data-navigation="091700" class="">固原</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_091700_091300"
+										data-value="091300" data-navigation="091700" class="">广安</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_091700_091600"
+										data-value="091600" data-navigation="091700" class="">广元</em>
+								</td>
+							</tr>
+							<tr>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_091700_030200"
+										data-value="030200" data-navigation="091700" class="">广州</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_091700_140300"
+										data-value="140300" data-navigation="091700" class="">桂林</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_091700_141000"
+										data-value="141000" data-navigation="091700" class="">贵港</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_091700_260200"
+										data-value="260200" data-navigation="091700" class="">贵阳</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_091700_320800"
+										data-value="320800" data-navigation="091700" class="">果洛</em>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div id="work_position_click_center_right_list_092200" class="work_position_click_center_right_list de d3"
+					style="display: none;">
+					<table>
+						<tbody>
+							<tr>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_092200_092200"
+										data-value="092200" data-navigation="092200" class="">阿坝</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_092200_310600"
+										data-value="310600" data-navigation="092200" class="">阿克苏</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_092200_310900"
+										data-value="310900" data-navigation="092200" class="">阿拉尔</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_092200_281500"
+										data-value="281500" data-navigation="092200" class="">阿拉善盟</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_092200_311300"
+										data-value="311300" data-navigation="092200" class="">阿勒泰</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_092200_300800"
+										data-value="300800" data-navigation="092200" class="">阿里</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_092200_230400"
+										data-value="230400" data-navigation="092200" class="">鞍山</em>
+								</td>
+							</tr>
+							<tr>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_092200_201000"
+										data-value="201000" data-navigation="092200" class="">安康</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_092200_150400"
+										data-value="150400" data-navigation="092200" class="">安庆</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_092200_260500"
+										data-value="260500" data-navigation="092200" class="">安顺</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_092200_170900"
+										data-value="170900" data-navigation="092200" class="">安阳</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_092200_280900"
+										data-value="280900" data-navigation="092200" class="">巴彦淖尔</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_092200_311800"
+										data-value="311800" data-navigation="092200" class="">巴音郭楞</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_092200_092000"
+										data-value="092000" data-navigation="092200" class="">巴中</em>
+								</td>
+							</tr>
+							<tr>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_092200_241000"
+										data-value="241000" data-navigation="092200" class="">白城</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_092200_101800"
+										data-value="101800" data-navigation="092200" class="">白沙</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_092200_240900"
+										data-value="240900" data-navigation="092200" class="">白山</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_092200_270800"
+										data-value="270800" data-navigation="092200" class="">白银</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_092200_141100"
+										data-value="141100" data-navigation="092200" class="">百色</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_092200_150600"
+										data-value="150600" data-navigation="092200" class="">蚌埠</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_092200_280400"
+										data-value="280400" data-navigation="092200" class="">包头</em>
+								</td>
+							</tr>
+							<tr>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_092200_160400"
+										data-value="160400" data-navigation="092200" class="">保定</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_092200_251200"
+										data-value="251200" data-navigation="092200" class="">保山</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_092200_101700"
+										data-value="101700" data-navigation="092200" class="">保亭</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_092200_200400"
+										data-value="200400" data-navigation="092200" class="">宝鸡</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_092200_140500"
+										data-value="140500" data-navigation="092200" class="">北海</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_092200_010000"
+										data-value="010000" data-navigation="092200" class="">北京</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_092200_231000"
+										data-value="231000" data-navigation="092200" class="">本溪</em>
+								</td>
+							</tr>
+							<tr>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_092200_260700"
+										data-value="260700" data-navigation="092200" class="">毕节</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_092200_121500"
+										data-value="121500" data-navigation="092200" class="">滨州</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_092200_311900"
+										data-value="311900" data-navigation="092200" class="">博尔塔拉</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_092200_151800"
+										data-value="151800" data-navigation="092200" class="">亳州</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_092200_160800"
+										data-value="160800" data-navigation="092200" class="">沧州</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_092200_300600"
+										data-value="300600" data-navigation="092200" class="">昌都</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_092200_311200"
+										data-value="311200" data-navigation="092200" class="">昌吉</em>
+								</td>
+							</tr>
+							<tr>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_092200_101900"
+										data-value="101900" data-navigation="092200" class="">昌江</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_092200_190700"
+										data-value="190700" data-navigation="092200" class="">常德</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_092200_070700"
+										data-value="070700" data-navigation="092200" class="">常熟</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_092200_070500"
+										data-value="070500" data-navigation="092200" class="">常州</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_092200_240200"
+										data-value="240200" data-navigation="092200" class="">长春</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_092200_190200"
+										data-value="190200" data-navigation="092200" class="">长沙</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_092200_210600"
+										data-value="210600" data-navigation="092200" class="">长治</em>
+								</td>
+							</tr>
+							<tr>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_092200_231400"
+										data-value="231400" data-navigation="092200" class="">朝阳</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_092200_032000"
+										data-value="032000" data-navigation="092200" class="">潮州</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_092200_190900"
+										data-value="190900" data-navigation="092200" class="">郴州</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_092200_090200"
+										data-value="090200" data-navigation="092200" class="">成都</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_092200_101300"
+										data-value="101300" data-navigation="092200" class="">澄迈</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_092200_161000"
+										data-value="161000" data-navigation="092200" class="">承德</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_092200_151500"
+										data-value="151500" data-navigation="092200" class="">池州</em>
+								</td>
+							</tr>
+							<tr>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_092200_280300"
+										data-value="280300" data-navigation="092200" class="">赤峰</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_092200_141400"
+										data-value="141400" data-navigation="092200" class="">崇左</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_092200_150900"
+										data-value="150900" data-navigation="092200" class="">滁州</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_092200_251700"
+										data-value="251700" data-navigation="092200" class="">楚雄</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_092200_060000"
+										data-value="060000" data-navigation="092200" class="">重庆</em>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div id="work_position_click_center_right_list_100700" class="work_position_click_center_right_list de d3"
+					style="display: none;">
+					<table>
+						<tbody>
+							<tr>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_100700_100700"
+										data-value="100700" data-navigation="100700" class="">万宁</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_100700_120600"
+										data-value="120600" data-navigation="100700" class="">威海</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_100700_120500"
+										data-value="120500" data-navigation="100700" class="">潍坊</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_100700_200700"
+										data-value="200700" data-navigation="100700" class="">渭南</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_100700_080400"
+										data-value="080400" data-navigation="100700" class="">温州</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_100700_100500"
+										data-value="100500" data-navigation="100700" class="">文昌</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_100700_251400"
+										data-value="251400" data-navigation="100700" class="">文山</em>
+								</td>
+							</tr>
+							<tr>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_100700_281000"
+										data-value="281000" data-navigation="100700" class="">乌海</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_100700_281200"
+										data-value="281200" data-navigation="100700" class="">乌兰察布</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_100700_310200"
+										data-value="310200" data-navigation="100700" class="">乌鲁木齐</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_100700_070400"
+										data-value="070400" data-navigation="100700" class="">无锡</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_100700_150300"
+										data-value="150300" data-navigation="100700" class="">芜湖</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_100700_140700"
+										data-value="140700" data-navigation="100700" class="">梧州</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_100700_290300"
+										data-value="290300" data-navigation="100700" class="">吴忠</em>
+								</td>
+							</tr>
+							<tr>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_100700_180200"
+										data-value="180200" data-navigation="100700" class="">武汉</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_100700_270700"
+										data-value="270700" data-navigation="100700" class="">武威</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_100700_311000"
+										data-value="311000" data-navigation="100700" class="">五家渠</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_100700_101000"
+										data-value="101000" data-navigation="100700" class="">五指山</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_100700_200200"
+										data-value="200200" data-navigation="100700" class="">西安</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_100700_091900"
+										data-value="091900" data-navigation="100700" class="">西昌</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_100700_320200"
+										data-value="320200" data-navigation="100700" class="">西宁</em>
+								</td>
+							</tr>
+							<tr>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_100700_251500"
+										data-value="251500" data-navigation="100700" class="">西双版纳</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_100700_281400"
+										data-value="281400" data-navigation="100700" class="">锡林郭勒盟</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_100700_110300"
+										data-value="110300" data-navigation="100700" class="">厦门</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_100700_181400"
+										data-value="181400" data-navigation="100700" class="">仙桃</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_100700_181300"
+										data-value="181300" data-navigation="100700" class="">咸宁</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_100700_200300"
+										data-value="200300" data-navigation="100700" class="">咸阳</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_100700_180500"
+										data-value="180500" data-navigation="100700" class="">襄阳</em>
+								</td>
+							</tr>
+							<tr>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_100700_190400"
+										data-value="190400" data-navigation="100700" class="">湘潭</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_100700_191500"
+										data-value="191500" data-navigation="100700" class="">湘西</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_100700_180900"
+										data-value="180900" data-navigation="100700" class="">孝感</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_100700_170700"
+										data-value="170700" data-navigation="100700" class="">新乡</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_100700_130600"
+										data-value="130600" data-navigation="100700" class="">新余</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_100700_211100"
+										data-value="211100" data-navigation="100700" class="">忻州</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_100700_171200"
+										data-value="171200" data-navigation="100700" class="">信阳</em>
+								</td>
+							</tr>
+							<tr>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_100700_281300"
+										data-value="281300" data-navigation="100700" class="">兴安盟</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_100700_161100"
+										data-value="161100" data-navigation="100700" class="">邢台</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_100700_071100"
+										data-value="071100" data-navigation="100700" class="">徐州</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_100700_171100"
+										data-value="171100" data-navigation="100700" class="">许昌</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_100700_151400"
+										data-value="151400" data-navigation="100700" class="">宣城</em>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div id="work_position_click_center_right_list_171800" class="work_position_click_center_right_list de d3"
+					style="display: none;">
+					<table>
+						<tbody>
+							<tr>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_171800_171800"
+										data-value="171800" data-navigation="171800" class="">三门峡</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_171800_110700"
+										data-value="110700" data-navigation="171800" class="">三明</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_171800_101500"
+										data-value="101500" data-navigation="171800" class="">三沙</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_171800_100300"
+										data-value="100300" data-navigation="171800" class="">三亚</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_171800_300500"
+										data-value="300500" data-navigation="171800" class="">山南</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_171800_030400"
+										data-value="030400" data-navigation="171800" class="">汕头</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_171800_032400"
+										data-value="032400" data-navigation="171800" class="">汕尾</em>
+								</td>
+							</tr>
+							<tr>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_171800_201100"
+										data-value="201100" data-navigation="171800" class="">商洛</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_171800_171300"
+										data-value="171300" data-navigation="171800" class="">商丘</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_171800_020000"
+										data-value="020000" data-navigation="171800" class="">上海</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_171800_131200"
+										data-value="131200" data-navigation="171800" class="">上饶</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_171800_031400"
+										data-value="031400" data-navigation="171800" class="">韶关</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_171800_191000"
+										data-value="191000" data-navigation="171800" class="">邵阳</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_171800_080500"
+										data-value="080500" data-navigation="171800" class="">绍兴</em>
+								</td>
+							</tr>
+							<tr>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_171800_040000"
+										data-value="040000" data-navigation="171800" class="">深圳</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_171800_181700"
+										data-value="181700" data-navigation="171800" class="">神农架</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_171800_230200"
+										data-value="230200" data-navigation="171800" class="">沈阳</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_171800_180600"
+										data-value="180600" data-navigation="171800" class="">十堰</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_171800_310800"
+										data-value="310800" data-navigation="171800" class="">石河子</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_171800_160200"
+										data-value="160200" data-navigation="171800" class="">石家庄</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_171800_290500"
+										data-value="290500" data-navigation="171800" class="">石嘴山</em>
+								</td>
+							</tr>
+							<tr>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_171800_221100"
+										data-value="221100" data-navigation="171800" class="">双鸭山</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_171800_210900"
+										data-value="210900" data-navigation="171800" class="">朔州</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_171800_240600"
+										data-value="240600" data-navigation="171800" class="">四平</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_171800_240700"
+										data-value="240700" data-navigation="171800" class="">松原</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_171800_070300"
+										data-value="070300" data-navigation="171800" class="">苏州</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_171800_072000"
+										data-value="072000" data-navigation="171800" class="">宿迁</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_171800_151600"
+										data-value="151600" data-navigation="171800" class="">宿州</em>
+								</td>
+							</tr>
+							<tr>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_171800_181200"
+										data-value="181200" data-navigation="171800" class="">随州</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_171800_220400"
+										data-value="220400" data-navigation="171800" class="">绥化</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_171800_091500"
+										data-value="091500" data-navigation="171800" class="">遂宁</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_171800_311500"
+										data-value="311500" data-navigation="171800" class="">塔城</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_171800_080800"
+										data-value="080800" data-navigation="171800" class="">台州</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_171800_121100"
+										data-value="121100" data-navigation="171800" class="">泰安</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_171800_072300"
+										data-value="072300" data-navigation="171800" class="">泰兴</em>
+								</td>
+							</tr>
+							<tr>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_171800_071800"
+										data-value="071800" data-navigation="171800" class="">泰州</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_171800_071600"
+										data-value="071600" data-navigation="171800" class="">太仓</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_171800_210200"
+										data-value="210200" data-navigation="171800" class="">太原</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_171800_160500"
+										data-value="160500" data-navigation="171800" class="">唐山</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_171800_050000"
+										data-value="050000" data-navigation="171800" class="">天津</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_171800_181600"
+										data-value="181600" data-navigation="171800" class="">天门</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_171800_270600"
+										data-value="270600" data-navigation="171800" class="">天水</em>
+								</td>
+							</tr>
+							<tr>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_171800_231200"
+										data-value="231200" data-navigation="171800" class="">铁岭</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_171800_240500"
+										data-value="240500" data-navigation="171800" class="">通化</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_171800_280700"
+										data-value="280700" data-navigation="171800" class="">通辽</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_171800_200500"
+										data-value="200500" data-navigation="171800" class="">铜川</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_171800_150800"
+										data-value="150800" data-navigation="171800" class="">铜陵</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_171800_260600"
+										data-value="260600" data-navigation="171800" class="">铜仁</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_171800_311100"
+										data-value="311100" data-navigation="171800" class="">图木舒克</em>
+								</td>
+							</tr>
+							<tr>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_171800_311400"
+										data-value="311400" data-navigation="171800" class="">吐鲁番</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_171800_101200"
+										data-value="101200" data-navigation="171800" class="">屯昌</em>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div id="work_position_click_center_right_list_091000" class="work_position_click_center_right_list de d3"
+					style="display: none;">
+					<table>
+						<tbody>
+							<tr>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_091000_091000"
+										data-value="091000" data-navigation="091000" class="">攀枝花</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_091000_231300"
+										data-value="231300" data-navigation="091000" class="">盘锦</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_091000_130500"
+										data-value="130500" data-navigation="091000" class="">萍乡</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_091000_171000"
+										data-value="171000" data-navigation="091000" class="">平顶山</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_091000_271000"
+										data-value="271000" data-navigation="091000" class="">平凉</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_091000_110600"
+										data-value="110600" data-navigation="091000" class="">莆田</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_091000_251100"
+										data-value="251100" data-navigation="091000" class="">普洱</em>
+								</td>
+							</tr>
+							<tr>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_091000_171600"
+										data-value="171600" data-navigation="091000" class="">濮阳</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_091000_221300"
+										data-value="221300" data-navigation="091000" class="">七台河</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_091000_220600"
+										data-value="220600" data-navigation="091000" class="">齐齐哈尔</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_091000_260900"
+										data-value="260900" data-navigation="091000" class="">黔东南</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_091000_261000"
+										data-value="261000" data-navigation="091000" class="">黔南</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_091000_260800"
+										data-value="260800" data-navigation="091000" class="">黔西南</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_091000_181500"
+										data-value="181500" data-navigation="091000" class="">潜江</em>
+								</td>
+							</tr>
+							<tr>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_091000_140900"
+										data-value="140900" data-navigation="091000" class="">钦州</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_091000_160600"
+										data-value="160600" data-navigation="091000" class="">秦皇岛</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_091000_120300"
+										data-value="120300" data-navigation="091000" class="">青岛</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_091000_031900"
+										data-value="031900" data-navigation="091000" class="">清远</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_091000_271300"
+										data-value="271300" data-navigation="091000" class="">庆阳</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_091000_100600"
+										data-value="100600" data-navigation="091000" class="">琼海</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_091000_101600"
+										data-value="101600" data-navigation="091000" class="">琼中</em>
+								</td>
+							</tr>
+							<tr>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_091000_250300"
+										data-value="250300" data-navigation="091000" class="">曲靖</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_091000_110400"
+										data-value="110400" data-navigation="091000" class="">泉州</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_091000_081200"
+										data-value="081200" data-navigation="091000" class="">衢州</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_091000_300300"
+										data-value="300300" data-navigation="091000" class="">日喀则</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_091000_121200"
+										data-value="121200" data-navigation="091000" class="">日照</em>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div id="work_position_click_center_right_list_300200" class="work_position_click_center_right_list de d3"
+					style="display: none;">
+					<table>
+						<tbody>
+							<tr>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_300200_300200"
+										data-value="300200" data-navigation="300200" class="">拉萨</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_300200_121800"
+										data-value="121800" data-navigation="300200" class="">莱芜</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_300200_141300"
+										data-value="141300" data-navigation="300200" class="">来宾</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_300200_270200"
+										data-value="270200" data-navigation="300200" class="">兰州</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_300200_160300"
+										data-value="160300" data-navigation="300200" class="">廊坊</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_300200_090400"
+										data-value="090400" data-navigation="300200" class="">乐山</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_300200_250600"
+										data-value="250600" data-navigation="300200" class="">丽江</em>
+								</td>
+							</tr>
+							<tr>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_300200_081000"
+										data-value="081000" data-navigation="300200" class="">丽水</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_300200_071200"
+										data-value="071200" data-navigation="300200" class="">连云港</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_300200_092300"
+										data-value="092300" data-navigation="300200" class="">凉山</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_300200_121700"
+										data-value="121700" data-navigation="300200" class="">聊城</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_300200_231100"
+										data-value="231100" data-navigation="300200" class="">辽阳</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_300200_240400"
+										data-value="240400" data-navigation="300200" class="">辽源</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_300200_300400"
+										data-value="300400" data-navigation="300200" class="">林芝</em>
+								</td>
+							</tr>
+							<tr>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_300200_251800"
+										data-value="251800" data-navigation="300200" class="">临沧</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_300200_210500"
+										data-value="210500" data-navigation="300200" class="">临汾</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_300200_101400"
+										data-value="101400" data-navigation="300200" class="">临高</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_300200_271400"
+										data-value="271400" data-navigation="300200" class="">临夏</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_300200_120800"
+										data-value="120800" data-navigation="300200" class="">临沂</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_300200_102100"
+										data-value="102100" data-navigation="300200" class="">陵水</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_300200_140400"
+										data-value="140400" data-navigation="300200" class="">柳州</em>
+								</td>
+							</tr>
+							<tr>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_300200_151200"
+										data-value="151200" data-navigation="300200" class="">六安</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_300200_260400"
+										data-value="260400" data-navigation="300200" class="">六盘水</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_300200_111000"
+										data-value="111000" data-navigation="300200" class="">龙岩</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_300200_271200"
+										data-value="271200" data-navigation="300200" class="">陇南</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_300200_191200"
+										data-value="191200" data-navigation="300200" class="">娄底</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_300200_211200"
+										data-value="211200" data-navigation="300200" class="">吕梁</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_300200_170300"
+										data-value="170300" data-navigation="300200" class="">洛阳</em>
+								</td>
+							</tr>
+							<tr>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_300200_090500"
+										data-value="090500" data-navigation="300200" class="">泸州</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_300200_171500"
+										data-value="171500" data-navigation="300200" class="">漯河</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_300200_150500"
+										data-value="150500" data-navigation="300200" class="">马鞍山</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_300200_032300"
+										data-value="032300" data-navigation="300200" class="">茂名</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_300200_032600"
+										data-value="032600" data-navigation="300200" class="">梅州</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_300200_091200"
+										data-value="091200" data-navigation="300200" class="">眉山</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_300200_090300"
+										data-value="090300" data-navigation="300200" class="">绵阳</em>
+								</td>
+							</tr>
+							<tr>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_300200_220700"
+										data-value="220700" data-navigation="300200" class="">牡丹江</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_300200_300700"
+										data-value="300700" data-navigation="300200" class="">那曲</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_300200_130200"
+										data-value="130200" data-navigation="300200" class="">南昌</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_300200_091100"
+										data-value="091100" data-navigation="300200" class="">南充</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_300200_070200"
+										data-value="070200" data-navigation="300200" class="">南京</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_300200_140200"
+										data-value="140200" data-navigation="300200" class="">南宁</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_300200_110800"
+										data-value="110800" data-navigation="300200" class="">南平</em>
+								</td>
+							</tr>
+							<tr>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_300200_070900"
+										data-value="070900" data-navigation="300200" class="">南通</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_300200_170600"
+										data-value="170600" data-navigation="300200" class="">南阳</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_300200_090900"
+										data-value="090900" data-navigation="300200" class="">内江</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_300200_080300"
+										data-value="080300" data-navigation="300200" class="">宁波</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_300200_110900"
+										data-value="110900" data-navigation="300200" class="">宁德</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_300200_251900"
+										data-value="251900" data-navigation="300200" class="">怒江</em>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div id="work_position_click_center_right_list_220900" class="work_position_click_center_right_list de d3"
+					style="display: none;">
+					<table>
+						<tbody>
+							<tr>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_220900_220900"
+										data-value="220900" data-navigation="220900" class="">鸡西</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_220900_130900"
+										data-value="130900" data-navigation="220900" class="">吉安</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_220900_240300"
+										data-value="240300" data-navigation="220900" class="">吉林</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_220900_120200"
+										data-value="120200" data-navigation="220900" class="">济南</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_220900_120900"
+										data-value="120900" data-navigation="220900" class="">济宁</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_220900_171900"
+										data-value="171900" data-navigation="220900" class="">济源</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_220900_080700"
+										data-value="080700" data-navigation="220900" class="">嘉兴</em>
+								</td>
+							</tr>
+							<tr>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_220900_270400"
+										data-value="270400" data-navigation="220900" class="">嘉峪关</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_220900_220800"
+										data-value="220800" data-navigation="220900" class="">佳木斯</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_220900_031500"
+										data-value="031500" data-navigation="220900" class="">江门</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_220900_170500"
+										data-value="170500" data-navigation="220900" class="">焦作</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_220900_032200"
+										data-value="032200" data-navigation="220900" class="">揭阳</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_220900_270300"
+										data-value="270300" data-navigation="220900" class="">金昌</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_220900_080600"
+										data-value="080600" data-navigation="220900" class="">金华</em>
+								</td>
+							</tr>
+							<tr>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_220900_230700"
+										data-value="230700" data-navigation="220900" class="">锦州</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_220900_210700"
+										data-value="210700" data-navigation="220900" class="">晋城</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_220900_211000"
+										data-value="211000" data-navigation="220900" class="">晋中</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_220900_180800"
+										data-value="180800" data-navigation="220900" class="">荆门</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_220900_180700"
+										data-value="180700" data-navigation="220900" class="">荆州</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_220900_130400"
+										data-value="130400" data-navigation="220900" class="">景德镇</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_220900_072500"
+										data-value="072500" data-navigation="220900" class="">靖江</em>
+								</td>
+							</tr>
+							<tr>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_220900_130300"
+										data-value="130300" data-navigation="220900" class="">九江</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_220900_270500"
+										data-value="270500" data-navigation="220900" class="">酒泉</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_220900_310400"
+										data-value="310400" data-navigation="220900" class="">喀什地区</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_220900_170400"
+										data-value="170400" data-navigation="220900" class="">开封</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_220900_032700"
+										data-value="032700" data-navigation="220900" class="">开平</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_220900_310300"
+										data-value="310300" data-navigation="220900" class="">克拉玛依</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_220900_311700"
+										data-value="311700" data-navigation="220900" class="">克孜勒苏柯尔克孜
+									</em>
+								</td>
+							</tr>
+							<tr>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_220900_250200"
+										data-value="250200" data-navigation="220900" class="">昆明</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_220900_070600"
+										data-value="070600" data-navigation="220900" class="">昆山</em>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div id="work_position_click_center_right_list_102000" class="work_position_click_center_right_list de d3"
+					style="display: none;">
+					<table>
+						<tbody>
+							<tr>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_102000_102000"
+										data-value="102000" data-navigation="102000" class="">乐东</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_102000_091800"
+										data-value="091800" data-navigation="102000" class="">雅安</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_102000_120400"
+										data-value="120400" data-navigation="102000" class="">烟台</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_102000_071300"
+										data-value="071300" data-navigation="102000" class="">盐城</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_102000_200600"
+										data-value="200600" data-navigation="102000" class="">延安</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_102000_241100"
+										data-value="241100" data-navigation="102000" class="">延边</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_102000_240800"
+										data-value="240800" data-navigation="102000" class="">延吉</em>
+								</td>
+							</tr>
+							<tr>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_102000_161300"
+										data-value="161300" data-navigation="102000" class="">燕郊开发区</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_102000_201200"
+										data-value="201200" data-navigation="102000" class="">杨凌</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_102000_070800"
+										data-value="070800" data-navigation="102000" class="">扬州</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_102000_100400"
+										data-value="100400" data-navigation="102000" class="">洋浦经济开发区
+									</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_102000_032800"
+										data-value="032800" data-navigation="102000" class="">阳江</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_102000_210800"
+										data-value="210800" data-navigation="102000" class="">阳泉</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_102000_220300"
+										data-value="220300" data-navigation="102000" class="">伊春</em>
+								</td>
+							</tr>
+							<tr>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_102000_310500"
+										data-value="310500" data-navigation="102000" class="">伊犁</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_102000_090700"
+										data-value="090700" data-navigation="102000" class="">宜宾</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_102000_180300"
+										data-value="180300" data-navigation="102000" class="">宜昌</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_102000_131000"
+										data-value="131000" data-navigation="102000" class="">宜春</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_102000_081400"
+										data-value="081400" data-navigation="102000" class="">义乌</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_102000_190800"
+										data-value="190800" data-navigation="102000" class="">益阳</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_102000_290200"
+										data-value="290200" data-navigation="102000" class="">银川</em>
+								</td>
+							</tr>
+							<tr>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_102000_130700"
+										data-value="130700" data-navigation="102000" class="">鹰潭</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_102000_230500"
+										data-value="230500" data-navigation="102000" class="">营口</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_102000_191300"
+										data-value="191300" data-navigation="102000" class="">永州</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_102000_200800"
+										data-value="200800" data-navigation="102000" class="">榆林</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_102000_140600"
+										data-value="140600" data-navigation="102000" class="">玉林</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_102000_320900"
+										data-value="320900" data-navigation="102000" class="">玉树</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_102000_250400"
+										data-value="250400" data-navigation="102000" class="">玉溪</em>
+								</td>
+							</tr>
+							<tr>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_102000_190600"
+										data-value="190600" data-navigation="102000" class="">岳阳</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_102000_032900"
+										data-value="032900" data-navigation="102000" class="">云浮</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_102000_210300"
+										data-value="210300" data-navigation="102000" class="">运城</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_102000_121600"
+										data-value="121600" data-navigation="102000" class="">枣庄</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_102000_031700"
+										data-value="031700" data-navigation="102000" class="">湛江</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_102000_110500"
+										data-value="110500" data-navigation="102000" class="">漳州</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_102000_071400"
+										data-value="071400" data-navigation="102000" class="">张家港</em>
+								</td>
+							</tr>
+							<tr>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_102000_191400"
+										data-value="191400" data-navigation="102000" class="">张家界</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_102000_160900"
+										data-value="160900" data-navigation="102000" class="">张家口</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_102000_270900"
+										data-value="270900" data-navigation="102000" class="">张掖</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_102000_251300"
+										data-value="251300" data-navigation="102000" class="">昭通</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_102000_031800"
+										data-value="031800" data-navigation="102000" class="">肇庆</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_102000_071000"
+										data-value="071000" data-navigation="102000" class="">镇江</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_102000_170200"
+										data-value="170200" data-navigation="102000" class="">郑州</em>
+								</td>
+							</tr>
+							<tr>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_102000_030700"
+										data-value="030700" data-navigation="102000" class="">中山</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_102000_290400"
+										data-value="290400" data-navigation="102000" class="">中卫</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_102000_081100"
+										data-value="081100" data-navigation="102000" class="">舟山</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_102000_170800"
+										data-value="170800" data-navigation="102000" class="">周口</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_102000_030500"
+										data-value="030500" data-navigation="102000" class="">珠海</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_102000_190300"
+										data-value="190300" data-navigation="102000" class="">株洲</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_102000_171400"
+										data-value="171400" data-navigation="102000" class="">驻马店</em>
+								</td>
+							</tr>
+							<tr>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_102000_091400"
+										data-value="091400" data-navigation="102000" class="">资阳</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_102000_120700"
+										data-value="120700" data-navigation="102000" class="">淄博</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_102000_090800"
+										data-value="090800" data-navigation="102000" class="">自贡</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_102000_260300"
+										data-value="260300" data-navigation="102000" class="">遵义</em>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div id="work_position_click_center_right_list_030000" class="work_position_click_center_right_list de d3"
+					style="display: none;">
+					<table>
+						<tbody>
+							<tr>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_030000_030000"
+										data-value="030000" data-navigation="030000" class="">广东省</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_030000_070000"
+										data-value="070000" data-navigation="030000" class="">江苏省</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_030000_080000"
+										data-value="080000" data-navigation="030000" class="">浙江省</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_030000_090000"
+										data-value="090000" data-navigation="030000" class="">四川省</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_030000_100000"
+										data-value="100000" data-navigation="030000" class="">海南省</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_030000_110000"
+										data-value="110000" data-navigation="030000" class="">福建省</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_030000_120000"
+										data-value="120000" data-navigation="030000" class="">山东省</em>
+								</td>
+							</tr>
+							<tr>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_030000_130000"
+										data-value="130000" data-navigation="030000" class="">江西省</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_030000_140000"
+										data-value="140000" data-navigation="030000" class="">广西</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_030000_150000"
+										data-value="150000" data-navigation="030000" class="">安徽省</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_030000_160000"
+										data-value="160000" data-navigation="030000" class="">河北省</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_030000_170000"
+										data-value="170000" data-navigation="030000" class="">河南省</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_030000_180000"
+										data-value="180000" data-navigation="030000" class="">湖北省</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_030000_190000"
+										data-value="190000" data-navigation="030000" class="">湖南省</em>
+								</td>
+							</tr>
+							<tr>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_030000_200000"
+										data-value="200000" data-navigation="030000" class="">陕西省</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_030000_210000"
+										data-value="210000" data-navigation="030000" class="">山西省</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_030000_220000"
+										data-value="220000" data-navigation="030000" class="">黑龙江省</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_030000_230000"
+										data-value="230000" data-navigation="030000" class="">辽宁省</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_030000_240000"
+										data-value="240000" data-navigation="030000" class="">吉林省</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_030000_250000"
+										data-value="250000" data-navigation="030000" class="">云南省</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_030000_260000"
+										data-value="260000" data-navigation="030000" class="">贵州省</em>
+								</td>
+							</tr>
+							<tr>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_030000_270000"
+										data-value="270000" data-navigation="030000" class="">甘肃省</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_030000_280000"
+										data-value="280000" data-navigation="030000" class="">内蒙古</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_030000_290000"
+										data-value="290000" data-navigation="030000" class="">宁夏</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_030000_300000"
+										data-value="300000" data-navigation="030000" class="">西藏</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_030000_310000"
+										data-value="310000" data-navigation="030000" class="">新疆</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_030000_320000"
+										data-value="320000" data-navigation="030000" class="">青海省</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_030000_330000"
+										data-value="330000" data-navigation="030000" class="">香港</em>
+								</td>
+							</tr>
+							<tr>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_030000_340000"
+										data-value="340000" data-navigation="030000" class="">澳门</em>
+								</td>
+								<td class="js_more" name="0">
+									<em
+										id="work_position_click_center_right_list_category_030000_350000"
+										data-value="350000" data-navigation="030000" class="">台湾</em>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="de d1" id="work_position_special_area_zhusanjiao"
+					style="display: block;">
+					<table>
+						<tbody>
+							<tr>
+								<td class="js_more">
+									<em id="work_position_click_center_right_list_category_000000_01"
+										data-value="01" class="">珠三角</em>
+									<i class="c_666">（惠州、汕头、珠海、佛山、中山、江门、湛江、肇庆、清远）</i>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="declear"></div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div id="work_position_click_bottom" class="but_box">
+			<span class="p_but" id="work_position_click_bottom_save">确定</span>
+			<span class="p_but gray work_position_click_close">取消</span>
+		</div>
+	</div>
+</div>
