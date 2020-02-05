@@ -72,12 +72,17 @@ public class ModelProducer {
             producer.send(new ProducerRecord<String, String>("kafka-test", Integer.toString(i), Integer.toString(i)));
         }
 
-        //带回调函数的API
+        //带回调函数的API 异步将记录发送到主题，并在确认发送后调用提供的回调。
+        //发送是异步的，并且一旦记录已存储在等待发送的记录缓冲区中，此方法将立即返回。这允许并行发送许多记录，而不会阻塞等待每个记录之后的响应。
 //        for (int i = 0; i < 100; i++) {
+        //完全非阻塞的用法可以利用Callback参数来提供将在请求完成时调用的回调。
 //            producer.send(new ProducerRecord<String, String>("kafka-test", Integer.toString(i), Integer.toString(i)), new Callback() {
 //                //回调函数，该方法会在Producer收到ack时调用，为异步调用
 //                @Override
 //                public void onCompletion(RecordMetadata metadata, Exception exception) {
+        //发送的结果是RecordMetadata，它指定记录发送到的分区，分配的偏移量和记录的时间戳。
+        // 如果主题使用CreateTime，则时间戳将是用户提供的时间戳，如果用户未为记录指定时间戳，则时间戳将是记录的发送时间。
+        // 如果该主题使用LogAppendTime，则时间戳将是附加消息时的Kafka代理本地时间。
 //                    if (exception == null) {
 //                        System.out.println("success-> offset:" + metadata.offset() + "  partiton:" + metadata.partition());
 //                    } else {
@@ -88,6 +93,9 @@ public class ModelProducer {
 //        }
 
         //同步发送API 必要时等待计算完成，然后检索其结果。
+        //由于send调用是异步的，因此它将为RecordMetadata返回Future，该Future将分配给该记录。
+        // 在此将来调用get（）将阻塞，直到关联的请求完成，然后返回记录的元数据或引发发送记录时发生的任何异常。
+        //如果要模拟一个简单的阻塞调用，可以立即调用get（）方法：
 //        for (int i = 0; i < 100; i++) {
 //            RecordMetadata recordMetadata = producer.send(new ProducerRecord<String, String>("kafka-test", Integer.toString(i), Integer.toString(i))).get();
 //            System.out.println("success-> offset:" + recordMetadata.offset() + "  partiton:" + recordMetadata.partition());
