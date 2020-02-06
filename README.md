@@ -14,7 +14,7 @@ intsmaze的项目虽然没有被用于各大生产环境，但是项目的各个
 ### 交流QQ群：
 (群内含启动文档文档、技术文档，视频教程下载)最重要的是技术方案的落地原因解释
 # 项目架构
-![image](https://github.com/intsmaze/intsmaze/blob/master/image/intsmaze1.png)
+![image](https://github.com/intsmaze/intsmaze/tree/master/image/intsmaze1.png)
 # 技术博客
 http://www.cnblogs.com/intsmaze/
 
@@ -33,7 +33,7 @@ http://www.cnblogs.com/intsmaze/
 
 
 ## LSM架构
-![image](https://github.com/intsmaze/intsmaze/raw/master/image/lsm.png)
+![image](https://github.com/intsmaze/intsmaze/tree/master/image/lsm.png)
 ### LSM最开始的设计思路
 1. 一致性hash维护的64个物理文件夹，同时内存中维护64个跳跃表对应。
 2. 写入key-value，通过一致性hash确定所属的文件夹，将该数据存储对应的跳跃表，当跳跃表容量达到阈值后，生成一个新的跳跃表替换写入，老的跳跃表数据序列化到对应文件夹的文件中，文件名称递增。
@@ -44,14 +44,14 @@ http://www.cnblogs.com/intsmaze/
 7. 索引的设计
 
 ## 动态加载实时编译类
-![image](https://github.com/intsmaze/intsmaze/raw/master/image/classload.png)
+![image](https://github.com/intsmaze/intsmaze/tree/master/image/classload.png)
 ### 架构来源
 在开发cep系统中，遇到某些规则需要用http的协议向远程服务发送请求获取某些结果后，在运用EL表达式进行校验。这个时候，我么需要编写新的java类来支持这一功能，但是编写java类需要重新停机发布，如何解决停机发布的问题就本架构解决方案。 
 
 
 ## 一致性Hash算法（权威来源，算法可靠）通用组件
 一致性hash算法的实现，没有找到比较权威的官方API，百度网友博客的算法应用生产系统毕竟有风险，我发现jedis客户端封装了一致性hash算法的实现。所以我将jeds的一致性hash算法提取出来，进行保障以供生产系统使用。
-![image](https://github.com/intsmaze/intsmaze/raw/master/image/hash.png)
+![image](https://github.com/intsmaze/intsmaze/tree/master/image/hash.png)
 关于一致性hash算法没有热点问题，我通过执行代码发现这个观点有待商榷。
 把jedis的源码提取出来后，跑了一下，发现没有热点问题。原因不是采用的算法问题，而是一个物理节点对应的虚拟节点的数量的问题导致使用hash算法后是否存在有热点问题。
 jedis源码物理节点对应虚拟节点时160，而网上大部分代码的虚拟节点都是10以下，所以导致了热点问题，这也告诉我们，实现一致性Hash算法时，不要太吝啬，虚拟节点设置的大点，热点问题就不会再有。
