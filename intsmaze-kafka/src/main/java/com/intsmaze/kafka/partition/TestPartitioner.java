@@ -10,7 +10,7 @@ import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class TestParirioner implements Partitioner {
+public class TestPartitioner implements Partitioner {
 
     private final AtomicInteger counter = new AtomicInteger(new Random().nextInt());
 
@@ -48,19 +48,19 @@ public class TestParirioner implements Partitioner {
             int nextValue = counter.getAndIncrement();
             List<PartitionInfo> availablePartitions = cluster.availablePartitionsForTopic(topic);
             if (availablePartitions.size() > 0) {
-                int part = TestParirioner.toPositive(nextValue) % availablePartitions.size();
+                int part = TestPartitioner.toPositive(nextValue) % availablePartitions.size();
                 int num = availablePartitions.get(part).partition();
                 System.out.println(num + "=============");
                 return num;
             } else {
                 // no partitions are available, give a non-available partition
-                int num = TestParirioner.toPositive(nextValue) % numPartitions;
+                int num = TestPartitioner.toPositive(nextValue) % numPartitions;
                 System.out.println(num + "-----------");
                 return num;
             }
         } else {
             // hash the keyBytes to choose a partition
-            return TestParirioner.toPositive(Utils.murmur2(keyBytes)) % numPartitions;
+            return TestPartitioner.toPositive(Utils.murmur2(keyBytes)) % numPartitions;
         }
     }
 
