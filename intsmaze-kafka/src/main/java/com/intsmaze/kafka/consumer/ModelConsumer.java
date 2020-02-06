@@ -13,11 +13,9 @@ import java.util.*;
  * @author ：intsmaze
  * @date ：Created in 2020/2/5 12:41
  * @description： https://www.cnblogs.com/intsmaze/
- *
+ * <p>
  * Kafka消费者不是线程安全的。所有网络I / O都发生在进行调用的应用程序线程中。
  * 用户有责任确保正确同步多线程访问。不同步的访问将导致ConcurrentModificationException。
- *
- *
  * @modified By：
  */
 public class ModelConsumer {
@@ -137,6 +135,92 @@ public class ModelConsumer {
                     }
                     long lastOffset = partitionRecords.get(partitionRecords.size() - 1).offset();
                     consumer.commitSync(Collections.singletonMap(partition, new OffsetAndMetadata(lastOffset + 1)));
+                }
+            }
+        } finally {
+            consumer.close();
+        }
+    }
+
+    /**
+     * @author intsmaze
+     * @description: https://www.cnblogs.com/intsmaze/
+     * @date : 2020/2/5 20:23
+     *  手动订阅指定分区
+     *
+     *  在某些情况下，您可能需要更好地控制分配的特定分区。 例如：
+     *  in some cases you may need finer control over the specific partitions that are assigned. For example:
+     * If the process is maintaining some kind of local state associated with that partition (like a local on-disk key-value store), then it should only get records for the partition it is maintaining on disk.
+     * If the process itself is highly available and will be restarted if it fails (perhaps using a cluster management framework like YARN, Mesos, or AWS facilities, or as part of a stream processing framework). In this case there is no need for Kafka to detect the failure and reassign the partition since the consuming process will be restarted on another machine.
+     * To use this mode, instead of subscribing to the topic using subscribe, you just call assign(Collection) with the full list of partitions that you want to consume.
+     */
+    @Test
+    public void subscribePartitionControl() {
+        Properties props = new Properties();
+        props.put("bootstrap.servers", "192.168.19.201:9092");
+        props.put("group.id", "test");
+        props.put("enable.auto.commit", "true");
+        props.put("auto.commit.interval.ms", "1000");
+        props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
+        props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
+        KafkaConsumer<String, String> consumer = new KafkaConsumer<>(props);
+
+
+        //分配后，您可以像前面的示例一样循环调用poll来消费记录。 消费指定的组仍用于提交偏移量，但是现在分区组将仅随着另一个分配调用而更改。
+        // 手动分区分配不使用消费者组协调，因此消费者发生故障不会导致重新分配分配的分区。
+        // 即使每个消费者与另一个消费者共享一个groupId，每个消费者也可以独立行动。
+        // 为避免偏移提交冲突，通常应确保groupId对于每个消费者实例都是唯一的。
+        //请注意，不可能通过主题订阅（即使用subscribe）将手动分区分配（即使用assign）与动态分区分配混合在一起。
+        String topic = "foo";
+        TopicPartition partition0 = new TopicPartition(topic, 0);
+        TopicPartition partition1 = new TopicPartition(topic, 1);
+        consumer.assign(Arrays.asList(partition0, partition1));
+
+        try {
+            while (true) {
+                ConsumerRecords<String, String> records = consumer.poll(100);
+                for (ConsumerRecord<String, String> record : records) {
+                    System.out.printf("offset = %d, key = %s, value = %s%n", record.offset(), record.key(), record.value());
+                }
+            }
+        } finally {
+            consumer.close();
+        }
+    }
+
+
+    /**
+     * @author intsmaze
+     * @description: https://www.cnblogs.com/intsmaze/
+     * 事务是在Kafka 0.11.0中引入的，其中应用程序可以原子地写入多个主题和分区。为了使读取事务消息起作用，消费者从这些分区读取消息时，应该在消费者端配置为仅读取已提交的数据。
+     * 这可以通过在消费者者的配置中设置isolation.level = read_committed来实现。
+     *
+     *
+     * 在read_committed模式下，消费者将仅读取已成功提交的那些事务性消息。它将像以前一样继续读取非事务性消息。
+     * @date : 2020/2/5 20:33
+     *
+     */
+    @Test
+    public void readingTransactionalMessages() {
+        Properties props = new Properties();
+        props.put("bootstrap.servers", "192.168.19.201:9092");
+        props.put("group.id", "test");
+        props.put("enable.auto.commit", "true");
+        props.put("auto.commit.interval.ms", "1000");
+
+
+        props.put("isolation.level", "read_committed");
+
+
+        props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
+        props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
+        KafkaConsumer<String, String> consumer = new KafkaConsumer<>(props);
+        consumer.subscribe(Arrays.asList("foo", "bar"));
+        try {
+            while (true) {
+                ConsumerRecords<String, String> records = consumer.poll(100);
+                for (ConsumerRecord<String, String> record : records) {
+                    System.out.printf("offset = %d, key = %s, value = %s%n", record.offset(), record.key(), record.value());
                 }
             }
         } finally {
