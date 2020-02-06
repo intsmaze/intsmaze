@@ -23,7 +23,14 @@ public class Sharded<R, S extends AbstractShardInfo<R>> {
 //    protected ConcurrentHashMap<S,AtomicInteger> currentHashMap =new ConcurrentHashMap<S,AtomicInteger>();
     //-----------------------------------
 
-    private List<S> shards;//实际物理节点的信息
+    /**
+     * @author intsmaze
+     * @description: https://www.cnblogs.com/intsmaze/
+     *  实际物理节点的信息
+     * @date : 2020/2/6 17:13
+     *
+     */
+    private List<S> shards;
 
     public static final int DEFAULT_WEIGHT = 1;//默认权重
 
@@ -45,6 +52,17 @@ public class Sharded<R, S extends AbstractShardInfo<R>> {
     }
 
     /**
+     * @author intsmaze
+     * @description: https://www.cnblogs.com/intsmaze/
+     * 把jedis的源码提取出来后，跑了一下，发现没有热点问题，原理不是采用算法的问题，而是一个物理节点对应的虚拟节点的数量的问题导致使用hash算法后，
+     * 还是有热点问题。jedis源码物理节点对应虚拟节点时160，而网上大部分代码都是10以下，所以导致了热点问题，
+     * 这也告诉我们，实现一致性Hash算法时，不要太吝啬，虚拟节点设置的大点，热点问题就不会再有。
+     * @date : 2020/2/6 17:16
+     *
+     */
+    private int num=160;
+
+    /**
      * 初始化物理节点和虚拟节点的对应关系
      * @param shards
      */
@@ -54,11 +72,11 @@ public class Sharded<R, S extends AbstractShardInfo<R>> {
         for (int i = 0; i != shards.size(); ++i) {
             final S shardInfo = shards.get(i);
             if (shardInfo.getTableName() == null) {
-                for (int n = 0; n < 160 * shardInfo.getWeight(); n++) {
+                for (int n = 0; n < num * shardInfo.getWeight(); n++) {
                     nodes.put(this.algo.hash("SHARD-" + i + "-NODE-" + n), shardInfo);
                 }
             } else {
-                for (int n = 0; n < 160 * shardInfo.getWeight(); n++) {
+                for (int n = 0; n < num * shardInfo.getWeight(); n++) {
                     nodes.put(this.algo.hash(shardInfo.getTableName() + "*" + shardInfo.getWeight() + n), shardInfo);
                 }
             }

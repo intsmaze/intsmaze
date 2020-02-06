@@ -13,8 +13,11 @@ public class Intsmaze {
     private Jedis client ;
 
     /**
+     * @author intsmaze
+     * @description: https://www.cnblogs.com/intsmaze/
      * 这里是一个示例，用的redis连接，也可以修改为jdbc连接，http连接都可以，如果不需要连接，注释掉该构造方法里面的代码即可
-     * @param intsmazeShardInfo
+     * @date : 2020/2/6 16:37
+     *
      */
     public Intsmaze(IntsmazeShardInfo intsmazeShardInfo)
     {

@@ -8,7 +8,7 @@ import java.util.List;
  * @author intsmaze
  * @description: https://www.cnblogs.com/intsmaze/
  * @date : 2020/2/6 10:01
- * 
+ *
  */
 public class RouteTableShardedConnection extends Sharded<RouteTable, RouteTableShardedInfo> {
 

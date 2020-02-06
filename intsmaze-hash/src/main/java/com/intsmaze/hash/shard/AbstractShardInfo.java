@@ -8,10 +8,21 @@ package com.intsmaze.hash.shard;
  */
 public abstract class AbstractShardInfo<T> {
 
-    private int weight;//权重
+    /**
+     * @author intsmaze
+     * @description: https://www.cnblogs.com/intsmaze/
+     * 权重
+     * @date : 2020/2/6 16:38
+     * 
+     */
+    private int weight;
 
     /**
-     *我添加的字段表明，为了应对分表的操作，这个时候host是一样的，要hash对应的表中，如果不是分表分库操作，那么该字段可以为空
+     * @author intsmaze
+     * @description: https://www.cnblogs.com/intsmaze/
+     * 我添加的字段表明，为了应对分表的操作，这个时候host是一样的，要hash对应的表中，如果不是分表分库操作，那么该字段可以为空
+     * @date : 2020/2/6 16:38
+     *
      */
     private String tableName=null;
 
@@ -35,6 +46,12 @@ public abstract class AbstractShardInfo<T> {
         return tableName;
     }
 
+    /**
+     * @author intsmaze
+     * @description: https://www.cnblogs.com/intsmaze/
+     * @date : 2020/2/6 16:39
+     *
+     */
     protected abstract T createResource();
 
 

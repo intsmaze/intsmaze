@@ -38,10 +38,11 @@ public class IntsmazeShardInfo extends AbstractShardInfo<Intsmaze> {
     }
 
     /**
+     * @author intsmaze
+     * @description: https://www.cnblogs.com/intsmaze/
      * 设置每一个物理节点对应的虚拟节点的权重，权重越大该物理节点对应的虚拟节点的数量就越多，默认权重为1，虚拟节点为160*1
-     * @param host
-     * @param tableName
-     * @param weight
+     * @date : 2020/2/6 16:40
+     *
      */
     public IntsmazeShardInfo(String host, String tableName,int weight) {
         super(weight,tableName);
@@ -60,8 +61,11 @@ public class IntsmazeShardInfo extends AbstractShardInfo<Intsmaze> {
     }
 
     /**
+     * @author intsmaze
+     * @description: https://www.cnblogs.com/intsmaze/
      * 创建对应的物理节点的连接，如果仅仅是确定hash的名称，不需要用实例连接，则里面就是空即可。
-     * @return
+     * @date : 2020/2/6 16:40
+     * 
      */
     @Override
     public Intsmaze createResource() {

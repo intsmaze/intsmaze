@@ -1,5 +1,8 @@
-package com.intsmaze.hash.shard.model;
+package com.intsmaze.test;
 
+
+import com.intsmaze.hash.shard.model.IntsmazeShardInfo;
+import com.intsmaze.hash.shard.model.IntsmazeShardedConnection;
 
 import java.util.*;
 
@@ -27,6 +30,12 @@ public class TestModel {
         sharding = new IntsmazeShardedConnection(shards);
     }
 
+    /**
+     * @author intsmaze
+     * @description: https://www.cnblogs.com/intsmaze/
+     * @date : 2020/2/6 16:41
+     *
+     */
     public void shardNormal() {
         Map<String,Long> map=new HashMap<String,Long>();
         for (int i = 0; i < 10000000; i++) {
@@ -53,6 +62,12 @@ public class TestModel {
         }
     }
 
+    /**
+     * @author intsmaze
+     * @description: https://www.cnblogs.com/intsmaze/
+     * @date : 2020/2/6 16:40
+     *
+     */
     public static void main(String[] args) throws Exception {
         TestModel t=new TestModel();
         setUpBeforeClass();
