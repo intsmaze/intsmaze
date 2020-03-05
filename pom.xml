@@ -17,6 +17,7 @@
 
     <modules>
         <module>intsmaze-lsm</module>
+        <module>intsmaze-hive</module>
         <module>intsmaze-lucene</module>
         <module>intsmaze-redis</module>
         <module>intsmaze-rpc</module>
@@ -25,6 +26,7 @@
         <module>intsmaze-classload</module>
         <module>intsmaze-dbadapter</module>
         <module>intsmaze-hash</module>
+        <module>intsmaze-storm</module>
     </modules>
 
     <dependencies>
