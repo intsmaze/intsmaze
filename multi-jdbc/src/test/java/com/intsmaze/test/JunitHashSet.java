@@ -1,6 +1,6 @@
 package com.intsmaze.test;
 
-import com.intsmaze.jdbc.bean.SyncTable;
+import com.crland.jdbc.bean.SyncTable;
 
 import java.util.HashSet;
 import java.util.Iterator;

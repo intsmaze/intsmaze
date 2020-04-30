@@ -1,4 +1,4 @@
-package com.intsmaze.jdbc.bean;
+package com.crland.jdbc.bean;
 
 import java.util.Objects;
 

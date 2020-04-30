@@ -1,7 +1,7 @@
-package com.intsmaze.jdbc.service;
+package com.crland.jdbc.service;
 
-import com.intsmaze.jdbc.SyncMonitorStartUp;
-import com.intsmaze.jdbc.bean.SyncTable;
+import com.crland.jdbc.bean.SyncTable;
+import com.crland.jdbc.SyncMonitorStartUp;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.text.SimpleDateFormat;
@@ -38,6 +38,7 @@ public class CommonService {
             List<String> oracleTableList = showTable(oracleJdbcTemplate);
             tableListMap.put(SyncMonitorStartUp.ORACLE, oracleTableList);
         }
+
         return tableListMap;
     }
 
@@ -75,8 +76,8 @@ public class CommonService {
 
         String startTime = simpleDateFormat.format(System.currentTimeMillis());
 
-        Integer countNum = jdbcTemplate.queryForObject("select count(1) from " + table + " where updateTime<'" + simpleDateFormat.format(updateTime) + "'", Integer.class);
-
+//        Integer countNum = jdbcTemplate.queryForObject("select count(1) from " + table + " where updateTime<'" + simpleDateFormat.format(updateTime) + "'", Integer.class);
+        Integer countNum = jdbcTemplate.queryForObject("select count(1) from " + table, Integer.class);
         String endTime = simpleDateFormat.format(System.currentTimeMillis());
         SyncTable syncTable = new SyncTable(table, countNum, startTime, endTime);
         return syncTable;

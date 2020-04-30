@@ -1,6 +1,6 @@
-package com.intsmaze.jdbc.dao;
+package com.crland.jdbc.dao;
 
-import com.intsmaze.jdbc.bean.User;
+import com.crland.jdbc.bean.User;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 
