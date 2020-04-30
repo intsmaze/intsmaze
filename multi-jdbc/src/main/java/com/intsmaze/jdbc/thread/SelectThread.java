@@ -9,9 +9,9 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author ：intsmaze
+ * @author ：liuuyang
  * @date ：Created in 2020/4/29 15:09
- * @description： https://www.cnblogs.com/intsmaze/
+ * @description： 查询mysql和oracle数据库中各表指定时间的快照数据量
  * @modified By：
  */
 public class SelectThread implements Runnable {
@@ -36,29 +36,33 @@ public class SelectThread implements Runnable {
     public void run() {
         List<SyncTable> syncTableList = new ArrayList<>();
 
-        if (flag.equals(SyncMonitorStartUp.ORACLE)) {
-            List<String> tableList = showTables.get(SyncMonitorStartUp.ORACLE);
-            for (int i = 0; i < tableList.size(); i++) {
-                String table = tableList.get(i);
-                SyncTable syncTable = commonService.countTable(flag, table);
-                syncTableList.add(syncTable);
-            }
-        }
-        else
-        {
-            for (int j = 0; j < SyncMonitorStartUp.PRE_TABLES.length; j++) {
-                List<String> removeTable = new ArrayList<>();
-                String preTable = SyncMonitorStartUp.PRE_TABLES[j];
-                List<String> tableList = showTables.get(preTable);
+
+        try {
+            if (flag.equals(SyncMonitorStartUp.ORACLE)) {
+                List<String> tableList = showTables.get(SyncMonitorStartUp.ORACLE);
                 for (int i = 0; i < tableList.size(); i++) {
                     String table = tableList.get(i);
-                    SyncTable syncTable = commonService.countTable(preTable, table);
+                    SyncTable syncTable = commonService.countTable(flag, table);
                     syncTableList.add(syncTable);
                 }
+            } else {
+                for (int j = 0; j < SyncMonitorStartUp.PRE_TABLES.length; j++) {
+                    String preTable = SyncMonitorStartUp.PRE_TABLES[j];
+                    List<String> tableList = showTables.get(preTable);
+                    for (int i = 0; i < tableList.size(); i++) {
+                        String table = tableList.get(i);
+                        SyncTable syncTable = commonService.countTable(preTable, table);
+                        syncTableList.add(syncTable);
+                    }
+                }
             }
+        }catch (Exception e)
+        {
+            e.printStackTrace();
         }
         System.out.println(syncTableList);
         SyncMonitorStartUp.COLLECTOR_RESULT.put(flag,syncTableList);
         SyncMonitorStartUp.THREAD_END_ATOMIC.incrementAndGet();
+
     }
 }

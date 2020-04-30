@@ -21,19 +21,22 @@ public class CommonService {
 
     private JdbcTemplate oracleJdbcTemplate;
 
+    //单位为秒
+    private long updateTime;
 
-    public Map<String,List<String>> showTable(String dbFlag) {
-        Map<String,List<String>> tableListMap = new HashMap<String,List<String>>();
+
+    public Map<String, List<String>> showTable(String dbFlag) {
+        Map<String, List<String>> tableListMap = new HashMap<String, List<String>>();
         if (SyncMonitorStartUp.MYSQL.equals(dbFlag)) {
             List<String> gsystemTableList = showTable(mysqlgsystemJdbcTemplate);
-            tableListMap.put(SyncMonitorStartUp.PRE_TABLES[0],gsystemTableList);
+            tableListMap.put(SyncMonitorStartUp.PRE_TABLES[0], gsystemTableList);
 
             List<String> haloTableList = showTable(mysqlhaloJdbcTemplate);
-            tableListMap.put(SyncMonitorStartUp.PRE_TABLES[1],haloTableList);
+            tableListMap.put(SyncMonitorStartUp.PRE_TABLES[1], haloTableList);
 
         } else if (SyncMonitorStartUp.ORACLE.equals(dbFlag)) {
-            List<String> oracleTableList  = showTable(oracleJdbcTemplate);
-            tableListMap.put(SyncMonitorStartUp.ORACLE,oracleTableList);
+            List<String> oracleTableList = showTable(oracleJdbcTemplate);
+            tableListMap.put(SyncMonitorStartUp.ORACLE, oracleTableList);
         }
         return tableListMap;
     }
@@ -59,8 +62,7 @@ public class CommonService {
             syncTable = countTable(mysqlgsystemJdbcTemplate, table);
         } else if (SyncMonitorStartUp.PRE_TABLES[1].equals(dbFlag)) {
             syncTable = countTable(mysqlhaloJdbcTemplate, table);
-        }
-        else if (SyncMonitorStartUp.ORACLE.equals(dbFlag)) {
+        } else if (SyncMonitorStartUp.ORACLE.equals(dbFlag)) {
             syncTable = countTable(oracleJdbcTemplate, table);
         }
 
@@ -73,7 +75,7 @@ public class CommonService {
 
         String startTime = simpleDateFormat.format(System.currentTimeMillis());
 
-        Integer countNum = jdbcTemplate.queryForObject("select count(1) from " + table, Integer.class);
+        Integer countNum = jdbcTemplate.queryForObject("select count(1) from " + table + " where updateTime<'" + simpleDateFormat.format(updateTime) + "'", Integer.class);
 
         String endTime = simpleDateFormat.format(System.currentTimeMillis());
         SyncTable syncTable = new SyncTable(table, countNum, startTime, endTime);
@@ -103,5 +105,13 @@ public class CommonService {
 
     public void setOracleJdbcTemplate(JdbcTemplate oracleJdbcTemplate) {
         this.oracleJdbcTemplate = oracleJdbcTemplate;
+    }
+
+    public long getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(long updateTime) {
+        this.updateTime = updateTime;
     }
 }

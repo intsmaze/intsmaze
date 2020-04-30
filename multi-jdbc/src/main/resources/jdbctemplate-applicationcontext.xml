@@ -53,10 +53,13 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
     </bean>
 
 
+
     <bean id="commonService" class="com.intsmaze.jdbc.service.CommonService">
         <property name="mysqlhaloJdbcTemplate" ref="mysqlhaloJdbcTemplate"/>
         <property name="mysqlgsystemJdbcTemplate" ref="mysqlgsystemJdbcTemplate"/>
         <property name="oracleJdbcTemplate" ref="oracleJdbcTemplate"/>
+
+
     </bean>
 
 </beans>
