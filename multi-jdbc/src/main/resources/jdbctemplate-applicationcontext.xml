@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <bean id="oracledataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/oracle"/>
+        <property name="username" value="root"/>
+        <property name="password" value="intsmaze"/>
+        <!--        ss<property name="initialSize" value="2"/>
+                <property name="maxActive" value="20"/>
+                <property name="maxWait" value="600"/>
+                <property name="timeBetweenEvictionRunsMillis" value="6000"/>
+                <property name="minEvictableIdleTimeMillis" value="30000"/>
+                <property name="validationQuery" value="SELECT 1"/>
+                <property name="testWhileIdle" value="true"/>
+                <property name="testOnBorrow" value="false"/>
+                <property name="testOnReturn" value="false"/>
+                <property name="poolPreparedStatements" value="false"/>
+                <property name="maxPoolPreparedStatementPerConnectionSize" value="200"/>-->
+    </bean>
+
+    <bean id="mysqlgsystemdataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/gsystem"/>
+        <property name="username" value="root"/>
+        <property name="password" value="intsmaze"/>
+    </bean>
+
+    <bean id="mysqlhalodataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/halo"/>
+        <property name="username" value="root"/>
+        <property name="password" value="intsmaze"/>
+    </bean>
+
+    <!-- 定义jdbctemplate -->
+    <bean id="mysqlgsystemJdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="mysqlgsystemdataSource"/>
+    </bean>
+
+    <bean id="mysqlhaloJdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="mysqlhalodataSource"/>
+    </bean>
+
+    <bean id="oracleJdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="oracledataSource"/>
+    </bean>
+
+
+    <bean id="commonService" class="com.intsmaze.jdbc.service.CommonService">
+        <property name="mysqlhaloJdbcTemplate" ref="mysqlhaloJdbcTemplate"/>
+        <property name="mysqlgsystemJdbcTemplate" ref="mysqlgsystemJdbcTemplate"/>
+        <property name="oracleJdbcTemplate" ref="oracleJdbcTemplate"/>
+    </bean>
+
+</beans>
