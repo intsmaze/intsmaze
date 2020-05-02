@@ -20,7 +20,7 @@ public class PingHive {
 
         PreparedStatement sta = coon.prepareStatement("select area from test ");
         ResultSet rs = sta.executeQuery();
-        if (rs.next()) {
+        while (rs.next()) {
             System.out.println(rs.getString("area"));
         }
         coon.close();

@@ -68,10 +68,10 @@ public class ModelProducer {
 
 
         //不带回调函数的API
-//        for (int i = 0; i < 10; i++) {
-//            // send（）方法是异步的。调用时，它将记录添加到暂挂记录缓冲区中中并立即返回。这使生产者可以将各个记录一起批处理以提高效率。
-//            producer.send(new ProducerRecord<String, String>("test-hand-1", Integer.toString(i), Integer.toString(i)));
-//        }
+        for (int i = 1; i < 10; i++) {
+            // send（）方法是异步的。调用时，它将记录添加到暂挂记录缓冲区中中并立即返回。这使生产者可以将各个记录一起批处理以提高效率。
+            producer.send(new ProducerRecord<String, String>("kafka-test", Integer.toString(i)));
+        }
 
 //        //带回调函数的API 异步将记录发送到主题，并在确认发送后调用提供的回调。
 //        //发送是异步的，并且一旦记录已存储在等待发送的记录缓冲区中，此方法将立即返回。这允许并行发送许多记录，而不会阻塞等待每个记录之后的响应。
@@ -98,11 +98,11 @@ public class ModelProducer {
         //由于send调用是异步的，因此它将为RecordMetadata返回Future，该Future将分配给该记录。
         // 在此将来调用get（）将阻塞，直到关联的请求完成，然后返回记录的元数据或引发发送记录时发生的任何异常。
         //如果要模拟一个简单的阻塞调用，可以立即调用get（）方法：
-        for (int i = 0; i < 10; i++) {
-            RecordMetadata recordMetadata = producer.send(new ProducerRecord<String, String>("test-hand-1", Integer.toString(i), Integer.toString(i))).get();
-            System.out.println("success-> offset:" + recordMetadata.offset() + "  partiton:" + recordMetadata.partition());
-
-        }
+//        for (int i = 0; i < 10; i++) {
+//            RecordMetadata recordMetadata = producer.send(new ProducerRecord<String, String>("test-hand-1", Integer.toString(i), Integer.toString(i))).get();
+//            System.out.println("success-> offset:" + recordMetadata.offset() + "  partiton:" + recordMetadata.partition());
+//
+//        }
 
 
         producer.close();

@@ -52,18 +52,30 @@ public class HandProducer {
 
         Properties props = new Properties();
         props.put("bootstrap.servers", "192.168.19.201:9092");
+        props.put("max.request.size", "2706174");
 
         props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
         props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
         Producer<String, String> producer = new KafkaProducer<>(props);
 
         String sendMess="";
-        for(int i=1;i<100;i++)
+//        for(int i=1;i<100;i++)
         {
             sendMess= StringUtils.join(sendMess,HandProducer.readFile());
-
         }
 
+        // kafka send message
+        producer.send(new ProducerRecord<String, String>("test-hand-1", sendMess), new Callback() {
+                @Override
+                public void onCompletion(RecordMetadata metadata, Exception exception) {
+                    if (exception == null) {
+                        System.out.println("success-> offset:" + metadata.offset() + "  partiton:" + metadata.partition());
+                    } else {
+                        exception.printStackTrace();
+                    }
+                }
+            });
+//        producer.send(new ProducerRecord<String, String>("test-hand-1", "123"));
 
         producer.close();
     }

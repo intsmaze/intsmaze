@@ -97,7 +97,7 @@ public class ExactlyOnceProducer {
             for (int i = 1000; i < 1010; i++) {
                 //事务性生产者使用异常来传达错误状态。 不需要为producer.send（）指定回调或在返回的Future上调用.get（）：
                 // 如果任何producer.send（）或事务期间中的事务调用遇到不可恢复的错误，则将引发KafkaException。 有关从事务性发送中检测错误的更多详细信息，请参见send（ProducerRecord）文档。
-                producer.send(new ProducerRecord<>("test-hand-1", Integer.toString(i), Integer.toString(i)));
+                producer.send(new ProducerRecord<>("kafka-test", Integer.toString(i), Integer.toString(i)));
             }
             producer.commitTransaction();
         } catch (ProducerFencedException | OutOfOrderSequenceException | AuthorizationException e) {

@@ -46,7 +46,7 @@ public class SelectThread implements Runnable {
                 selectTableInfo(syncTableList, preTable, tableList);
             }
         }
-        System.out.println(syncTableList);
+//        System.out.println(syncTableList);
         SyncMonitorStartUp.COLLECTOR_RESULT.put(flag, syncTableList);
         SyncMonitorStartUp.THREAD_END_ATOMIC.incrementAndGet();
 

@@ -25,7 +25,7 @@ import redis.clients.jedis.Jedis;
 
 /**
  * 核心规则计算数据缓存服务
- * 
+ *
  * @author willian
  */
 public class CacheGroovyService {
@@ -36,11 +36,11 @@ public class CacheGroovyService {
 
 	//这个是最主要的，脚本调用
 	private static ScriptCacheMapping scriptCacheMapping = new ScriptCacheMapping();
-	
+
 	public static Map ScriptTextmap = new HashMap();
-	
+
 //	private static DiyScriptCacheMapping diyScriptCacheMapping = new DiyScriptCacheMapping();
-	
+
 	private static volatile boolean inited = false;
 
 	private static volatile Thread updateThread;
@@ -48,8 +48,8 @@ public class CacheGroovyService {
 	private String ruleConfigVersion;
 
 	private static Map<String,String> diyParamDict = new HashMap<String,String>();   // 自定义规则、渠道通知,逻辑节点可配置参数字典
-	
-	
+
+
 
 /*	public static DiyScriptCacheMapping getDiyScriptCacheMapping() {
 		return diyScriptCacheMapping;
@@ -107,8 +107,8 @@ public class CacheGroovyService {
 			updateThread.start();
 		}
 	}
-	
-	
+
+
 	//不用刻意去掉start方式，将这放在init方法，bean创建时自动被调用
 	public void start() {
 		synchronized (CacheGroovyService.class) {
@@ -130,7 +130,7 @@ public class CacheGroovyService {
 		public UpdateThread(String threadName) {
 			super.setName(threadName);
 		}
-		  
+
 		@Override
         public void run() {
 			while (true) {
@@ -151,7 +151,7 @@ public class CacheGroovyService {
 
 	/**
 	 * 初始化规则配置
-	 * @throws RuleJsonParseException 
+	 * @throws RuleJsonParseException
 	 */
 	@SuppressWarnings("unchecked")
 	public void initRuleConfig() {
@@ -198,20 +198,20 @@ public class CacheGroovyService {
 			logger.info("Finding a new script, recompile and cache, rule id: {}.", id);
 		}
 	}
-	
+
 	/**
-	 * 缓存自定义规则脚本 
-	 * @throws RuleJsonParseException 
+	 * 缓存自定义规则脚本
+	 * @throws RuleJsonParseException
 	 **/
 //	@SuppressWarnings("unchecked")
 /*	private void cacheDiyRuleScript(Long id, String scriptContent, String hashcode)
 	{
 		try {
 			// 判断新的脚本内容与缓存是否有差异，如果有则重新编译
-			if(!diyScriptCacheMapping.isDifference(id, hashcode)) 
+			if(!diyScriptCacheMapping.isDifference(id, hashcode))
 			{
 				LogicNode<JSONObject> logicNode = NodeBuilder.build(scriptContent, diyParamDict);
-				
+
 				diyScriptCacheMapping.addScript(id, hashcode, logicNode);
 				logger.info("Finding a new diyScript, recompile and cache, rule id: {}.", id);
 			}
@@ -219,5 +219,5 @@ public class CacheGroovyService {
 			logger.error("",e);
 		}
 	}*/
-	
+
 }

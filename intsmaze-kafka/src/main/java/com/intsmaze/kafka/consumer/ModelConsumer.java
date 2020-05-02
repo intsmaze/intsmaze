@@ -14,8 +14,8 @@ import java.util.*;
  * @date ：Created in 2020/2/5 12:41
  * @description： https://www.cnblogs.com/intsmaze/
  * <p>
- * Kafka消费者不是线程安全的。所有网络I / O都发生在进行调用的应用程序线程中。
- * 用户有责任确保正确同步多线程访问。不同步的访问将导致ConcurrentModificationException。
+ *  Kafka消费者不是线程安全的。所有网络I / O都发生在进行调用的应用程序线程中。
+ *  用户有责任确保正确同步多线程访问，不同步的访问将导致ConcurrentModificationException。
  * @modified By：
  */
 public class ModelConsumer {
@@ -49,7 +49,7 @@ public class ModelConsumer {
         while (true) {
             ConsumerRecords<String, String> records = consumer.poll(100);
             for (ConsumerRecord<String, String> record : records) {
-                System.out.printf("offset = %d, key = %s, value = %s%n", record.offset(), record.key(), record.value());
+                System.out.printf("paririon = %d,offset = %d, key = %s, value = %s%n",record.partition(),record.offset(), record.key(), record.value());
             }
         }
     }
@@ -76,7 +76,7 @@ public class ModelConsumer {
     @Test
     public void manualOffsetControl() {
         Properties props = new Properties();
-        props.put("bootstrap.servers", "localhost:9092");
+        props.put("bootstrap.servers", "192.168.19.201:9092");
         props.put("group.id", "test");
 
         props.put("enable.auto.commit", "false");
@@ -86,11 +86,12 @@ public class ModelConsumer {
         KafkaConsumer<String, String> consumer = new KafkaConsumer<>(props);
         consumer.subscribe(Arrays.asList("kafka-test"));
 
-        final int minBatchSize = 200;
+        final int minBatchSize = 10;
         List<ConsumerRecord<String, String>> buffer = new ArrayList<>();
         while (true) {
             ConsumerRecords<String, String> records = consumer.poll(100);
             for (ConsumerRecord<String, String> record : records) {
+                System.out.printf("paririon = %d,offset = %d, key = %s, value = %s%n",record.partition(),record.offset(), record.key(), record.value());
                 buffer.add(record);
             }
             if (buffer.size() >= minBatchSize) {
@@ -118,24 +119,28 @@ public class ModelConsumer {
     @Test
     public void manualOffsetPartitionControl() {
         Properties props = new Properties();
-        props.put("bootstrap.servers", "localhost:9092");
+        props.put("bootstrap.servers", "192.168.19.201:9092");
         props.put("group.id", "test");
         props.put("enable.auto.commit", "false");
         props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
         props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
         KafkaConsumer<String, String> consumer = new KafkaConsumer<>(props);
-        consumer.subscribe(Arrays.asList("foo", "bar"));
+        consumer.subscribe(Arrays.asList("kafka-test"));
         try {
             while (true) {
                 ConsumerRecords<String, String> records = consumer.poll(Long.MAX_VALUE);
-                for (TopicPartition partition : records.partitions()) {
-                    List<ConsumerRecord<String, String>> partitionRecords = records.records(partition);
-                    for (ConsumerRecord<String, String> record : partitionRecords) {
-                        System.out.println(record.offset() + ": " + record.value());
-                    }
-                    long lastOffset = partitionRecords.get(partitionRecords.size() - 1).offset();
-                    consumer.commitSync(Collections.singletonMap(partition, new OffsetAndMetadata(lastOffset + 1)));
-                }
+//                for (TopicPartition partition : records.partitions()) {
+//                    List<ConsumerRecord<String, String>> partitionRecords = records.records(partition);
+//                    for (ConsumerRecord<String, String> record : partitionRecords) {
+//                        System.out.println(record.offset() + ": " + record.value());
+//                    }
+            for (ConsumerRecord<String, String> record : records) {
+                System.out.println(record.offset() + ": " + record.value());
+                TopicPartition topicPartition = new TopicPartition("kafka-test", 0);
+//                    long lastOffset = partitionRecords.get(partitionRecords.size() - 1).offset();
+                consumer.commitSync(Collections.singletonMap(topicPartition, new OffsetAndMetadata(27)));
+            }
+//                }
             }
         } finally {
             consumer.close();
@@ -171,10 +176,10 @@ public class ModelConsumer {
         // 即使每个消费者与另一个消费者共享一个groupId，每个消费者也可以独立行动。
         // 为避免偏移提交冲突，通常应确保groupId对于每个消费者实例都是唯一的。
         //请注意，不可能通过主题订阅（即使用subscribe）将手动分区分配（即使用assign）与动态分区分配混合在一起。
-        String topic = "foo";
-        TopicPartition partition0 = new TopicPartition(topic, 0);
-        TopicPartition partition1 = new TopicPartition(topic, 1);
-        consumer.assign(Arrays.asList(partition0, partition1));
+        String topic = "kafka-test";
+        TopicPartition partition0 = new TopicPartition(topic, 1);
+//        TopicPartition partition1 = new TopicPartition(topic, 1);
+        consumer.assign(Arrays.asList(partition0));
 
         try {
             while (true) {
@@ -215,7 +220,7 @@ public class ModelConsumer {
         props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
         props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
         KafkaConsumer<String, String> consumer = new KafkaConsumer<>(props);
-        consumer.subscribe(Arrays.asList("foo", "bar"));
+        consumer.subscribe(Arrays.asList("kafka-test"));
         try {
             while (true) {
                 ConsumerRecords<String, String> records = consumer.poll(100);

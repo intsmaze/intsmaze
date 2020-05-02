@@ -1,4 +1,3 @@
-package org.intsmaze.groovy.bean;
 //package org.intsmaze.groovy;
 //
 //import java.io.Serializable;
@@ -23,7 +22,7 @@ package org.intsmaze.groovy.bean;
 //	}
 //
 //	public void addScript(Long id, String hash, LogicNode<JSONObject> obj) {
-//		
+//
 //		scriptCache.put(id, Pair.of(hash, obj));
 //	}
 //

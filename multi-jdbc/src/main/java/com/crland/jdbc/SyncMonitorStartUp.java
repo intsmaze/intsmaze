@@ -35,12 +35,13 @@ public class SyncMonitorStartUp {
     /**
      * @author liuyang
      * @date : 2020/4/30 11:15
-     * 参数为当前时间前多少秒，例如 --timeFlag  300,600
+     * 参数为当前时间前多少秒，例如 --timeFlag 300,600  --email 979222969@qq.com,979222969@qq.com
      */
     public static void main(String[] args) {
 
         ParameterTool parameterTool = ParameterTool.fromArgs(args);
         String[] timeFlags = parameterTool.get("timeFlag").split(",");
+        String[] emailArray = parameterTool.get("email").split(",");
 
         ApplicationContext ct = new ClassPathXmlApplicationContext(new String[]{"jdbctemplate-applicationcontext.xml"});
         for (int i = 0; i < timeFlags.length; i++) {
@@ -50,14 +51,14 @@ public class SyncMonitorStartUp {
             commonService.setUpdateTime(System.currentTimeMillis() - Long.valueOf(timeFlag)*1000);
 
             Map<String, List<String>> oracleTableList = commonService.showTable(ORACLE);
-            System.out.println(oracleTableList);
+            System.out.println("oracle数据库中表:"+oracleTableList);
 
             Map<String, List<String>> mysqlTableList = commonService.showTable(MYSQL);
-            System.out.println(mysqlTableList);
+            System.out.println("mysql数据库中表:"+mysqlTableList);
 
 
             mysqlTableList = removeNoSyncTable(ORACLE, oracleTableList, mysqlTableList);
-            System.out.println(mysqlTableList);
+            System.out.println("mysql同步后数据库中表:"+mysqlTableList);
 
             ExecutorService threadPool = new ThreadPoolExecutor(0, 2,
                     10L, TimeUnit.SECONDS,
@@ -78,13 +79,13 @@ public class SyncMonitorStartUp {
                     e.printStackTrace();
                 }
             }
+            int activeCount = ((ThreadPoolExecutor) threadPool).getActiveCount();
+            threadPool.shutdown();
 
             List<String> errorList = comparableDbInfo();
 
             if (errorList.size() > 0) {
-                List<String> userMailList = new ArrayList<>();
-                userMailList.add("979222969@qq.com");
-                MailMonitorUtils.sendMail(userMailList, "新营销数据库同步不一致：" + errorList.toString());
+                MailMonitorUtils.sendMail( Arrays.asList(emailArray), "新营销数据库同步不一致：" + errorList.toString());
             }
         }
         System.out.println("运行结束");
