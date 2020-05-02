@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/context
+	   http://www.springframework.org/schema/context/spring-context.xsd
+	   http://www.springframework.org/schema/beans
+	   http://www.springframework.org/schema/beans/spring-beans-4.0.xsd"
+	default-init-method="init" default-destroy-method="destroy">
+
+
+	 <bean id="dbUtils" class="com.intsmaze.adapter.util.impl.HiveUtils"
+		init-method="init">
+		<property name="user" value="hadoop"></property>
+		<property name="password" value="hadoop"></property>
+		<property name="url" value="192.168.19.133:10000"></property>
+		<property name="dbName" value="toucun"></property>
+	</bean>
+
+	<bean id="dbDao" class="com.intsmaze.adapter.dao.impl.HiveDao"
+		init-method="init">
+		<property name="dbUtils" ref="dbUtils"></property>
+	</bean> 
+	
+
+	<bean id="sqlAdapter" class="com.intsmaze.adapter.base.SqlAdapter">
+		<property name="dbDao" ref="dbDao"></property>
+	</bean>
+
+
+
+
+</beans>
