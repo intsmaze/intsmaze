@@ -31,6 +31,9 @@
         <module>intsmaze-classloadjar</module>
         <module>intsmaze-common</module>
         <module>intsmaze-drools</module>
+        <module>intsmaze-drpc</module>
+        <module>intsmaze-hbase</module>
+        <module>intsmaze-jetty</module>
         <module>multi-jdbc</module>
     </modules>
 
