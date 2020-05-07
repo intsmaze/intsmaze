@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>Page Index</title>
+</head>
+<body>
+<h2>前台系统</h2>
+<p id="info"></p>
+</body>
+<script src="jquery-3.3.1/jquery-3.3.1.js"></script>
+<script>
+$.ajax({
+url: 'http://127.0.0.1:8080/person/get/1',
+type: "post",
+success: function (data) {
+$("#info").html("跨域访问成功:"+data.data.name);
+},
+error: function (data) {
+$("#info").html("跨域失败!!");
+}
+})
+</script>
+</html>

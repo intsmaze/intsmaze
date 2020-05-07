@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/intsmaze.iml" filepath="$PROJECT_DIR$/.idea/intsmaze.iml" />
+      <module fileurl="file://$PROJECT_DIR$/intsmaze-classload/intsmaze-classload.iml" filepath="$PROJECT_DIR$/intsmaze-classload/intsmaze-classload.iml" />
+      <module fileurl="file://$PROJECT_DIR$/intsmaze-classloadjar/intsmaze-classloadjar.iml" filepath="$PROJECT_DIR$/intsmaze-classloadjar/intsmaze-classloadjar.iml" />
+      <module fileurl="file://$PROJECT_DIR$/intsmaze-common/intsmaze-common.iml" filepath="$PROJECT_DIR$/intsmaze-common/intsmaze-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/intsmaze-dbadapter/intsmaze-dbadapter.iml" filepath="$PROJECT_DIR$/intsmaze-dbadapter/intsmaze-dbadapter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/intsmaze-drools/intsmaze-drools.iml" filepath="$PROJECT_DIR$/intsmaze-drools/intsmaze-drools.iml" />
+      <module fileurl="file://$PROJECT_DIR$/intsmaze-drpc/intsmaze-drpc.iml" filepath="$PROJECT_DIR$/intsmaze-drpc/intsmaze-drpc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/intsmaze-groovy/intsmaze-groovy.iml" filepath="$PROJECT_DIR$/intsmaze-groovy/intsmaze-groovy.iml" />
+      <module fileurl="file://$PROJECT_DIR$/intsmaze-hash/intsmaze-hash.iml" filepath="$PROJECT_DIR$/intsmaze-hash/intsmaze-hash.iml" />
+      <module fileurl="file://$PROJECT_DIR$/intsmaze-hbase/intsmaze-hbase.iml" filepath="$PROJECT_DIR$/intsmaze-hbase/intsmaze-hbase.iml" />
+      <module fileurl="file://$PROJECT_DIR$/intsmaze-hive/intsmaze-hive.iml" filepath="$PROJECT_DIR$/intsmaze-hive/intsmaze-hive.iml" />
+      <module fileurl="file://$PROJECT_DIR$/intsmaze-jetty/intsmaze-jetty.iml" filepath="$PROJECT_DIR$/intsmaze-jetty/intsmaze-jetty.iml" />
+      <module fileurl="file://$PROJECT_DIR$/intsmaze-kafka/intsmaze-kafka.iml" filepath="$PROJECT_DIR$/intsmaze-kafka/intsmaze-kafka.iml" />
+      <module fileurl="file://$PROJECT_DIR$/intsmaze-lsm/intsmaze-lsm.iml" filepath="$PROJECT_DIR$/intsmaze-lsm/intsmaze-lsm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/intsmaze-lucene/intsmaze-lucene.iml" filepath="$PROJECT_DIR$/intsmaze-lucene/intsmaze-lucene.iml" />
+      <module fileurl="file://$PROJECT_DIR$/intsmaze-redis/intsmaze-redis.iml" filepath="$PROJECT_DIR$/intsmaze-redis/intsmaze-redis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/intsmaze-rpc/intsmaze-rpc.iml" filepath="$PROJECT_DIR$/intsmaze-rpc/intsmaze-rpc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/intsmaze-spiler/intsmaze-spiler.iml" filepath="$PROJECT_DIR$/intsmaze-spiler/intsmaze-spiler.iml" />
+      <module fileurl="file://$PROJECT_DIR$/intsmaze-storm/intsmaze-storm.iml" filepath="$PROJECT_DIR$/intsmaze-storm/intsmaze-storm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/intsmaze-z-core/intsmaze-z-core.iml" filepath="$PROJECT_DIR$/intsmaze-z-core/intsmaze-z-core.iml" />
+    </modules>
+  </component>
+</project>

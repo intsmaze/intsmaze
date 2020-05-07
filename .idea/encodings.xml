@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" addBOMForNewFiles="with NO BOM">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/intsmaze-classload" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/intsmaze-classloadjar" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/intsmaze-common" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/intsmaze-dbadapter" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/intsmaze-drools" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/intsmaze-drpc" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/intsmaze-groovy" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/intsmaze-hash" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/intsmaze-hbase" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/intsmaze-hive" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/intsmaze-jetty" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/intsmaze-kafka" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/intsmaze-lsm" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/intsmaze-lucene" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/intsmaze-redis" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/intsmaze-rpc" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/intsmaze-spiler" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/intsmaze-z-core" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/multi-jdbc" charset="UTF-8" />
+  </component>
+</project>

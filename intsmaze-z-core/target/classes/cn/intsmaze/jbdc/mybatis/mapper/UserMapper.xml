@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace命名空间，为了对sql语句进行隔离，方便管理 ，mapper开发dao方式，使用namespace有特殊作用 mapper代理开发时将namespace指定为mapper接口的全限定名 -->
+<mapper namespace="cn.intsmaze.mybatis.mapper.UserMapper">
+	<!-- 在mapper.xml文件中配置很多的sql语句，执行每个sql语句时，封装为MappedStatement对象 mapper.xml以statement为单位管理sql语句 -->
+
+	<select id="findUserById" parameterType="int"
+		resultType="cn.intsmaze.mybatis.po.User">
+		SELECT * FROM mybatis_user WHERE id= #{id}
+	</select>
+
+	<select id="getMtypeList" parameterType="java.util.HashMap"
+		resultType="java.util.HashMap">
+		select id,name1 as name from a1 where id=${id}
+		<if test="name1 != null and groupid != '' ">
+			and name1='${name}'
+		</if>
+	</select>
+
+	<select id="findUserByName" parameterType="java.lang.String"
+		resultType="cn.intsmaze.mybatis.po.User">
+		select * from mybatis_user where username like '%${value}%'
+	</select>
+
+	<insert id="insertUser" parameterType="cn.intsmaze.mybatis.po.User">
+		<selectKey keyProperty="id" order="AFTER" resultType="int">
+			select
+			LAST_INSERT_ID()
+		</selectKey>
+		INSERT INTO mybatis_user(username,birthday,sex,address)
+		VALUES(#{username},#{birthday},#{sex},#{address})
+	</insert>
+	
+	<delete id="deleteUser" parameterType="int">
+		delete from mybatis_user where id=#{id}
+	</delete>
+	
+	<update id="updateUser" parameterType="cn.intsmaze.mybatis.po.User">
+		update mybatis_user set
+		username=#{username},birthday=#{birthday},sex=#{sex},address=#{address}
+		where id=#{id}
+	</update>
+</mapper>
+

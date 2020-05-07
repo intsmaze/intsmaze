@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.intsmaze.mybatis.onetoone.OrdersMapperCustom">
+	
+	<!-- 一对一查询使用reusltType完成,查询订单关联查询用户信息
+	可以发现因为orders类的userId属性和数据库表中user_id不是对应的，所以查询后打印时null-->
+	 <select id="findOrderUserList" resultType="orderCustom">
+		SELECT 
+		  orders.*,
+		  user.username,
+		  user.sex 
+		FROM
+		  orders,
+		  USER 
+		WHERE orders.user_id = user.id 
+	 </select>
+	  
+	 <!-- 一对一查询resultMap -->
+	<resultMap type="orders" id="ordersUserResultMap">
+		<!-- 完成了订单信息的映射配置 -->
+		<!-- id：订单关联用户查询的唯 一 标识  -->
+		<id column="id" property="id"/>
+		<result column="user_id" property="userId"/>
+		<result column="number" property="number"/>
+		<result column="createtime" property="createtime"/>
+		<result column="note" property="note"/>
+		
+		<!-- 下边完成关联信息的映射
+		association：用于对关联信息映射到单个pojo
+		property：要将关联信息映射到orders的哪个属性中
+		javaType：关联信息映射到orders的属性的类型，是user的类型
+		 -->
+		<association property="user" javaType="user">
+			<!-- id：关联信息的唯 一标识  -->
+			<!-- property： 要映射到user的哪个属性中-->
+			<id column="user_id" property="id"/>
+			<!-- result就是普通列的映射 -->
+			<result column="username" property="username"/>
+			<result column="sex" property="sex"/>		
+		</association>	
+	</resultMap>
+	<!-- 一对一查询使用reusltMap完成查询订单关联查询用户信息-->
+	 <select id="findOrderUserListResultMap" resultMap="ordersUserResultMap" >
+		SELECT 
+		  orders.*,
+		  user.username,
+		  user.sex 
+		FROM
+		  orders,
+		  USER 
+		WHERE orders.user_id = user.id 
+	 </select>
+	 	 
+	 	 
+	 <!-- 一对一查询延迟加载
+	 开始只查询订单，对用户信息进行延迟加载 
+	  -->
+	 <select id="findOrderUserListLazyLoading" resultMap="orderCustomLazyLoading">
+		 SELECT 
+		  orders.*
+		FROM
+		  orders
+	 </select>
+	<!-- 一对一查询延迟加载 的配置 -->
+	<resultMap type="orders" id="orderCustomLazyLoading">
+		<!-- 完成了订单信息的映射配置 -->
+		<!-- id：订单关联用户查询的唯 一 标识 -->
+		<id column="id" property="id" />
+		<result column="user_id" property="userId" />
+		<result column="number" property="number" />
+		<result column="createtime" property="createtime" />
+		<result column="note" property="note" />
+		<!-- 配置用户信息的延迟加载 select：延迟加载执行的sql所在的statement的id，如果不在同一个namespace需要加namespace 
+			sql：根据用户id查询用户信息 column：关联查询的列 property:将关联查询的用户信息设置到Orders的哪个属性 -->
+		<association property="user"
+			select="cn.intsmaze.mybatis.onetoone.UserMapper.findUserById" column="user_id"></association>
+	</resultMap>
+	
+</mapper>
+

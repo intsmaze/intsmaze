@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/context
+	   http://www.springframework.org/schema/context/spring-context.xsd
+	   http://www.springframework.org/schema/beans
+	   http://www.springframework.org/schema/beans/spring-beans-4.0.xsd"
+	default-init-method="init" default-destroy-method="destroy">
+
+	<bean id="jettyServer" class="com.intsmaze.jetty.handle.HttpServer"
+		init-method="init">
+		<property name="port" value="8012"></property>
+		<property name="servlets">
+			<map>
+				 <!--<entry key="/jetty" value-ref="handler" />-->
+				 <entry key="/test" value-ref="handlerNoAsyn" />
+				<!--<entry key="/jetty/dubbo" value-ref="dubboHandler" />-->
+			</map>
+		</property>
+	</bean>
+
+
+	<bean id="handlerNoAsyn" class="com.intsmaze.jetty.handle.model.HandlerNoAsyn">
+	</bean>
+
+<!-- 	<bean id="handler" class="org.intsmaze.jetty.handle.Handler">
+	</bean>-->
+
+<!--	<bean id="dubboHandler" class="org.intsmaze.jetty.handle.DubboHandler">
+		<property name="dubboJsonService" ref="dubboServiceImpl"></property>
+	</bean>-->
+
+</beans>

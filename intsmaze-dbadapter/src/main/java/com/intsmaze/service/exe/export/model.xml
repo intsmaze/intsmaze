@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sqls>
+
+	<sql id="get_block_trade_infor">
+	SELECT *  from aml_policy_block_trade 
+	where dt='#{date}'
+	</sql>
+	
+</sqls>

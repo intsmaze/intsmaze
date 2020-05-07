@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="intsmaze-classload" />
+        <module name="intsmaze-classloadjar" />
+        <module name="intsmaze-common" />
+        <module name="intsmaze-dbadapter" />
+        <module name="intsmaze-drools" />
+        <module name="intsmaze-drpc" />
+        <module name="intsmaze-groovy" />
+        <module name="intsmaze-hash" />
+        <module name="intsmaze-hbase" />
+        <module name="intsmaze-hive" />
+        <module name="intsmaze-jetty" />
+        <module name="intsmaze-kafka" />
+        <module name="intsmaze-lsm" />
+        <module name="intsmaze-lucene" />
+        <module name="intsmaze-redis" />
+        <module name="intsmaze-rpc" />
+        <module name="intsmaze-spiler" />
+        <module name="intsmaze-storm" />
+        <module name="intsmaze-z-core" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="intsmaze" target="1.8" />
+      <module name="intsmaze-classload" target="1.8" />
+      <module name="intsmaze-classloadjar" target="1.8" />
+      <module name="intsmaze-common" target="1.8" />
+      <module name="intsmaze-dbadapter" target="1.8" />
+      <module name="intsmaze-drools" target="1.8" />
+      <module name="intsmaze-drpc" target="1.8" />
+      <module name="intsmaze-groovy" target="1.8" />
+      <module name="intsmaze-hash" target="1.8" />
+      <module name="intsmaze-hbase" target="1.5" />
+      <module name="intsmaze-hive" target="1.8" />
+      <module name="intsmaze-jetty" target="1.8" />
+      <module name="intsmaze-kafka" target="1.8" />
+      <module name="intsmaze-lsm" target="1.8" />
+      <module name="intsmaze-lucene" target="1.8" />
+      <module name="intsmaze-redis" target="1.8" />
+      <module name="intsmaze-rpc" target="1.8" />
+      <module name="intsmaze-spiler" target="1.8" />
+      <module name="intsmaze-storm" target="1.8" />
+      <module name="intsmaze-z-core" target="1.8" />
+      <module name="multi-jdbc" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

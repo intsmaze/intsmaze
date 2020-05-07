@@ -1,0 +1,7 @@
+com\intsmaze\hive\udf\MovieRateBean.class
+com\intsmaze\hive\udf\ToLowerCase.class
+com\intsmaze\hive\udf\ToUpperCase.class
+com\intsmaze\hive\udf\GeoHash.class
+com\intsmaze\hive\udf\GeoHash$LocationBean.class
+com\intsmaze\hive\udf\GeohashSwitch.class
+com\intsmaze\hive\ping\PingHive.class

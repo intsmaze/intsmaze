@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/context
+	   http://www.springframework.org/schema/context/spring-context.xsd
+	   http://www.springframework.org/schema/beans
+	   http://www.springframework.org/schema/beans/spring-beans-4.0.xsd"
+       default-init-method="init" default-destroy-method="destroy">
+
+
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/test"/>
+        <property name="username" value="root"/>
+        <property name="password" value="root"/>
+        <property name="initialSize" value="2"/>
+        <property name="maxActive" value="20"/>
+        <property name="maxWait" value="600"/>
+        <property name="timeBetweenEvictionRunsMillis" value="6000"/>
+        <property name="minEvictableIdleTimeMillis" value="30000"/>
+        <property name="validationQuery" value="SELECT 1"/>
+        <property name="testWhileIdle" value="true"/>
+        <property name="testOnBorrow" value="false"/>
+        <property name="testOnReturn" value="false"/>
+        <property name="poolPreparedStatements" value="false"/>
+        <property name="maxPoolPreparedStatementPerConnectionSize" value="200"/>
+    </bean>
+
+    <!-- 定义jdbctemplate -->
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <bean id="userDao" class="com.intsmaze.jetty.handle.zjrc.UserDao">
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+    </bean>
+
+    <bean id="jettyServer" class="com.intsmaze.jetty.handle.zjrc.HttpServer"
+          init-method="init">
+        <property name="port" value="8012"></property>
+        <property name="servlets">
+            <map>
+                <entry key="/handlerLBSServer" value-ref="handlerLBSServer"/>
+            </map>
+        </property>
+    </bean>
+
+    <bean id="handlerLBSServer" class="com.intsmaze.jetty.handle.zjrc.HandlerLbsServer">
+        <property name="userDao" ref="userDao"/>
+    </bean>
+
+</beans>

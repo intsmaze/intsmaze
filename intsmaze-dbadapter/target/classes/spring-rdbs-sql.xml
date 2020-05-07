@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xsi:schemaLocation="http://www.springframework.org/schema/context
+	   http://www.springframework.org/schema/context/spring-context.xsd
+	   http://www.springframework.org/schema/beans
+	   http://www.springframework.org/schema/beans/spring-beans-4.0.xsd"	   
+	   default-init-method="init" default-destroy-method="destroy">
+
+	<!-- sit 
+	<bean id="blUtils" class="com.hand.rdbs.util.MysqlUtils" init-method="init">
+		<property name="user" value="cmRzX2FtbA=="></property>
+		<property name="password" value="Q2F0aGF5MTIz"></property>
+		<property name="url" value="amRiYzpteXNxbDovL3JtLXAydWc1YzRsMWY5MDAzNzMyLm15c3FsLnJkcy5hbGl5dW5jcy5jb206MzMwNg=="></property>
+		<property name="dbName" value="dWF0X2Z4cQ=="></property>
+	</bean>
+
+	<bean id="mysqlUtils" class="com.hand.rdbs.util.MysqlUtils" init-method="init">
+		<property name="user" value="cmRzX2FtbA=="></property>
+		<property name="password" value="Q2F0aGF5MTIz"></property>
+		<property name="url" value="amRiYzpteXNxbDovL3JtLXAydWc1YzRsMWY5MDAzNzMyLm15c3FsLnJkcy5hbGl5dW5jcy5jb206MzMwNg=="></property>
+		<property name="dbName" value="dWF0X2Z4cQ=="></property>
+	</bean>-->
+	
+	<!-- 本地数据库 --> 
+<!--     	<bean id="blUtils" class="com.hand.rdbs.util.MysqlUtils" init-method="init">
+		<property name="user" value="cm9vdA=="></property>
+		<property name="password" value="cm9vdA=="></property>
+		<property name="url" value="amRiYzpteXNxbDovL2xvY2FsaG9zdDozMzA2"></property>
+		<property name="dbName" value="Z2JfZHQ="></property>
+	</bean> 
+   	 <bean id="mysqlUtils" class="com.hand.rdbs.util.MysqlUtils" init-method="init">
+		<property name="user" value="cm9vdA=="></property>
+		<property name="password" value="cm9vdA=="></property>
+		<property name="url" value="amRiYzpteXNxbDovL2xvY2FsaG9zdDozMzA2"></property>
+		<property name="dbName" value="Z2JfZHQ="></property>
+	</bean>  -->
+
+	    	<bean id="blUtils" class="com.hand.rdbs.util.MysqlUtils" init-method="init">
+		<property name="user" value="root"></property>
+		<property name="password" value="root"></property>
+		<property name="url" value="jdbc:mysql://localhost:3306"></property>
+		<property name="dbName" value="gb_dt"></property>
+	</bean> 
+   	 <bean id="mysqlUtils" class="com.hand.rdbs.util.MysqlUtils" init-method="init">
+		<property name="user" value="root"></property>
+		<property name="password" value="root"></property>
+		<property name="url" value="jdbc:mysql://localhost:3306"></property>
+		<property name="dbName" value="gb_dt"></property>
+	</bean> 
+	<!-- rds	 
+	<bean id="blUtils" class="com.hand.rdbs.util.MysqlUtils" init-method="init">
+		<property name="user" value="dWF0Znhx"></property>
+		<property name="password" value="VWF0ZnhxMTIz"></property>
+		<property name="url" value="amRiYzpteXNxbDovL3JtLW5oNHY1N3N3aG5mNDNta2xmLm15c3FsLnJkcy5hbGl5dW5jcy5jb206MzMwNg=="></property>
+		<property name="dbName" value="dWF0Znhx"></property>
+	</bean> 
+
+	
+   <bean id="mysqlUtils" class="com.hand.rdbs.util.MysqlUtils" init-method="init">
+		<property name="user" value="dWF0Znhx"></property>
+		<property name="password" value="VWF0ZnhxMTIz"></property>
+		<property name="url" value="amRiYzpteXNxbDovL3JtLW5oNHY1N3N3aG5mNDNta2xmLm15c3FsLnJkcy5hbGl5dW5jcy5jb206MzMwNg=="></property>
+		<property name="dbName" value="dWF0Znhx"></property>
+	</bean>
+	
+	<bean id="blUtils" class="com.hand.rdbs.util.MysqlUtils" init-method="init">
+		<property name="user" value="cHJk"></property>
+		<property name="password" value="Q2F0aGF5bGlmZV8zNDc="></property>
+		<property name="url" value="amRiYzpteXNxbDovL3JtLW5oNHY1N3N3aG5mNDNta2xmLm15c3FsLnJkcy5hbGl5dW5jcy5jb206MzMwNg=="></property>
+		<property name="dbName" value="YmxhY2tsaXN0"></property>
+	</bean> 
+	-->
+	<bean id="blDao" class="com.hand.rdbs.dao.impl.MysqlDao" init-method="init">
+		<property name="dbUtils" ref="blUtils"></property>
+	</bean> 
+	 
+	<bean id="mysqlDao" class="com.hand.rdbs.dao.impl.MysqlDao" init-method="init">
+		<property name="dbUtils" ref="mysqlUtils"></property>
+	</bean> 
+	
+</beans>

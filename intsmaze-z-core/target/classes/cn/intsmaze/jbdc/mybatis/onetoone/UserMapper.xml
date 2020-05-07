@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.intsmaze.mybatis.onetoone.UserMapper">
+	
+	<select id="findUserById" parameterType="int" resultType="user">
+		SELECT * FROM USER WHERE id= #{id}
+	</select>
+	
+</mapper>
+

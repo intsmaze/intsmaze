@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.pentaho:pentaho-aggdesigner-algorithm:5.1.5-jhyde">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/pentaho/pentaho-aggdesigner-algorithm/5.1.5-jhyde/pentaho-aggdesigner-algorithm-5.1.5-jhyde.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/pentaho/pentaho-aggdesigner-algorithm/5.1.5-jhyde/pentaho-aggdesigner-algorithm-5.1.5-jhyde-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/pentaho/pentaho-aggdesigner-algorithm/5.1.5-jhyde/pentaho-aggdesigner-algorithm-5.1.5-jhyde-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

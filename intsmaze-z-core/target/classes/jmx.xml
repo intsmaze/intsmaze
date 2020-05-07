@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xsi:schemaLocation="http://www.springframework.org/schema/context
+	   http://www.springframework.org/schema/context/spring-context.xsd
+	   http://www.springframework.org/schema/beans
+	   http://www.springframework.org/schema/beans/spring-beans-4.0.xsd"	   
+	   default-init-method="init" default-destroy-method="destroy">
+
+  <!-- 暴露监控设备 -->  
+    <bean id="exporter" class="org.springframework.jmx.export.MBeanExporter"  
+        lazy-init="false">  
+        <property name="beans">  
+            <map>  
+                <entry key="bean:name=HusbandLocal" value-ref="HusbandLocal" />  
+            </map>  
+        </property>  
+    </bean>  
+  
+    <!-- mbean -->  
+    <bean id="HusbandLocal" class="cn.intsmaze.jmx.model.HusbandLocal" />  
+    
+    
+    
+    
+<!--     上面是本地进行监控，如果是远程的程序，本机如何获取监控，这就要求远程暴露一个端口以供访问，连接 RMI方式  
+    
+</beans>

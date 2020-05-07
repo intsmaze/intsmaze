@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.intsmaze.mybatis.cache2.UserMapper">
+
+	<!-- 开启二级缓存-->
+	<cache></cache>
+	
+	<select id="findUserById" parameterType="int" resultType="cn.intsmaze.mybatis.po.User">
+		SELECT * FROM USER WHERE id= #{id}
+	</select>
+	
+	<update id="updateUser" parameterType="cn.intsmaze.mybatis.po.User">
+		update user set username=#{username},birthday=#{birthday},sex=#{sex},address=#{address} where id=#{id}
+	</update>
+</mapper>
+
