@@ -242,8 +242,6 @@
       <find>PropertiesComponent</find>
       <find>timeBetweenEvictionRunsMillis</find>
       <find>salequery</find>
-      <find>crland</find>
-      <find>spdb</find>
     </findStrings>
     <dirStrings>
       <dir>C:\aaaa11a\intsmaze</dir>
