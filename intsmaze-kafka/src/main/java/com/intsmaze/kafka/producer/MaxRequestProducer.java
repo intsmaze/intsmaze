@@ -1,4 +1,4 @@
-package com.intsmaze.kafka.hand;
+package com.intsmaze.kafka.producer;
 
 
 import org.apache.commons.lang3.StringUtils;
@@ -14,10 +14,10 @@ import java.util.concurrent.ExecutionException;
  * @description： https://www.cnblogs.com/intsmaze/
  * @modified By：
  */
-public class HandProducer {
+public class MaxRequestProducer {
 
     public static String readFile() {
-        InputStream path = HandProducer.class.getResourceAsStream("/data.txt");
+        InputStream path = MaxRequestProducer.class.getResourceAsStream("/data.txt");
         BufferedReader reader = new BufferedReader(new InputStreamReader(path));
         StringBuffer sbf = new StringBuffer();
         try {
@@ -61,7 +61,7 @@ public class HandProducer {
         String sendMess="";
 //        for(int i=1;i<100;i++)
         {
-            sendMess= StringUtils.join(sendMess,HandProducer.readFile());
+            sendMess= StringUtils.join(sendMess, MaxRequestProducer.readFile());
         }
 
         // kafka send message
