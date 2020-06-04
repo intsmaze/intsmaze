@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- 定义目标对象 -->
+	<bean id="customerDao" class="cn.intsmaze.aop.CustomerDaoImpl"></bean>
+	<bean id="orderDao" class="cn.intsmaze.aop.OrderDao"></bean>
+	
+	<!-- 定义增强 -->
+	<bean id="beforeAdvice" class="cn.intsmaze.aop.before.MyBeforeAdvice"></bean>
+	<bean id="aroundAdvice" class="cn.intsmaze.aop.around.MyAroundAdvice"></bean>
+
+	<!-- 定义一个带有切点的切面 -->
+	<bean id="myPointcutAdvisor" class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
+		<property name="pattern" value=".*add.*"/>
+		<property name="advice" ref="aroundAdvice"/>
+	</bean>
+	
+	<!-- 自动生成代理 -->
+	<bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"></bean>
+</beans>

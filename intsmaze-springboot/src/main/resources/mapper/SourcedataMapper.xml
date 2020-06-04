@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.intsmaze.project.dao.SourcedataMapper">
+  <resultMap id="BaseResultMap" type="com.intsmaze.project.model.Sourcedata">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="uuid" jdbcType="VARCHAR" property="uuid" />
+    <result column="testTime" jdbcType="VARCHAR" property="testtime" />
+    <result column="seq_id" jdbcType="INTEGER" property="seqId" />
+    <result column="stepNumber" jdbcType="VARCHAR" property="stepnumber" />
+    <result column="stepType" jdbcType="VARCHAR" property="steptype" />
+    <result column="cycleNumber" jdbcType="INTEGER" property="cyclenumber" />
+    <result column="flowId" jdbcType="VARCHAR" property="flowid" />
+    <result column="threadName" jdbcType="VARCHAR" property="threadname" />
+    <result column="receiveTime" jdbcType="VARCHAR" property="receivetime" />
+  </resultMap>
+</mapper>

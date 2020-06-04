@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 不带有切点的切面 -->
+	<!-- 定义目标对象 -->
+	<bean id="customerDao" class="cn.intsmaze.aop.CustomerDaoImpl"></bean>
+	
+	<!-- 定义增强 -->
+	<bean id="beforeAdvice" class="cn.intsmaze.aop.before.MyBeforeAdvice"></bean>
+
+	<!-- Spring支持配置生成代理: -->
+	<bean id="customerDaoProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<!-- 设置目标对象 -->
+		<property name="target" ref="customerDao"/>
+		<!-- 设置实现的接口 ,value中写接口的全路径 -->
+		<property name="proxyInterfaces" value="cn.intsmaze.aop.CustomerDao"/>
+		<!-- 需要使用value:要的名称 -->
+		<property name="interceptorNames" value="beforeAdvice"/>
+		<!-- 强制使用CGLIB代理 -->
+		<property name="optimize" value="true"></property>
+	</bean>
+	
+	
+	
+	<!-- 带有切点的切面 -->
+	<!-- 定义目标对象 -->
+	<bean id="orderDao" class="cn.intsmaze.aop.OrderDao"></bean>
+	
+	<!-- 定义增强 -->
+	<bean id="aroundAdvice" class="cn.intsmaze.aop.around.MyAroundAdvice"></bean>
+
+	<!-- 定义切点切面: -->
+	<bean id="myPointcutAdvisor" class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
+		<!-- 定义表达式,规定哪些方法执行拦截 -->
+		<!-- . 任意字符  * 任意个 -->
+		<!-- <property name="pattern" value=".*"/> -->
+		<!-- <property name="pattern" value="cn\.intsmaze\.spring3\.demo4\.OrderDao\.add.*"/> -->
+		<!-- <property name="pattern" value=".*add.*"></property> -->
+		<property name="patterns" value=".*add.*,.*find.*"></property>
+		<!-- 应用增强 -->
+		<property name="advice" ref="aroundAdvice"/>
+	</bean>
+
+	<!-- 定义生成代理对象 -->
+	<bean id="orderDaoProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<!-- 配置目标 -->
+		<property name="target" ref="orderDao"></property>
+		<!-- 针对类的代理 -->
+		<property name="proxyTargetClass" value="true"></property>
+		<!-- 在目标上应用增强 -->
+		<property name="interceptorNames" value="myPointcutAdvisor"></property>
+	</bean>
+</beans>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="GBK"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:aop="http://www.springframework.org/schema/aop"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-4.0.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+	<!-- 自动扫描指定包及其子包下的所有Bean类 -->
+	<!-- 指定自动搜索Bean组件、自动搜索切面类 -->
+	<context:component-scan base-package="com.intsmaze.spring.before">
+		<context:include-filter type="annotation"
+								expression="org.aspectj.lang.annotation.Aspect"/>
+	</context:component-scan>
+
+	<!-- 启动@AspectJ支持 -->
+	<aop:aspectj-autoproxy/>
+
+</beans>

@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-import static cn.intmsaze.project.core.ProjectConstant.*;
+import static com.intsmaze.project.core.ProjectConstant.*;
 
 /**
  * 代码生成器，根据数据表名称生成对应的Model、Mapper、Service、Controller简化开发。
@@ -25,10 +25,10 @@ public class CodeGenerator {
     private static final String JDBC_DIVER_CLASS_NAME = "com.mysql.jdbc.Driver";
 
     private static final String PROJECT_PATH = System.getProperty("user.dir");//项目在硬盘上的基础路径
-    private static final String TEMPLATE_FILE_PATH = PROJECT_PATH + "/src/test/resources/generator/template";//模板位置
+    private static final String TEMPLATE_FILE_PATH = PROJECT_PATH + "/intsmaze-springboot/src/test/resources/generator/template";//模板位置
 
-    private static final String JAVA_PATH = "/src/main/java"; //java文件路径
-    private static final String RESOURCES_PATH = "/src/main/resources";//资源文件路径
+    private static final String JAVA_PATH = "/intsmaze-springboot/src/main/java"; //java文件路径
+    private static final String RESOURCES_PATH = "/intsmaze-springboot/src/main/resources";//资源文件路径
 
     private static final String PACKAGE_PATH_SERVICE = packageConvertPath(SERVICE_PACKAGE);//生成的Service存放路径
     private static final String PACKAGE_PATH_SERVICE_IMPL = packageConvertPath(SERVICE_IMPL_PACKAGE);//生成的Service实现存放路径
@@ -39,7 +39,7 @@ public class CodeGenerator {
 
     public static void main(String[] args) {
 //        genCode("输入表名");
-    	 genCode("person");
+    	 genCode("sourcedata");
     }
 
     /**

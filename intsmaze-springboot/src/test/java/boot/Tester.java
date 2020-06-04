@@ -1,7 +1,7 @@
 package boot;
 
 
-import cn.intmsaze.project.Application;
+import com.intsmaze.project.Application;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;

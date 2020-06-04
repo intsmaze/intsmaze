@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+	 <!-- 
+	 	一个bean就是描述一个类
+	 	id就是标示符命名规范：类的第一个字母变成小写，其他的字母保持不变
+	 	class为类的全名-->
+	<bean id="helloWorldt" class="com.intsmaze.spring.HelloWorld"></bean>
+
+	 
+	<bean id="helloWorld" class="com.intsmaze.spring.createways.HelloWorld"></bean>
+	<bean id="helloWorld2" class="com.intsmaze.spring.createways.HelloWorldFactory" factory-method="getInstance"></bean>
+	<bean id="helloWorldFactory" class="com.intsmaze.spring.createways.HelloWorldFactory2"></bean>
+
+	<!--
+		factory-bean指向了实力工厂的bean
+		factory-method实例工厂对象的方法
+	
+	<bean id="helloWorld3" factory-bean="helloWorldFactory" factory-method="getInstance"></bean>
+	  -->
+	 <!-- **************************************** -->
+	 
+	 <bean id="helloScope" class="com.intsmaze.spring.scope.HelloScope" scope="prototype"></bean>
+
+	<!-- destroy-method  销毁该对象的方法-->
+	<bean id="helloInitdestroy" class="com.intsmaze.spring.initdestroy.HelloInitdestroy"
+		init-method="init" destroy-method="destroy" ></bean>
+
+
+	 
+	 	<bean id="personDi" class="com.intsmaze.spring.di.PersonDi">
+		<!-- 
+			property描述的就是bean中的属性
+			name属性就是描述属性的名称
+			value就是值   如果是基本属性(String)，就用value赋值
+			ref  如果是引用类型，用ref赋值
+		 -->
+		<property name="pid" value="1"></property>
+		<property name="name" value="王二麻子"></property>
+		<property name="studentDi" ref="studentDi"></property>
+		<property name="lists">
+			<list>
+				<value>list1</value>
+				<value>list2</value>
+				<!-- list中存放一个student对象-->
+				<ref bean="studentDi"/>
+			</list>
+		</property>
+		<property name="objects">
+			<list>
+				<value>obj1</value>
+				<ref bean="studentDi"/>
+			</list>
+		</property>
+		<property name="sets">
+			<set>
+				<value>set1</value>
+				<ref bean="studentDi"/>
+			</set>
+		</property>
+		<property name="map">
+			<map>
+				<entry key="m1">
+					<value>m1</value>
+				</entry>
+				<entry key="m2">
+					<ref bean="studentDi"/>
+				</entry>
+			</map>
+		</property>
+		<property name="properties">
+			<props>
+				<prop key="p1">p1</prop>
+				<prop key="p2">p2</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="studentDi" class="com.intsmaze.spring.di.StudentDi" scope="prototype"></bean>
+	 
+</beans>

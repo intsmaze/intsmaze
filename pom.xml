@@ -34,6 +34,7 @@
         <module>intsmaze-drpc</module>
         <module>intsmaze-hbase</module>
         <module>intsmaze-jetty</module>
+        <module>intsmaze-springboot</module>
     </modules>
 
     <dependencies>

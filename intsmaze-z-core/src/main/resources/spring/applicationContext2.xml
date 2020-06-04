@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- 定义目标对象 -->
+	<bean id="customerDao" class="cn.intsmaze.aop.CustomerDaoImpl"></bean>
+	<bean id="orderDao" class="cn.intsmaze.aop.OrderDao"></bean>
+	
+	<!-- 定义增强 -->
+	<bean id="beforeAdvice" class="cn.intsmaze.aop.before.MyBeforeAdvice"></bean>
+	<bean id="aroundAdvice" class="cn.intsmaze.aop.around.MyAroundAdvice"></bean>
+
+	<!-- 自动代理:按名称的代理 基于后处理Bean,后处理Bean不需要配置ID-->
+	<bean class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+		<property name="beanNames" value="*Dao"/>
+		<property name="interceptorNames" value="beforeAdvice"/>
+	</bean>
+</beans>
