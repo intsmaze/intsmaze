@@ -8,7 +8,7 @@
 	   default-init-method="init" default-destroy-method="destroy">
 
 	<!-- Twemproxy工厂 -->
-	<!--<bean id="twemproxyFactory" class="org.intsmaze.common.redis.JedisFactory">
+	<!--<bean id="twemproxyFactory" class="com.intsmaze.redis.common.JedisFactory">
 		<property name="timeout" value="2000" />
 		<property name="addressList">
 			<list>
@@ -19,7 +19,7 @@
 	</bean>-->
 	
 	<!-- Jedis工厂 -->
-	<bean id="jedisListFactory" class="org.intsmaze.common.redis.JedisFactory">
+	<bean id="jedisListFactory" class="com.intsmaze.redis.common.JedisFactory">
 		<property name="timeout" value="2000" />
 		<property name="addressList">
 			<list>
@@ -30,7 +30,7 @@
 	</bean>
 
 
-	<bean id="jedisFactory" class="org.intsmaze.common.redis.JedisFactory">
+	<bean id="jedisFactory" class="com.intsmaze.redis.common.JedisFactory">
 		<property name="timeout" value="2000" />
 		<property name="addressList">
 			<list>
@@ -43,7 +43,7 @@
 	<bean id="jedisPools" factory-bean="jedisListFactory" factory-method="createJedisPools" />
 	<bean id="jedisPool" factory-bean="jedisFactory" factory-method="createJedisPool" />
 
-	<bean id="JedisFilterKeys" class="org.intsmaze.common.redis.JedisFilterKeys">
+	<bean id="JedisFilterKeys" class="com.intsmaze.redis.common.JedisFilterKeys">
 		<property name="jedisPools" ref="jedisPools" />
 	</bean>
 

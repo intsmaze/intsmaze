@@ -1,4 +1,4 @@
-package org.intsmaze.common.redis;
+package com.intsmaze.redis.common;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;

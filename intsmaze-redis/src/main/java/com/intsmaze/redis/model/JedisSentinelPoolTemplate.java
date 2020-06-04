@@ -6,8 +6,10 @@ import redis.clients.jedis.HostAndPort;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisSentinelPool;
 
-public class JedisSentinelPoolDemo {
+public class JedisSentinelPoolTemplate {
+
 	public static void main(String[] args) {
+
 		String host = null;
 		int port = 0;
 

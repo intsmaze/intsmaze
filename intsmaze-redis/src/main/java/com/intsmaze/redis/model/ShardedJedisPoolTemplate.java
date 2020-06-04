@@ -7,7 +7,7 @@ import redis.clients.jedis.JedisShardInfo;
 import redis.clients.jedis.ShardedJedis;
 import redis.clients.jedis.ShardedJedisPool;
 
-public class ShardedJedisPoolDemo {
+public class ShardedJedisPoolTemplate {
 	public static void main(String[] args){    
 		
 		List<JedisShardInfo> shards = new ArrayList<JedisShardInfo>();

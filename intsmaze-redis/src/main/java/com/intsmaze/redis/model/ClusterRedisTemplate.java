@@ -10,7 +10,7 @@ import redis.clients.jedis.HostAndPort;
 import redis.clients.jedis.JedisCluster;
 import redis.clients.jedis.JedisPoolConfig;
 
-public class TestClusterRedis {
+public class ClusterRedisTemplate {
 
 	public static void main(String[] args) throws IOException {
 	    

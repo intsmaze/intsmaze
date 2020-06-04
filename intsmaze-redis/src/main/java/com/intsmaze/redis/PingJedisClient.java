@@ -1,9 +1,9 @@
-package com.intsmaze.redis.demo;
+package com.intsmaze.redis;
 
 import redis.clients.jedis.Jedis;
 import java.util.Set;
 
-public class JedisClientTest {
+public class PingJedisClient {
 	
 	
 	public static void main(String[] args) {
@@ -14,9 +14,7 @@ public class JedisClientTest {
 		//测试服务器是否连通
 		String resp = client.ping();
 
-		Set<String> barcode = client.hkeys("barcode");
-
-		System.out.println(client.get("metricsCount"));
+		System.out.println(resp);
 
 	}
 }

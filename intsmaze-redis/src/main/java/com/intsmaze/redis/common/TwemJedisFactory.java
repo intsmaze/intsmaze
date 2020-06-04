@@ -1,4 +1,4 @@
-package org.intsmaze.common.redis;
+package com.intsmaze.redis.common;
 
 import java.util.ArrayList;
 import java.util.List;
