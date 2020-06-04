@@ -12,6 +12,14 @@ import java.nio.ByteBuffer;
  */
 public class Tuple implements Comparable<Tuple> {
 
+    private final Key key;
+    private final Value value;
+
+    public Tuple(Key key, Value value) {
+        this.key = key;
+        this.value = value;
+    }
+
     public static Serializer<Tuple> SERIALIZER = new Serializer<Tuple>() {
         public int size(Tuple tuple) {
             int size = 0;
@@ -60,14 +68,6 @@ public class Tuple implements Comparable<Tuple> {
             return new Tuple(key, value);
         }
     };
-
-    private final Key key;
-    private final Value value;
-
-    public Tuple(Key key, Value value) {
-        this.key = key;
-        this.value = value;
-    }
 
     public Key key() {
         return key;

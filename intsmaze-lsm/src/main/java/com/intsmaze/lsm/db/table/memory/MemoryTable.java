@@ -11,7 +11,13 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
- * Provides a MutableTable that is kept in Memory. Records are kept in sorted order as they are inserted.
+ * @author intsmaze
+ * @description: https://www.cnblogs.com/intsmaze/
+ * 提供一个保存在内存中的MutableTable。 记录在插入时会保持排序。
+ * @date : 2020/5/27 9:49
+ * @Param
+ * @return
+ * @throws
  */
 public class MemoryTable implements MutableTable {
 

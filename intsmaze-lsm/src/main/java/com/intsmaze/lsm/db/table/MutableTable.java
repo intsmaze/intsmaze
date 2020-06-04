@@ -3,7 +3,7 @@ package com.intsmaze.lsm.db.table;
 import com.intsmaze.lsm.db.data.Tuple;
 
 /**
- * Represents a mutable Table.
+ * 表示可变表。
  */
 public interface MutableTable extends Table {
 

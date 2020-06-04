@@ -1,8 +1,13 @@
 package com.intsmaze.lsm.db.util;
 
 /**
- * An iterator that allows peeking at the current value.
- * @param <T>
+ * @author intsmaze
+ * @description: https://www.cnblogs.com/intsmaze/
+ * 一个允许查看当前值的迭代器。
+ * @date : 2020/5/27 9:47
+ * @Param
+ * @return
+ * @throws
  */
 public interface PeekableIterator<T> {
 

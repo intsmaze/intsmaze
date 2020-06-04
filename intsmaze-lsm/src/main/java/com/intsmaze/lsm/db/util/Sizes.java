@@ -1,7 +1,13 @@
 package com.intsmaze.lsm.db.util;
 
 /**
- * JVM primitive sizes in bytes.
+ * @author intsmaze
+ * @description: https://www.cnblogs.com/intsmaze/
+ * JVM基本大小（以字节为单位）。
+ * @date : 2020/5/27 9:48
+ * @Param
+ * @return
+ * @throws
  */
 public class Sizes {
 

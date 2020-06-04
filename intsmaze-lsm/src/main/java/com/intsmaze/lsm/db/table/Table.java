@@ -5,7 +5,7 @@ import com.intsmaze.lsm.db.data.Tuple;
 import com.intsmaze.lsm.db.util.CloseableIterator;
 
 /**
- * Represents an immutable collection of sorted record in a database.
+ * 表示数据库中排序记录的不可变集合。
  */
 public interface Table extends Iterable<Tuple>, Comparable<Table> {
 

@@ -10,7 +10,7 @@ import com.intsmaze.lsm.db.offheap.Offheap;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
- * A cache designed for concurrent access to Offheap data blocks keyed off of a particular Table.
+ * 设计用于同时访问从特定表键入的Offheap数据块的缓存。
  * @param <T>
  */
 public class TableBlockConcurrentLinkedHashMapCache<T extends Offheap> {

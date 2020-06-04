@@ -14,18 +14,6 @@ public interface DB {
 
     public Record get(ByteBuffer key) throws IOException;
 
-//    public CloseableIterator<Record> ascendingIterator(Snapshot snapshot) throws IOException;
-//
-//    public CloseableIterator<Record> ascendingIterator(ByteBuffer key) throws IOException;
-//
-//    public CloseableIterator<Record> descendingIterator(Snapshot snapshot) throws IOException;
-//
-//    public CloseableIterator<Record> descendingIterator(ByteBuffer key, Snapshot snapshot) throws IOException;
-
-//    public void retainSnapshot(Snapshot snapshot);
-//
-//    public void releaseSnapshot(Snapshot snapshot);
-
     public void close() throws IOException;
 
     /**

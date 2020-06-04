@@ -6,7 +6,13 @@ import com.intsmaze.lsm.db.data.Value;
 import com.intsmaze.lsm.db.util.CloseableIterator;
 
 /**
- * Provides the underlying sorted storage for a MemoryTable.
+ * @author intsmaze
+ * @description: https://www.cnblogs.com/intsmaze/
+ * 提供MemoryTable的基础排序存储。
+ * @date : 2020/5/27 9:50
+ * @Param
+ * @return
+ * @throws
  */
 public interface SortedTupleMap extends Iterable<Tuple> {
 

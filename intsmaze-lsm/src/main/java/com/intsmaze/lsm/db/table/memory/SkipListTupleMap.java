@@ -12,7 +12,13 @@ import java.util.concurrent.ConcurrentNavigableMap;
 import java.util.concurrent.ConcurrentSkipListMap;
 
 /**
- * A SortedTupleMap backed by a ConcurrentSkipListMap. This class is safe to use from multiple concurrent threads.
+ * @author intsmaze
+ * @description: https://www.cnblogs.com/intsmaze/
+ * 由ConcurrentSkipListMap支持的SortedTupleMap,线程安全的。
+ * @date : 2020/5/27 9:50
+ * @Param
+ * @return
+ * @throws
  */
 public class SkipListTupleMap implements SortedTupleMap {
 

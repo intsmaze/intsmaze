@@ -3,10 +3,6 @@ package com.intsmaze.lsm.db.util;
 
 import java.nio.ByteBuffer;
 
-/**
- * A generic serializer that writes objects to ByteBuffers.
- * @param <V>
- */
 public interface Serializer<V> {
 
     public int size(V item);
