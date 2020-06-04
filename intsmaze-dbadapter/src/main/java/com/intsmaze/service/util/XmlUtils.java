@@ -19,7 +19,7 @@ public class XmlUtils {
 
 	/**
 	 * @Description: TODO
-	 * @param: src/main/java/cn/hand/aml/service/dao.xml
+	 * @param: src/main/java/cn/aml/service/dao.xml
 	 * @return: void
 	 * @throws DocumentException
 	 */
