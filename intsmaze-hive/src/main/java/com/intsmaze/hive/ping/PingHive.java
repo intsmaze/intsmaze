@@ -17,7 +17,6 @@ public class PingHive {
                 "hive",
                 "intsmaze");
 
-
         PreparedStatement sta = coon.prepareStatement("select area from test ");
         ResultSet rs = sta.executeQuery();
         while (rs.next()) {
