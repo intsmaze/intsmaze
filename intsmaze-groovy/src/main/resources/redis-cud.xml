@@ -6,7 +6,7 @@
 	default-lazy-init="true" default-init-method="init">
 
 	<!-- Twemproxy工厂 -->
-	<bean id="twemproxyFactory" class="org.intsmaze.common.redis.JedisFactory">
+	<bean id="twemproxyFactory" class="com.intsmaze.redis.common.JedisFactory">
 		<property name="timeout" value="2000" />
 		<property name="addressList">
 			<list>

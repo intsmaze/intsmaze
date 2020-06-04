@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.intsmaze.common.redis.RedisCacheKey;
-import org.intsmaze.common.redis.TwemJedisPool;
+import com.intsmaze.redis.common.TwemJedisPool;
 import org.intsmaze.groovy.RuleConfigModel;
 import org.intsmaze.groovy.StormBeanFactory;
 import org.nustaq.serialization.FSTConfiguration;

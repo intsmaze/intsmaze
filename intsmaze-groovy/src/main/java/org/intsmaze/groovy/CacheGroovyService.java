@@ -9,9 +9,9 @@ import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.tuple.Pair;
-import org.intsmaze.common.redis.JedisFactory;
-import org.intsmaze.common.redis.RedisKeys;
-import org.intsmaze.common.redis.TwemJedisPool;
+import com.intsmaze.redis.common.JedisFactory;
+import com.intsmaze.redis.common.RedisKeys;
+import com.intsmaze.redis.common.TwemJedisPool;
 //import org.intsmaze.groovy.DiyScriptCacheMapping;
 import org.intsmaze.groovy.bean.RuleConfigModel;
 import org.intsmaze.groovy.bean.ScriptCacheMapping;

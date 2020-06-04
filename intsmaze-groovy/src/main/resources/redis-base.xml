@@ -7,7 +7,7 @@
 
 
 	<!-- Twemproxy工厂 -->
-	<bean id="twemproxyFactory" class="org.intsmaze.common.redis.JedisFactory">
+	<bean id="twemproxyFactory" class="com.intsmaze.redis.common.JedisFactory">
 		<property name="timeout" value="2000" />
 		<property name="addressList">
 			<list>
@@ -17,7 +17,7 @@
 	</bean>
 
 	<!-- Jedis工厂 -->
-	<bean id="jedisFactory" class="org.intsmaze.common.redis.JedisFactory">
+	<bean id="jedisFactory" class="com.intsmaze.redis.common.JedisFactory">
 		<property name="timeout" value="2000" />
 		<property name="addressList">
 			<list>

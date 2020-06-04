@@ -3,8 +3,8 @@ package org.intsmaze.groovy.util;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.intsmaze.common.redis.RedisKeys;
-import org.intsmaze.common.redis.TwemJedisPool;
+import com.intsmaze.redis.common.RedisKeys;
+import com.intsmaze.redis.common.TwemJedisPool;
 import org.intsmaze.groovy.bean.RuleConfigModel;
 import org.nustaq.serialization.FSTConfiguration;
 
