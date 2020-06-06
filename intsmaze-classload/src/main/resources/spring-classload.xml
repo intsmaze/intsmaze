@@ -5,7 +5,8 @@
 	   http://www.springframework.org/schema/context/spring-context.xsd
 	   http://www.springframework.org/schema/beans
 	   http://www.springframework.org/schema/beans/spring-beans-4.0.xsd"
-	   default-init-method="init" default-destroy-method="destroy">
+	   default-destroy-method="destroy">
+	<!--default-init-method="init"-->
 
 
 	<import resource="classpath:spring-redis.xml" />

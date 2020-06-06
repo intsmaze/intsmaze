@@ -26,7 +26,7 @@ public class CompileJavaFileToRedisTemplate {
 
     private FileSystemClassLoader fileSystemClassLoader;
 
-    public static final String CLASS_PATH = "D:/home/intsmaze/classload";
+    public static final String CLASS_PATH = "c:/home/intsmaze/classload";
 
     public static final String CLASS_NAME = "ClassLoaderOdps";
 
@@ -41,11 +41,13 @@ public class CompileJavaFileToRedisTemplate {
 
         ApplicationContext ct = new ClassPathXmlApplicationContext("spring-classload.xml");
 
-        String classContent = "package com.intsmaze.classload.service.impl;"
-                + "import com.intsmaze.classload.service.DynamicService; "
-                + "public class " + CLASS_NAME + " implements DynamicService{"
-                + "public void executeService(String json) {"
-                + "System.out.println(\"我经过了redis后得以执行，看我72变\"" + ");}}";
+        String classContent = "package com.intsmaze.classload.service.impl;" +
+                "import com.intsmaze.classload.service.DynamicService;" +
+                "public class " + CLASS_NAME + " implements DynamicService {" +
+                "    public void executeService(String json) {" +
+                "        System.out.println(\"我经过了redis后得以执行，看我72变\");" +
+                "    }" +
+                "}";
 
         CompileJavaFileToRedisTemplate compileJavaFileToRedisTemplate = (CompileJavaFileToRedisTemplate) ct.getBean("compileJavaFileToRedisTemplate");
 
