@@ -33,8 +33,8 @@
 	<bean id="jedisPools" factory-bean="jedisFactory" factory-method="createJedisPools" />
 	<!-- REDIS CONFIG END -->
 
-	<bean id="cacheService" class="org.intsmaze.groovy.CacheGroovyService">
+	<bean id="cacheService" class="com.intsmaze.groovy.CacheGroovyService">
 		<property name="twemproxyPool" ref="twemproxyPool" />
 	</bean>
-	<bean id="scriptExecutor" class="org.intsmaze.groovy.GroovyScriptExecutor" />
+	<bean id="scriptExecutor" class="com.intsmaze.groovy.GroovyScriptExecutor" />
 </beans>

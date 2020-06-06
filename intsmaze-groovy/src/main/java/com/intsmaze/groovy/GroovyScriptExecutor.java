@@ -1,6 +1,6 @@
-package org.intsmaze.groovy;
+package com.intsmaze.groovy;
 
-import org.intsmaze.groovy.exception.GroovyException;
+import com.intsmaze.groovy.exception.GroovyException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

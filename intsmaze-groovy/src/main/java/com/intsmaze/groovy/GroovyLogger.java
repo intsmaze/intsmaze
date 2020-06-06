@@ -1,16 +1,11 @@
-package org.intsmaze.groovy;
+package com.intsmaze.groovy;
 
 import java.io.Serializable;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/**
- * Groovy 日志记录器
- * 
- * @author WJ
- *
- */
+
 public class GroovyLogger implements Serializable {
 
 	private static final long serialVersionUID = 5558773939790314428L;

@@ -1,13 +1,13 @@
-package org.intsmaze.groovy.util;
+package com.intsmaze.groovy.util;
 
 import java.util.Map;
 import java.util.Map.Entry;
 
+import com.intsmaze.groovy.GroovyScriptExecutor;
+import com.intsmaze.groovy.RuleCalc;
 import groovy.lang.Binding;
 
-import org.intsmaze.groovy.GroovyScriptExecutor;
-import org.intsmaze.groovy.GroovyDemo;
-import org.intsmaze.groovy.RuleCalc;
+import com.intsmaze.groovy.GroovyDemo;
 import org.junit.Test;
 
 /**

@@ -1,13 +1,12 @@
-package org.intsmaze.groovy;
+package com.intsmaze.groovy;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.intsmaze.common.redis.RedisCacheKey;
+import com.intsmaze.groovy.bean.RuleConfigModel;
+import com.intsmaze.groovy.util.BeanFactory;
 import com.intsmaze.redis.common.TwemJedisPool;
-import org.intsmaze.groovy.RuleConfigModel;
-import org.intsmaze.groovy.StormBeanFactory;
 import org.nustaq.serialization.FSTConfiguration;
 
 import redis.clients.jedis.Jedis;
@@ -34,7 +33,7 @@ public class CUDGroovy {
 
 	public static void main(String[] args) throws Exception {
 
-		StormBeanFactory beanFactory = new StormBeanFactory("redis-cud.xml");
+		BeanFactory beanFactory = new BeanFactory("redis-cud.xml");
 		CUDGroovy groovy = beanFactory.getBean(CUDGroovy.class);
 		groovy.flushSingleRule();
 

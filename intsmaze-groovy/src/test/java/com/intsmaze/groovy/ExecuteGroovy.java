@@ -1,12 +1,8 @@
-package org.intsmaze.groovy;
+package com.intsmaze.groovy;
 
+import com.intsmaze.groovy.util.BeanFactory;
 import groovy.lang.Binding;
 
-import org.intsmaze.groovy.CacheGroovyService;
-import org.intsmaze.groovy.GScriptExecutor;
-import org.intsmaze.groovy.GroovyDemo;
-import org.intsmaze.groovy.RuleCalc;
-import org.intsmaze.groovy.StormBeanFactory;
 import org.junit.Test;
 
 /**
@@ -18,7 +14,7 @@ public class ExecuteGroovy {
 
 	@Test
 	public void test() {
-		StormBeanFactory beanFactory = new StormBeanFactory("redis-base.xml");
+		BeanFactory beanFactory = new BeanFactory("redis-base.xml");
 		CacheGroovyService cacheService = beanFactory.getBean(CacheGroovyService.class);
 		cacheService.start();
 		GScriptExecutor scriptExecutor = beanFactory.getBean(GScriptExecutor.class);

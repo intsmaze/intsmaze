@@ -1,11 +1,11 @@
-package org.intsmaze.groovy.util;
+package com.intsmaze.groovy.util;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import com.intsmaze.redis.common.RedisKeys;
 import com.intsmaze.redis.common.TwemJedisPool;
-import org.intsmaze.groovy.bean.RuleConfigModel;
+import com.intsmaze.groovy.bean.RuleConfigModel;
 import org.nustaq.serialization.FSTConfiguration;
 
 import redis.clients.jedis.Jedis;

@@ -18,7 +18,7 @@
 	<bean id="twemproxyPool" factory-bean="twemproxyFactory"
 		factory-method="createTwemJedisPool" />
 
-	<bean id="CUDGroovy" class="org.intsmaze.groovy.util.DaoGroovy">
+	<bean id="CUDGroovy" class="com.intsmaze.groovy.util.DaoGroovy">
 		<property name="twemproxyPool" ref="twemproxyPool" />
 	</bean>
 

@@ -1,4 +1,4 @@
-package org.intsmaze.groovy;
+package com.intsmaze.groovy;
 /** 
  * @author:YangLiu
  * @date:2018年5月18日 上午10:18:27 

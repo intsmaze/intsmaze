@@ -1,4 +1,4 @@
-package org.intsmaze.groovy.exception;
+package com.intsmaze.groovy.exception;
 
 public class GroovyException extends Exception {
 

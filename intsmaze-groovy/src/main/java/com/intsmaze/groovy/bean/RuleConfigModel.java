@@ -1,4 +1,4 @@
-package org.intsmaze.groovy.bean;
+package com.intsmaze.groovy.bean;
 
 import java.io.Serializable;
 
@@ -11,10 +11,8 @@ public class RuleConfigModel implements Serializable {
 	private String ruleDesc;
 	private String ruleScript;
 	private String hashcode;
-	private Integer ruleType;  // 规则类型
+	private Integer ruleType;
 	
-	
-
 	public RuleConfigModel(Long id, String ruleName, String ruleDesc,
 			String ruleScript, String hashcode, Integer ruleType) {
 		super();
@@ -26,8 +24,6 @@ public class RuleConfigModel implements Serializable {
 		this.ruleType = ruleType;
 	}
 
-	
-	
 	public Integer getRuleType() {
 		return ruleType;
 	}

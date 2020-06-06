@@ -1,4 +1,4 @@
-package org.intsmaze.groovy;
+package com.intsmaze.groovy;
 
 import groovy.lang.Binding;
 import groovy.lang.Script;

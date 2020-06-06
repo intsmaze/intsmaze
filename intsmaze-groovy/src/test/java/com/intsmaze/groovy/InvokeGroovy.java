@@ -1,7 +1,6 @@
-package org.intsmaze.groovy;
+package com.intsmaze.groovy;
 
 import groovy.lang.GroovyClassLoader;
-import java.io.File;
 
 /**
  * @author:YangLiu

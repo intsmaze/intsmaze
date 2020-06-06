@@ -1,11 +1,11 @@
-package org.intsmaze.groovy.bean;
+package com.intsmaze.groovy.bean;
 
 import java.io.Serializable;
 import java.util.concurrent.ConcurrentMap;
 
+import com.intsmaze.groovy.util.Md5Util;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.tuple.Pair;
-import org.intsmaze.groovy.Md5Util;
 
 import com.google.common.collect.Maps;
 
@@ -22,7 +22,6 @@ public class ScriptCacheMapping implements Serializable {
 	}
 
 	public void addScript(Long id, String hash, Script obj) {
-		
 		scriptCache.put(id, Pair.of(hash, obj));
 	}
 

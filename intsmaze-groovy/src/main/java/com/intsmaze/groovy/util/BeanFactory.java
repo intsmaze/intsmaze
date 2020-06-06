@@ -1,4 +1,4 @@
-package org.intsmaze.groovy.util;
+package com.intsmaze.groovy.util;
 
 import java.net.URL;
 import java.util.Map;

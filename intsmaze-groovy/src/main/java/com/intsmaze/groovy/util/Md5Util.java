@@ -1,4 +1,4 @@
-package org.intsmaze.groovy;
+package com.intsmaze.groovy.util;
 
 import java.security.MessageDigest;
 
