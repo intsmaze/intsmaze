@@ -1,11 +1,10 @@
 package com.intsmaze.spiler.bean;
 
-import org.jsoup.nodes.Element;
 
-/** 
- * @author:YangLiu
- * @date:2018年4月9日 下午5:37:37 
- * @describe: 
+/**
+ * @author intsmaze
+ * @description: https://www.cnblogs.com/intsmaze/
+ * @date : 2018/9/10 19:32
  */
 public class MtBean {
 

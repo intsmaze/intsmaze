@@ -18,6 +18,11 @@ import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * @author intsmaze
+ * @description: https://www.cnblogs.com/intsmaze/
+ * @date : 2018/9/10 19:32
+ */
 public class SpilerQcwu extends Spiler implements Runnable {
 
     private static final Logger logger = LoggerFactory

@@ -1,5 +1,10 @@
 package com.intsmaze.spiler.bean;
 
+/**
+ * @author intsmaze
+ * @description: https://www.cnblogs.com/intsmaze/
+ * @date : 2018/9/10 19:32
+ */
 public class JobDescription {
 
 	/**

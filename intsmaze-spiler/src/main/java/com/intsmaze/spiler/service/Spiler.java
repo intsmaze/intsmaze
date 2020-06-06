@@ -13,9 +13,9 @@ import org.slf4j.LoggerFactory;
 import com.google.gson.Gson;
 
 /**
- * @author:YangLiu
- * @date:2018年4月9日 下午4:20:56
- * @describe:
+ * @author intsmaze
+ * @description: https://www.cnblogs.com/intsmaze/
+ * @date : 2018/9/10 19:32
  */
 public class Spiler {
 

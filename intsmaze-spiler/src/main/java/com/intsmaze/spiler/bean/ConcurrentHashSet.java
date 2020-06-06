@@ -5,7 +5,9 @@ import java.util.Iterator;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 /**
- * Created by 刘洋 on 2018/9/10.
+ * @author intsmaze
+ * @description: https://www.cnblogs.com/intsmaze/
+ * @date : 2018/9/10 19:32
  */
 public class ConcurrentHashSet <E> extends AbstractSet<E> implements Set<E>, java.io.Serializable {
 
