@@ -1,5 +1,7 @@
-package com.intsmaze.classload.service;
+package com.intsmaze.classload.service.impl;
 
+
+import com.intsmaze.classload.service.DynamicService;
 
 import java.net.MalformedURLException;
 import java.net.URL;

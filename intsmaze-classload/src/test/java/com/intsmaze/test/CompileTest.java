@@ -1,7 +1,10 @@
+package com.intsmaze.test;
+
+import com.intsmaze.classload.service.CompileJavaFileToRedisTemplate;
+import com.intsmaze.classload.service.DynamicService;
+
 import java.net.URL;
 import java.net.URLClassLoader;
-import org.intsmaze.classload.service.CompileService;
-import org.intsmaze.classload.service.DynamicService;
 /**
  * @author:YangLiu
  * @date:2018年5月18日 下午5:13:44
@@ -13,9 +16,9 @@ public class CompileTest {
 	public static void main(String[] args) throws Exception {
 	
 		URL[] urls = new URL[] { new URL("file:/"
-				+ CompileService.CLASS_PATH +"/"+CompileService.CLASS_NAME +".class") };
+				+ CompileJavaFileToRedisTemplate.CLASS_PATH +"/"+ CompileJavaFileToRedisTemplate.CLASS_NAME +".class") };
 		ClassLoader classLoader = new URLClassLoader(urls);
-		Class<?> c = classLoader.loadClass(CompileService.CLASS_NAME);
+		Class<?> c = classLoader.loadClass(CompileJavaFileToRedisTemplate.CLASS_NAME);
 		DynamicService o = (DynamicService) c.newInstance();
 		o.executeService("ClassNotFoundException");
 	}

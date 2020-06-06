@@ -10,16 +10,16 @@
 
 	<import resource="classpath:spring-redis.xml" />
 
-	<bean id="compileService" class="org.intsmaze.classload.service.CompileService">
+	<bean id="compileJavaFileToRedisTemplate" class="com.intsmaze.classload.service.CompileJavaFileToRedisTemplate">
 		<property name="jedisPool" ref="jedisPool" />
 		<property name="fileSystemClassLoader" ref="fileSystemClassLoader" />
 	</bean>
 
-	<bean id="classLoadService" class="org.intsmaze.classload.service.ClassLoadService">
+	<bean id="classLoadService" class="com.intsmaze.classload.service.impl.ClassLoadService">
 		<property name="fileSystemClassLoader" ref="fileSystemClassLoader" />
 	</bean>
 
-	<bean id="fileSystemClassLoader" class="org.intsmaze.classload.util.FileSystemClassLoader">
+	<bean id="fileSystemClassLoader" class="com.intsmaze.classload.util.FileSystemClassLoader">
 		<property name="jedisPool" ref="jedisPool" />
 	</bean>
 

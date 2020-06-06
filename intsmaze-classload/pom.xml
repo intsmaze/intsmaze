@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.intsmaze</groupId>
     <artifactId>intsmaze-classload</artifactId>
-    <version>0.0.1</version>s
+    <version>0.0.1</version>
     <name>intsmaze-classload</name>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

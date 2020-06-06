@@ -1,5 +1,6 @@
 package com.intsmaze.classload.util;
-import org.intsmaze.classload.service.CompileService;
+
+import com.intsmaze.classload.service.CompileJavaFileToRedisTemplate;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
@@ -8,32 +9,35 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-/** 
- * @author:YangLiu
- * @date:2018年8月9日 上午8:55:08 
- * @describe: 
+
+/**
+ * @author intsmaze
+ * @description: https://www.cnblogs.com/intsmaze/
+ * @date : 2020/6/6 18:40
  */
 public class FileSystemClassLoader extends ClassLoader {
 
-    private JedisPool jedisPool ;
- 
-    public  String rootDir;
- 
+    private JedisPool jedisPool;
+
+    public String rootDir;
+
 //    public FileSystemClassLoader(String rootDir) {
 //        this.rootDir = rootDir;
 //    }
 
     /**
-    * @Description: 从redis中获取指定类的字节码
-    * @Param:类的完整名称
-    * @return:
-    * @Author: intsmaze
-    * @Date: 2019/1/8
-    */
+     * @return
+     * @throws
+     * @author intsmaze
+     * @description: https://www.cnblogs.com/intsmaze/
+     * 从redis中获取指定类的字节码
+     * @date : 2020/6/6 18:40
+     * @Param 类的完整名称
+     */
     @Override
     protected Class<?> findClass(String name) throws ClassNotFoundException {
 //        byte[] classData = getClassData(name);  // 获取类的字节数组
-        byte[] classData =getClassDataFormRedis(name);
+        byte[] classData = getClassDataFormRedis(name);
         if (classData == null) {
             throw new ClassNotFoundException();
         } else {
@@ -43,11 +47,11 @@ public class FileSystemClassLoader extends ClassLoader {
 
     private byte[] getClassDataFormRedis(String className) {
         Jedis jedis = jedisPool.getResource();
-        return jedis.get((CompileService.KEY_NAME+className).getBytes());
+        return jedis.get((CompileJavaFileToRedisTemplate.KEY_NAME + className).getBytes());
 
     }
 
-    public  byte[] getClassData(String className) {
+    public byte[] getClassData(String className) {
         // 读取类文件的字节
         String path = classNameToPath(className);
         try {
@@ -66,8 +70,8 @@ public class FileSystemClassLoader extends ClassLoader {
         }
         return null;
     }
- 
-    public  String classNameToPath(String className) {
+
+    public String classNameToPath(String className) {
         // 得到类文件的完全路径
         return rootDir + File.separatorChar
                 + className.replace('.', File.separatorChar) + ".class";
