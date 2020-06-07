@@ -1,13 +1,13 @@
 <component name="libraryTable">
   <library name="Maven: org.apache.storm:storm-core:0.9.5">
     <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/org/apache/storm/storm-core/0.9.5/storm-core-0.9.5.jar!/" />
+      <root url="jar://C:/develop/maven/apache-maven-3.0.5/repository/repository/org/apache/storm/storm-core/0.9.5/storm-core-0.9.5.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$MAVEN_REPOSITORY$/org/apache/storm/storm-core/0.9.5/storm-core-0.9.5-javadoc.jar!/" />
+      <root url="jar://C:/develop/maven/apache-maven-3.0.5/repository/repository/org/apache/storm/storm-core/0.9.5/storm-core-0.9.5-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$MAVEN_REPOSITORY$/org/apache/storm/storm-core/0.9.5/storm-core-0.9.5-sources.jar!/" />
+      <root url="jar://C:/develop/maven/apache-maven-3.0.5/repository/repository/org/apache/storm/storm-core/0.9.5/storm-core-0.9.5-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

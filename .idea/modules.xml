@@ -20,7 +20,6 @@
       <module fileurl="file://$PROJECT_DIR$/intsmaze-redis/intsmaze-redis.iml" filepath="$PROJECT_DIR$/intsmaze-redis/intsmaze-redis.iml" />
       <module fileurl="file://$PROJECT_DIR$/intsmaze-rpc/intsmaze-rpc.iml" filepath="$PROJECT_DIR$/intsmaze-rpc/intsmaze-rpc.iml" />
       <module fileurl="file://$PROJECT_DIR$/intsmaze-spiler/intsmaze-spiler.iml" filepath="$PROJECT_DIR$/intsmaze-spiler/intsmaze-spiler.iml" />
-      <module fileurl="file://$PROJECT_DIR$/intsmaze-storm/intsmaze-storm.iml" filepath="$PROJECT_DIR$/intsmaze-storm/intsmaze-storm.iml" />
       <module fileurl="file://$PROJECT_DIR$/intsmaze-z-core/intsmaze-z-core.iml" filepath="$PROJECT_DIR$/intsmaze-z-core/intsmaze-z-core.iml" />
     </modules>
   </component>

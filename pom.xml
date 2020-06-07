@@ -29,6 +29,7 @@
         <module>intsmaze-dbadapter</module>
         <module>intsmaze-hash</module>
         <module>intsmaze-classloadjar</module>
+        <module>intsmaze-classload</module>
         <module>intsmaze-common</module>
         <module>intsmaze-drools</module>
         <module>intsmaze-drpc</module>
