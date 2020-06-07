@@ -1,4 +1,4 @@
-package org.intsmaze.common.util;
+package com.intsmaze.common.util;
 
 /**
  * 响应结果生成工具

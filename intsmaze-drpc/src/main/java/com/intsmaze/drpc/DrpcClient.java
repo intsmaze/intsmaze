@@ -1,4 +1,4 @@
-package cn.intsmaze.drpc;
+package com.intsmaze.drpc;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,4 +1,4 @@
-package org.intsmaze.common.util;
+package com.intsmaze.common.util;
 
 /**
  * 响应码枚举，参考HTTP状态码的语义

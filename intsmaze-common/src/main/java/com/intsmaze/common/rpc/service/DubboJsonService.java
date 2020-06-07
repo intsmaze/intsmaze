@@ -1,4 +1,4 @@
-package org.intsmaze.common.rpc.service;
+package com.intsmaze.common.rpc.service;
 
 /**
  * Created by CodeGenerator on 2018/03/30.
