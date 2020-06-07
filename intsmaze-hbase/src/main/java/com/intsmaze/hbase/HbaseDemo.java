@@ -1,4 +1,4 @@
-package cn.intsmaze.hbase;
+package com.intsmaze.hbase;
 
 import java.util.ArrayList;
 import java.util.Iterator;

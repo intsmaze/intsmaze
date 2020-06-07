@@ -1,4 +1,4 @@
-package cn.intsmaze.hbase.phoenix;
+package com.intsmaze.hbase.phoenix;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -9,7 +9,7 @@ import java.sql.Statement;
 import java.util.Random;
 
 public class PhoenixClient {  
-    private String url = "jdbc:phoenix:mini1,mini2,mini3:2181";  
+    private String url = "jdbc:phoenix:intsmaze-201,intsmaze-202:2181";
     private String driver = "org.apache.phoenix.jdbc.PhoenixDriver";  
     private Connection connection = null;  
   

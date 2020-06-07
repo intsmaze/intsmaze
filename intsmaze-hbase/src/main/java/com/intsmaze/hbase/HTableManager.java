@@ -1,4 +1,4 @@
-package cn.intsmaze.hbase;
+package com.intsmaze.hbase;
 
 import java.util.List;
 
@@ -87,28 +87,6 @@ public class HTableManager {
 		return StringUtils.join(PARTITIONS[i], "-", str).getBytes();
 	}
 
-	public static String getEventLogTableName(String event) {
-		return StringUtils.join("EVENT_LOG_", event);
-	}
 
-	public static String getActivityVarTableName() {
-		return "CUSTOM_VARIABLE_ACTIVITY";
-	}
-
-	public static String getUserVarTableName() {
-		return "CUSTOM_VARIABLE_USER";
-	}
-
-	public static String getUserInfoTableName() {
-		return "USER_WIDE_PUB";
-	}
-
-	public static String getCardInfoTableName() {
-		return "CARD_WIDE_PUB";
-	}
-
-	public static String getAcctInfoTableName() {
-		return "ACCT_WIDE_PUB";
-	}
 
 }
