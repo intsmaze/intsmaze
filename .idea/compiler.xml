@@ -29,23 +29,23 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="intsmaze" target="1.8" />
-      <module name="intsmaze-classload" target="1.8" />
-      <module name="intsmaze-classloadjar" target="1.8" />
-      <module name="intsmaze-common" target="1.8" />
-      <module name="intsmaze-dbadapter" target="1.8" />
-      <module name="intsmaze-drools" target="1.8" />
-      <module name="intsmaze-drpc" target="1.8" />
-      <module name="intsmaze-groovy" target="1.8" />
-      <module name="intsmaze-hash" target="1.8" />
+      <module name="intsmaze-classload" target="1.5" />
+      <module name="intsmaze-classloadjar" target="1.5" />
+      <module name="intsmaze-common" target="1.5" />
+      <module name="intsmaze-dbadapter" target="1.5" />
+      <module name="intsmaze-drools" target="1.5" />
+      <module name="intsmaze-drpc" target="1.5" />
+      <module name="intsmaze-groovy" target="1.5" />
+      <module name="intsmaze-hash" target="1.5" />
       <module name="intsmaze-hbase" target="1.5" />
-      <module name="intsmaze-hive" target="1.8" />
-      <module name="intsmaze-jetty" target="1.8" />
-      <module name="intsmaze-kafka" target="1.8" />
-      <module name="intsmaze-lsm" target="1.8" />
-      <module name="intsmaze-lucene" target="1.8" />
-      <module name="intsmaze-redis" target="1.8" />
-      <module name="intsmaze-rpc" target="1.8" />
-      <module name="intsmaze-spiler" target="1.8" />
+      <module name="intsmaze-hive" target="1.5" />
+      <module name="intsmaze-jetty" target="1.5" />
+      <module name="intsmaze-kafka" target="1.5" />
+      <module name="intsmaze-lsm" target="1.5" />
+      <module name="intsmaze-lucene" target="1.5" />
+      <module name="intsmaze-redis" target="1.5" />
+      <module name="intsmaze-rpc" target="1.5" />
+      <module name="intsmaze-spiler" target="1.5" />
       <module name="intsmaze-storm" target="1.8" />
       <module name="intsmaze-z-core" target="1.8" />
       <module name="multi-jdbc" target="1.8" />

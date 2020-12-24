@@ -1,13 +1,13 @@
 <component name="libraryTable">
   <library name="Maven: org.apache.hive:hive-ant:0.13.0">
     <CLASSES>
-      <root url="jar://C:/develop/maven/apache-maven-3.0.5/repository/repository/org/apache/hive/hive-ant/0.13.0/hive-ant-0.13.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/hive/hive-ant/0.13.0/hive-ant-0.13.0.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://C:/develop/maven/apache-maven-3.0.5/repository/repository/org/apache/hive/hive-ant/0.13.0/hive-ant-0.13.0-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/hive/hive-ant/0.13.0/hive-ant-0.13.0-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://C:/develop/maven/apache-maven-3.0.5/repository/repository/org/apache/hive/hive-ant/0.13.0/hive-ant-0.13.0-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/hive/hive-ant/0.13.0/hive-ant-0.13.0-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

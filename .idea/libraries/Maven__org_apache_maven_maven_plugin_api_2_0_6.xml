@@ -1,13 +1,13 @@
 <component name="libraryTable">
   <library name="Maven: org.apache.maven:maven-plugin-api:2.0.6">
     <CLASSES>
-      <root url="jar://C:/develop/maven/apache-maven-3.0.5/repository/repository/org/apache/maven/maven-plugin-api/2.0.6/maven-plugin-api-2.0.6.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/maven/maven-plugin-api/2.0.6/maven-plugin-api-2.0.6.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://C:/develop/maven/apache-maven-3.0.5/repository/repository/org/apache/maven/maven-plugin-api/2.0.6/maven-plugin-api-2.0.6-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/maven/maven-plugin-api/2.0.6/maven-plugin-api-2.0.6-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://C:/develop/maven/apache-maven-3.0.5/repository/repository/org/apache/maven/maven-plugin-api/2.0.6/maven-plugin-api-2.0.6-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/maven/maven-plugin-api/2.0.6/maven-plugin-api-2.0.6-sources.jar!/" />
     </SOURCES>
   </library>
 </component>
